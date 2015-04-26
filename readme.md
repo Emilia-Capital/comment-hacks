@@ -15,7 +15,7 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 
 ## Screenshots
 
-Screenshot of a clean comment notification email:
+Screenshot of a clean comment notification email:<br/>
 ![Screenshot of a clean comment notification email](assets/screenshot-1.png)
 
 The comment parent edit box:
