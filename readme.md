@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/Yoast/comment-hacks/badges/gpa.svg)](https://codeclimate.com/github/Yoast/comment-hacks)
+
 # Yoast comment hacks
 
 Make comments management easier by applying some of the simple hacks the Yoast team uses.
