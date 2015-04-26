@@ -13,12 +13,11 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 
 ## Screenshots
 
-![Screenshot of a clean comment notification email](screenshot-1.png)
+Screenshot of a clean comment notification email:
+![Screenshot of a clean comment notification email](assets/screenshot-1.png)
 
-Screenshot of a clean comment notification email
+The comment parent edit box:
+![The comment parent edit box](assets/screenshot-2.png)
 
-![The comment parent edit box](screenshot-2.png)
-The comment parent edit box
-
-![The plugins admin settings](screenshot-3.png)
-The plugins admin settings
+The plugins admin settings:
+![The plugins admin settings](assets/screenshot-3.png)
