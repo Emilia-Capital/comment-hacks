@@ -1,0 +1,170 @@
+<?php
+
+/**
+ * Class yoast_comment_hacks_admin
+ */
+class yoast_comment_hacks_admin {
+
+	/**
+	 * @var string The plugin page hook
+	 */
+	private $hook = 'yoast-comment-hacks';
+
+	/**
+	 * @var string Holds the plugins option name
+	 */
+	private $option_name = 'yoast_comment_hacks';
+
+	/**
+	 * @var array Holds the plugins options
+	 */
+	private $options = array();
+
+	/**
+	 * @var int The absolute minimum comment length when this plugin is enabled
+	 */
+	private $absolute_min = 0;
+
+	/**
+	 * Class constructor
+	 */
+	public function __construct() {
+		$this->options = get_option( $this->option_name );
+
+		// Hook into init for registration of the option and the language files
+		add_action( 'admin_init', array( $this, 'init' ) );
+
+		// Register the settings page
+		add_action( 'admin_menu', array( $this, 'add_config_page' ) );
+		add_action( 'admin_menu', array( $this, 'load_comment_parent_box' ) );
+		add_action( 'edit_comment', array( $this, 'update_comment_parent' ) );
+
+		// Register a link to the settings page on the plugins overview page
+		add_filter( 'plugin_action_links', array( $this, 'filter_plugin_actions' ), 10, 2 );
+	}
+
+	/**
+	 * Register the text domain and the options array along with the validation function
+	 */
+	public function init() {
+		// Allow for localization
+		load_plugin_textdomain( 'yoast-comment-hacks', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+
+		// Register our option array
+		register_setting( $this->option_name, $this->option_name, array( $this, 'options_validate' ) );
+	}
+
+	/**
+	 * Shows the comment parent box where you can change the comment parent
+	 *
+	 * @param object $comment
+	 */
+	public function comment_parent_box( $comment ) {
+		require_once 'views/comment-parent-box.php';
+	}
+
+	/**
+	 * Adds the comment parent box to the meta box
+	 */
+	public function load_comment_parent_box() {
+		if ( function_exists( 'add_meta_box' ) ) {
+			add_meta_box( 'comment_parent', 'Comment Parent', array(
+				$this,
+				'comment_parent_box'
+			), 'comment', 'normal' );
+		}
+	}
+
+	/**
+	 * Updates the comment parent field
+	 */
+	public function update_comment_parent() {
+		$comment_parent = filter_input( INPUT_POST, 'yst_comment_parent', FILTER_VALIDATE_INT );
+		$comment_id     = filter_input( INPUT_POST, 'comment_ID', FILTER_VALIDATE_INT );
+
+		check_admin_referer( 'update-comment_' . $comment_id );
+
+		global $wpdb;
+		if ( $comment_parent ) {
+			$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->comments SET comment_parent = %d WHERE comment_ID = %d", $comment_parent, $comment_id ) );
+		}
+	}
+
+	/**
+	 * Validate the input, make sure comment length is an integer and above the minimum value.
+	 *
+	 * @since 1.0
+	 *
+	 * @param array $input with unvalidated options.
+	 *
+	 * @return array $input with validated options.
+	 */
+	public function options_validate( $input ) {
+		$input['mincomlength']  = (int) $input['mincomlength'];
+		$input['redirect_page'] = (int) $input['redirect_page'];
+
+		if ( isset( $input['clean_emails'] ) ) {
+			$input['clean_emails'] = true;
+		}
+		else {
+			$input['clean_emails'] = true;
+		}
+
+		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
+			add_settings_error( $this->option_name, 'min_length_invalid', sprintf( __( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'minimum-comment-length' ), $this->absolute_min ) );
+			$input['mincomlength'] = 15;
+		}
+
+		return $input;
+	}
+
+	/**
+	 * Register the config page for all users that have the manage_options capability
+	 */
+	public function add_config_page() {
+		add_options_page( __( 'Yoast Comment Hacks configuration', 'minimum-comment-length' ), __( 'Comment Hacks', 'minimum-comment-length' ), 'manage_options', $this->hook, array(
+			$this,
+			'config_page'
+		) );
+	}
+
+	/**
+	 * Register the settings link for the plugins page
+	 *
+	 * @param array  $links
+	 * @param string $file
+	 *
+	 * @return array
+	 */
+	public function filter_plugin_actions( $links, $file ) {
+		//Static so we don't call plugin_basename on every plugin row.
+		static $this_plugin;
+		if ( ! $this_plugin ) {
+			$this_plugin = plugin_basename( __FILE__ );
+		}
+
+		if ( $file == $this_plugin ) {
+			$settings_link = '<a href="' . admin_url( 'options-general.php?page=' . $this->hook ) . '">' . __( 'Settings', 'yoast-comment-hacks' ) . '</a>';
+			array_unshift( $links, $settings_link ); // before other links
+		}
+
+		return $links;
+	}
+
+	/**
+	 * Output the config page
+	 *
+	 * @since 0.5
+	 */
+	public function config_page() {
+		require_once 'views/config-page.php';
+
+		// Show the content of the options array when debug is enabled
+		if ( WP_DEBUG ) {
+			echo '<h4>Options debug</h4>';
+			echo '<pre style="background-color: white; border: 1px solid #aaa; padding: 20px;">';
+			var_dump( $this->options );
+			echo '</pre>';
+		}
+	}
+}
