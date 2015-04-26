@@ -11,6 +11,8 @@ Make comments management easier by applying some of the simple hacks the Yoast t
 
 == Description ==
 
+Make comments management easier by applying some of the simple hacks the Yoast team uses.
+
 This plugin adds some small hacks around core WordPress comments to make them more bearable:
 
 * Cleaner comment notification emails.

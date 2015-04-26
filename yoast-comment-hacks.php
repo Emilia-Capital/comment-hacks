@@ -31,6 +31,8 @@ define( 'YOAST_COMMENT_HACKS_VERSION', '1.0' );
 
 /**
  * Class yoast_comment_hacks
+ *
+ * @since 1.0
  */
 class yoast_comment_hacks {
 
@@ -74,6 +76,8 @@ class yoast_comment_hacks {
 	/**
 	 * Check the length of the comment and if it's too short: die.
 	 *
+	 * @since 1.0
+	 *
 	 * @param array $comment_data all the data for the comment.
 	 *
 	 * @return array $comment_data all the data for the comment (only returned when the comment is long enough).
@@ -95,7 +99,7 @@ class yoast_comment_hacks {
 	/**
 	 * Check whether the current commenter is a first time commenter, if so, redirect them to the specified settings.
 	 *
-	 * @since 0.1
+	 * @since 1.0
 	 *
 	 * @param string $url     the original redirect URL
 	 * @param object $comment the comment object
@@ -103,9 +107,9 @@ class yoast_comment_hacks {
 	 * @return string $url the URL to be redirected to, altered if this was a first time comment.
 	 */
 	public function comment_redirect( $url, $comment ) {
-		$cc = get_comments( array( 'author_email' => $comment->comment_author_email, 'count' => true ) );
+		$comment_count = get_comments( array( 'author_email' => $comment->comment_author_email, 'count' => true ) );
 
-		if ( 1 == $cc ) {
+		if ( 1 == $comment_count ) {
 			// Only change $url when the page option is actually set and not zero
 			if ( isset( $this->options['redirect_page'] ) && 0 != $this->options['redirect_page'] ) {
 				$url = get_permalink( $this->options['redirect_page'] );
@@ -120,6 +124,8 @@ class yoast_comment_hacks {
 
 	/**
 	 * Check whether any old options are in there and if so upgrade them
+	 *
+	 * @since 1.0
 	 */
 	private function upgrade() {
 		foreach ( array( 'MinComLengthOptions', 'min_comment_length_option', 'CommentRedirect' ) as $old_option ) {
@@ -144,6 +150,8 @@ class yoast_comment_hacks {
 
 	/**
 	 * Set default values for the plugin. If old, as in pre 1.0, settings are there, use them and then delete them.
+	 *
+	 * @since 1.0
 	 */
 	public function set_defaults() {
 		$defaults = array(
