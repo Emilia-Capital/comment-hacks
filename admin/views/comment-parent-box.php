@@ -1,3 +1,8 @@
+<?php
+/**
+ * @package yoast_comment_hacks\admin
+ */
+?>
 <div class="inside">
 	<table class="form-table editcomment">
 		<tr valign="top">

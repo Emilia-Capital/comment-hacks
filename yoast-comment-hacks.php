@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package yoast_comment_hacks
+ */
 /*
 Plugin Name: Yoast Comment Hacks
 Version: 1.0

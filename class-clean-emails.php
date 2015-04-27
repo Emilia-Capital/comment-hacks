@@ -109,7 +109,7 @@ class yoast_clean_emails {
 	}
 
 	/**
-	 * Returns the author line for the message
+	 * Adds the author line to the message
 	 *
 	 * @return string
 	 */
@@ -123,26 +123,28 @@ class yoast_clean_emails {
 	}
 
 	/**
-	 * Return the content line for the message
+	 * Adds the content line to the message
 	 * 
 	 * @return string
 	 */
 	private function add_content_line() {
 		if ( '' === $this->comment->comment_type ) {
-			$this->message .= __( 'Comment:', 'yoast-comment-hacks' ) . '<br /><br />' . esc_html( nl2br( $this->comment->comment_content ) ) . '<br /><br />';
+			$this->message .= __( 'Comment:', 'yoast-comment-hacks' ) . '<br />' . wpautop( $this->comment->comment_content ) . '<br />';
 		}
 		else {
-			$this->message .= __( 'Excerpt:', 'yoast-comment-hacks' ) . '<br /><br /> [...] ' . esc_html( nl2br( $this->comment->comment_content ) ) . ' [...] <br /><br />';
+			$this->message .= __( 'Excerpt:', 'yoast-comment-hacks' ) . '<br /> [...] ' . wpautop( $this->comment->comment_content ) . ' [...] <br />';
 		}
 	}
 	
 	/**
-	 * Returns the URL line for the message
+	 * Adds the URL line to the message
 	 *
 	 * @return string
 	 */
 	private function add_url_line() {
-		$this->message .= sprintf( __( 'URL: %s', 'yoast-comment-hacks' ), '<a href="' . esc_url( $this->comment->comment_author_url ) . '">' . esc_html( $this->comment->comment_author_url ) . '</a>' ) . '<br/>';
+		if ( isset( $this->comment->comment_author_url ) && '' !== $this->comment->comment_author_url ) {
+			$this->message .= sprintf( __( 'URL: %s', 'yoast-comment-hacks' ), '<a href="' . esc_url( $this->comment->comment_author_url ) . '">' . esc_html( $this->comment->comment_author_url ) . '</a>' ) . '<br/>';
+		}
 	}
 
 	/**

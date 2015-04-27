@@ -1,4 +1,7 @@
 <?php
+/**
+ * @package yoast_comment_hacks\admin
+ */
 
 /**
  * Class yoast_comment_hacks_admin
