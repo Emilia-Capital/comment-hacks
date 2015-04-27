@@ -1,12 +1,12 @@
 <?php
 /**
- * @package yoast_comment_hacks\clean_email
+ * @package YoastCommentHacks\CleanEmails
  */
 
 /**
- * Class yoast_clean_email
+ * Class YoastCleanEmails
  */
-class yoast_clean_emails {
+class YoastCleanEmails {
 
 	/**
 	 * @var int Holds the current comment's ID
@@ -48,10 +48,10 @@ class yoast_clean_emails {
 	 */
 	public function comment_email_headers( $message_headers ) {
 		if ( '' === $message_headers ) {
-			return "Content-Type: text/html; charset=\"" . get_option( 'blog_charset' ) . "\"\n";
+			return 'Content-Type: text/html; charset="' . get_option( 'blog_charset' ) . "\"\n";
 		}
 
-		return str_replace( "Content-Type: text/plain", "Content-Type: text/html", $message_headers );
+		return str_replace( 'Content-Type: text/plain', 'Content-Type: text/html', $message_headers );
 	}
 
 	/**
@@ -110,8 +110,6 @@ class yoast_clean_emails {
 
 	/**
 	 * Adds the author line to the message
-	 *
-	 * @return string
 	 */
 	private function add_author_line() {
 		if ( '' === $this->comment->comment_type ) {
@@ -124,8 +122,6 @@ class yoast_clean_emails {
 
 	/**
 	 * Adds the content line to the message
-	 * 
-	 * @return string
 	 */
 	private function add_content_line() {
 		if ( '' === $this->comment->comment_type ) {
@@ -135,11 +131,9 @@ class yoast_clean_emails {
 			$this->message .= __( 'Excerpt:', 'yoast-comment-hacks' ) . '<br /> [...] ' . wpautop( $this->comment->comment_content ) . ' [...] <br />';
 		}
 	}
-	
+
 	/**
 	 * Adds the URL line to the message
-	 *
-	 * @return string
 	 */
 	private function add_url_line() {
 		if ( isset( $this->comment->comment_author_url ) && '' !== $this->comment->comment_author_url ) {
@@ -180,9 +174,9 @@ class yoast_clean_emails {
 
 		if ( $comments_waiting > 1 ) {
 			$comments_waiting--;
-			$this->message .= sprintf( __( 'Currently this and %s other comments are waiting for approval.', $comments_waiting, 'yoast-comment-hacks' ), number_format_i18n( $comments_waiting ) );
+			$this->message .= sprintf( __( 'Currently this and %s other comments are waiting for approval.', 'yoast-comment-hacks' ), number_format_i18n( $comments_waiting ) );
 			$this->message .= ' ';
-			$this->message .= sprintf( __( 'Please visit the %1$smoderation panel%2$s.', 'yoast-comment-hacks' ), '<a href="' . admin_url( "edit-comments.php?comment_status=moderated" ) . '">', '</a>' ) . '<br/>';
+			$this->message .= sprintf( __( 'Please visit the %1$smoderation panel%2$s.', 'yoast-comment-hacks' ), '<a href="' . admin_url( 'edit-comments.php?comment_status=moderated' ) . '">', '</a>' ) . '<br/>';
 		}
 	}
 

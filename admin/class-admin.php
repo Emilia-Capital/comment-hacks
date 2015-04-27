@@ -1,12 +1,12 @@
 <?php
 /**
- * @package yoast_comment_hacks\admin
+ * @package YoastCommentHacks\Admin
  */
 
 /**
- * Class yoast_comment_hacks_admin
+ * Class YoastCommentHacksAdmin
  */
-class yoast_comment_hacks_admin {
+class YoastCommentHacksAdmin {
 
 	/**
 	 * @var string The plugin page hook
@@ -58,6 +58,26 @@ class yoast_comment_hacks_admin {
 	}
 
 	/**
+	 * Register the promotion class for our GlotPress instance
+	 *
+	 * @link https://github.com/Yoast/i18n-module
+	 */
+	public function register_i18n_promo_class() {
+		new yoast_i18n(
+			array(
+				'textdomain'     => 'yoast-comment-hacks',
+				'project_slug'   => 'comment-hacks',
+				'plugin_name'    => 'Yoast Comment Hacks',
+				'hook'           => 'yoast_ch_admin_footer',
+				'glotpress_url'  => 'http://translate.yoast.com/',
+				'glotpress_name' => 'Yoast Translate',
+				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
+				'register_url'   => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=wpseo-i18n-promo',
+			)
+		);
+	}
+
+	/**
 	 * Shows the comment parent box where you can change the comment parent
 	 *
 	 * @param object $comment
@@ -73,7 +93,7 @@ class yoast_comment_hacks_admin {
 		if ( function_exists( 'add_meta_box' ) ) {
 			add_meta_box( 'comment_parent', 'Comment Parent', array(
 				$this,
-				'comment_parent_box'
+				'comment_parent_box',
 			), 'comment', 'normal' );
 		}
 	}
@@ -114,7 +134,7 @@ class yoast_comment_hacks_admin {
 		}
 
 		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
-			add_settings_error( $this->option_name, 'min_length_invalid', sprintf( __( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'minimum-comment-length' ), $this->absolute_min ) );
+			add_settings_error( $this->option_name, 'min_length_invalid', sprintf( __( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'yoast-comment-hacks' ), $this->absolute_min ) );
 			$input['mincomlength'] = 15;
 		}
 
@@ -125,9 +145,9 @@ class yoast_comment_hacks_admin {
 	 * Register the config page for all users that have the manage_options capability
 	 */
 	public function add_config_page() {
-		add_options_page( __( 'Yoast Comment Hacks configuration', 'minimum-comment-length' ), __( 'Comment Hacks', 'minimum-comment-length' ), 'manage_options', $this->hook, array(
+		add_options_page( __( 'Yoast Comment Hacks', 'yoast-comment-hacks' ), __( 'Comment Hacks', 'yoast-comment-hacks' ), 'manage_options', $this->hook, array(
 			$this,
-			'config_page'
+			'config_page',
 		) );
 	}
 
@@ -140,7 +160,7 @@ class yoast_comment_hacks_admin {
 	 * @return array
 	 */
 	public function filter_plugin_actions( $links, $file ) {
-		//Static so we don't call plugin_basename on every plugin row.
+		/* Static so we don't call plugin_basename on every plugin row. */
 		static $this_plugin;
 		if ( ! $this_plugin ) {
 			$this_plugin = plugin_basename( __FILE__ );
@@ -160,6 +180,8 @@ class yoast_comment_hacks_admin {
 	 * @since 0.5
 	 */
 	public function config_page() {
+		$this->register_i18n_promo_class();
+
 		require_once 'views/config-page.php';
 
 		// Show the content of the options array when debug is enabled

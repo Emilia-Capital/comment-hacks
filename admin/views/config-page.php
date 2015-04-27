@@ -2,6 +2,7 @@
 /**
  * @package yoast_comment_hacks\admin
  */
+
 ?>
 <div class="wrap">
 	<h2><?php _e( 'Yoast Comment Hacks', 'yoast-comment-hacks' ); ?></h2>
@@ -81,3 +82,5 @@
 		</p>
 	</form>
 </div>
+
+<?php do_action( 'yoast_ch_admin_footer' ); ?>

@@ -1,0 +1,22 @@
+# Grunt aliases
+---
+# Build everything
+build:
+  - 'build:images'
+  - 'build:i18n'
+# Optimise images from source to production
+'build:images':
+  - 'imagemin'
+# Build internationalisation features
+'build:i18n':
+  - 'addtextdomain'
+  - 'makepot'
+  - 'glotpress_download'
+# Check health of the project
+check:
+  - 'phplint'
+  - 'phpcs'
+  - 'checktextdomain'
+# Default task
+default:
+  - build

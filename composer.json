@@ -1,0 +1,55 @@
+{
+	"name": "yoast/comment-hacks",
+	"description": "Make comments management easier by applying some of the simple hacks the Yoast team uses.",
+	"keywords": [
+		"comments",
+		"spam",
+        "emails"
+	],
+	"homepage": "https://yoast.com/wordpress/plugins/comment-hacks/",
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name": "Team Yoast",
+			"email": "support@yoast.com",
+			"homepage": "https://yoast.com"
+		}
+	],
+	"type": "wordpress-plugin",
+	"support": {
+		"issues": "https://github.com/Yoast/comment-hacks/issues",
+		"forum": "https://wordpress.org/support/plugin/yoast-comment-hacks",
+		"wiki": "https://github.com/Yoast/comment-hacks/wiki",
+		"source": "https://github.com/Yoast/comment-hacks"
+	},
+	"require": {
+		"composer/installers": "~1.0",
+		"yoast/i18n-module": "dev-master",
+		"xrstf/composer-php52": "^1.0.17"
+	},
+	"require-dev": {
+		"yoast/yoastcs": "dev-master"
+	},
+	"minimum-stability": "dev",
+	"autoload": {
+		"classmap": [
+			"admin/",
+			"inc/"
+		]
+	},
+	"scripts": {
+		"config-yoastcs": [
+			"\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs,../../../vendor/yoast/yoastcs",
+			"\"vendor/bin/phpcs\" --config-set default_standard Yoast"
+		],
+		"post-install-cmd": [
+			"xrstf\\Composer52\\Generator::onPostInstallCmd"
+		],
+		"post-update-cmd": [
+			"xrstf\\Composer52\\Generator::onPostInstallCmd"
+		],
+		"post-autoload-dump": [
+			"xrstf\\Composer52\\Generator::onPostInstallCmd"
+		]
+	}
+}
