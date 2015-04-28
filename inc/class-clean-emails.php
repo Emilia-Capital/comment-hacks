@@ -65,7 +65,7 @@ class YoastCleanEmails {
 	public function comment_notification_text( $message, $comment_id ) {
 		$this->setup_data( $comment_id );
 
-		$this->message = sprintf( __( 'New comment on "%s"', 'yoast-comment-hacks' ), '<a href="' . esc_url( get_permalink( $this->comment->comment_post_ID ) ) . '">' . esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+		$this->message = sprintf( __( 'New comment on "%s"', 'yoast-comment-hacks' ), '<a href="' . esc_url( get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
 		$this->add_comment_basics();
 
 		if ( user_can( $this->post->post_author, 'edit_comment', $comment_id ) ) {
