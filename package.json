@@ -20,7 +20,7 @@
     "grunt-contrib-clean": "~0.6.0",
     "grunt-contrib-imagemin": "^0.9.2",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-glotpress": "^0.1.1",
+    "grunt-glotpress": "^0.2.1",
     "grunt-phpcs": "^0.2.2",
     "grunt-phplint": "0.0.5",
     "grunt-replace": "^0.8.0",
