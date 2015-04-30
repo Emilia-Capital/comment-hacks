@@ -65,8 +65,14 @@ class YoastCommentHacksEmailLinks {
 		$url .= '&body=' . $this->replace_variables( $this->options['mass_email_body'], false, $post->ID );
 
 		// We can't set the 'href' attribute to the $url as then esc_url would garble the mailto link
-		// So w do a nasty bit of JS workaround.
-		echo '<script>function yst_email_commenters(e){e.preventDefault();window.location=\'' . esc_attr( $url ) . '\';}</script>';
+		// So we do a nasty bit of JS workaround. The reason we grab the a href from the alternate link is
+		// so browser extensions like the Google Mail one that change mailto: links still work.
+		echo '<a href="' . esc_attr( $url ) . '" id="yst_email_commenters_alternate"></a><script>
+			function yst_email_commenters(e){
+				e.preventDefault();
+				window.location = jQuery(\'#yst_email_commenters_alternate\').attr(\'href\');
+			}
+		</script>';
 
 		$wp_admin_bar->add_menu( array(
 			'id'    => 'yst-email-commenters',
