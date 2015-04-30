@@ -25,9 +25,7 @@ class YoastCommentHacks {
 	 */
 	public function __construct() {
 		$this->options = get_option( $this->option_name );
-		if ( ! is_array( $this->options ) ) {
-			$this->set_defaults();
-		}
+		$this->set_defaults();
 		$this->upgrade();
 
 		// Process the comment and check it for length
@@ -43,6 +41,8 @@ class YoastCommentHacks {
 		if ( is_admin() ) {
 			new YoastCommentHacksAdmin();
 		}
+
+		new YoastCommentHacksEmailLinks();
 	}
 
 	/**
@@ -121,19 +121,28 @@ class YoastCommentHacks {
 	}
 
 	/**
+	 * Returns the default settings
+	 * @return array
+	 */
+	public static function get_defaults() {
+		return array(
+			'clean_emails'      => true,
+			'email_subject'     => __( 'RE: %title%', 'yoast-comment-hacks' ),
+			'email_body'        => __( "Hi %firstname%,\r\n\r\nI'm emailing you because you commented on my post \"%title%\" - %permalink%\r\n", 'yoast-comment-hacks' ),
+			'mass_email_body'   => __( "Hi,\r\n\r\nI'm emailing you all because you commented on my post \"%title%\" - %permalink%\r\n", 'yoast-comment-hacks' ),
+			'mincomlength'      => 15,
+			'mincomlengtherror' => __( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
+			'redirect_page'     => 0,
+		);
+	}
+
+	/**
 	 * Set default values for the plugin. If old, as in pre 1.0, settings are there, use them and then delete them.
 	 *
 	 * @since 1.0
 	 */
 	public function set_defaults() {
-		$defaults = array(
-			'redirect_page'     => 0,
-			'mincomlength'      => 15,
-			'clean_emails'      => true,
-			'mincomlengtherror' => __( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
-		);
-
-		$this->options = wp_parse_args( $this->options, $defaults );
+		$this->options = wp_parse_args( $this->options, self::get_defaults() );
 
 		update_option( $this->option_name, $this->options );
 	}

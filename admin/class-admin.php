@@ -39,6 +39,8 @@ class YoastCommentHacksAdmin {
 
 		// Register the settings page
 		add_action( 'admin_menu', array( $this, 'add_config_page' ) );
+
+		// The hooks for editing and saving the comment parent
 		add_action( 'admin_menu', array( $this, 'load_comment_parent_box' ) );
 		add_action( 'edit_comment', array( $this, 'update_comment_parent' ) );
 
@@ -123,6 +125,8 @@ class YoastCommentHacksAdmin {
 	 * @return array $input with validated options.
 	 */
 	public function options_validate( $input ) {
+		$defaults = YoastCommentHacks::get_defaults();
+
 		$input['mincomlength']  = (int) $input['mincomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
 
@@ -131,6 +135,12 @@ class YoastCommentHacksAdmin {
 		}
 		else {
 			$input['clean_emails'] = true;
+		}
+
+		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
+			if ( '' === $input[ $key ] ) {
+				$input[ $key ] = $defaults[ $key ];
+			}
 		}
 
 		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
@@ -192,4 +202,5 @@ class YoastCommentHacksAdmin {
 			echo '</pre>';
 		}
 	}
+
 }
