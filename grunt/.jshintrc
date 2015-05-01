@@ -1,0 +1,19 @@
+{
+  "boss": true,
+  "curly": true,
+  "eqeqeq": true,
+  "eqnull": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "quotmark": "single",
+  "sub": true,
+  "strict": true,
+  "undef": true,
+  "unused": true,
+  "node": true,
+  "predef": {
+    "module": true
+  }
+}

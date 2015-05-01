@@ -39,6 +39,7 @@ class YoastCommentHacksAdmin {
 
 		// Register the settings page
 		add_action( 'admin_menu', array( $this, 'add_config_page' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
 		// The hooks for editing and saving the comment parent
 		add_action( 'admin_menu', array( $this, 'load_comment_parent_box' ) );
@@ -57,6 +58,22 @@ class YoastCommentHacksAdmin {
 
 		// Register our option array
 		register_setting( $this->option_name, $this->option_name, array( $this, 'options_validate' ) );
+	}
+
+	/**
+	 * Enqueue our admin script
+	 */
+	public function enqueue() {
+		$page = filter_input( INPUT_GET, 'page' );
+
+		if ( $page === 'yoast-comment-hacks' ) {
+			$min = '.min';
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+				$min = '';
+			}
+			wp_enqueue_style( 'yoast-comment-hacks-admin-css', plugins_url( 'admin/assets/css/yoast-comment-hacks' . $min . '.css', YOAST_COMMENT_HACKS_FILE ), array(), YOAST_COMMENT_HACKS_VERSION );
+			wp_enqueue_script( 'yoast-comment-hacks-admin-js', plugins_url( 'admin/assets/js/yoast-comment-hacks' . $min . '.js', YOAST_COMMENT_HACKS_FILE ), array(), YOAST_COMMENT_HACKS_VERSION );
+		}
 	}
 
 	/**

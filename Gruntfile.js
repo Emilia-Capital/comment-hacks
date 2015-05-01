@@ -1,4 +1,4 @@
-/* global require, process */
+/*global require, process, module */
 module.exports = function(grunt) {
 	'use strict';
 
@@ -10,12 +10,22 @@ module.exports = function(grunt) {
 			get config() {
 				return this.grunt + 'config/';
 			},
+            css: 'admin/assets/css/',
+            js: 'admin/assets/js/',
 			grunt: 'grunt/',
 			images: 'assets/',
 			languages: 'languages/',
 			logs: 'logs/'
 		},
 		files: {
+            css: [
+                'admin/assets/css/*.css',
+                '!admin/assets/css/*.min.css'
+            ],
+            js: [
+                'admin/assets/js/*.js',
+                '!admin/assets/js/*.min.js'
+            ],
 			php: [
 				'*.php',
 				'admin/**/*.php',

@@ -127,9 +127,12 @@ class YoastCommentHacks {
 	public static function get_defaults() {
 		return array(
 			'clean_emails'      => true,
-			'email_subject'     => __( 'RE: %title%', 'yoast-comment-hacks' ),
-			'email_body'        => __( "Hi %firstname%,\r\n\r\nI'm emailing you because you commented on my post \"%title%\" - %permalink%\r\n", 'yoast-comment-hacks' ),
-			'mass_email_body'   => __( "Hi,\r\n\r\nI'm emailing you all because you commented on my post \"%title%\" - %permalink%\r\n", 'yoast-comment-hacks' ),
+			/* translators: %s expands to the post title */
+			'email_subject'     => sprintf( __( 'RE: %s', 'yoast-comment-hacks' ), '%title%' ),
+			/* translators: %1$s expands to the commenters first name, %2$s to the post tittle, %3$s to the post permalink. */
+			'email_body'        => sprintf( __( "Hi %1\$s,\r\n\r\nI'm emailing you because you commented on my post \"%2\$s\" - %3\$s\r\n", 'yoast-comment-hacks' ), '%firstname%', '%title%', '%permalink%' ),
+			/* translators: %1$s expands to the the post tittle, %2$s to the post permalink. */
+			'mass_email_body'   => sprintf( __( "Hi,\r\n\r\nI'm sending you all this email because you commented on my post \"%1\$s\" - %2\$s\r\n", 'yoast-comment-hacks' ), '%title%', '%permalink%' ),
 			'mincomlength'      => 15,
 			'mincomlengtherror' => __( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
 			'redirect_page'     => 0,

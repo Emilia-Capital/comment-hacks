@@ -31,6 +31,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 define( 'YOAST_COMMENT_HACKS_VERSION', '1.0' );
 
+/**
+ * Used for asset embedding
+ */
+define( 'YOAST_COMMENT_HACKS_FILE', __FILE__ );
+
 if ( ! defined( 'YST_COMMENT_HACKS_PATH' ) ) {
 	define( 'YST_COMMENT_HACKS_PATH', plugin_dir_path( __FILE__ ) );
 }

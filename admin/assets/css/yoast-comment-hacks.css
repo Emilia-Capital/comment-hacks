@@ -1,0 +1,16 @@
+.yoasttab {
+	display: none;
+	margin-top: 15px;
+}
+
+.yoasttab.active {
+	display: block;
+}
+
+.yoasttab strong {
+	font-size: 115%;
+}
+
+.yoasttab .dashicons-email-alt {
+	color: blue;
+}

@@ -2,8 +2,18 @@
 ---
 # Build everything
 build:
+  - 'build:css'
   - 'build:images'
+  - 'build:js'
   - 'build:i18n'
+# Build CSS for production
+'build:css':
+  - 'autoprefixer'
+  - 'wpcss'
+  - 'cssmin'
+# Build JavaScript from assets to production
+'build:js':
+  - 'uglify'
 # Optimise images from source to production
 'build:images':
   - 'imagemin'
@@ -14,6 +24,10 @@ build:
   - 'glotpress_download'
 # Check health of the project
 check:
+  - 'jshint'
+  - 'jsonlint'
+  - 'jsvalidate'
+  - 'jscs'
   - 'phplint'
   - 'phpcs'
   - 'checktextdomain'

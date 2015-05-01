@@ -3,6 +3,20 @@ module.exports = {
 	options: {
 		livereload: true
 	},
+	grunt: {
+		options: {
+			reload: true
+		},
+		files: [
+			'<%= files.grunt %>',
+			'<%= files.config %>'
+		],
+		tasks: [
+			'jshint:grunt',
+			'jsvalidate:grunt',
+			'jscs:grunt'
+		]
+	},
 	php: {
 		files: [
 			'<%= files.php %>'
@@ -10,7 +24,26 @@ module.exports = {
 		tasks: [
 			'phplint',
 			'phpcs',
-            'checktextdomain'
+			'checktextdomain'
 		]
 	},
+	js: {
+		files: [
+			'<%= files.js %>'
+		],
+		tasks: [
+			'build:js',
+			'jshint:plugin',
+			'jsvalidate:plugin',
+			'jscs:plugin'
+		]
+	},
+	css: {
+		files: [
+			'css/*css'
+		],
+		tasks: [
+			'build:css'
+		]
+	}
 };
