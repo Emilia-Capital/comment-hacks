@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yoast Comment Hacks 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/yoast/comment-hacks/issues\n"
-"POT-Creation-Date: 2015-06-15 10:37:06+00:00\n"
+"POT-Creation-Date: 2015-06-15 11:24:14+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -46,38 +46,38 @@ msgstr ""
 msgid "Comment parent:"
 msgstr ""
 
-#: admin/views/config-page.php:12 admin/views/config-page.php:22
+#: admin/views/config-page.php:12 admin/views/config-page.php:25
 msgid "Minimum comment length"
 msgstr ""
 
-#: admin/views/config-page.php:13 admin/views/config-page.php:54
+#: admin/views/config-page.php:14 admin/views/config-page.php:57
 msgid "Email links"
 msgstr ""
 
-#: admin/views/config-page.php:14
+#: admin/views/config-page.php:16
 msgid "Comment redirect"
 msgstr ""
 
-#: admin/views/config-page.php:15
+#: admin/views/config-page.php:18
 msgid "Clean emails"
 msgstr ""
 
-#: admin/views/config-page.php:24
+#: admin/views/config-page.php:27
 msgid ""
 "Users that try to submit a comment smaller than the length you set below "
 "will get an error immediately. The text of that error is specified below "
 "too."
 msgstr ""
 
-#: admin/views/config-page.php:29
+#: admin/views/config-page.php:32
 msgid "Minimum length"
 msgstr ""
 
-#: admin/views/config-page.php:42
+#: admin/views/config-page.php:45
 msgid "Error message"
 msgstr ""
 
-#: admin/views/config-page.php:58
+#: admin/views/config-page.php:61
 #. translators: %s expands to an email button icon
 msgid ""
 "This plugin adds an \"E-mail\" action link on the comments overview page as "
@@ -85,45 +85,49 @@ msgid ""
 "admin bar. You can customize the default messages here."
 msgstr ""
 
-#: admin/views/config-page.php:63
+#: admin/views/config-page.php:66
 msgid "E-mail subject"
 msgstr ""
 
-#: admin/views/config-page.php:73
+#: admin/views/config-page.php:76
 msgid "E-mail body"
 msgstr ""
 
-#: admin/views/config-page.php:83
+#: admin/views/config-page.php:86
 msgid "E-mail all commenters body"
 msgstr ""
 
-#: admin/views/config-page.php:94
+#: admin/views/config-page.php:97
 msgid "Redirect first time commenters"
 msgstr ""
 
-#: admin/views/config-page.php:96
+#: admin/views/config-page.php:99
 msgid "Select the page below that a first time commenter should be redirected to"
 msgstr ""
 
-#: admin/views/config-page.php:100
+#: admin/views/config-page.php:103
 msgid "Redirect to"
 msgstr ""
 
-#: admin/views/config-page.php:111
+#: admin/views/config-page.php:114
 msgid "Don't redirect first time commenters"
 msgstr ""
 
-#: admin/views/config-page.php:119
+#: admin/views/config-page.php:118
+msgid "Current redirect page"
+msgstr ""
+
+#: admin/views/config-page.php:126
 msgid "Clean Emails"
 msgstr ""
 
-#: admin/views/config-page.php:121
+#: admin/views/config-page.php:128
 msgid ""
 "Checking this option will make your default comment notification and "
 "moderation emails a lot cleaner."
 msgstr ""
 
-#: admin/views/config-page.php:126
+#: admin/views/config-page.php:133
 msgid "Clean comment emails"
 msgstr ""
 
@@ -199,20 +203,23 @@ msgstr ""
 #: inc/class-comment-hacks.php:133
 #. translators: %1$s expands to the commenters first name, %2$s to the post
 #. tittle, %3$s to the post permalink.
-msgid ""
-"Hi %1$s,\r\n"
-"\r\n"
-"I'm emailing you because you commented on my post \"%2$s\" - %3$s\r\n"
+msgid "Hi %1$s,"
+msgstr ""
+
+#: inc/class-comment-hacks.php:133
+msgid "I'm emailing you because you commented on my post \"%2$s\" - %3$s"
 msgstr ""
 
 #: inc/class-comment-hacks.php:135
 #. translators: %1$s expands to the the post tittle, %2$s to the post
 #. permalink.
+msgid "Hi,"
+msgstr ""
+
+#: inc/class-comment-hacks.php:135
 msgid ""
-"Hi,\r\n"
-"\r\n"
 "I'm sending you all this email because you commented on my post \"%1$s\" - "
-"%2$s\r\n"
+"%2$s"
 msgstr ""
 
 #: inc/class-comment-hacks.php:137

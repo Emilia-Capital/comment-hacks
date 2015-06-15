@@ -10,9 +10,12 @@
 		<h2 class="nav-tab-wrapper" id="yoast-tabs">
 			<a class="nav-tab nav-tab-active" id="minimum-comment-length-tab"
 			   href="#top#minimum-comment-length"><?php _e( 'Minimum comment length', 'yoast-comment-hacks' ); ?></a>
-			<a class="nav-tab" id="email-links-tab" href="#top#email-links"><?php _e( 'Email links', 'yoast-comment-hacks' ); ?></a>
-			<a class="nav-tab" id="comment-redirect-tab" href="#top#comment-redirect"><?php _e( 'Comment redirect', 'yoast-comment-hacks' ); ?></a>
-			<a class="nav-tab" id="clean-emails-tab" href="#top#clean-emails"><?php _e( 'Clean emails', 'yoast-comment-hacks' ); ?></a>
+			<a class="nav-tab" id="email-links-tab"
+			   href="#top#email-links"><?php _e( 'Email links', 'yoast-comment-hacks' ); ?></a>
+			<a class="nav-tab" id="comment-redirect-tab"
+			   href="#top#comment-redirect"><?php _e( 'Comment redirect', 'yoast-comment-hacks' ); ?></a>
+			<a class="nav-tab" id="clean-emails-tab"
+			   href="#top#clean-emails"><?php _e( 'Clean emails', 'yoast-comment-hacks' ); ?></a>
 		</h2>
 
 		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" method="post">
@@ -110,6 +113,10 @@
 								'selected'          => isset( $this->options['redirect_page'] ) ? $this->options['redirect_page'] : 0,
 								'show_option_none'  => __( 'Don\'t redirect first time commenters', 'yoast-comment-hacks' ),
 							) );
+
+							if ( isset( $this->options['redirect_page'] ) && 0 !== $this->options['redirect_page'] ) {
+								echo '<br><br><a target="_blank" href="' . get_permalink( $this->options['redirect_page'] ) . '">' . __( 'Current redirect page', 'yoast-comment-hacks' ) . '</a>';
+							}
 
 							?></td>
 					</tr>

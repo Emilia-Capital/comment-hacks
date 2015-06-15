@@ -146,7 +146,7 @@ class YoastCommentHacksAdmin {
 
 		$input['mincomlength']  = (int) $input['mincomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
-  		$input['clean_emails']  = isset( $input['clean_emails'] );
+		$input['clean_emails']  = isset( $input['clean_emails'] );
 
 		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
 			if ( '' === $input[ $key ] ) {
@@ -206,10 +206,12 @@ class YoastCommentHacksAdmin {
 		require_once 'views/config-page.php';
 
 		// Show the content of the options array when debug is enabled
-		if ( WP_DEBUG ) {
+		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			echo '<h4>Options debug</h4>';
 			echo '<pre style="background-color: white; border: 1px solid #aaa; padding: 20px;">';
+			// @codingStandardsIgnoreStart
 			var_dump( $this->options );
+			// @codingStandardsIgnoreEnd
 			echo '</pre>';
 		}
 	}
