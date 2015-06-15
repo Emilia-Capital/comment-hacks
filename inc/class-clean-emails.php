@@ -156,9 +156,9 @@ class YoastCleanEmails {
 	 * @param int $comment_id
 	 */
 	private function setup_data( $comment_id ) {
-		$this->comment_id            = $comment_id;
-		$this->comment               = get_comment( $this->comment_id );
-		$this->post                  = get_post( $this->comment->comment_post_ID );
+		$this->comment_id = $comment_id;
+		$this->comment    = get_comment( $this->comment_id );
+		$this->post       = get_post( $this->comment->comment_post_ID );
 
 		if ( 'comment' === $this->comment->comment_type ) {
 			$this->comment->comment_type = '';
