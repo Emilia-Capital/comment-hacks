@@ -19,6 +19,10 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 * The option to disallow comments below a certain length.
 * The option to redirect first time commenters to a thank you page.
 * An input field on the comment edit screen to change the comment parent ID.
+* Links in the admin comments section to email individual commenters.
+* A button in the WP toolbar to email all the commenters on a post.
+
+See the screenshots to get an even better idea of the plugins functionality.
 
 == Installation ==
 
@@ -39,6 +43,8 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 1. Screenshot of a clean comment notification email
 2. The comment parent edit box
 3. The plugins admin settings
+4. The button on the frontend to email all the commenters on a post.
+5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
 
