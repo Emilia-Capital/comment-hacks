@@ -62,7 +62,7 @@ class YoastCommentHacks {
 
 		// Check for comment length and die if to short.
 		if ( strlen( trim( $comment_data['comment_content'] ) ) < $this->options['mincomlength'] ) {
-			wp_die( esc_html( $this->options['mincomlengtherror'] ) );
+			wp_die( esc_html( $this->options['mincomlengtherror'] ) . '<br /><a href onclick="window.history.go(-1);">' . __('Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
 		}
 
 		return $comment_data;
