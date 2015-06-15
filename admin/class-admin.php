@@ -126,8 +126,8 @@ class YoastCommentHacksAdmin {
 
 		check_admin_referer( 'update-comment_' . $comment_id );
 
-		global $wpdb;
 		if ( $comment_parent ) {
+			global $wpdb;
 			$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->comments SET comment_parent = %d WHERE comment_ID = %d", $comment_parent, $comment_id ) );
 		}
 	}
@@ -146,13 +146,7 @@ class YoastCommentHacksAdmin {
 
 		$input['mincomlength']  = (int) $input['mincomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
-
-		if ( isset( $input['clean_emails'] ) ) {
-			$input['clean_emails'] = true;
-		}
-		else {
-			$input['clean_emails'] = true;
-		}
+  		$input['clean_emails']  = isset( $input['clean_emails'] );
 
 		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
 			if ( '' === $input[ $key ] ) {

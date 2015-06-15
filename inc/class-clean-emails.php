@@ -116,7 +116,7 @@ class YoastCleanEmails {
 			$this->message .= sprintf( __( 'Author: %1$s (%2$s)', 'yoast-comment-hacks' ), esc_html( $this->comment->comment_author ), '<a href="' . esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
 		}
 		else {
-			$this->message .= sprintf( __( 'Website: %1$s', 'yoast-comment-hacks' ), esc_html( $this->comment->comment_author ) ) . '<br/>';
+			$this->message .= sprintf( __( 'Website: %1$s', 'yoast-comment-hacks' ), esc_html( $this->comment->comment_author ) ) . '<br>';
 		}
 	}
 
@@ -156,9 +156,9 @@ class YoastCleanEmails {
 	 * @param int $comment_id
 	 */
 	private function setup_data( $comment_id ) {
-		$this->comment_id            = $comment_id;
-		$this->comment               = get_comment( $this->comment_id );
-		$this->post                  = get_post( $this->comment->comment_post_ID );
+		$this->comment_id = $comment_id;
+		$this->comment    = get_comment( $this->comment_id );
+		$this->post       = get_post( $this->comment->comment_post_ID );
 
 		if ( 'comment' === $this->comment->comment_type ) {
 			$this->comment->comment_type = '';
@@ -176,7 +176,7 @@ class YoastCleanEmails {
 			$comments_waiting--;
 			$this->message .= sprintf( __( 'Currently this and %s other comments are waiting for approval.', 'yoast-comment-hacks' ), number_format_i18n( $comments_waiting ) );
 			$this->message .= ' ';
-			$this->message .= sprintf( __( 'Please visit the %1$smoderation panel%2$s.', 'yoast-comment-hacks' ), '<a href="' . admin_url( 'edit-comments.php?comment_status=moderated' ) . '">', '</a>' ) . '<br/>';
+			$this->message .= sprintf( __( 'Please visit the %1$smoderation panel%2$s.', 'yoast-comment-hacks' ), '<a href="' . admin_url( 'edit-comments.php?comment_status=moderated' ) . '">', '</a>' ) . '<br>';
 		}
 	}
 

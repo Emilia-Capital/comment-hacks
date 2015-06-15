@@ -139,23 +139,7 @@ class YoastCommentHacksEmailLinks {
 	 * @return string $msg
 	 */
 	private function replace_variables( $msg, $comment = false, $post = false ) {
-		$replacements = array(
-			'email'     => '',
-			'firstname' => '',
-			'name'      => '',
-			'url'       => '',
-		);
-
-		if ( is_object( $comment ) ) {
-			$name = explode( ' ', $comment->comment_author );
-
-			$replacements = array(
-				'email'     => $comment->comment_author_email,
-				'firstname' => $name[0],
-				'name'      => $comment->comment_author,
-				'url'       => $comment->comment_author_url,
-			);
-		}
+		$replacements = $this->get_replacements( $comment );
 
 		if ( is_numeric( $post ) ) {
 			$post = get_post( $post );
@@ -178,5 +162,34 @@ class YoastCommentHacksEmailLinks {
 		}
 
 		return rawurlencode( $msg );
+	}
+
+	/**
+	 * Getting the replacements with comment data if there is a comment.
+	 *
+	 * @param boolean|object $comment
+	 *
+	 * @return array
+	 */
+	private function get_replacements( $comment ) {
+		$replacements = array(
+			'email'     => '',
+			'firstname' => '',
+			'name'      => '',
+			'url'       => '',
+		);
+
+		if ( is_object( $comment ) ) {
+			$name = explode( ' ', $comment->comment_author );
+
+			$replacements = array(
+				'email'     => $comment->comment_author_email,
+				'firstname' => $name[0],
+				'name'      => $comment->comment_author,
+				'url'       => $comment->comment_author_url,
+			);
+		}
+
+		return $replacements;
 	}
 }
