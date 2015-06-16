@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yoast Comment Hacks 1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/yoast/comment-hacks/issues\n"
-"POT-Creation-Date: 2015-06-15 11:24:14+00:00\n"
+"POT-Creation-Date: 2015-06-16 12:45:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -195,6 +195,10 @@ msgstr ""
 msgid "E-mail %s"
 msgstr ""
 
+#: inc/class-comment-hacks.php:65
+msgid "Go back and try again."
+msgstr ""
+
 #: inc/class-comment-hacks.php:131
 #. translators: %s expands to the post title
 msgid "RE: %s"
@@ -202,24 +206,18 @@ msgstr ""
 
 #: inc/class-comment-hacks.php:133
 #. translators: %1$s expands to the commenters first name, %2$s to the post
-#. tittle, %3$s to the post permalink.
-msgid "Hi %1$s,"
-msgstr ""
-
-#: inc/class-comment-hacks.php:133
-msgid "I'm emailing you because you commented on my post \"%2$s\" - %3$s"
+#. tittle, %3$s to the post permalink, %4$s expands to a double line break.
+msgid ""
+"Hi %1$s,%4$sI'm emailing you because you commented on my post \"%2$s\" - "
+"%3$s"
 msgstr ""
 
 #: inc/class-comment-hacks.php:135
 #. translators: %1$s expands to the the post tittle, %2$s to the post
-#. permalink.
-msgid "Hi,"
-msgstr ""
-
-#: inc/class-comment-hacks.php:135
+#. permalink, %3$s expands to a double line break.
 msgid ""
-"I'm sending you all this email because you commented on my post \"%1$s\" - "
-"%2$s"
+"Hi,%3$sI'm sending you all this email because you commented on my post "
+"\"%1$s\" - %2$s"
 msgstr ""
 
 #: inc/class-comment-hacks.php:137

@@ -129,10 +129,10 @@ class YoastCommentHacks {
 			'clean_emails'      => true,
 			/* translators: %s expands to the post title */
 			'email_subject'     => sprintf( __( 'RE: %s', 'yoast-comment-hacks' ), '%title%' ),
-			/* translators: %1$s expands to the commenters first name, %2$s to the post tittle, %3$s to the post permalink. */
-			'email_body'        => sprintf( __( 'Hi %1$s,', 'yoast-comment-hacks' ) . "\r\n\r\n" . __( 'I\'m emailing you because you commented on my post "%2$s" - %3$s', 'yoast-comment-hacks' ) . "\r\n", '%firstname%', '%title%', '%permalink%' ),
-			/* translators: %1$s expands to the the post tittle, %2$s to the post permalink. */
-			'mass_email_body'   => sprintf( __( 'Hi,', 'yoast-comment-hacks' ) . "\r\n\r\n" . __( 'I\'m sending you all this email because you commented on my post "%1$s" - %2$s', 'yoast-comment-hacks' ) . "\r\n", '%title%', '%permalink%' ),
+			/* translators: %1$s expands to the commenters first name, %2$s to the post tittle, %3$s to the post permalink, %4$s expands to a double line break. */
+			'email_body'        => sprintf( __( 'Hi %1$s,%4$sI\'m emailing you because you commented on my post "%2$s" - %3$s', 'yoast-comment-hacks' ), '%firstname%', '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
+			/* translators: %1$s expands to the the post tittle, %2$s to the post permalink, %3$s expands to a double line break. */
+			'mass_email_body'   => sprintf( __( 'Hi,%3$sI\'m sending you all this email because you commented on my post "%1$s" - %2$s', 'yoast-comment-hacks' ), '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
 			'mincomlength'      => 15,
 			'mincomlengtherror' => __( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
 			'redirect_page'     => 0,
