@@ -26,12 +26,12 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 == Installation ==
 
-=== Install through your backend ===
+**Install through your backend**
 
 1. Search for "yoast comment hacks", click install.
 1. You're done.
 
-=== Install manually ===
+**Install manually**
 
 1. Download and unzip the plugin.
 1. Upload the `yoast-comment-hacks` directory to the `/wp-content/plugins/` directory.
