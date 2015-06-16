@@ -17,17 +17,17 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 
 ## Screenshots
 
-Screenshot of a clean comment notification email:<br/>
-![Screenshot of a clean comment notification email](assets/screenshot-1.png)
+Screenshot of a clean comment notification email:<br>
+![Screenshot of a clean comment notification email](svn-assets/screenshot-1.png)
 
-The comment parent edit box:
-![The comment parent edit box](assets/screenshot-2.png)
+The comment parent edit box:<br>
+![The comment parent edit box](svn-assets/screenshot-2.png)
 
-The plugins admin settings:
-![The plugins admin settings](assets/screenshot-3.png)
+The plugins admin settings:<br>
+![The plugins admin settings](svn-assets/screenshot-3.png)
 
-The button on the frontend to email all the commenters on a post:
-![The button to email all commenters](assets/screenshot-4.png)
+The button on the frontend to email all the commenters on a post:<br>
+![The button to email all commenters](svn-assets/screenshot-4.png)
 
-The link in the backend to email an individual commenters on a post:
-![The button to email all commenters](assets/screenshot-5.png)
+The link in the backend to email an individual commenters on a post:<br>
+![The button to email all commenters](svn-assets/screenshot-5.png)
