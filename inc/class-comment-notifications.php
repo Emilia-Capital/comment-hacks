@@ -31,7 +31,7 @@ class YoastCommentNotifications {
 
 		$new_recipient = get_post_meta( $comment->comment_post_ID, '_comment_notification_recipient', true );
 
-		if ( $new_recipient !== false ) {
+		if ( ! empty( $new_recipient ) ) {
 			$user = get_userdata( $new_recipient );
 
 			return array( $user->user_email );
