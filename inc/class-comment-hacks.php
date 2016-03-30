@@ -42,6 +42,7 @@ class YoastCommentHacks {
 			new YoastCommentHacksAdmin();
 		}
 
+		new YoastCommentNotifications();
 		new YoastCommentHacksEmailLinks();
 	}
 

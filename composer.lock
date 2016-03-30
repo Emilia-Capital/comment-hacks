@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "e4f884b9fa40fdf7a122efa1cadefdb3",
+    "content-hash": "93a6f9493e839f929e97e3d9b58ee619",
     "packages": [
         {
             "name": "composer/installers",
@@ -12,13 +13,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "a66f93a541c2214b4865161426b077e2b7d951de"
+                "reference": "6aac6a0a931ad06780fa7c574f27178d48109ec7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/a66f93a541c2214b4865161426b077e2b7d951de",
-                "reference": "a66f93a541c2214b4865161426b077e2b7d951de",
+                "url": "https://api.github.com/repos/composer/installers/zipball/6aac6a0a931ad06780fa7c574f27178d48109ec7",
+                "reference": "6aac6a0a931ad06780fa7c574f27178d48109ec7",
                 "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0"
             },
             "replace": {
                 "roundcube/plugin-installer": "*",
@@ -28,9 +32,9 @@
                 "composer/composer": "1.0.*@dev",
                 "phpunit/phpunit": "4.1.*"
             },
-            "type": "composer-installer",
+            "type": "composer-plugin",
             "extra": {
-                "class": "Composer\\Installers\\Installer",
+                "class": "Composer\\Installers\\Plugin",
                 "branch-alias": {
                     "dev-master": "1.0-dev"
                 }
@@ -52,12 +56,13 @@
                 }
             ],
             "description": "A multi-framework Composer library installer",
-            "homepage": "http://composer.github.com/installers/",
+            "homepage": "https://composer.github.io/installers/",
             "keywords": [
                 "Craft",
                 "Dolibarr",
                 "Hurad",
                 "MODX Evo",
+                "Mautic",
                 "OXID",
                 "SMF",
                 "Thelia",
@@ -99,7 +104,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2015-04-21 19:54:55"
+            "time": "2016-03-23 16:25:33"
         },
         {
             "name": "xrstf/composer-php52",
@@ -107,12 +112,12 @@
             "source": {
                 "type": "hg",
                 "url": "https://bitbucket.org/xrstf/composer-php52",
-                "reference": "717c00a8bec1b40401384536d2ebaea57c7c35d4"
+                "reference": "724d62b7fdcf102a6c4097f5f1c2026f124583a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/xrstf/composer-php52/get/717c00a8bec1b40401384536d2ebaea57c7c35d4.zip",
-                "reference": "717c00a8bec1b40401384536d2ebaea57c7c35d4",
+                "url": "https://bitbucket.org/xrstf/composer-php52/get/724d62b7fdcf102a6c4097f5f1c2026f124583a5.zip",
+                "reference": "724d62b7fdcf102a6c4097f5f1c2026f124583a5",
                 "shasum": ""
             },
             "type": "library",
@@ -131,7 +136,7 @@
                 "MIT"
             ],
             "homepage": "http://www.xrstf.de/",
-            "time": "2015-02-01 14:29:12"
+            "time": "2015-10-01 14:12:30"
         },
         {
             "name": "yoast/i18n-module",
@@ -139,12 +144,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/i18n-module.git",
-                "reference": "4648918ccf8bc6da12eadf57e4bece4829af29b3"
+                "reference": "fce35999a5c147dd1f0a095334610f229340cd1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/i18n-module/zipball/4648918ccf8bc6da12eadf57e4bece4829af29b3",
-                "reference": "4648918ccf8bc6da12eadf57e4bece4829af29b3",
+                "url": "https://api.github.com/repos/Yoast/i18n-module/zipball/fce35999a5c147dd1f0a095334610f229340cd1b",
+                "reference": "fce35999a5c147dd1f0a095334610f229340cd1b",
                 "shasum": ""
             },
             "type": "library",
@@ -169,28 +174,137 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2015-04-22 12:48:39"
+            "time": "2015-07-07 11:51:07"
         }
     ],
     "packages-dev": [
         {
-            "name": "squizlabs/php_codesniffer",
-            "version": "2.3.0",
+            "name": "pdepend/pdepend",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "5046b0e01c416fc2b06df961d0673c85bcdc896c"
+                "url": "https://github.com/pdepend/pdepend.git",
+                "reference": "b086687f3a01dc6bb92d633aef071d2c5dd0db06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5046b0e01c416fc2b06df961d0673c85bcdc896c",
-                "reference": "5046b0e01c416fc2b06df961d0673c85bcdc896c",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/b086687f3a01dc6bb92d633aef071d2c5dd0db06",
+                "reference": "b086687f3a01dc6bb92d633aef071d2c5dd0db06",
                 "shasum": ""
             },
             "require": {
+                "php": ">=5.3.7",
+                "symfony/config": "^2.3.0|^3",
+                "symfony/dependency-injection": "^2.3.0|^3",
+                "symfony/filesystem": "^2.3.0|^3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.4.0,<4.8",
+                "squizlabs/php_codesniffer": "^2.0.0"
+            },
+            "bin": [
+                "src/bin/pdepend"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PDepend\\": "src/main/php/PDepend"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Official version of pdepend to be handled with Composer",
+            "time": "2016-03-10 15:15:04"
+        },
+        {
+            "name": "phpmd/phpmd",
+            "version": "2.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpmd/phpmd.git",
+                "reference": "fccbdb6b222f6d7a6d35af1c396ba5435cec76a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/fccbdb6b222f6d7a6d35af1c396ba5435cec76a9",
+                "reference": "fccbdb6b222f6d7a6d35af1c396ba5435cec76a9",
+                "shasum": ""
+            },
+            "require": {
+                "pdepend/pdepend": "~2.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0",
+                "squizlabs/php_codesniffer": "^2.0"
+            },
+            "bin": [
+                "src/bin/phpmd"
+            ],
+            "type": "project",
+            "autoload": {
+                "psr-0": {
+                    "PHPMD\\": "src/main/php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Manuel Pichler",
+                    "email": "github@manuel-pichler.de",
+                    "homepage": "https://github.com/manuelpichler",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Other contributors",
+                    "homepage": "https://github.com/phpmd/phpmd/graphs/contributors",
+                    "role": "Contributors"
+                },
+                {
+                    "name": "Marc Würth",
+                    "email": "ravage@bluewin.ch",
+                    "homepage": "https://github.com/ravage84",
+                    "role": "Project Maintainer"
+                }
+            ],
+            "description": "PHPMD is a spin-off project of PHP Depend and aims to be a PHP equivalent of the well known Java tool PMD.",
+            "homepage": "http://phpmd.org/",
+            "keywords": [
+                "mess detection",
+                "mess detector",
+                "pdepend",
+                "phpmd",
+                "pmd"
+            ],
+            "time": "2016-03-10 17:17:44"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
+                "reference": "6936deb6f5a686612ffe929c9afb6628154dd57a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6936deb6f5a686612ffe929c9afb6628154dd57a",
+                "reference": "6936deb6f5a686612ffe929c9afb6628154dd57a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
                 "ext-tokenizer": "*",
                 "ext-xmlwriter": "*",
                 "php": ">=5.1.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
             },
             "bin": [
                 "scripts/phpcs",
@@ -199,7 +313,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "2.x-dev"
                 }
             },
             "autoload": {
@@ -245,24 +359,188 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2015-03-04 02:07:03"
+            "time": "2016-03-29 23:50:15"
         },
         {
-            "name": "wp-coding-standards/wpcs",
-            "version": "dev-develop",
+            "name": "symfony/config",
+            "version": "2.8.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
-                "reference": "9c4de8175ce1f82813f8c9c8f11809ee6c794efc"
+                "url": "https://github.com/symfony/config.git",
+                "reference": "5273f4724dc5288fe7a33cb08077ab9852621f2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/9c4de8175ce1f82813f8c9c8f11809ee6c794efc",
-                "reference": "9c4de8175ce1f82813f8c9c8f11809ee6c794efc",
+                "url": "https://api.github.com/repos/symfony/config/zipball/5273f4724dc5288fe7a33cb08077ab9852621f2c",
+                "reference": "5273f4724dc5288fe7a33cb08077ab9852621f2c",
                 "shasum": ""
             },
             "require": {
-                "squizlabs/php_codesniffer": "~2.0"
+                "php": ">=5.3.9",
+                "symfony/filesystem": "~2.3|~3.0.0"
+            },
+            "suggest": {
+                "symfony/yaml": "To use the yaml reference dumper"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Config\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Config Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-03-04 07:54:35"
+        },
+        {
+            "name": "symfony/dependency-injection",
+            "version": "2.8.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dependency-injection.git",
+                "reference": "6f777ed0ffd0aa04565a60458c5eba3fdee4f535"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/6f777ed0ffd0aa04565a60458c5eba3fdee4f535",
+                "reference": "6f777ed0ffd0aa04565a60458c5eba3fdee4f535",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "conflict": {
+                "symfony/expression-language": "<2.6"
+            },
+            "require-dev": {
+                "symfony/config": "~2.2|~3.0.0",
+                "symfony/expression-language": "~2.6|~3.0.0",
+                "symfony/yaml": "~2.1|~3.0.0"
+            },
+            "suggest": {
+                "symfony/config": "",
+                "symfony/proxy-manager-bridge": "Generate service proxies to lazy load them",
+                "symfony/yaml": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\DependencyInjection\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony DependencyInjection Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-03-29 19:00:15"
+        },
+        {
+            "name": "symfony/filesystem",
+            "version": "2.8.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/filesystem.git",
+                "reference": "f08ffdf229252cd2745558cb2112df43903bcae4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/f08ffdf229252cd2745558cb2112df43903bcae4",
+                "reference": "f08ffdf229252cd2745558cb2112df43903bcae4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.8-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Filesystem\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Filesystem Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-03-27 10:20:16"
+        },
+        {
+            "name": "wp-coding-standards/wpcs",
+            "version": "0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
+                "reference": "2e27757829cde21bca916b11cfcfa867c42b255e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/2e27757829cde21bca916b11cfcfa867c42b255e",
+                "reference": "2e27757829cde21bca916b11cfcfa867c42b255e",
+                "shasum": ""
+            },
+            "require": {
+                "squizlabs/php_codesniffer": "~2.2"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -270,10 +548,6 @@
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "X-Team",
-                    "homepage": "http://x-team.com/"
-                },
                 {
                     "name": "Contributors",
                     "homepage": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/graphs/contributors"
@@ -285,7 +559,7 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2015-04-26 05:23:29"
+            "time": "2015-06-30 21:54:21"
         },
         {
             "name": "yoast/yoastcs",
@@ -293,20 +567,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/yoastcs.git",
-                "reference": "79d7318c0a58d463353a3b0c995d8e8f7cb0c384"
+                "reference": "0b4b41f321fdc1777b818d010aca73bd39b0749f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/yoastcs/zipball/79d7318c0a58d463353a3b0c995d8e8f7cb0c384",
-                "reference": "79d7318c0a58d463353a3b0c995d8e8f7cb0c384",
+                "url": "https://api.github.com/repos/Yoast/yoastcs/zipball/0b4b41f321fdc1777b818d010aca73bd39b0749f",
+                "reference": "0b4b41f321fdc1777b818d010aca73bd39b0749f",
                 "shasum": ""
             },
             "require": {
+                "phpmd/phpmd": "^2.2.3",
                 "squizlabs/php_codesniffer": "^2.2.0",
-                "wp-coding-standards/wpcs": "dev-develop"
+                "wp-coding-standards/wpcs": "0.6"
             },
             "conflict": {
-                "squizlabs/php_codesniffer": ">=2.3.1"
+                "squizlabs/php_codesniffer": "2.3.1"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -326,7 +601,7 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2015-04-29 08:27:10"
+            "time": "2016-01-08 08:21:15"
         }
     ],
     "aliases": [],
