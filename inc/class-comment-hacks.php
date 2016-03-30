@@ -65,7 +65,6 @@ class YoastCommentHacks {
 		if ( ( function_exists( 'mb_strlen' ) && mb_strlen( trim( $comment_data['comment_content'] ) ) < $this->options['mincomlength'] ) 
 			|| ( strlen( trim( $comment_data['comment_content'] ) ) < $this->options['mincomlength'] ) ) {
 				wp_die( esc_html( $this->options['mincomlengtherror'] ) . '<br /><a href onclick="window.history.go(-1);">' . __('Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
-			}
 		}
 
 		return $comment_data;
