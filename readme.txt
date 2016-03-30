@@ -3,7 +3,7 @@ Contributors: joostdevalk
 Tags: comments, spam, emails
 Requires at least: 4.0
 Tested up to: 4.2
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,6 +21,7 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 * An input field on the comment edit screen to change the comment parent ID.
 * Links in the admin comments section to email individual commenters.
 * A button in the WP toolbar to email all the commenters on a post.
+* Adds a comment routing option. This adds a dropdown in a post's discussion settings, allowing the routing of comment emails to another user.
 
 See the screenshots to get an even better idea of the plugins functionality.
 
@@ -47,6 +48,10 @@ See the screenshots to get an even better idea of the plugins functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.1 =
+
+* Add comment routing option, adds a dropdown in a post's discussion settings, allowing the routing of comment emails to another user.
 
 = 1.0 =
 
