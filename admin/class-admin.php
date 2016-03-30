@@ -47,6 +47,10 @@ class YoastCommentHacksAdmin {
 
 		// Register a link to the settings page on the plugins overview page
 		add_filter( 'plugin_action_links', array( $this, 'filter_plugin_actions' ), 10, 2 );
+
+		// Filter the comment notification recipients
+		add_action( 'post_comment_status_meta_box-options', array( $this, 'reroute_comment_emails_option' ) );
+		add_action( 'save_post', array( $this, 'save_reroute_comment_emails' ) );
 	}
 
 	/**
@@ -103,6 +107,35 @@ class YoastCommentHacksAdmin {
 	 */
 	public function comment_parent_box( $comment ) {
 		require_once 'views/comment-parent-box.php';
+	}
+
+	/**
+	 * Adds the comment email recipients dropdown
+	 */
+	public function reroute_comment_emails_option() {
+		echo '<br><br>';
+		echo '<label for="comment_notification_recipient">Comment notification recipients:</label><br/>';
+
+		wp_dropdown_users(
+			array(
+				'selected'          => get_post_meta( $_GET['post'], '_comment_notification_recipient', true ),
+				'show_option_none'  => 'Post author',
+				'name'              => 'comment_notification_recipient',
+				'id'                => 'comment_notification_recipient',
+				'option_none_value' => 0,
+			)
+		);
+	}
+
+	/**
+	 * Saves the comment email recipients post meta
+	 */
+	public function save_reroute_comment_emails() {
+		$recipient_id = intval( $_POST['comment_notification_recipient'] );
+
+		if ( $recipient_id ) {
+			update_post_meta( $_POST['ID'], '_comment_notification_recipient', $recipient_id );
+		}
 	}
 
 	/**
