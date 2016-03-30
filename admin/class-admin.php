@@ -118,7 +118,7 @@ class YoastCommentHacksAdmin {
 
 		wp_dropdown_users(
 			array(
-				'selected'          => get_post_meta( $_GET['post'], '_comment_notification_recipient', true ),
+				'selected'          => get_post_meta( intval( $_GET['post'] ), '_comment_notification_recipient', true ),
 				'show_option_none'  => 'Post author',
 				'name'              => 'comment_notification_recipient',
 				'id'                => 'comment_notification_recipient',
@@ -134,7 +134,7 @@ class YoastCommentHacksAdmin {
 		$recipient_id = intval( $_POST['comment_notification_recipient'] );
 
 		if ( $recipient_id ) {
-			update_post_meta( $_POST['ID'], '_comment_notification_recipient', $recipient_id );
+			update_post_meta( intval( $_POST['ID'] ), '_comment_notification_recipient', $recipient_id );
 		}
 	}
 
