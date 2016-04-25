@@ -44,9 +44,9 @@ class YoastCommentHacksEmailLinks {
 			return;
 		}
 
-		global $wp_admin_bar, $wpdb, $post, $current_user;
+		global $wp_admin_bar, $wpdb, $post;
 
-		get_currentuserinfo();
+		$current_user = wp_get_current_user();
 
 		$query   = $wpdb->prepare( "SELECT DISTINCT comment_author_email FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_type = '' AND comment_approved = '1'", $post->ID );
 		$results = $wpdb->get_results( $query );
