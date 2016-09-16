@@ -81,9 +81,10 @@ class YoastCommentHacks {
 	 * @return string $url the URL to be redirected to, altered if this was a first time comment.
 	 */
 	public function comment_redirect( $url, $comment ) {
-		$comment_count = get_comments( array( 'author_email' => $comment->comment_author_email, 'count' => true ) );
+		$has_approved_comment = get_comments( array( 'author_email' => $comment->comment_author_email, 'number' => 1, 'status' => 'approve' ) );
 
-		if ( 1 == $comment_count ) {
+		// If no approved comments have been found, show the thank-you page.
+		if ( empty( $has_approved_comment ) ) {
 			// Only change $url when the page option is actually set and not zero
 			if ( isset( $this->options['redirect_page'] ) && 0 != $this->options['redirect_page'] ) {
 				$url = get_permalink( $this->options['redirect_page'] );
