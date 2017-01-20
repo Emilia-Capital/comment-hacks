@@ -8,6 +8,7 @@ Plugin URI: https://yoast.com/wordpress/plugins/comment-hacks/
 Description: Make comments management easier by applying some of the simple hacks the Yoast team uses.
 Author: Team Yoast
 Author URI: https://yoast.com/
+Text Domain: yoast-comment-hacks
 
 Copyright 2009-2015 Team Yoast (email: support@yoast.com)
 
