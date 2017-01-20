@@ -3,7 +3,7 @@ Contributors: joostdevalk
 Tags: comments, spam, emails
 Requires at least: 4.0
 Tested up to: 4.2
-Stable tag: 1.1
+Stable tag: 1.1.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,10 @@ See the screenshots to get an even better idea of the plugins functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.1.1 =
+
+* Add text domain so the plugin can be translated.
 
 = 1.1 =
 

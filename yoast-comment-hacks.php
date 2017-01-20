@@ -3,7 +3,7 @@
  * @package YoastCommentHacks
 
 Plugin Name: Yoast Comment Hacks
-Version: 1.1
+Version: 1.1.1
 Plugin URI: https://yoast.com/wordpress/plugins/comment-hacks/
 Description: Make comments management easier by applying some of the simple hacks the Yoast team uses.
 Author: Team Yoast
@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 /**
  * Used for version checks
  */
-define( 'YOAST_COMMENT_HACKS_VERSION', '1.1' );
+define( 'YOAST_COMMENT_HACKS_VERSION', '1.1.1' );
 
 /**
  * Used for asset embedding
