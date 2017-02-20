@@ -1,10 +1,6 @@
 {
   "name": "yoast-comment-hacks",
   "description": "Development files for the Yoast Comment Hacks plugin",
-  "plugin": {
-    "glotpress": "https://translate.yoast.com",
-    "textdomain": "yoast-comment-hacks"
-  },
   "pot": {
     "reportmsgidbugsto": "https://github.com/yoast/comment-hacks/issues",
     "languageteam": "Yoast Translate <translations@yoast.com>",
@@ -15,7 +11,7 @@
     "url": "https://github.com/Yoast/comment-hacks"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
+    "grunt": "^1.0.1",
     "grunt-autoprefixer": "^1.0.1",
     "grunt-checktextdomain": "^0.1.1",
     "grunt-contrib-clean": "~0.6.0",
