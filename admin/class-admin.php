@@ -163,7 +163,12 @@ class YoastCommentHacksAdmin {
 		$comment_parent = filter_input( INPUT_POST, 'yst_comment_parent', FILTER_VALIDATE_INT );
 		$comment_id     = filter_input( INPUT_POST, 'comment_ID', FILTER_VALIDATE_INT );
 
-		check_admin_referer( 'update-comment_' . $comment_id );
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX === true ) {
+			check_ajax_referer( 'replyto-comment', '_ajax_nonce-replyto-comment' );
+		}
+		else {
+			check_admin_referer( 'update-comment_' . $comment_id );
+		}
 
 		if ( ! isset( $comment_parent ) ) {
 			$comment_parent = 0;
