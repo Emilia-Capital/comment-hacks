@@ -165,7 +165,11 @@ class YoastCommentHacksAdmin {
 
 		check_admin_referer( 'update-comment_' . $comment_id );
 
-		if ( $comment_parent ) {
+		if ( ! isset( $comment_parent ) ) {
+			$comment_parent = 0;
+		}
+
+		if ( $comment_id ) {
 			global $wpdb;
 			$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->comments SET comment_parent = %d WHERE comment_ID = %d", $comment_parent, $comment_id ) );
 		}
