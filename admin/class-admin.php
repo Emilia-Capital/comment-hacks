@@ -185,7 +185,8 @@ class YoastCommentHacksAdmin {
 
 		$input['mincomlength']  = (int) $input['mincomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
-		$input['clean_emails']  = isset( $input['clean_emails'] );
+		$input['clean_emails']  = isset( $input['clean_emails'] ) ? 1 : 0;
+		$input['version']       = YOAST_COMMENT_HACKS_VERSION;
 
 		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
 			if ( '' === $input[ $key ] ) {
