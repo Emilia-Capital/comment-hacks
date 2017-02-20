@@ -88,16 +88,11 @@ class YoastCommentHacksAdmin {
 	 * @link https://github.com/Yoast/i18n-module
 	 */
 	public function register_i18n_promo_class() {
-		new yoast_i18n(
+		new Yoast_I18n_WordPressOrg_v2(
 			array(
-				'textdomain'     => 'yoast-comment-hacks',
-				'project_slug'   => 'comment-hacks',
-				'plugin_name'    => 'Yoast Comment Hacks',
-				'hook'           => 'yoast_ch_admin_footer',
-				'glotpress_url'  => 'http://translate.yoast.com/',
-				'glotpress_name' => 'Yoast Translate',
-				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
-				'register_url'   => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=wpseo-i18n-promo',
+				'textdomain'  => 'yoast-comment-hacks',
+				'plugin_name' => 'Yoast Comment Hacks',
+				'hook'        => 'yoast_ch_admin_footer',
 			)
 		);
 	}
@@ -204,6 +199,7 @@ class YoastCommentHacksAdmin {
 		}
 
 		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
+			/* translators: %d is replaced with the minimum number of characters */
 			add_settings_error( $this->option_name, 'min_length_invalid', sprintf( __( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'yoast-comment-hacks' ), $this->absolute_min ) );
 			$input['mincomlength'] = 15;
 		}

@@ -24,11 +24,11 @@
 	},
 	"require": {
 		"composer/installers": "~1.0",
-		"yoast/i18n-module": "dev-master",
-		"xrstf/composer-php52": "^1.0.17"
+		"yoast/i18n-module": "^2.0.1",
+		"xrstf/composer-php52": "^1.0.20"
 	},
 	"require-dev": {
-		"yoast/yoastcs": "dev-master"
+		"yoast/yoastcs": "0.3"
 	},
 	"minimum-stability": "dev",
 	"autoload": {
