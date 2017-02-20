@@ -4,21 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e4f884b9fa40fdf7a122efa1cadefdb3",
-    "content-hash": "93a6f9493e839f929e97e3d9b58ee619",
+    "content-hash": "d5c2d1cf997035d9d1a3e2a5982fbba0",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "dev-master",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "6aac6a0a931ad06780fa7c574f27178d48109ec7"
+                "reference": "d78064c68299743e0161004f2de3a0204e33b804"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/6aac6a0a931ad06780fa7c574f27178d48109ec7",
-                "reference": "6aac6a0a931ad06780fa7c574f27178d48109ec7",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d78064c68299743e0161004f2de3a0204e33b804",
+                "reference": "d78064c68299743e0161004f2de3a0204e33b804",
                 "shasum": ""
             },
             "require": {
@@ -40,8 +39,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -61,24 +60,30 @@
                 "Craft",
                 "Dolibarr",
                 "Hurad",
+                "ImageCMS",
                 "MODX Evo",
                 "Mautic",
                 "OXID",
+                "Plentymarkets",
+                "RadPHP",
                 "SMF",
                 "Thelia",
                 "WolfCMS",
                 "agl",
                 "aimeos",
                 "annotatecms",
+                "attogram",
                 "bitrix",
                 "cakephp",
                 "chef",
+                "cockpit",
                 "codeigniter",
                 "concrete5",
                 "croogo",
                 "dokuwiki",
                 "drupal",
                 "elgg",
+                "expressionengine",
                 "fuelphp",
                 "grav",
                 "installer",
@@ -95,29 +100,31 @@
                 "piwik",
                 "ppi",
                 "puppet",
+                "reindex",
                 "roundcube",
                 "shopware",
                 "silverstripe",
                 "symfony",
                 "typo3",
                 "wordpress",
+                "yawik",
                 "zend",
                 "zikula"
             ],
-            "time": "2016-03-23 16:25:33"
+            "time": "2016-08-13T20:53:52+00:00"
         },
         {
             "name": "xrstf/composer-php52",
-            "version": "dev-default",
+            "version": "v1.0.20",
             "source": {
-                "type": "hg",
-                "url": "https://bitbucket.org/xrstf/composer-php52",
-                "reference": "724d62b7fdcf102a6c4097f5f1c2026f124583a5"
+                "type": "git",
+                "url": "https://github.com/composer-php52/composer-php52.git",
+                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/xrstf/composer-php52/get/724d62b7fdcf102a6c4097f5f1c2026f124583a5.zip",
-                "reference": "724d62b7fdcf102a6c4097f5f1c2026f124583a5",
+                "url": "https://api.github.com/repos/composer-php52/composer-php52/zipball/bd41459d5e27df8d33057842b32377c39e97a5a8",
+                "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8",
                 "shasum": ""
             },
             "type": "library",
@@ -135,27 +142,26 @@
             "license": [
                 "MIT"
             ],
-            "homepage": "http://www.xrstf.de/",
-            "time": "2015-10-01 14:12:30"
+            "time": "2016-04-16T21:52:24+00:00"
         },
         {
             "name": "yoast/i18n-module",
-            "version": "dev-master",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/i18n-module.git",
-                "reference": "fce35999a5c147dd1f0a095334610f229340cd1b"
+                "reference": "c08da78bba4747dff960e31dda2be46aae6b30e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/i18n-module/zipball/fce35999a5c147dd1f0a095334610f229340cd1b",
-                "reference": "fce35999a5c147dd1f0a095334610f229340cd1b",
+                "url": "https://api.github.com/repos/Yoast/i18n-module/zipball/c08da78bba4747dff960e31dda2be46aae6b30e8",
+                "reference": "c08da78bba4747dff960e31dda2be46aae6b30e8",
                 "shasum": ""
             },
             "type": "library",
             "autoload": {
                 "classmap": [
-                    "i18n-module.php"
+                    "src/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -174,22 +180,22 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2015-07-07 11:51:07"
+            "time": "2017-02-02T11:32:53+00:00"
         }
     ],
     "packages-dev": [
         {
             "name": "pdepend/pdepend",
-            "version": "2.2.4",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pdepend/pdepend.git",
-                "reference": "b086687f3a01dc6bb92d633aef071d2c5dd0db06"
+                "reference": "0c50874333149c0dad5a2877801aed148f2767ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/b086687f3a01dc6bb92d633aef071d2c5dd0db06",
-                "reference": "b086687f3a01dc6bb92d633aef071d2c5dd0db06",
+                "url": "https://api.github.com/repos/pdepend/pdepend/zipball/0c50874333149c0dad5a2877801aed148f2767ff",
+                "reference": "0c50874333149c0dad5a2877801aed148f2767ff",
                 "shasum": ""
             },
             "require": {
@@ -216,25 +222,26 @@
                 "BSD-3-Clause"
             ],
             "description": "Official version of pdepend to be handled with Composer",
-            "time": "2016-03-10 15:15:04"
+            "time": "2017-01-19T14:23:36+00:00"
         },
         {
             "name": "phpmd/phpmd",
-            "version": "2.4.2",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmd/phpmd.git",
-                "reference": "fccbdb6b222f6d7a6d35af1c396ba5435cec76a9"
+                "reference": "4e9924b2c157a3eb64395460fcf56b31badc8374"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/fccbdb6b222f6d7a6d35af1c396ba5435cec76a9",
-                "reference": "fccbdb6b222f6d7a6d35af1c396ba5435cec76a9",
+                "url": "https://api.github.com/repos/phpmd/phpmd/zipball/4e9924b2c157a3eb64395460fcf56b31badc8374",
+                "reference": "4e9924b2c157a3eb64395460fcf56b31badc8374",
                 "shasum": ""
             },
             "require": {
-                "pdepend/pdepend": "~2.0",
-                "php": ">=5.3.0"
+                "ext-xml": "*",
+                "pdepend/pdepend": "^2.5",
+                "php": ">=5.3.9"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.0",
@@ -281,24 +288,23 @@
                 "phpmd",
                 "pmd"
             ],
-            "time": "2016-03-10 17:17:44"
+            "time": "2017-01-20T14:41:10+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "dev-master",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "6936deb6f5a686612ffe929c9afb6628154dd57a"
+                "reference": "6731851d6aaf1d0d6c58feff1065227b7fda3ba8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6936deb6f5a686612ffe929c9afb6628154dd57a",
-                "reference": "6936deb6f5a686612ffe929c9afb6628154dd57a",
+                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/6731851d6aaf1d0d6c58feff1065227b7fda3ba8",
+                "reference": "6731851d6aaf1d0d6c58feff1065227b7fda3ba8",
                 "shasum": ""
             },
             "require": {
-                "ext-simplexml": "*",
                 "ext-tokenizer": "*",
                 "ext-xmlwriter": "*",
                 "php": ">=5.1.2"
@@ -359,25 +365,28 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-03-29 23:50:15"
+            "time": "2016-01-19T23:39:10+00:00"
         },
         {
             "name": "symfony/config",
-            "version": "2.8.x-dev",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "5273f4724dc5288fe7a33cb08077ab9852621f2c"
+                "reference": "9f99453e77771e629af8a25eeb0a6c4ed1e19da2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/5273f4724dc5288fe7a33cb08077ab9852621f2c",
-                "reference": "5273f4724dc5288fe7a33cb08077ab9852621f2c",
+                "url": "https://api.github.com/repos/symfony/config/zipball/9f99453e77771e629af8a25eeb0a6c4ed1e19da2",
+                "reference": "9f99453e77771e629af8a25eeb0a6c4ed1e19da2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9",
-                "symfony/filesystem": "~2.3|~3.0.0"
+                "php": ">=5.5.9",
+                "symfony/filesystem": "~2.8|~3.0"
+            },
+            "require-dev": {
+                "symfony/yaml": "~3.0"
             },
             "suggest": {
                 "symfony/yaml": "To use the yaml reference dumper"
@@ -385,7 +394,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -412,42 +421,43 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-04 07:54:35"
+            "time": "2017-02-14T16:27:43+00:00"
         },
         {
             "name": "symfony/dependency-injection",
-            "version": "2.8.x-dev",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dependency-injection.git",
-                "reference": "6f777ed0ffd0aa04565a60458c5eba3fdee4f535"
+                "reference": "130aa55b8ed7e6d0d75b0ed37256cec687a22f41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/6f777ed0ffd0aa04565a60458c5eba3fdee4f535",
-                "reference": "6f777ed0ffd0aa04565a60458c5eba3fdee4f535",
+                "url": "https://api.github.com/repos/symfony/dependency-injection/zipball/130aa55b8ed7e6d0d75b0ed37256cec687a22f41",
+                "reference": "130aa55b8ed7e6d0d75b0ed37256cec687a22f41",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.5.9"
             },
             "conflict": {
-                "symfony/expression-language": "<2.6"
+                "symfony/yaml": "<3.2"
             },
             "require-dev": {
-                "symfony/config": "~2.2|~3.0.0",
-                "symfony/expression-language": "~2.6|~3.0.0",
-                "symfony/yaml": "~2.1|~3.0.0"
+                "symfony/config": "~2.8|~3.0",
+                "symfony/expression-language": "~2.8|~3.0",
+                "symfony/yaml": "~3.2"
             },
             "suggest": {
                 "symfony/config": "",
+                "symfony/expression-language": "For using expressions in service container configuration",
                 "symfony/proxy-manager-bridge": "Generate service proxies to lazy load them",
                 "symfony/yaml": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -474,29 +484,29 @@
             ],
             "description": "Symfony DependencyInjection Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-29 19:00:15"
+            "time": "2017-02-16T22:46:52+00:00"
         },
         {
             "name": "symfony/filesystem",
-            "version": "2.8.x-dev",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "f08ffdf229252cd2745558cb2112df43903bcae4"
+                "reference": "a0c6ef2dc78d33b58d91d3a49f49797a184d06f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/f08ffdf229252cd2745558cb2112df43903bcae4",
-                "reference": "f08ffdf229252cd2745558cb2112df43903bcae4",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/a0c6ef2dc78d33b58d91d3a49f49797a184d06f4",
+                "reference": "a0c6ef2dc78d33b58d91d3a49f49797a184d06f4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.2-dev"
                 }
             },
             "autoload": {
@@ -523,20 +533,20 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-27 10:20:16"
+            "time": "2017-01-08T20:47:33+00:00"
         },
         {
             "name": "wp-coding-standards/wpcs",
-            "version": "0.6.0",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
-                "reference": "2e27757829cde21bca916b11cfcfa867c42b255e"
+                "reference": "b415094aa5fd24da6eba2295323bcff840902dd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/2e27757829cde21bca916b11cfcfa867c42b255e",
-                "reference": "2e27757829cde21bca916b11cfcfa867c42b255e",
+                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/b415094aa5fd24da6eba2295323bcff840902dd3",
+                "reference": "b415094aa5fd24da6eba2295323bcff840902dd3",
                 "shasum": ""
             },
             "require": {
@@ -559,26 +569,26 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2015-06-30 21:54:21"
+            "time": "2016-02-01T16:14:59+00:00"
         },
         {
             "name": "yoast/yoastcs",
-            "version": "dev-master",
+            "version": "0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/yoastcs.git",
-                "reference": "0b4b41f321fdc1777b818d010aca73bd39b0749f"
+                "reference": "f568cc6fc1194c5ef67ccc24b7cfd24259e92a16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/yoastcs/zipball/0b4b41f321fdc1777b818d010aca73bd39b0749f",
-                "reference": "0b4b41f321fdc1777b818d010aca73bd39b0749f",
+                "url": "https://api.github.com/repos/Yoast/yoastcs/zipball/f568cc6fc1194c5ef67ccc24b7cfd24259e92a16",
+                "reference": "f568cc6fc1194c5ef67ccc24b7cfd24259e92a16",
                 "shasum": ""
             },
             "require": {
                 "phpmd/phpmd": "^2.2.3",
-                "squizlabs/php_codesniffer": "^2.2.0",
-                "wp-coding-standards/wpcs": "0.6"
+                "squizlabs/php_codesniffer": "2.5.1",
+                "wp-coding-standards/wpcs": "0.9"
             },
             "conflict": {
                 "squizlabs/php_codesniffer": "2.3.1"
@@ -601,16 +611,13 @@
                 "standards",
                 "wordpress"
             ],
-            "time": "2016-01-08 08:21:15"
+            "time": "2016-05-03T09:58:54+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "yoast/i18n-module": 20,
-        "yoast/yoastcs": 20
-    },
-    "prefer-stable": false,
+    "stability-flags": [],
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
