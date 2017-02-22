@@ -54,7 +54,7 @@ See the screenshots to get an even better idea of the plugins functionality.
 Fixes several issues:
 
 * Differentiate between AJAX request and normal POST for nonce checking, fixes #7.
-* Make sure comment_type isn't empty, fixes #8.
+* Make sure comment type isn't empty in cleaned email, fixes #8.
 * Allow setting the comment parent to 0, fixes #10.
 * Prevents defaults from being reinstated, fixes #14.
 
