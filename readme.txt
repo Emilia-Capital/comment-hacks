@@ -49,6 +49,10 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 == Changelog ==
 
+= trunk =
+
+* Remove [...] from pingback / trackback excerpt in cleaned emails as that's already included by core.
+
 = 1.2 =
 
 Fixes several issues:

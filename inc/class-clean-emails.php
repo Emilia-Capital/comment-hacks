@@ -153,11 +153,13 @@ class YoastCleanEmails {
 	 */
 	private function add_content_line() {
 		if ( '' === $this->comment->comment_type ) {
-			$this->message .= __( 'Comment:', 'yoast-comment-hacks' ) . '<br />' . wpautop( $this->comment->comment_content ) . '<br />';
+			$this->message .= __( 'Comment:', 'yoast-comment-hacks' );
 		}
 		else {
-			$this->message .= __( 'Excerpt:', 'yoast-comment-hacks' ) . '<br /> [...] ' . wpautop( $this->comment->comment_content ) . ' [...] <br />';
+			$this->message .= __( 'Excerpt:', 'yoast-comment-hacks' );
 		}
+
+		$this->message .= '<br />' . wpautop( $this->comment->comment_content ) . '<br />';
 	}
 
 	/**
