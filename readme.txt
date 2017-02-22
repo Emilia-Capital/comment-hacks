@@ -2,8 +2,8 @@
 Contributors: joostdevalk
 Tags: comments, spam, emails
 Requires at least: 4.0
-Tested up to: 4.2
-Stable tag: 1.1
+Tested up to: 4.7.2
+Stable tag: 1.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,13 +41,28 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 == Screenshots ==
 
-1. Screenshot of a clean comment notification email
-2. The comment parent edit box
-3. The plugins admin settings
+1. Screenshot of a clean comment notification email.
+2. The comment parent edit box.
+3. The plugins admin settings.
 4. The button on the frontend to email all the commenters on a post.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.2 =
+
+Fixes several issues:
+
+* Differentiate between AJAX request and normal POST for nonce checking, fixes #7.
+* Make sure comment type isn't empty in cleaned email, fixes #8.
+* Allow setting the comment parent to 0, fixes #10.
+* Prevents defaults from being reinstated, fixes #14.
+
+Also:
+
+* Adds translator comments to all strings with `sprintf` / `printf`.
+* Updates to new version of Yoast i18n, in the process switching from `translate.yoast.com` to `translate.wordpress.org` and removing packaged translations.
+* Added `yarn.lock` and removed no longer needed i18n grunt tasks.
 
 = 1.1 =
 

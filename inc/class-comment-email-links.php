@@ -123,6 +123,7 @@ class YoastCommentHacksEmailLinks {
 		$right_actions = array_slice( $actions, 5 );
 
 		$new_action = array(
+			/* translators: %s is replaced with the comment authors name */
 			'mailto' => '<a href="' . esc_attr( $link ) . '"><span class="dashicons dashicons-email-alt"></span> ' . esc_html( sprintf( __( 'E-mail %s', 'yoast-comment-hacks' ), $comment->comment_author ) ) . '</a>'
 		);
 

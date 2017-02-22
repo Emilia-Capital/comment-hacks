@@ -88,16 +88,11 @@ class YoastCommentHacksAdmin {
 	 * @link https://github.com/Yoast/i18n-module
 	 */
 	public function register_i18n_promo_class() {
-		new yoast_i18n(
+		new Yoast_I18n_WordPressOrg_v2(
 			array(
-				'textdomain'     => 'yoast-comment-hacks',
-				'project_slug'   => 'comment-hacks',
-				'plugin_name'    => 'Yoast Comment Hacks',
-				'hook'           => 'yoast_ch_admin_footer',
-				'glotpress_url'  => 'http://translate.yoast.com/',
-				'glotpress_name' => 'Yoast Translate',
-				'glotpress_logo' => 'https://cdn.yoast.com/wp-content/uploads/i18n-images/Yoast_Translate.svg',
-				'register_url'   => 'http://translate.yoast.com/projects#utm_source=plugin&utm_medium=promo-box&utm_campaign=wpseo-i18n-promo',
+				'textdomain'  => 'yoast-comment-hacks',
+				'plugin_name' => 'Yoast Comment Hacks',
+				'hook'        => 'yoast_ch_admin_footer',
 			)
 		);
 	}
@@ -163,9 +158,18 @@ class YoastCommentHacksAdmin {
 		$comment_parent = filter_input( INPUT_POST, 'yst_comment_parent', FILTER_VALIDATE_INT );
 		$comment_id     = filter_input( INPUT_POST, 'comment_ID', FILTER_VALIDATE_INT );
 
-		check_admin_referer( 'update-comment_' . $comment_id );
+		if ( defined( 'DOING_AJAX' ) && DOING_AJAX === true ) {
+			check_ajax_referer( 'replyto-comment', '_ajax_nonce-replyto-comment' );
+		}
+		else {
+			check_admin_referer( 'update-comment_' . $comment_id );
+		}
 
-		if ( $comment_parent ) {
+		if ( ! isset( $comment_parent ) ) {
+			$comment_parent = 0;
+		}
+
+		if ( $comment_id ) {
 			global $wpdb;
 			$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->comments SET comment_parent = %d WHERE comment_ID = %d", $comment_parent, $comment_id ) );
 		}
@@ -185,7 +189,8 @@ class YoastCommentHacksAdmin {
 
 		$input['mincomlength']  = (int) $input['mincomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
-		$input['clean_emails']  = isset( $input['clean_emails'] );
+		$input['clean_emails']  = isset( $input['clean_emails'] ) ? 1 : 0;
+		$input['version']       = YOAST_COMMENT_HACKS_VERSION;
 
 		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
 			if ( '' === $input[ $key ] ) {
@@ -194,6 +199,7 @@ class YoastCommentHacksAdmin {
 		}
 
 		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
+			/* translators: %d is replaced with the minimum number of characters */
 			add_settings_error( $this->option_name, 'min_length_invalid', sprintf( __( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'yoast-comment-hacks' ), $this->absolute_min ) );
 			$input['mincomlength'] = 15;
 		}
