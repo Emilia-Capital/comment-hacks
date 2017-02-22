@@ -11,5 +11,7 @@
     <arg name="extensions" value="php" />
     <arg value="nsp" />
 
-    <rule ref="Yoast"/>
+    <rule ref="Yoast">
+    </rule>
+
 </ruleset>

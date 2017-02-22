@@ -22,7 +22,6 @@ build:
   - 'addtextdomain'
 # Check health of the project
 check:
-  - 'jshint'
   - 'jsonlint'
   - 'jsvalidate'
   - 'jscs'

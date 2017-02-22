@@ -13,8 +13,7 @@ module.exports = function(grunt) {
             css: 'admin/assets/css/',
             js: 'admin/assets/js/',
 			grunt: 'grunt/',
-			images: 'assets/',
-			languages: 'languages/',
+			images: 'svn-assets/',
 			logs: 'logs/'
 		},
 		files: {
@@ -29,10 +28,8 @@ module.exports = function(grunt) {
 			php: [
 				'*.php',
 				'admin/**/*.php',
-				'frontend/**/*.php',
 				'inc/**/*.php'
 			],
-			phptests: 'tests/**/*.php',
 			get config() {
 				return project.paths.config + '*.js';
 			},

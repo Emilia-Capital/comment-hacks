@@ -1,5 +1,8 @@
 {
   "name": "yoast-comment-hacks",
+  "plugin": {
+    "textdomain": "yoast-comment-hacks"
+  },
   "description": "Development files for the Yoast Comment Hacks plugin",
   "pot": {
     "reportmsgidbugsto": "https://github.com/yoast/comment-hacks/issues",
@@ -11,7 +14,6 @@
     "url": "https://github.com/Yoast/comment-hacks"
   },
   "devDependencies": {
-    "grunt": "^1.0.1",
     "grunt-autoprefixer": "^1.0.1",
     "grunt-checktextdomain": "^0.1.1",
     "grunt-contrib-clean": "~0.6.0",
@@ -20,7 +22,6 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-glotpress": "^0.2.1",
     "grunt-jsbeautifier": "~0.2.7",
     "grunt-jscs": "^0.8.1",
     "grunt-jsonlint": "^1.0.4",
