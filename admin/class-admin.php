@@ -161,7 +161,8 @@ class YoastCommentHacksAdmin {
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX === true ) {
 			check_ajax_referer( 'replyto-comment', '_ajax_nonce-replyto-comment' );
 		}
-		else {
+
+		if ( ! defined( 'DOING_AJAX' ) || DOING_AJAX !== true ) {
 			check_admin_referer( 'update-comment_' . $comment_id );
 		}
 

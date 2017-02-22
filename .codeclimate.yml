@@ -1,0 +1,28 @@
+---
+engines:
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+      - php
+  fixme:
+    enabled: true
+  phpmd:
+    enabled: true
+    exclude_fingerprints:
+        - 9e2c003157b8327cc28f5dfdfcf54370
+    config:
+      rulesets: "phpmd.xml"
+ratings:
+  paths:
+  - "**.css"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
+  - "**.php"
+exclude_paths:
+- grunt/*
+- grunt/**/*

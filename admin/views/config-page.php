@@ -142,4 +142,4 @@
 		</form>
 	</div>
 
-<?php do_action( 'yoast_ch_admin_footer' ); ?>
+<?php do_action( 'yoast_ch_admin_footer' );
