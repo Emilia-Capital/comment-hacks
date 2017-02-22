@@ -29,11 +29,10 @@ class YoastCommentHacksEmailLinks {
 		if ( is_admin() ) {
 			// Adds the email link to the actions on the comment overview page
 			add_filter( 'comment_row_actions', array( $this, 'add_mailto_action_row' ) );
+			return;
 		}
-		else {
-			add_action( 'admin_bar_menu', array( $this, 'admin_bar_comment_link' ), 65 );
-			add_action( 'wp_head', array( $this, 'wp_head_css' ) );
-		}
+		add_action( 'admin_bar_menu', array( $this, 'admin_bar_comment_link' ), 65 );
+		add_action( 'wp_head', array( $this, 'wp_head_css' ) );
 	}
 
 	/**
@@ -148,7 +147,8 @@ class YoastCommentHacksEmailLinks {
 		else if ( is_object( $comment ) && $comment->comment_post_ID > 0 ) {
 			$post = get_post( $comment->comment_post_ID );
 		}
-		else {
+
+		if ( ! is_object( $post ) ) {
 			return $msg;
 		}
 

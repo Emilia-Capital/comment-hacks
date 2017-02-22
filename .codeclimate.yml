@@ -14,6 +14,9 @@ engines:
     enabled: true
     exclude_fingerprints:
         - 9e2c003157b8327cc28f5dfdfcf54370
+        - e48a303e91de028bf180064acb880dbb
+        - cd6e7ec8dd32e2bc82ae64126c0e3b03
+        - bbf999adfc53fc4c2dfe341d3f3b9372
     config:
       rulesets: "phpmd.xml"
 ratings:

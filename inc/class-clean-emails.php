@@ -143,7 +143,7 @@ class YoastCleanEmails {
 			$this->message .= sprintf( __( 'Author: %1$s (%2$s)', 'yoast-comment-hacks' ), esc_html( $this->comment->comment_author ), '<a href="' . esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
 		}
 		else {
-			/* translators: %1$s is replaced with the comment author's website */
+			/* translators: %1$s is replaced with the website doing the ping or trackback */
 			$this->message .= sprintf( __( 'Website: %1$s', 'yoast-comment-hacks' ), esc_html( $this->comment->comment_author ) ) . '<br>';
 		}
 	}
