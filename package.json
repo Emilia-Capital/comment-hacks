@@ -1,7 +1,7 @@
 {
   "name": "yoast-comment-hacks",
   "plugin": {
-    "textdomain": "yoast-comment-hacks"
+    "textdomain": "yoast-comment-hack
   },
   "description": "Development files for the Yoast Comment Hacks plugin",
   "pot": {
