@@ -14,8 +14,8 @@ jQuery(document).ready(function() {
 	/**
 	 * Makes sure we store the action hash so we can return to the right hash.
 	 */
-	function wpseoSetTabHash() {
-		var conf = jQuery( '#wpseo-conf' ),
+	function yoastCHSetTabHash() {
+		var conf = jQuery( '#yoast-ch-conf' ),
 			currentUrl;
 
 		if ( conf.length ) {
@@ -27,7 +27,7 @@ jQuery(document).ready(function() {
 	/**
 	 * When the hash changes, get the base url from the action and then add the current hash.
 	 */
-	jQuery( window ).on( 'hashchange', wpseoSetTabHash );
+	jQuery( window ).on( 'hashchange', yoastCHSetTabHash );
 
 	/**
 	 * Set the initial active tab in the settings pages.
@@ -53,7 +53,7 @@ jQuery(document).ready(function() {
 	}
 
 	// When the hash changes, get the base url from the form action and then add the current hash to the url.
-	wpseoSetTabHash();
+	yoastCHSetTabHash();
 	// Set the initial active tab.
 	setInitialActiveTab();
 } );
