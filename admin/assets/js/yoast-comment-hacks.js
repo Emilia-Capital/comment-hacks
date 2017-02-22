@@ -45,7 +45,7 @@ jQuery(document).ready(function() {
 			 * Reminder: jQuery attr() gets the attribute value for only the first
 			 * element in the matched set so this will always be the first tab id.
 			 */
-			activeTabId = jQuery( '.wpseotab' ).attr( 'id' );
+			activeTabId = jQuery( '.yoasttab' ).attr( 'id' );
 		}
 
 		jQuery( '#' + activeTabId ).addClass( 'active' );
