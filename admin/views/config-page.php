@@ -18,7 +18,7 @@
 			   href="#top#clean-emails"><?php _e( 'Clean emails', 'yoast-comment-hacks' ); ?></a>
 		</h2>
 
-		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" method="post">
+		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="wpseo-conf" method="post">
 			<?php settings_fields( $this->option_name ); ?>
 
 			<div id="minimum-comment-length" class="yoasttab active">
