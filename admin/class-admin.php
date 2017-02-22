@@ -36,21 +36,21 @@ class YoastCommentHacksAdmin {
 	public function __construct() {
 		$this->options = get_option( $this->option_name );
 
-		// Hook into init for registration of the option and the language files
+		// Hook into init for registration of the option and the language files.
 		add_action( 'admin_init', array( $this, 'init' ) );
 
-		// Register the settings page
+		// Register the settings page.
 		add_action( 'admin_menu', array( $this, 'add_config_page' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
-		// The hooks for editing and saving the comment parent
+		// The hooks for editing and saving the comment parent.
 		add_action( 'admin_menu', array( $this, 'load_comment_parent_box' ) );
 		add_action( 'edit_comment', array( $this, 'update_comment_parent' ) );
 
-		// Register a link to the settings page on the plugins overview page
+		// Register a link to the settings page on the plugins overview page.
 		add_filter( 'plugin_action_links', array( $this, 'filter_plugin_actions' ), 10, 2 );
 
-		// Filter the comment notification recipients
+		// Filter the comment notification recipients.
 		add_action( 'post_comment_status_meta_box-options', array( $this, 'reroute_comment_emails_option' ) );
 		add_action( 'save_post', array( $this, 'save_reroute_comment_emails' ) );
 	}
@@ -59,10 +59,7 @@ class YoastCommentHacksAdmin {
 	 * Register the text domain and the options array along with the validation function
 	 */
 	public function init() {
-		// Allow for localization
-		load_plugin_textdomain( 'yoast-comment-hacks', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-
-		// Register our option array
+		// Register our option array.
 		register_setting( $this->option_name, $this->option_name, array( $this, 'options_validate' ) );
 	}
 
@@ -100,7 +97,7 @@ class YoastCommentHacksAdmin {
 	/**
 	 * Shows the comment parent box where you can change the comment parent
 	 *
-	 * @param object $comment
+	 * @param object $comment The comment object.
 	 */
 	public function comment_parent_box( $comment ) {
 		require_once 'views/comment-parent-box.php';
@@ -221,8 +218,8 @@ class YoastCommentHacksAdmin {
 	/**
 	 * Register the settings link for the plugins page
 	 *
-	 * @param array  $links
-	 * @param string $file
+	 * @param array  $links The plugin action links.
+	 * @param string $file  The plugin file.
 	 *
 	 * @return array
 	 */
@@ -235,7 +232,8 @@ class YoastCommentHacksAdmin {
 
 		if ( $file == $this_plugin ) {
 			$settings_link = '<a href="' . admin_url( 'options-general.php?page=' . $this->hook ) . '">' . __( 'Settings', 'yoast-comment-hacks' ) . '</a>';
-			array_unshift( $links, $settings_link ); // before other links
+			// Put our link before other links.
+			array_unshift( $links, $settings_link );
 		}
 
 		return $links;
@@ -251,7 +249,7 @@ class YoastCommentHacksAdmin {
 
 		require_once 'views/config-page.php';
 
-		// Show the content of the options array when debug is enabled
+		// Show the content of the options array when debug is enabled.
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			echo '<h4>Options debug</h4>';
 			echo '<pre style="background-color: white; border: 1px solid #aaa; padding: 20px;">';
@@ -261,5 +259,4 @@ class YoastCommentHacksAdmin {
 			echo '</pre>';
 		}
 	}
-
 }

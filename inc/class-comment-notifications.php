@@ -21,8 +21,8 @@ class YoastCommentNotifications {
 	/**
 	 * Filter the recipients of the comment notification
 	 *
-	 * @param array $recipients
-	 * @param int   $comment_ID
+	 * @param array $recipients Recipients of the notification email.
+	 * @param int   $comment_ID Comment the notification is sent for.
 	 *
 	 * @return array
 	 */

@@ -28,10 +28,10 @@ class YoastCommentHacks {
 		$this->set_defaults();
 		$this->upgrade();
 
-		// Process the comment and check it for length
+		// Process the comment and check it for length.
 		add_filter( 'preprocess_comment', array( $this, 'check_comment_length' ) );
 
-		// Filter the redirect URL
+		// Filter the redirect URL.
 		add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
 
 		if ( $this->options['clean_emails'] ) {
@@ -62,9 +62,9 @@ class YoastCommentHacks {
 		}
 
 		// Check for comment length and die if to short.
-		if ( ( function_exists( 'mb_strlen' ) && mb_strlen( trim( $comment_data['comment_content'] ) ) < $this->options['mincomlength'] ) 
+		if ( ( function_exists( 'mb_strlen' ) && mb_strlen( trim( $comment_data['comment_content'] ) ) < $this->options['mincomlength'] )
 			|| ( strlen( trim( $comment_data['comment_content'] ) ) < $this->options['mincomlength'] ) ) {
-				wp_die( esc_html( $this->options['mincomlengtherror'] ) . '<br /><a href onclick="window.history.go(-1);">' . __('Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+				wp_die( esc_html( $this->options['mincomlengtherror'] ) . '<br /><a href onclick="window.history.go(-1);">' . __( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
 		}
 
 		return $comment_data;
@@ -75,8 +75,8 @@ class YoastCommentHacks {
 	 *
 	 * @since 1.0
 	 *
-	 * @param string $url     the original redirect URL
-	 * @param object $comment the comment object
+	 * @param string $url     The original redirect URL.
+	 * @param object $comment The comment object.
 	 *
 	 * @return string $url the URL to be redirected to, altered if this was a first time comment.
 	 */
@@ -85,7 +85,7 @@ class YoastCommentHacks {
 
 		// If no approved comments have been found, show the thank-you page.
 		if ( empty( $has_approved_comment ) ) {
-			// Only change $url when the page option is actually set and not zero
+			// Only change $url when the page option is actually set and not zero.
 			if ( isset( $this->options['redirect_page'] ) && 0 != $this->options['redirect_page'] ) {
 				$url = get_permalink( $this->options['redirect_page'] );
 
@@ -125,6 +125,7 @@ class YoastCommentHacks {
 
 	/**
 	 * Returns the default settings
+	 *
 	 * @return array
 	 */
 	public static function get_defaults() {
@@ -152,5 +153,4 @@ class YoastCommentHacks {
 
 		update_option( $this->option_name, $this->options );
 	}
-
 }

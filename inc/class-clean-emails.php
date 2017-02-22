@@ -42,7 +42,7 @@ class YoastCleanEmails {
 	/**
 	 * Set the comment email headers to HTML
 	 *
-	 * @param string $message_headers
+	 * @param string $message_headers The message headers for the comment email.
 	 *
 	 * @return string $message_headers
 	 */
@@ -57,8 +57,8 @@ class YoastCleanEmails {
 	/**
 	 * Clean up the comment notification message
 	 *
-	 * @param string $message
-	 * @param int    $comment_id
+	 * @param string $message    The comment notification message.
+	 * @param int    $comment_id The ID of the comment the notification is for.
 	 *
 	 * @return string $message
 	 */
@@ -91,8 +91,8 @@ class YoastCleanEmails {
 	/**
 	 * Clean up the comment moderation message
 	 *
-	 * @param string $message
-	 * @param int    $comment_id
+	 * @param string $message    The comment moderation message.
+	 * @param int    $comment_id The ID of the comment the moderation notification is for.
 	 *
 	 * @return string $message
 	 */
@@ -184,7 +184,7 @@ class YoastCleanEmails {
 	/**
 	 * Sets up class variables used with all emails
 	 *
-	 * @param int $comment_id
+	 * @param int $comment_id The comment we're setting up variables for.
 	 */
 	private function setup_data( $comment_id ) {
 		$this->comment_id = $comment_id;
@@ -243,7 +243,7 @@ class YoastCleanEmails {
 	/**
 	 * Add action links to the message
 	 *
-	 * @param array $actions
+	 * @param array $actions The array of actions we're adding our action for.
 	 */
 	private function comment_action_links( $actions ) {
 		$links = '';
@@ -259,8 +259,8 @@ class YoastCleanEmails {
 	/**
 	 * Creates a comment action link
 	 *
-	 * @param string $label
-	 * @param string $action
+	 * @param string $label The label for the comment action link.
+	 * @param string $action The action we're going to add.
 	 *
 	 * @return string
 	 */

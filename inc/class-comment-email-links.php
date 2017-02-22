@@ -27,8 +27,9 @@ class YoastCommentHacksEmailLinks {
 	 */
 	public function init() {
 		if ( is_admin() ) {
-			// Adds the email link to the actions on the comment overview page
+			// Adds the email link to the actions on the comment overview page.
 			add_filter( 'comment_row_actions', array( $this, 'add_mailto_action_row' ) );
+
 			return;
 		}
 		add_action( 'admin_bar_menu', array( $this, 'admin_bar_comment_link' ), 65 );
@@ -47,8 +48,7 @@ class YoastCommentHacksEmailLinks {
 
 		$current_user = wp_get_current_user();
 
-		$query   = $wpdb->prepare( "SELECT DISTINCT comment_author_email FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_type = '' AND comment_approved = '1'", $post->ID );
-		$results = $wpdb->get_results( $query );
+		$results = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT comment_author_email FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_type = '' AND comment_approved = '1'", $post->ID ) );
 
 		if ( 0 === count( $results ) ) {
 			return;
@@ -103,7 +103,7 @@ class YoastCommentHacksEmailLinks {
 	/**
 	 * Adds an "E-Mail" action to the comment action list on the comments overview page
 	 *
-	 * @param array $actions
+	 * @param array $actions Array of actions we'll be adding our action to.
 	 *
 	 * @return array $actions
 	 */
@@ -123,7 +123,7 @@ class YoastCommentHacksEmailLinks {
 
 		$new_action = array(
 			/* translators: %s is replaced with the comment authors name */
-			'mailto' => '<a href="' . esc_attr( $link ) . '"><span class="dashicons dashicons-email-alt"></span> ' . esc_html( sprintf( __( 'E-mail %s', 'yoast-comment-hacks' ), $comment->comment_author ) ) . '</a>'
+			'mailto' => '<a href="' . esc_attr( $link ) . '"><span class="dashicons dashicons-email-alt"></span> ' . esc_html( sprintf( __( 'E-mail %s', 'yoast-comment-hacks' ), $comment->comment_author ) ) . '</a>',
 		);
 
 		return array_merge( $left_actions, $new_action, $right_actions );
@@ -132,9 +132,9 @@ class YoastCommentHacksEmailLinks {
 	/**
 	 * Replace variables with values in the message
 	 *
-	 * @param string         $msg
-	 * @param boolean|object $comment
-	 * @param int|boolean    $post
+	 * @param string         $msg     The message in which we're replacing variables.
+	 * @param boolean|object $comment The comment object.
+	 * @param int|boolean    $post    The post the comment belongs to.
 	 *
 	 * @return string $msg
 	 */
@@ -168,7 +168,7 @@ class YoastCommentHacksEmailLinks {
 	/**
 	 * Getting the replacements with comment data if there is a comment.
 	 *
-	 * @param boolean|object $comment
+	 * @param boolean|object $comment The comment object.
 	 *
 	 * @return array
 	 */
