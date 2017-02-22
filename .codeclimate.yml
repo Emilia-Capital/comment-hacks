@@ -12,6 +12,8 @@ engines:
     enabled: true
   phpmd:
     enabled: true
+    exclude_fingerprints:
+        - 9e2c003157b8327cc28f5dfdfcf54370
     config:
       rulesets: "phpmd.xml"
 ratings:
