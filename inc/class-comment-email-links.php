@@ -44,9 +44,9 @@ class YoastCommentHacksEmailLinks {
 			return;
 		}
 
-		global $wp_admin_bar, $wpdb, $post, $current_user;
+		global $wp_admin_bar, $wpdb, $post;
 
-		get_currentuserinfo();
+		$current_user = wp_get_current_user();
 
 		$query   = $wpdb->prepare( "SELECT DISTINCT comment_author_email FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_type = '' AND comment_approved = '1'", $post->ID );
 		$results = $wpdb->get_results( $query );
@@ -123,6 +123,7 @@ class YoastCommentHacksEmailLinks {
 		$right_actions = array_slice( $actions, 5 );
 
 		$new_action = array(
+			/* translators: %s is replaced with the comment authors name */
 			'mailto' => '<a href="' . esc_attr( $link ) . '"><span class="dashicons dashicons-email-alt"></span> ' . esc_html( sprintf( __( 'E-mail %s', 'yoast-comment-hacks' ), $comment->comment_author ) ) . '</a>'
 		);
 

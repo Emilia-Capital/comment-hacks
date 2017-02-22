@@ -3,14 +3,14 @@
  * @package YoastCommentHacks
 
 Plugin Name: Yoast Comment Hacks
-Version: 1.1.1
+Version: 1.2
 Plugin URI: https://yoast.com/wordpress/plugins/comment-hacks/
 Description: Make comments management easier by applying some of the simple hacks the Yoast team uses.
 Author: Team Yoast
 Author URI: https://yoast.com/
 Text Domain: yoast-comment-hacks
 
-Copyright 2009-2015 Team Yoast (email: support@yoast.com)
+Copyright 2009-2017 Team Yoast (email: support@yoast.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 /**
  * Used for version checks
  */
-define( 'YOAST_COMMENT_HACKS_VERSION', '1.1.1' );
+define( 'YOAST_COMMENT_HACKS_VERSION', '1.2' );
 
 /**
  * Used for asset embedding
@@ -45,15 +45,6 @@ if ( ! defined( 'YST_COMMENT_HACKS_PATH' ) ) {
 if ( file_exists( YST_COMMENT_HACKS_PATH . '/vendor/autoload_52.php' ) ) {
 	require YST_COMMENT_HACKS_PATH . '/vendor/autoload_52.php';
 }
-
-/**
- * Load translations
- */
-function yoast_ch_load_textdomain() {
-	load_plugin_textdomain( 'yoast-comment-hacks', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-
-add_action( 'init', 'yoast_ch_load_textdomain', 1 );
 
 new YoastCommentHacks();
 

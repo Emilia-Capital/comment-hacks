@@ -1,0 +1,19 @@
+# Standards for multi-platform colaboration
+
+# Set default behaviour, in case users don't have core.autocrlf set.
+* text=auto
+
+composer.json export-ignore
+composer.lock export-ignore
+yarn.lock export-ignore
+grunt export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
+.jscsrc export-ignore
+.jshintrc export-ignore
+Gruntfile.js export-ignore
+package.json export-ignore
+phpcs.xml export-ignore
+CONTRIBUTING.md export-ignore
+readme.md export-ignore
+ISSUE_TEMPLATE.md export-ignore
