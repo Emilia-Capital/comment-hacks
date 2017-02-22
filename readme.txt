@@ -52,6 +52,7 @@ See the screenshots to get an even better idea of the plugins functionality.
 = trunk =
 
 * Remove [...] from pingback / trackback excerpt in cleaned emails as that's already included by core.
+* Replace link to ARIN with link to Quix for Whois on IP. 
 
 = 1.2 =
 

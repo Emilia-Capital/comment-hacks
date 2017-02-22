@@ -116,7 +116,7 @@ class YoastCleanEmails {
 		$this->add_comment_basics();
 
 		$this->comment_moderation_actions();
-		$this->message .= ' | ' . sprintf( '<a href="http://whois.arin.net/rest/ip/%1$s">%2$s</a>', $this->comment->comment_author_IP, __( 'Whois', 'yoast-comment-hacks' ) );
+		$this->message .= ' | ' . sprintf( '<a href="https://www.quixapp.com/host/?d=%1$s">%2$s</a>', $this->comment->comment_author_IP, __( 'Whois', 'yoast-comment-hacks' ) );
 		$this->message .= '<br/><br/>';
 
 		$this->get_moderation_msg();
