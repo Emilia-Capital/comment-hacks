@@ -116,7 +116,7 @@ class YoastCleanEmails {
 		$this->add_comment_basics();
 
 		$this->comment_moderation_actions();
-		$this->message .= ' | ' . sprintf( '<a href="http://whois.arin.net/rest/ip/%1$s">%2$s</a>', $this->comment->comment_author_IP, __( 'Whois', 'yoast-comment-hacks' ) );
+		$this->message .= ' | ' . sprintf( '<a href="http://ip-lookup.net/index.php?ip=%1$s">%2$s</a>', $this->comment->comment_author_IP, __( 'Whois', 'yoast-comment-hacks' ) );
 		$this->message .= '<br/><br/>';
 
 		$this->get_moderation_msg();
@@ -153,11 +153,13 @@ class YoastCleanEmails {
 	 */
 	private function add_content_line() {
 		if ( '' === $this->comment->comment_type ) {
-			$this->message .= __( 'Comment:', 'yoast-comment-hacks' ) . '<br />' . wpautop( $this->comment->comment_content ) . '<br />';
+			$this->message .= __( 'Comment:', 'yoast-comment-hacks' );
 		}
 		else {
-			$this->message .= __( 'Excerpt:', 'yoast-comment-hacks' ) . '<br /> [...] ' . wpautop( $this->comment->comment_content ) . ' [...] <br />';
+			$this->message .= __( 'Excerpt:', 'yoast-comment-hacks' );
 		}
+
+		$this->message .= '<br />' . wpautop( $this->comment->comment_content ) . '<br />';
 	}
 
 	/**

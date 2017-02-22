@@ -113,7 +113,7 @@ class YoastCommentHacksAdmin {
 		echo '<br><br>';
 		echo '<label for="comment_notification_recipient">Comment notification recipients:</label><br/>';
 
-		$post_id = empty( $_GET['post'] ) ? 0 : (int) $_GET['post'];
+		$post_id = filter_input( INPUT_POST, 'post', FILTER_VALIDATE_INT );
 
 		wp_dropdown_users(
 			array(
@@ -131,8 +131,8 @@ class YoastCommentHacksAdmin {
 	 */
 	public function save_reroute_comment_emails() {
 
-		$post_id      = empty( $_POST['ID'] ) ? 0 : (int) $_POST['ID'];
-		$recipient_id = empty( $_POST['comment_notification_recipient'] ) ? 0 : (int) $_POST['comment_notification_recipient'];
+		$post_id      = filter_input( INPUT_POST, 'ID', FILTER_VALIDATE_INT );
+		$recipient_id = filter_input( INPUT_POST, 'comment_notification_recipient', FILTER_VALIDATE_INT );
 
 		if ( $recipient_id && $post_id ) {
 			update_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, $recipient_id );

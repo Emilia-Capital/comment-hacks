@@ -49,6 +49,11 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 == Changelog ==
 
+= trunk =
+
+* Remove [...] from pingback / trackback excerpt in cleaned emails as that's already included by core.
+* Replace link to ARIN with link to ip-lookup.net for Whois on IP.
+
 = 1.2 =
 
 Fixes several issues:
