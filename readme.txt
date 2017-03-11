@@ -3,7 +3,7 @@ Contributors: joostdevalk
 Tags: comments, spam, emails
 Requires at least: 4.0
 Tested up to: 4.7.2
-Stable tag: 1.2
+Stable tag: 1.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ Make comments management easier by applying some of the simple hacks the Yoast t
 This plugin adds some small hacks around core WordPress comments to make them more bearable:
 
 * Cleaner comment notification emails.
-* The option to disallow comments below a certain length.
+* The option to disallow comments below and above a certain length.
 * The option to redirect first time commenters to a thank you page.
 * An input field on the comment edit screen to change the comment parent ID.
 * Links in the admin comments section to email individual commenters.
@@ -49,10 +49,13 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 == Changelog ==
 
-= trunk =
+= 1.3=
 
-* Remove [...] from pingback / trackback excerpt in cleaned emails as that's already included by core.
-* Replace link to ARIN with link to ip-lookup.net for Whois on IP.
+* Enhancements:
+    * Add option to restrict comments that are too long, next to too small.
+    * Remove [...] from pingback / trackback excerpt in cleaned emails as that's already included by core.
+    * Replace link to ARIN with link to ip-lookup.net for Whois on IP.
+    * Refactored code for readability and code quality.
 
 = 1.2 =
 
