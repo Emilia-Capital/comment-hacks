@@ -53,6 +53,7 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 * Enhancements:
     * Add option to restrict comments that are too long, next to too small.
+    * Preserve the active tab when saving settings.
     * Remove [...] from pingback / trackback excerpt in cleaned emails as that's already included by core.
     * Replace link to ARIN with link to ip-lookup.net for Whois on IP.
     * Refactored code for readability and code quality.
