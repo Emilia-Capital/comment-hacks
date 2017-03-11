@@ -97,7 +97,7 @@ class YoastCommentHacksAdmin {
 	 */
 	public function reroute_comment_emails_option() {
 		echo '<br><br>';
-		echo '<label for="comment_notification_recipient">Comment notification recipients:</label><br/>';
+		echo '<label for="comment_notification_recipient">' . __( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
 
 		$post_id = filter_input( INPUT_POST, 'post', FILTER_VALIDATE_INT );
 
