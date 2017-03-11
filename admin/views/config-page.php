@@ -8,8 +8,8 @@
 		<h2><?php _e( 'Yoast Comment Hacks', 'yoast-comment-hacks' ); ?></h2>
 
 		<h2 class="nav-tab-wrapper" id="yoast-tabs">
-			<a class="nav-tab nav-tab-active" id="minimum-comment-length-tab"
-			   href="#top#minimum-comment-length"><?php _e( 'Minimum comment length', 'yoast-comment-hacks' ); ?></a>
+			<a class="nav-tab nav-tab-active" id="comment-length-tab"
+			   href="#top#comment-length"><?php _e( 'Comment length', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="email-links-tab"
 			   href="#top#email-links"><?php _e( 'Email links', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="comment-redirect-tab"
@@ -21,7 +21,7 @@
 		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="yoast-ch-conf" method="post">
 			<?php settings_fields( $this->option_name ); ?>
 
-			<div id="minimum-comment-length" class="yoasttab active">
+			<div id="comment-length" class="yoasttab active">
 				<h3><?php _e( 'Minimum comment length', 'yoast-comment-hacks' ); ?></h3>
 
 				<p><?php _e( 'Users that try to submit a comment smaller than the length you set below will get an error immediately. The text of that error is specified below too.', 'yoast-comment-hacks' ); ?></p>
@@ -42,15 +42,45 @@
 					<tr valign="top">
 						<th scrope="row">
 							<label
-								for="mincomlengtherror"><?php _e( 'Error message', 'yoast-comment-hacks' ); ?></label>
+								for="mincomlengtherror"><?php _e( 'Error message for comment that is too short', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-					<textarea rows="4" cols="100"
+					<textarea rows="4" cols="80"
 					          name="<?php echo esc_attr( $this->option_name ); ?>[mincomlengtherror]"
 					          id="mincomlengtherror"><?php echo esc_html( $this->options['mincomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
+
+                <h3><?php _e( 'Maximum comment length', 'yoast-comment-hacks' ); ?></h3>
+
+                <p><?php _e( 'Users that try to submit a comment longer than the length you set below will get an error immediately. The text of that error is specified below too.', 'yoast-comment-hacks' ); ?></p>
+                <table class="form-table">
+                    <tr valign="top">
+                        <th scrope="row">
+                            <label
+                                    for="maxcomlength"><?php _e( 'Maximum length', 'yoast-comment-hacks' ); ?>
+                            </label>
+                        </th>
+                        <td>
+                            <input type="number" class="small-text" min="5" max="255"
+                                   value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
+                                   name="<?php echo esc_attr( $this->option_name ); ?>[maxcomlength]"
+                                   id="maxcomlength"/>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scrope="row">
+                            <label
+                                    for="maxcomlengtherror"><?php _e( 'Error message for comment that is too long', 'yoast-comment-hacks' ); ?></label>
+                        </th>
+                        <td>
+					<textarea rows="4" cols="80"
+                              name="<?php echo esc_attr( $this->option_name ); ?>[maxcomlengtherror]"
+                              id="maxcomlengtherror"><?php echo esc_html( $this->options['maxcomlengtherror'] ); ?></textarea>
+                        </td>
+                    </tr>
+                </table>
 			</div>
 
 			<div id="email-links" class="yoasttab">

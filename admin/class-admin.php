@@ -43,16 +43,14 @@ class YoastCommentHacksAdmin {
 		add_action( 'admin_menu', array( $this, 'add_config_page' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
-		// The hooks for editing and saving the comment parent.
-		add_action( 'admin_menu', array( $this, 'load_comment_parent_box' ) );
-		add_action( 'edit_comment', array( $this, 'update_comment_parent' ) );
-
 		// Register a link to the settings page on the plugins overview page.
 		add_filter( 'plugin_action_links', array( $this, 'filter_plugin_actions' ), 10, 2 );
 
 		// Filter the comment notification recipients.
 		add_action( 'post_comment_status_meta_box-options', array( $this, 'reroute_comment_emails_option' ) );
 		add_action( 'save_post', array( $this, 'save_reroute_comment_emails' ) );
+
+		new YoastCommentParent();
 	}
 
 	/**
@@ -95,15 +93,6 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Shows the comment parent box where you can change the comment parent
-	 *
-	 * @param object $comment The comment object.
-	 */
-	public function comment_parent_box( $comment ) {
-		require_once 'views/comment-parent-box.php';
-	}
-
-	/**
 	 * Adds the comment email recipients dropdown
 	 */
 	public function reroute_comment_emails_option() {
@@ -133,43 +122,6 @@ class YoastCommentHacksAdmin {
 
 		if ( $recipient_id && $post_id ) {
 			update_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, $recipient_id );
-		}
-	}
-
-	/**
-	 * Adds the comment parent box to the meta box
-	 */
-	public function load_comment_parent_box() {
-		if ( function_exists( 'add_meta_box' ) ) {
-			add_meta_box( 'comment_parent', 'Comment Parent', array(
-				$this,
-				'comment_parent_box',
-			), 'comment', 'normal' );
-		}
-	}
-
-	/**
-	 * Updates the comment parent field
-	 */
-	public function update_comment_parent() {
-		$comment_parent = filter_input( INPUT_POST, 'yst_comment_parent', FILTER_VALIDATE_INT );
-		$comment_id     = filter_input( INPUT_POST, 'comment_ID', FILTER_VALIDATE_INT );
-
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX === true ) {
-			check_ajax_referer( 'replyto-comment', '_ajax_nonce-replyto-comment' );
-		}
-
-		if ( ! defined( 'DOING_AJAX' ) || DOING_AJAX !== true ) {
-			check_admin_referer( 'update-comment_' . $comment_id );
-		}
-
-		if ( ! isset( $comment_parent ) ) {
-			$comment_parent = 0;
-		}
-
-		if ( $comment_id ) {
-			global $wpdb;
-			$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->comments SET comment_parent = %d WHERE comment_ID = %d", $comment_parent, $comment_id ) );
 		}
 	}
 
@@ -252,11 +204,11 @@ class YoastCommentHacksAdmin {
 		// Show the content of the options array when debug is enabled.
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			echo '<h4>Options debug</h4>';
-			echo '<pre style="background-color: white; border: 1px solid #aaa; padding: 20px;">';
+			echo '<div style="border: 1px solid #aaa; padding: 20px;">';
 			// @codingStandardsIgnoreStart
-			var_dump( $this->options );
+			echo str_replace( '<code>', '<code style="background-color: #eee; margin: 0; padding: 0;">', highlight_string( "<?php\n\$this->options = " . var_export( $this->options, true ) . ';', true ), $num );
 			// @codingStandardsIgnoreEnd
-			echo '</pre>';
+			echo '</div>';
 		}
 	}
 }

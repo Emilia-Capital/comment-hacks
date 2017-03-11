@@ -28,9 +28,6 @@ class YoastCommentHacks {
 		$this->set_defaults();
 		$this->upgrade();
 
-		// Process the comment and check it for length.
-		add_filter( 'preprocess_comment', array( $this, 'check_comment_length' ) );
-
 		// Filter the redirect URL.
 		add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
 
@@ -44,30 +41,7 @@ class YoastCommentHacks {
 
 		new YoastCommentNotifications();
 		new YoastCommentHacksEmailLinks();
-	}
-
-	/**
-	 * Check the length of the comment and if it's too short: die.
-	 *
-	 * @since 1.0
-	 *
-	 * @param array $comment_data all the data for the comment.
-	 *
-	 * @return array $comment_data all the data for the comment (only returned when the comment is long enough).
-	 */
-	public function check_comment_length( $comment_data ) {
-		// Bail early for editors and admins, they can leave short comments if they want.
-		if ( current_user_can( 'edit_posts' ) ) {
-			return $comment_data;
-		}
-
-		// Check for comment length and die if to short.
-		if ( ( function_exists( 'mb_strlen' ) && mb_strlen( trim( $comment_data['comment_content'] ) ) < $this->options['mincomlength'] )
-			|| ( strlen( trim( $comment_data['comment_content'] ) ) < $this->options['mincomlength'] ) ) {
-				wp_die( esc_html( $this->options['mincomlengtherror'] ) . '<br /><a href onclick="window.history.go(-1);">' . __( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
-		}
-
-		return $comment_data;
+		new YoastCommentLength( $this->options );
 	}
 
 	/**
@@ -139,6 +113,8 @@ class YoastCommentHacks {
 			'mass_email_body'   => sprintf( __( 'Hi,%3$sI\'m sending you all this email because you commented on my post "%1$s" - %2$s', 'yoast-comment-hacks' ), '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
 			'mincomlength'      => 15,
 			'mincomlengtherror' => __( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
+			'maxcomlength'      => 1500,
+			'maxcomlengtherror' => __( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
 			'redirect_page'     => 0,
 		);
 	}
