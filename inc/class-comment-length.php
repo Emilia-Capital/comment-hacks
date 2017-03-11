@@ -70,8 +70,6 @@ class YoastCommentLength {
 		if ( function_exists( 'mb_strlen' ) ) {
 			return mb_strlen( $comment );
 		}
-		else {
-			return strlen( $comment );
-		}
+		return strlen( $comment );
 	}
 }
