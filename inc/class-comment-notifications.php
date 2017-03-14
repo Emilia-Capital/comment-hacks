@@ -16,6 +16,8 @@ class YoastCommentNotifications {
 	public function __construct() {
 		add_filter( 'comment_notification_recipients', array( $this, 'filter_notification_recipients' ), 10, 2 );
 		add_filter( 'comment_moderation_recipients', array( $this, 'filter_notification_recipients' ), 10, 2 );
+		add_filter( 'comment_notification_headers', array( $this, 'filter_notification_headers' ), 10, 2 );
+		add_filter( 'comment_moderation_headers', array( $this, 'filter_notification_headers' ), 10, 2 );
 	}
 
 	/**
@@ -38,5 +40,32 @@ class YoastCommentNotifications {
 		}
 
 		return $recipients;
+	}
+
+	/**
+	 * Filter the headers of the comment notification
+	 *
+	 * @param string $message_headers
+	 * @param int    $comment_id
+	 *
+	 * @return string
+	 */
+	public function filter_notification_headers( $message_headers, $comment_id ) {
+		$comment = get_comment( $comment_id );
+
+		if ( '' !== $comment->comment_author && '' !== $comment->comment_author_email ) {
+			$name = esc_html( $comment->comment_author );
+			$message_headers .= "\nReply-To: $name <$comment->comment_author_email>\n";
+
+			return $message_headers;
+		}
+
+		if ( '' !== $comment->comment_author_email ) {
+			$message_headers .= "\nReply-To: $comment->comment_author_email <$comment->comment_author_email>\n";
+
+			return $message_headers;
+		}
+
+		return $message_headers;
 	}
 }
