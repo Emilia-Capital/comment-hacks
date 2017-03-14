@@ -138,6 +138,7 @@ class YoastCommentHacksAdmin {
 		$defaults = YoastCommentHacks::get_defaults();
 
 		$input['mincomlength']  = (int) $input['mincomlength'];
+		$input['maxcomlength']  = (int) $input['maxcomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
 		$input['clean_emails']  = isset( $input['clean_emails'] ) ? 1 : 0;
 		$input['version']       = YOAST_COMMENT_HACKS_VERSION;
