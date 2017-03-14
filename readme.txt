@@ -1,7 +1,7 @@
 === Yoast Comment Hacks ===
-Contributors: joostdevalk
+Contributors: joostdevalk, yoast
 Tags: comments, spam, emails
-Requires at least: 4.0
+Requires at least: 4.5
 Tested up to: 4.7.2
 Stable tag: 1.3
 License: GPLv2
@@ -49,13 +49,14 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 == Changelog ==
 
-= 1.3=
+= 1.3 =
 
 * Enhancements:
     * Add option to restrict comments that are too long, next to too small.
+    * Add `reply-to` header to comment notification and moderation emails, pointing to the post author.
     * Preserve the active tab when saving settings.
-    * Remove [...] from pingback / trackback excerpt in cleaned emails as that's already included by core.
-    * Replace link to ARIN with link to ip-lookup.net for Whois on IP.
+    * Remove `[...]` from pingback / trackback excerpt in cleaned emails as that's already included by core.
+    * Replace link to ARIN with link to [ip-lookup.net](http://ip-lookup.net) for details about the IP.
     * Refactored code for readability and code quality.
 
 = 1.2 =
