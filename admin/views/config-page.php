@@ -63,7 +63,7 @@
                             </label>
                         </th>
                         <td>
-                            <input type="number" class="small-text" min="5" max="255"
+                            <input type="number" class="small-text" min="5"
                                    value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
                                    name="<?php echo esc_attr( $this->option_name ); ?>[maxcomlength]"
                                    id="maxcomlength"/>
