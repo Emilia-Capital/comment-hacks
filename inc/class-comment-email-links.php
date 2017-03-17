@@ -17,7 +17,7 @@ class YoastCommentHacksEmailLinks {
 	 * Class constructor
 	 */
 	public function __construct() {
-		$this->options = get_option( 'yoast_comment_hacks' );
+		$this->options = YoastCommentHacks::get_options();
 
 		add_action( 'init', array( $this, 'init' ) );
 	}

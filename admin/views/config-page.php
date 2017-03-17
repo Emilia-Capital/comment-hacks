@@ -3,6 +3,7 @@
  * @package yoast_comment_hacks\admin
  */
 
+$option_name = esc_attr( YoastCommentHacks::$option_name );
 ?>
 	<div class="wrap">
 		<h2><?php _e( 'Yoast Comment Hacks', 'yoast-comment-hacks' ); ?></h2>
@@ -19,7 +20,7 @@
 		</h2>
 
 		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="yoast-ch-conf" method="post">
-			<?php settings_fields( $this->option_name ); ?>
+			<?php settings_fields( $option_name ); ?>
 
 			<div id="comment-length" class="yoasttab active">
 				<h3><?php _e( 'Minimum comment length', 'yoast-comment-hacks' ); ?></h3>
@@ -35,7 +36,7 @@
 						<td>
 							<input type="number" class="small-text" min="5" max="255"
 							       value="<?php echo esc_attr( $this->options['mincomlength'] ); ?>"
-							       name="<?php echo esc_attr( $this->option_name ); ?>[mincomlength]"
+							       name="<?php echo $option_name; ?>[mincomlength]"
 							       id="mincomlength"/>
 						</td>
 					</tr>
@@ -46,7 +47,7 @@
 						</th>
 						<td>
 					<textarea rows="4" cols="80"
-					          name="<?php echo esc_attr( $this->option_name ); ?>[mincomlengtherror]"
+					          name="<?php echo $option_name; ?>[mincomlengtherror]"
 					          id="mincomlengtherror"><?php echo esc_html( $this->options['mincomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
@@ -65,7 +66,7 @@
                         <td>
                             <input type="number" class="small-text" min="5"
                                    value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
-                                   name="<?php echo esc_attr( $this->option_name ); ?>[maxcomlength]"
+                                   name="<?php echo $option_name; ?>[maxcomlength]"
                                    id="maxcomlength"/>
                         </td>
                     </tr>
@@ -76,7 +77,7 @@
                         </th>
                         <td>
 					<textarea rows="4" cols="80"
-                              name="<?php echo esc_attr( $this->option_name ); ?>[maxcomlengtherror]"
+                              name="<?php echo $option_name; ?>[maxcomlengtherror]"
                               id="maxcomlengtherror"><?php echo esc_html( $this->options['maxcomlengtherror'] ); ?></textarea>
                         </td>
                     </tr>
@@ -96,7 +97,7 @@
 							<label for="email_body"><?php _e( 'E-mail subject', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-							<input type="text" name="<?php echo esc_attr( $this->option_name ); ?>[email_subject]"
+							<input type="text" name="<?php echo $option_name; ?>[email_subject]"
 							       id="email_subject"
 							       value="<?php echo esc_attr( $this->options['email_subject'] ); ?>"/>
 						</td>
@@ -106,7 +107,7 @@
 							<label for="email_body"><?php _e( 'E-mail body', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-					<textarea rows="4" cols="100" name="<?php echo esc_attr( $this->option_name ); ?>[email_body]"
+					<textarea rows="4" cols="100" name="<?php echo $option_name; ?>[email_body]"
 					          id="email_body"><?php echo esc_html( $this->options['email_body'] ); ?></textarea>
 						</td>
 					</tr>
@@ -116,7 +117,7 @@
 								for="mass_email_body"><?php _e( 'E-mail all commenters body', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-					<textarea rows="4" cols="100" name="<?php echo esc_attr( $this->option_name ); ?>[mass_email_body]"
+					<textarea rows="4" cols="100" name="<?php echo $option_name; ?>[mass_email_body]"
 					          id="mass_email_body"><?php echo esc_html( $this->options['mass_email_body'] ); ?></textarea>
 						</td>
 					</tr>
@@ -138,7 +139,7 @@
 							wp_dropdown_pages( array(
 								'depth'             => 0,
 								'id'                => 'redirect_page',
-								'name'              => $this->option_name . '[redirect_page]',
+								'name'              => $option_name . '[redirect_page]',
 								'option_none_value' => 0,
 								'selected'          => isset( $this->options['redirect_page'] ) ? $this->options['redirect_page'] : 0,
 								'show_option_none'  => __( 'Don\'t redirect first time commenters', 'yoast-comment-hacks' ),
@@ -163,7 +164,7 @@
 								for="clean_emails"><?php _e( 'Clean comment emails', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="checkbox" id="clean_emails"
-						           name="<?php echo esc_attr( $this->option_name ); ?>[clean_emails]" <?php checked( $this->options['clean_emails'] ); ?> />
+						           name="<?php echo $option_name; ?>[clean_emails]" <?php checked( $this->options['clean_emails'] ); ?> />
 						</td>
 					</tr>
 				</table>

@@ -13,7 +13,7 @@ class YoastCommentHacks {
 	/**
 	 * @var string Holds the plugins option name
 	 */
-	private $option_name = 'yoast_comment_hacks';
+	public static $option_name = 'yoast_comment_hacks';
 
 	/**
 	 * @var array Holds the plugins options
@@ -24,7 +24,7 @@ class YoastCommentHacks {
 	 * Class constructor
 	 */
 	public function __construct() {
-		$this->options = get_option( $this->option_name );
+		$this->options = self::get_options();
 		$this->set_defaults();
 		$this->upgrade();
 
@@ -41,7 +41,16 @@ class YoastCommentHacks {
 
 		new YoastCommentNotifications();
 		new YoastCommentHacksEmailLinks();
-		new YoastCommentLength( $this->options );
+		new YoastCommentFormHacks();
+		new YoastCommentLength();
+	}
+
+	/**
+	 * Returns the comment hacks options
+	 * @return array
+	 */
+	public static function get_options() {
+		return get_option( self::$option_name );
 	}
 
 	/**
@@ -94,7 +103,7 @@ class YoastCommentHacks {
 			$this->options['version']      = YOAST_COMMENT_HACKS_VERSION;
 		}
 
-		update_option( $this->option_name, $this->options );
+		update_option( YoastCommentHacks::$option_name, $this->options );
 	}
 
 	/**
@@ -127,6 +136,6 @@ class YoastCommentHacks {
 	public function set_defaults() {
 		$this->options = wp_parse_args( $this->options, self::get_defaults() );
 
-		update_option( $this->option_name, $this->options );
+		update_option( YoastCommentHacks::$option_name, $this->options );
 	}
 }

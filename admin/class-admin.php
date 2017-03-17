@@ -16,11 +16,6 @@ class YoastCommentHacksAdmin {
 	private $hook = 'yoast-comment-hacks';
 
 	/**
-	 * @var string Holds the plugins option name
-	 */
-	private $option_name = 'yoast_comment_hacks';
-
-	/**
 	 * @var array Holds the plugins options
 	 */
 	private $options = array();
@@ -34,7 +29,7 @@ class YoastCommentHacksAdmin {
 	 * Class constructor
 	 */
 	public function __construct() {
-		$this->options = get_option( $this->option_name );
+		$this->options = YoastCommentHacks::get_options();
 
 		// Hook into init for registration of the option and the language files.
 		add_action( 'admin_init', array( $this, 'init' ) );
@@ -58,7 +53,7 @@ class YoastCommentHacksAdmin {
 	 */
 	public function init() {
 		// Register our option array.
-		register_setting( $this->option_name, $this->option_name, array( $this, 'options_validate' ) );
+		register_setting( YoastCommentHacks::$option_name, YoastCommentHacks::$option_name, array( $this, 'options_validate' ) );
 	}
 
 	/**
