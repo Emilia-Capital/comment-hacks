@@ -2,7 +2,7 @@
 Contributors: joostdevalk, yoast
 Tags: comments, spam, emails
 Requires at least: 4.5
-Tested up to: 4.7.2
+Tested up to: 4.8
 Stable tag: 1.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
