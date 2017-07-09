@@ -81,13 +81,30 @@ class YoastCommentHacks {
 	}
 
 	/**
+	 * See if the option has been cached, if it is, return it, otherwise return false.
+	 *
+	 * @param string $option The option to check for.
+	 *
+	 * @since 1.3
+	 *
+	 * @return bool|mixed
+	 */
+	private function get_option_from_cache( $option ) {
+		$options = wp_load_alloptions();
+		if ( isset( $options[ $option ] ) ) {
+			return $option;
+		}
+		return false;
+	}
+
+	/**
 	 * Check whether any old options are in there and if so upgrade them
 	 *
 	 * @since 1.0
 	 */
 	private function upgrade() {
 		foreach ( array( 'MinComLengthOptions', 'min_comment_length_option', 'CommentRedirect' ) as $old_option ) {
-			$old_option_values = get_option( $old_option );
+			$old_option_values = $this->get_option_from_cache( $old_option );
 			if ( is_array( $old_option_values ) ) {
 				if ( isset( $old_option_values['page'] ) ) {
 					$old_option_values['redirect_page'] = $old_option_values['page'];

@@ -58,6 +58,7 @@ See the screenshots to get an even better idea of the plugins functionality.
     * Remove `[...]` from pingback / trackback excerpt in cleaned emails as that's already included by core.
     * Replace link to ARIN with link to [ip-lookup.net](http://ip-lookup.net) for details about the IP.
     * Refactored code for readability and code quality.
+    * Refactor upgrade routine to do less DB queries.
 
 = 1.2 =
 
