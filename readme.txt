@@ -3,7 +3,7 @@ Contributors: joostdevalk, yoast
 Tags: comments, spam, emails
 Requires at least: 4.5
 Tested up to: 4.8
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,11 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 == Changelog ==
 
+= 1.4 =
+
+* Enhancements:
+    * Limit the roles shown in the comment notifications dropdown to roles that normally exist and can write. Introduces a new filter to allow expanding them.
+    
 = 1.3 =
 
 * Enhancements:
