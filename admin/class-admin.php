@@ -78,7 +78,7 @@ class YoastCommentHacksAdmin {
 	 * @link https://github.com/Yoast/i18n-module
 	 */
 	public function register_i18n_promo_class() {
-		new Yoast_I18n_WordPressOrg_v2(
+		new Yoast_I18n_WordPressOrg_v3(
 			array(
 				'textdomain'  => 'yoast-comment-hacks',
 				'plugin_name' => 'Yoast Comment Hacks',
