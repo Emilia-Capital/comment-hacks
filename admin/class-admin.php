@@ -7,19 +7,15 @@
  * Class YoastCommentHacksAdmin
  */
 class YoastCommentHacksAdmin {
-
 	const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
-
 	/**
 	 * @var string The plugin page hook
 	 */
 	private $hook = 'yoast-comment-hacks';
-
 	/**
 	 * @var array Holds the plugins options
 	 */
 	private $options = array();
-
 	/**
 	 * @var int The absolute minimum comment length when this plugin is enabled
 	 */
@@ -53,7 +49,10 @@ class YoastCommentHacksAdmin {
 	 */
 	public function init() {
 		// Register our option array.
-		register_setting( YoastCommentHacks::$option_name, YoastCommentHacks::$option_name, array( $this, 'options_validate' ) );
+		register_setting( YoastCommentHacks::$option_name, YoastCommentHacks::$option_name, array(
+			$this,
+			'options_validate',
+		) );
 	}
 
 	/**
@@ -94,20 +93,25 @@ class YoastCommentHacksAdmin {
 		echo '<br><br>';
 		echo '<label for="comment_notification_recipient">' . __( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
 
-		$post_id = filter_input( INPUT_POST, 'post', FILTER_VALIDATE_INT );
+		$post_id = filter_input( INPUT_GET, 'post', FILTER_VALIDATE_INT );
 
-		/** 
+		/**
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications. Defaults to contributor and up.
 		 */
-		$roles = apply_filters( 'yoast_comment_hacks_notification_roles', array( 'author', 'contributor', 'editor', 'administrator' ) );
-		
+		$roles = apply_filters( 'yoast_comment_hacks_notification_roles', array(
+			'author',
+			'contributor',
+			'editor',
+			'administrator',
+		) );
+
 		wp_dropdown_users(
 			array(
 				'selected'          => get_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, true ),
 				'show_option_none'  => 'Post author',
 				'name'              => 'comment_notification_recipient',
 				'id'                => 'comment_notification_recipient',
-				'role__in'	    => $roles,
+				'role__in'          => $roles,
 				'option_none_value' => 0,
 			)
 		);
