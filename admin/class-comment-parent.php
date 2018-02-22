@@ -48,6 +48,10 @@ class YoastCommentParent {
 		$comment_parent = filter_input( INPUT_POST, 'yst_comment_parent', FILTER_VALIDATE_INT );
 		$comment_id     = filter_input( INPUT_POST, 'comment_ID', FILTER_VALIDATE_INT );
 
+		if ( empty( $comment_id ) && empty( $comment_parent ) ) {
+			return; // There might be another reason for a comment to be updated.
+		}
+
 		if ( defined( 'DOING_AJAX' ) && DOING_AJAX === true ) {
 			check_ajax_referer( 'replyto-comment', '_ajax_nonce-replyto-comment' );
 		}
