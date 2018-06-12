@@ -31,7 +31,7 @@ class YoastCommentFormHacks {
 	 * @return array
 	 */
 	public function filter_defaults( $defaults ) {
-		$defaults['comment_notes_before'] = 'You have to agree to the comment policy.';
+		$defaults['comment_notes_before'] = '<span class="agree-comment-policy">You have to agree to the comment policy.</span>';
 
 		return $defaults;
 	}
