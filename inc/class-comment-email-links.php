@@ -85,6 +85,10 @@ class YoastCommentHacksEmailLinks {
 	 * Adds styling to our email button
 	 */
 	public function wp_head_css() {
+		if ( ! is_admin_bar_showing() ) {
+			return;
+		}
+
 		echo '
 		<style>
 		#wpadminbar #wp-admin-bar-yst-email-commenters .ab-icon {
