@@ -3,7 +3,7 @@ Contributors: joostdevalk, yoast
 Tags: comments, spam, emails
 Requires at least: 4.5
 Tested up to: 4.8
-Stable tag: 1.4
+Stable tag: 1.5
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,12 @@ See the screenshots to get an even better idea of the plugins functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.5 =
+
+* Bugfixes:
+    * Fixed: comment recipient dropdown would reset on reload of the page.
+    * Fixed: admin bar CSS showing when no admin bar is showing.
 
 = 1.4 =
 
