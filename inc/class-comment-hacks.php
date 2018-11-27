@@ -157,7 +157,6 @@ class YoastCommentHacks {
 		$defaults = self::get_defaults();
 		if ( ! isset( $this->options['version'] ) || YOAST_COMMENT_HACKS_VERSION > $this->options['version'] ) {
 			$this->options = wp_parse_args( $this->options, $defaults );
-			update_option( self::$option_name, $this->options );
 			$this->upgrade();
 		}
 	}
