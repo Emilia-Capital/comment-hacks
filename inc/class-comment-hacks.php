@@ -16,6 +16,11 @@ class YoastCommentHacks {
 	public static $option_name = 'yoast_comment_hacks';
 
 	/**
+	 * @var int DB version for the plugin options.
+	 */
+	public static $option_version = 1;
+
+	/**
 	 * @var array Holds the plugins options
 	 */
 	private $options = array();
@@ -64,7 +69,11 @@ class YoastCommentHacks {
 	 * @return string $url the URL to be redirected to, altered if this was a first time comment.
 	 */
 	public function comment_redirect( $url, $comment ) {
-		$has_approved_comment = get_comments( array( 'author_email' => $comment->comment_author_email, 'number' => 1, 'status' => 'approve' ) );
+		$has_approved_comment = get_comments( array(
+			'author_email' => $comment->comment_author_email,
+			'number'       => 1,
+			'status'       => 'approve',
+		) );
 
 		// If no approved comments have been found, show the thank-you page.
 		if ( empty( $has_approved_comment ) ) {
@@ -94,6 +103,7 @@ class YoastCommentHacks {
 		if ( isset( $options[ $option ] ) ) {
 			return $option;
 		}
+
 		return false;
 	}
 
@@ -142,6 +152,7 @@ class YoastCommentHacks {
 			'maxcomlength'      => 1500,
 			'maxcomlengtherror' => __( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
 			'redirect_page'     => 0,
+			'db_version'        => self::$option_version,
 		);
 	}
 
@@ -151,8 +162,10 @@ class YoastCommentHacks {
 	 * @since 1.0
 	 */
 	public function set_defaults() {
-		$this->options = wp_parse_args( $this->options, self::get_defaults() );
-
-		update_option( YoastCommentHacks::$option_name, $this->options );
+		$defaults = self::get_defaults();
+		if ( ! isset( $this->options['db_version'] ) || $defaults['db_version'] > $this->options['db_version'] ) {
+			$this->options = wp_parse_args( $this->options, self::get_defaults() );
+			update_option( YoastCommentHacks::$option_name, $this->options );
+		}
 	}
 }
