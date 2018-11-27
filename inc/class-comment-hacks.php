@@ -16,11 +16,6 @@ class YoastCommentHacks {
 	public static $option_name = 'yoast_comment_hacks';
 
 	/**
-	 * @var int DB version for the plugin options.
-	 */
-	public static $option_version = 1;
-
-	/**
 	 * @var array Holds the plugins options
 	 */
 	private $options = array();
@@ -31,7 +26,6 @@ class YoastCommentHacks {
 	public function __construct() {
 		$this->options = self::get_options();
 		$this->set_defaults();
-		$this->upgrade();
 
 		// Filter the redirect URL.
 		add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
@@ -126,11 +120,10 @@ class YoastCommentHacks {
 		}
 
 		if ( ! isset( $this->options['version'] ) ) {
-			$this->options['clean_emails'] = true;
-			$this->options['version']      = YOAST_COMMENT_HACKS_VERSION;
+			$this->options['version'] = YOAST_COMMENT_HACKS_VERSION;
 		}
 
-		update_option( YoastCommentHacks::$option_name, $this->options );
+		update_option( self::$option_name, $this->options );
 	}
 
 	/**
@@ -152,7 +145,6 @@ class YoastCommentHacks {
 			'maxcomlength'      => 1500,
 			'maxcomlengtherror' => __( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
 			'redirect_page'     => 0,
-			'db_version'        => self::$option_version,
 		);
 	}
 
@@ -161,11 +153,12 @@ class YoastCommentHacks {
 	 *
 	 * @since 1.0
 	 */
-	public function set_defaults() {
+	private function set_defaults() {
 		$defaults = self::get_defaults();
-		if ( ! isset( $this->options['db_version'] ) || $defaults['db_version'] > $this->options['db_version'] ) {
-			$this->options = wp_parse_args( $this->options, self::get_defaults() );
-			update_option( YoastCommentHacks::$option_name, $this->options );
+		if ( ! isset( $this->options['version'] ) || YOAST_COMMENT_HACKS_VERSION > $this->options['version'] ) {
+			$this->options = wp_parse_args( $this->options, $defaults );
+			update_option( self::$option_name, $this->options );
+			$this->upgrade();
 		}
 	}
 }
