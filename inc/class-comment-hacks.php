@@ -30,6 +30,7 @@ class YoastCommentHacks {
 
 		// Filter the redirect URL.
 		add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
+		add_filter( 'sanitize_option_' . self::$option_name, array( $this, 'sanitize' ), 10, 1 );
 
 		if ( $this->options['clean_emails'] ) {
 			new YoastCleanEmails();
@@ -64,7 +65,11 @@ class YoastCommentHacks {
 	 * @return string $url the URL to be redirected to, altered if this was a first time comment.
 	 */
 	public function comment_redirect( $url, $comment ) {
-		$has_approved_comment = get_comments( array( 'author_email' => $comment->comment_author_email, 'number' => 1, 'status' => 'approve' ) );
+		$has_approved_comment = get_comments( array(
+			'author_email' => $comment->comment_author_email,
+			'number'       => 1,
+			'status'       => 'approve',
+		) );
 
 		// If no approved comments have been found, show the thank-you page.
 		if ( empty( $has_approved_comment ) ) {
@@ -94,6 +99,7 @@ class YoastCommentHacks {
 		if ( isset( $options[ $option ] ) ) {
 			return $option;
 		}
+
 		return false;
 	}
 
@@ -130,18 +136,21 @@ class YoastCommentHacks {
 	 */
 	public static function get_defaults() {
 		return array(
-			'clean_emails'      => true,
+			'clean_emails'         => true,
+			'comment_policy'       => false,
+			'comment_policy_text'  => __( 'I agree to the comment policy.', 'yoast-comment-hacks' ),
+			'comment_policy_error' => __( 'You have to agree to the comment policy.', 'yoast-comment-hacks' ),
 			/* translators: %s expands to the post title */
-			'email_subject'     => sprintf( __( 'RE: %s', 'yoast-comment-hacks' ), '%title%' ),
+			'email_subject'        => sprintf( __( 'RE: %s', 'yoast-comment-hacks' ), '%title%' ),
 			/* translators: %1$s expands to the commenters first name, %2$s to the post tittle, %3$s to the post permalink, %4$s expands to a double line break. */
-			'email_body'        => sprintf( __( 'Hi %1$s,%4$sI\'m emailing you because you commented on my post "%2$s" - %3$s', 'yoast-comment-hacks' ), '%firstname%', '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
+			'email_body'           => sprintf( __( 'Hi %1$s,%4$sI\'m emailing you because you commented on my post "%2$s" - %3$s', 'yoast-comment-hacks' ), '%firstname%', '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
 			/* translators: %1$s expands to the the post tittle, %2$s to the post permalink, %3$s expands to a double line break. */
-			'mass_email_body'   => sprintf( __( 'Hi,%3$sI\'m sending you all this email because you commented on my post "%1$s" - %2$s', 'yoast-comment-hacks' ), '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
-			'mincomlength'      => 15,
-			'mincomlengtherror' => __( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
-			'maxcomlength'      => 1500,
-			'maxcomlengtherror' => __( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
-			'redirect_page'     => 0,
+			'mass_email_body'      => sprintf( __( 'Hi,%3$sI\'m sending you all this email because you commented on my post "%1$s" - %2$s', 'yoast-comment-hacks' ), '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
+			'mincomlength'         => 15,
+			'mincomlengtherror'    => __( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
+			'maxcomlength'         => 1500,
+			'maxcomlengtherror'    => __( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
+			'redirect_page'        => 0,
 		);
 	}
 

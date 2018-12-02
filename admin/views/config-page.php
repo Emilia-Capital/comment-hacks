@@ -11,6 +11,8 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 		<h2 class="nav-tab-wrapper" id="yoast-tabs">
 			<a class="nav-tab nav-tab-active" id="comment-length-tab"
 			   href="#top#comment-length"><?php _e( 'Comment length', 'yoast-comment-hacks' ); ?></a>
+			<a class="nav-tab nav-tab-active" id="comment-policy-tab"
+			   href="#top#comment-policy"><?php _e( 'Comment policy', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="email-links-tab"
 			   href="#top#email-links"><?php _e( 'Email links', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="comment-redirect-tab"
@@ -28,60 +30,116 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 				<p><?php _e( 'Users that try to submit a comment smaller than the length you set below will get an error immediately. The text of that error is specified below too.', 'yoast-comment-hacks' ); ?></p>
 				<table class="form-table">
 					<tr valign="top">
-						<th scrope="row">
+						<th scope="row">
 							<label
-								for="mincomlength"><?php _e( 'Minimum length', 'yoast-comment-hacks' ); ?>
+									for="mincomlength"><?php _e( 'Minimum length', 'yoast-comment-hacks' ); ?>
 							</label>
 						</th>
 						<td>
 							<input type="number" class="small-text" min="5" max="255"
-							       value="<?php echo esc_attr( $this->options['mincomlength'] ); ?>"
-							       name="<?php echo $option_name; ?>[mincomlength]"
-							       id="mincomlength"/>
+								   value="<?php echo esc_attr( $this->options['mincomlength'] ); ?>"
+								   name="<?php echo $option_name; ?>[mincomlength]"
+								   id="mincomlength"/>
 						</td>
 					</tr>
 					<tr valign="top">
-						<th scrope="row">
-							<label
-								for="mincomlengtherror"><?php _e( 'Error message for comment that is too short', 'yoast-comment-hacks' ); ?></label>
+						<th scope="row">
+							<label for="mincomlengtherror"><?php _e( 'Error message for comment that is too short', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
 					<textarea rows="4" cols="80"
-					          name="<?php echo $option_name; ?>[mincomlengtherror]"
-					          id="mincomlengtherror"><?php echo esc_html( $this->options['mincomlengtherror'] ); ?></textarea>
+							  name="<?php echo $option_name; ?>[mincomlengtherror]"
+							  id="mincomlengtherror"><?php echo esc_html( $this->options['mincomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
 
-                <h3><?php _e( 'Maximum comment length', 'yoast-comment-hacks' ); ?></h3>
+				<h3><?php _e( 'Maximum comment length', 'yoast-comment-hacks' ); ?></h3>
 
-                <p><?php _e( 'Users that try to submit a comment longer than the length you set below will get an error immediately. The text of that error is specified below too.', 'yoast-comment-hacks' ); ?></p>
-                <table class="form-table">
-                    <tr valign="top">
-                        <th scrope="row">
-                            <label
-                                    for="maxcomlength"><?php _e( 'Maximum length', 'yoast-comment-hacks' ); ?>
-                            </label>
-                        </th>
-                        <td>
-                            <input type="number" class="small-text" min="5"
-                                   value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
-                                   name="<?php echo $option_name; ?>[maxcomlength]"
-                                   id="maxcomlength"/>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <th scrope="row">
-                            <label
-                                    for="maxcomlengtherror"><?php _e( 'Error message for comment that is too long', 'yoast-comment-hacks' ); ?></label>
-                        </th>
-                        <td>
+				<p><?php _e( 'Users that try to submit a comment longer than the length you set below will get an error immediately. The text of that error is specified below too.', 'yoast-comment-hacks' ); ?></p>
+				<table class="form-table">
+					<tr valign="top">
+						<th scope="row">
+							<label
+									for="maxcomlength"><?php _e( 'Maximum length', 'yoast-comment-hacks' ); ?>
+							</label>
+						</th>
+						<td>
+							<input type="number" class="small-text" min="5"
+								   value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
+								   name="<?php echo $option_name; ?>[maxcomlength]"
+								   id="maxcomlength"/>
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row">
+							<label
+									for="maxcomlengtherror"><?php _e( 'Error message for comment that is too long', 'yoast-comment-hacks' ); ?></label>
+						</th>
+						<td>
 					<textarea rows="4" cols="80"
-                              name="<?php echo $option_name; ?>[maxcomlengtherror]"
-                              id="maxcomlengtherror"><?php echo esc_html( $this->options['maxcomlengtherror'] ); ?></textarea>
-                        </td>
-                    </tr>
-                </table>
+							  name="<?php echo $option_name; ?>[maxcomlengtherror]"
+							  id="maxcomlengtherror"><?php echo esc_html( $this->options['maxcomlengtherror'] ); ?></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="comment-policy" class="yoasttab">
+				<h3><?php _e( 'Comment policy', 'yoast-comment-hacks' ); ?></h3>
+				<p><?php _e( 'This feature allows you to institute a comment policy for your site. To enable it, set a text in the input field below.', 'yoast-comment-hacks' ); ?></p>
+				<table class="form-table">
+					<tr valign="top">
+						<th scope="row">
+							<label for="comment_policy"><?php _e( 'Comment policy', 'yoast-comment-hacks' ); ?></label>
+						</th>
+						<td>
+							<input type="checkbox" <?php checked( $this->options['comment_policy'] ); ?>" name="<?php echo $option_name; ?>[comment_policy]" id="comment_policy"/>
+							<p><?php _e( 'Enable the comment policy functionality.', 'yoast-comment-hacks' ); ?></p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row">
+							<label for="comment_policy_page"><?php _e( 'Comment policy page', 'yoast-comment-hacks' ); ?></label>
+						</th>
+						<td>
+							<?php
+							// A dropdown of all pages in the current WP install.
+							wp_dropdown_pages( array(
+								'depth'             => 0,
+								'id'                => 'comment_policy_page',
+								'name'              => $option_name . '[comment_policy_page]',
+								'option_none_value' => 0,
+								'selected'          => isset( $this->options['comment_policy_page'] ) ? $this->options['comment_policy_page'] : 0,
+								'show_option_none'  => __( 'Select comment policy page', 'yoast-comment-hacks' ),
+							) );
+							?>
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row">
+							<label for="comment_policy_text"><?php _e( 'Comment policy line', 'yoast-comment-hacks' ); ?></label>
+						</th>
+						<td>
+							<input type="text" class="regular-text"
+								   value="<?php echo esc_attr( $this->options['comment_policy_text'] ); ?>"
+								   name="<?php echo $option_name; ?>[comment_policy_text]"
+								   id="comment_policy_text"/>
+							<p><?php _e( 'Text that appears along with a checkbox above the comment submit button.', 'yoast-comment-hacks' ); ?></p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row">
+							<label
+									for="comment_policy_error"><?php _e( 'Error message for not checking comment policy checkbox', 'yoast-comment-hacks' ); ?></label>
+						</th>
+						<td>
+					<textarea rows="4" cols="80"
+							  name="<?php echo $option_name; ?>[comment_policy_error]"
+							  id="comment_policy_error"><?php echo esc_html( $this->options['comment_policy_error'] ); ?></textarea>
+						</td>
+					</tr>
+				</table>
 			</div>
 
 			<div id="email-links" class="yoasttab">
@@ -97,9 +155,9 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 							<label for="email_body"><?php _e( 'E-mail subject', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-							<input type="text" name="<?php echo $option_name; ?>[email_subject]"
-							       id="email_subject"
-							       value="<?php echo esc_attr( $this->options['email_subject'] ); ?>"/>
+							<input type="text" class="regular-text" name="<?php echo $option_name; ?>[email_subject]"
+								   id="email_subject"
+								   value="<?php echo esc_attr( $this->options['email_subject'] ); ?>"/>
 						</td>
 					</tr>
 					<tr>
@@ -108,17 +166,17 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 						</th>
 						<td>
 					<textarea rows="4" cols="100" name="<?php echo $option_name; ?>[email_body]"
-					          id="email_body"><?php echo esc_html( $this->options['email_body'] ); ?></textarea>
+							  id="email_body"><?php echo esc_html( $this->options['email_body'] ); ?></textarea>
 						</td>
 					</tr>
 					<tr>
 						<th scope="row" valign="top">
 							<label
-								for="mass_email_body"><?php _e( 'E-mail all commenters body', 'yoast-comment-hacks' ); ?></label>
+									for="mass_email_body"><?php _e( 'E-mail all commenters body', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
 					<textarea rows="4" cols="100" name="<?php echo $option_name; ?>[mass_email_body]"
-					          id="mass_email_body"><?php echo esc_html( $this->options['mass_email_body'] ); ?></textarea>
+							  id="mass_email_body"><?php echo esc_html( $this->options['mass_email_body'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -161,10 +219,10 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 					<tr>
 						<th scope="row" valign="top">
 							<label
-								for="clean_emails"><?php _e( 'Clean comment emails', 'yoast-comment-hacks' ); ?></label>
+									for="clean_emails"><?php _e( 'Clean comment emails', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="checkbox" id="clean_emails"
-						           name="<?php echo $option_name; ?>[clean_emails]" <?php checked( $this->options['clean_emails'] ); ?> />
+								   name="<?php echo $option_name; ?>[clean_emails]" <?php checked( $this->options['clean_emails'] ); ?> />
 						</td>
 					</tr>
 				</table>

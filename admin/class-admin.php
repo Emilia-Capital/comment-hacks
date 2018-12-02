@@ -145,14 +145,10 @@ class YoastCommentHacksAdmin {
 		$input['mincomlength']  = (int) $input['mincomlength'];
 		$input['maxcomlength']  = (int) $input['maxcomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
-		$input['clean_emails']  = isset( $input['clean_emails'] ) ? 1 : 0;
 		$input['version']       = YOAST_COMMENT_HACKS_VERSION;
 
-		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
-			if ( '' === $input[ $key ] ) {
-				$input[ $key ] = $defaults[ $key ];
-			}
-		}
+		$input = $this->sanitize_bool( $input, array( 'comment_policy', 'clean_emails' ) );
+		$input = $this->sanitize_string( $input, $defaults, array( 'email_subject', 'email_body', 'mass_email_body' ) );
 
 		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
 			/* translators: %d is replaced with the minimum number of characters */
@@ -216,5 +212,43 @@ class YoastCommentHacksAdmin {
 			// @codingStandardsIgnoreEnd
 			echo '</div>';
 		}
+	}
+
+	/**
+	 * Turns checkbox values into booleans.
+	 *
+	 * @param array $input The array with input values.
+	 * @param array $keys  The keys to sanitize.
+	 *
+	 * @return array $input The array with sanitized input values.
+	 */
+	private function sanitize_bool( $input, $keys ) {
+		foreach ( $keys as $key ) {
+			if ( $input[ $key ] === 'on' ) {
+				$input[ $key ] = true;
+			}
+			if ( empty( $input[ $key ] ) ) {
+				$input[ $key ] = false;
+			}
+		}
+		return $input;
+	}
+
+	/**
+	 * Turns empty string into defaults.
+	 *
+	 * @param array $input    The array with input values.
+	 * @param array $defaults The array with default values.
+	 * @param array $keys     The keys to sanitize.
+	 *
+	 * @return array $input The array with sanitized input values.
+	 */
+	private function sanitize_string( $input, $defaults, $keys ) {
+		foreach ( $keys as $key ) {
+			if ( '' === $input[ $key ] ) {
+				$input[ $key ] = $defaults[ $key ];
+			}
+		}
+		return $input;
 	}
 }
