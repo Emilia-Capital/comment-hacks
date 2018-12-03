@@ -28,7 +28,8 @@
 		"xrstf/composer-php52": "^1.0.20"
 	},
 	"require-dev": {
-		"yoast/yoastcs": "1.0"
+		"yoast/yoastcs": "1.0",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.4.3"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,

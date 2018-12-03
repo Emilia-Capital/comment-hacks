@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Comment hacks - comment length class.
+ *
  * @package YoastCommentHacks
  */
 
@@ -10,9 +11,10 @@
  * @since 1.3
  */
 class YoastCommentLength {
-
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options.
+	 *
+	 * @var array
 	 */
 	private $options = array();
 
@@ -53,19 +55,19 @@ class YoastCommentLength {
 		}
 
 		if ( $error ) {
-			wp_die( esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . __( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+			wp_die( esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
 		}
 		return $comment_data;
 	}
 
 	/**
-	 * Returns the comment length for a comment
+	 * Returns the comment length for a comment.
 	 *
 	 * @since 1.3
 	 *
-	 * @param string $comment
+	 * @param string $comment The comment to measure.
 	 *
-	 * @return int
+	 * @return int Lenght of the comment.
 	 */
 	private function get_comment_length( $comment ) {
 		$comment = trim( $comment );

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Comment Hacks main class.
+ *
  * @package YoastCommentHacks
  */
 
@@ -9,16 +11,26 @@
  * @since 1.0
  */
 class YoastCommentHacks {
-
 	/**
-	 * @var string Holds the plugins option name
+	 * Holds the plugins option name.
+	 *
+	 * @var string
 	 */
 	public static $option_name = 'yoast_comment_hacks';
 
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options.
+	 *
+	 * @var array
 	 */
 	private $options = array();
+
+	/**
+	 * The absolute minimum comment length when this plugin is enabled.
+	 *
+	 * @var int
+	 */
+	private $absolute_min = 0;
 
 	/**
 	 * Class constructor
@@ -28,16 +40,19 @@ class YoastCommentHacks {
 		$this->set_defaults();
 		$this->upgrade();
 
+		// Hook into init for registration of the option.
+		add_action( 'admin_init', array( $this, 'init' ) );
+
 		// Filter the redirect URL.
 		add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
-		add_filter( 'sanitize_option_' . self::$option_name, array( $this, 'sanitize' ), 10, 1 );
+
 
 		if ( $this->options['clean_emails'] ) {
 			new YoastCleanEmails();
 		}
 
 		if ( is_admin() ) {
-			new YoastCommentHacksAdmin();
+			new Yoast_Comment_Hacks_Admin();
 		}
 
 		new YoastCommentNotifications();
@@ -47,7 +62,18 @@ class YoastCommentHacks {
 	}
 
 	/**
-	 * Returns the comment hacks options
+	 * Register the text domain and the options array along with the validation function.
+	 *
+	 * @return void
+	 */
+	public function init() {
+		// Register our option array.
+		register_setting( self::$option_name, self::$option_name, array( $this, 'sanitize' ) );
+	}
+
+	/**
+	 * Returns the comment hacks options.
+	 *
 	 * @return array
 	 */
 	public static function get_options() {
@@ -65,11 +91,13 @@ class YoastCommentHacks {
 	 * @return string $url the URL to be redirected to, altered if this was a first time comment.
 	 */
 	public function comment_redirect( $url, $comment ) {
-		$has_approved_comment = get_comments( array(
-			'author_email' => $comment->comment_author_email,
-			'number'       => 1,
-			'status'       => 'approve',
-		) );
+		$has_approved_comment = get_comments(
+			array(
+				'author_email' => $comment->comment_author_email,
+				'number'       => 1,
+				'status'       => 'approve',
+			)
+		);
 
 		// If no approved comments have been found, show the thank-you page.
 		if ( empty( $has_approved_comment ) ) {
@@ -92,7 +120,7 @@ class YoastCommentHacks {
 	 *
 	 * @since 1.3
 	 *
-	 * @return bool|mixed
+	 * @return bool|mixed Either the option, or false.
 	 */
 	private function get_option_from_cache( $option ) {
 		$options = wp_load_alloptions();
@@ -107,6 +135,8 @@ class YoastCommentHacks {
 	 * Check whether any old options are in there and if so upgrade them
 	 *
 	 * @since 1.0
+	 *
+	 * @return void
 	 */
 	private function upgrade() {
 		foreach ( array( 'MinComLengthOptions', 'min_comment_length_option', 'CommentRedirect' ) as $old_option ) {
@@ -126,13 +156,13 @@ class YoastCommentHacks {
 			$this->options['version']      = YOAST_COMMENT_HACKS_VERSION;
 		}
 
-		update_option( YoastCommentHacks::$option_name, $this->options );
+		update_option( self::$option_name, $this->options );
 	}
 
 	/**
 	 * Returns the default settings
 	 *
-	 * @return array
+	 * @return array The plugins defaults.
 	 */
 	public static function get_defaults() {
 		return array(
@@ -140,6 +170,7 @@ class YoastCommentHacks {
 			'comment_policy'       => false,
 			'comment_policy_text'  => __( 'I agree to the comment policy.', 'yoast-comment-hacks' ),
 			'comment_policy_error' => __( 'You have to agree to the comment policy.', 'yoast-comment-hacks' ),
+			'comment_policy_page'  => 0,
 			/* translators: %s expands to the post title */
 			'email_subject'        => sprintf( __( 'RE: %s', 'yoast-comment-hacks' ), '%title%' ),
 			/* translators: %1$s expands to the commenters first name, %2$s to the post tittle, %3$s to the post permalink, %4$s expands to a double line break. */
@@ -158,10 +189,93 @@ class YoastCommentHacks {
 	 * Set default values for the plugin. If old, as in pre 1.0, settings are there, use them and then delete them.
 	 *
 	 * @since 1.0
+	 *
+	 * @return void
 	 */
 	public function set_defaults() {
 		$this->options = wp_parse_args( $this->options, self::get_defaults() );
 
-		update_option( YoastCommentHacks::$option_name, $this->options );
+		update_option( self::$option_name, $this->options );
+	}
+
+	/**
+	 * Validate the input, make sure comment length is an integer and above the minimum value.
+	 *
+	 * @since 1.0
+	 *
+	 * @param mixed $input The sanitized option value.
+	 *
+	 * @return array $input with validated options.
+	 */
+	public function sanitize( $input ) {
+		$defaults = YoastCommentHacks::get_defaults();
+
+		if ( ! is_array( $input ) ) {
+			return $defaults;
+		}
+
+		foreach ( $input as $key => $value ) {
+			switch ( $key ) {
+				case 'mincomlength':
+				case 'maxcomlength':
+				case 'redirect_page':
+					$input[ $key ] = (int) $value;
+					break;
+				case 'version':
+					$input[ $key ] = YOAST_COMMENT_HACKS_VERSION;
+					break;
+				case 'comment_policy':
+				case 'clean_emails':
+					$input[ $key ] = $this->sanitize_bool( $value );
+					break;
+				case 'email_subject':
+				case 'email_body':
+				case 'mass_email_body':
+					$input[ $key ] = $this->sanitize_string( $value, $defaults[ $key ] );
+					break;
+			}
+		}
+
+		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
+			/* translators: %d is replaced with the minimum number of characters */
+			add_settings_error( self::$option_name, 'min_length_invalid', sprintf( __( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'yoast-comment-hacks' ), $this->absolute_min ) );
+			$input['mincomlength'] = 15;
+		}
+
+		return $input;
+	}
+
+	/**
+	 * Turns checkbox values into booleans.
+	 *
+	 * @param mixed $value The input value to cast to boolean.
+	 *
+	 * @return bool $value The boolean output value.
+	 */
+	private function sanitize_bool( $value ) {
+		if ( $value ) {
+			$value = true;
+		}
+		if ( empty( $value ) ) {
+			$value = false;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Turns empty string into defaults.
+	 *
+	 * @param mixed  $value   The input value.
+	 * @param string $default The default value of the string.
+	 *
+	 * @return array $input The array with sanitized input values.
+	 */
+	private function sanitize_string( $value, $default ) {
+		if ( '' === $value ) {
+			$value = $default;
+		}
+
+		return $value;
 	}
 }

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Comment Hacks file.
+ *
  * @package YoastCommentHacks\CleanEmails
  */
 
@@ -9,22 +11,30 @@
 class YoastCleanEmails {
 
 	/**
-	 * @var int Holds the current comment's ID
+	 * Holds the current comment's ID.
+	 *
+	 * @var int
 	 */
 	private $comment_id = 0;
 
 	/**
-	 * @var object Holds the current comment
+	 * Holds the current comment.
+	 *
+	 * @var object
 	 */
 	private $comment;
 
 	/**
-	 * @var object Holds the comment's post
+	 * Holds the comment's post.
+	 *
+	 * @var object
 	 */
 	private $post;
 
 	/**
-	 * @var string Holds the email message
+	 * Holds the email message.
+	 *
+	 * @var string
 	 */
 	private $message;
 
@@ -40,7 +50,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Set the comment email headers to HTML
+	 * Set the comment email headers to HTML.
 	 *
 	 * @param string $message_headers The message headers for the comment email.
 	 *

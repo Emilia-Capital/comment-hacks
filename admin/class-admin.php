@@ -1,34 +1,38 @@
 <?php
 /**
+ * Comment Hacks admin file.
+ *
  * @package YoastCommentHacks\Admin
  */
 
 /**
  * Class YoastCommentHacksAdmin
+ *
+ * Renders and handles all admin activity for Comment Hacks.
  */
-class YoastCommentHacksAdmin {
+class Yoast_Comment_Hacks_Admin {
+	/**
+	 * The key that contains the comment notification recipient.
+	 */
 	const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
 	/**
-	 * @var string The plugin page hook
+	 * The plugin page hook.
+	 *
+	 * @var string
 	 */
 	private $hook = 'yoast-comment-hacks';
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options.
+	 *
+	 * @var array
 	 */
 	private $options = array();
-	/**
-	 * @var int The absolute minimum comment length when this plugin is enabled
-	 */
-	private $absolute_min = 0;
 
 	/**
 	 * Class constructor
 	 */
 	public function __construct() {
 		$this->options = YoastCommentHacks::get_options();
-
-		// Hook into init for registration of the option and the language files.
-		add_action( 'admin_init', array( $this, 'init' ) );
 
 		// Register the settings page.
 		add_action( 'admin_menu', array( $this, 'add_config_page' ) );
@@ -41,22 +45,13 @@ class YoastCommentHacksAdmin {
 		add_action( 'post_comment_status_meta_box-options', array( $this, 'reroute_comment_emails_option' ) );
 		add_action( 'save_post', array( $this, 'save_reroute_comment_emails' ) );
 
-		new YoastCommentParent();
+		new Yoast_Comment_Parent();
 	}
 
 	/**
-	 * Register the text domain and the options array along with the validation function
-	 */
-	public function init() {
-		// Register our option array.
-		register_setting( YoastCommentHacks::$option_name, YoastCommentHacks::$option_name, array(
-			$this,
-			'options_validate',
-		) );
-	}
-
-	/**
-	 * Enqueue our admin script
+	 * Enqueue our admin script.
+	 *
+	 * @return void
 	 */
 	public function enqueue() {
 		$page = filter_input( INPUT_GET, 'page' );
@@ -72,9 +67,11 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Register the promotion class for our GlotPress instance
+	 * Register the promotion class for our GlotPress instance.
 	 *
 	 * @link https://github.com/Yoast/i18n-module
+	 *
+	 * @return void
 	 */
 	public function register_i18n_promo_class() {
 		new Yoast_I18n_WordPressOrg_v3(
@@ -87,23 +84,28 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Adds the comment email recipients dropdown
+	 * Adds the comment email recipients dropdown.
+	 *
+	 * @return void
 	 */
 	public function reroute_comment_emails_option() {
 		echo '<br><br>';
-		echo '<label for="comment_notification_recipient">' . __( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
+		echo '<label for="comment_notification_recipient">' . esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
 
 		$post_id = filter_input( INPUT_GET, 'post', FILTER_VALIDATE_INT );
 
 		/**
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications. Defaults to contributor and up.
 		 */
-		$roles = apply_filters( 'yoast_comment_hacks_notification_roles', array(
-			'author',
-			'contributor',
-			'editor',
-			'administrator',
-		) );
+		$roles = apply_filters(
+			'yoast_comment_hacks_notification_roles',
+			array(
+				'author',
+				'contributor',
+				'editor',
+				'administrator',
+			)
+		);
 
 		wp_dropdown_users(
 			array(
@@ -118,10 +120,11 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Saves the comment email recipients post meta
+	 * Saves the comment email recipients post meta.
+	 *
+	 * @return void
 	 */
 	public function save_reroute_comment_emails() {
-
 		$post_id      = filter_input( INPUT_POST, 'ID', FILTER_VALIDATE_INT );
 		$recipient_id = filter_input( INPUT_POST, 'comment_notification_recipient', FILTER_VALIDATE_INT );
 
@@ -131,51 +134,30 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Validate the input, make sure comment length is an integer and above the minimum value.
+	 * Register the config page for all users that have the manage_options capability.
 	 *
-	 * @since 1.0
-	 *
-	 * @param array $input with unvalidated options.
-	 *
-	 * @return array $input with validated options.
-	 */
-	public function options_validate( $input ) {
-		$defaults = YoastCommentHacks::get_defaults();
-
-		$input['mincomlength']  = (int) $input['mincomlength'];
-		$input['maxcomlength']  = (int) $input['maxcomlength'];
-		$input['redirect_page'] = (int) $input['redirect_page'];
-		$input['version']       = YOAST_COMMENT_HACKS_VERSION;
-
-		$input = $this->sanitize_bool( $input, array( 'comment_policy', 'clean_emails' ) );
-		$input = $this->sanitize_string( $input, $defaults, array( 'email_subject', 'email_body', 'mass_email_body' ) );
-
-		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
-			/* translators: %d is replaced with the minimum number of characters */
-			add_settings_error( $this->option_name, 'min_length_invalid', sprintf( __( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'yoast-comment-hacks' ), $this->absolute_min ) );
-			$input['mincomlength'] = 15;
-		}
-
-		return $input;
-	}
-
-	/**
-	 * Register the config page for all users that have the manage_options capability
+	 * @return void
 	 */
 	public function add_config_page() {
-		add_options_page( __( 'Yoast Comment Hacks', 'yoast-comment-hacks' ), __( 'Comment Hacks', 'yoast-comment-hacks' ), 'manage_options', $this->hook, array(
-			$this,
-			'config_page',
-		) );
+		add_options_page(
+			__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
+			__( 'Comment Hacks', 'yoast-comment-hacks' ),
+			'manage_options',
+			$this->hook,
+			array(
+				$this,
+				'config_page',
+			)
+		);
 	}
 
 	/**
-	 * Register the settings link for the plugins page
+	 * Register the settings link for the plugins page.
 	 *
 	 * @param array  $links The plugin action links.
 	 * @param string $file  The plugin file.
 	 *
-	 * @return array
+	 * @return array Array with plugin settings links.
 	 */
 	public function filter_plugin_actions( $links, $file ) {
 		/* Static so we don't call plugin_basename on every plugin row. */
@@ -194,9 +176,11 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Output the config page
+	 * Output the config page.
 	 *
 	 * @since 0.5
+	 *
+	 * @return void
 	 */
 	public function config_page() {
 		$this->register_i18n_promo_class();
@@ -212,43 +196,5 @@ class YoastCommentHacksAdmin {
 			// @codingStandardsIgnoreEnd
 			echo '</div>';
 		}
-	}
-
-	/**
-	 * Turns checkbox values into booleans.
-	 *
-	 * @param array $input The array with input values.
-	 * @param array $keys  The keys to sanitize.
-	 *
-	 * @return array $input The array with sanitized input values.
-	 */
-	private function sanitize_bool( $input, $keys ) {
-		foreach ( $keys as $key ) {
-			if ( $input[ $key ] === 'on' ) {
-				$input[ $key ] = true;
-			}
-			if ( empty( $input[ $key ] ) ) {
-				$input[ $key ] = false;
-			}
-		}
-		return $input;
-	}
-
-	/**
-	 * Turns empty string into defaults.
-	 *
-	 * @param array $input    The array with input values.
-	 * @param array $defaults The array with default values.
-	 * @param array $keys     The keys to sanitize.
-	 *
-	 * @return array $input The array with sanitized input values.
-	 */
-	private function sanitize_string( $input, $defaults, $keys ) {
-		foreach ( $keys as $key ) {
-			if ( '' === $input[ $key ] ) {
-				$input[ $key ] = $defaults[ $key ];
-			}
-		}
-		return $input;
 	}
 }

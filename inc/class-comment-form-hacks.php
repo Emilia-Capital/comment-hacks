@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Comment Hacks file. Deals with changes to the comment form.
+ *
  * @package YoastCommentHacks
  */
 
@@ -36,8 +37,8 @@ class YoastCommentFormHacks {
 		if ( $this->options['comment_policy'] ) {
 			echo '<label class="agree-comment-policy">';
 			echo '<input type="checkbox" name="comment_policy">';
-			echo '<a href="' . get_permalink( $this->options['comment_policy_page'] ) . '">';
-			$this->options['comment_policy'];
+			echo '<a href="' . esc_url( get_permalink( $this->options['comment_policy_page'] ) ) . '">';
+			echo esc_html( $this->options['comment_policy_text'] );
 			echo '</a>';
 			echo '</label>';
 		}
@@ -51,8 +52,9 @@ class YoastCommentFormHacks {
 	 * @return array
 	 */
 	public function check_comment_policy( $comment_data ) {
+		// phpcs:ignore WordPress.Security.NonceVerification.NoNonceVerification -- Comment forms (unfortunately) are always without nonces.
 		if ( ! isset( $_POST['comment_policy'] ) && ( $_POST['comment_policy'] !== 'on' || $_POST['comment_policy'] !== true ) ) {
-			wp_die( esc_html( $this->options['comment_policy_error'] ) . '<br /><a href="javascript:history.go(-1);">' . __( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+			wp_die( esc_html( $this->options['comment_policy_error'] ) . '<br /><a href="javascript:history.go(-1);">' . esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
 		}
 
 		return $comment_data;

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Main plugin file.
+ *
  * @package YoastCommentHacks
 
 Plugin Name: Yoast Comment Hacks
