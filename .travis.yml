@@ -31,7 +31,7 @@ cache:
 before_install:
   - if [[ "$COVERAGE" != "1" ]]; then phpenv config-rm xdebug.ini || echo 'No xdebug config.'; fi
   - |
-    if [[ "$CHECKJS" == "1" ]]; then
+    if [[ "$CHECK" == "1" ]]; then
       nvm install $TRAVIS_NODE_VERSION
       curl -o- -L https://yarnpkg.com/install.sh | bash
       export PATH=$HOME/.yarn/bin:$PATH
