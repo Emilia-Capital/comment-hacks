@@ -49,10 +49,14 @@ class YoastCommentHacksAdmin {
 	 */
 	public function init() {
 		// Register our option array.
-		register_setting( YoastCommentHacks::$option_name, YoastCommentHacks::$option_name, array(
-			$this,
-			'options_validate',
-		) );
+		register_setting(
+			YoastCommentHacks::$option_name,
+			YoastCommentHacks::$option_name,
+			array(
+				$this,
+				'options_validate',
+			)
+		);
 	}
 
 	/**
@@ -98,12 +102,15 @@ class YoastCommentHacksAdmin {
 		/**
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications. Defaults to contributor and up.
 		 */
-		$roles = apply_filters( 'yoast_comment_hacks_notification_roles', array(
-			'author',
-			'contributor',
-			'editor',
-			'administrator',
-		) );
+		$roles = apply_filters(
+			'yoast_comment_hacks_notification_roles',
+			array(
+				'author',
+				'contributor',
+				'editor',
+				'administrator',
+			)
+		);
 
 		wp_dropdown_users(
 			array(
@@ -167,10 +174,16 @@ class YoastCommentHacksAdmin {
 	 * Register the config page for all users that have the manage_options capability
 	 */
 	public function add_config_page() {
-		add_options_page( __( 'Yoast Comment Hacks', 'yoast-comment-hacks' ), __( 'Comment Hacks', 'yoast-comment-hacks' ), 'manage_options', $this->hook, array(
-			$this,
-			'config_page',
-		) );
+		add_options_page(
+			__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
+			__( 'Comment Hacks', 'yoast-comment-hacks' ),
+			'manage_options',
+			$this->hook,
+			array(
+				$this,
+				'config_page',
+			)
+		);
 	}
 
 	/**

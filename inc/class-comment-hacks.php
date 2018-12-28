@@ -47,6 +47,7 @@ class YoastCommentHacks {
 
 	/**
 	 * Returns the comment hacks options
+	 *
 	 * @return array
 	 */
 	public static function get_options() {
@@ -64,7 +65,13 @@ class YoastCommentHacks {
 	 * @return string $url the URL to be redirected to, altered if this was a first time comment.
 	 */
 	public function comment_redirect( $url, $comment ) {
-		$has_approved_comment = get_comments( array( 'author_email' => $comment->comment_author_email, 'number' => 1, 'status' => 'approve' ) );
+		$has_approved_comment = get_comments(
+			array(
+				'author_email' => $comment->comment_author_email,
+				'number' => 1,
+				'status' => 'approve',
+			)
+		);
 
 		// If no approved comments have been found, show the thank-you page.
 		if ( empty( $has_approved_comment ) ) {
@@ -120,7 +127,7 @@ class YoastCommentHacks {
 			$this->options['version']      = YOAST_COMMENT_HACKS_VERSION;
 		}
 
-		update_option( YoastCommentHacks::$option_name, $this->options );
+		update_option( self::$option_name, $this->options );
 	}
 
 	/**
@@ -153,6 +160,6 @@ class YoastCommentHacks {
 	public function set_defaults() {
 		$this->options = wp_parse_args( $this->options, self::get_defaults() );
 
-		update_option( YoastCommentHacks::$option_name, $this->options );
+		update_option( self::$option_name, $this->options );
 	}
 }
