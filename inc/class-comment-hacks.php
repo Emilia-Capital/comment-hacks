@@ -1,5 +1,7 @@
 <?php
 /**
+ * Main comment hacks functionality.
+ *
  * @package YoastCommentHacks
  */
 
@@ -11,12 +13,16 @@
 class YoastCommentHacks {
 
 	/**
-	 * @var string Holds the plugins option name
+	 * Holds the plugins option name
+	 *
+	 * @var string
 	 */
 	public static $option_name = 'yoast_comment_hacks';
 
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options
+	 *
+	 * @var array
 	 */
 	private $options = array();
 

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Admin handling class.
+ *
  * @package YoastCommentHacks\Admin
  */
 
@@ -9,15 +11,23 @@
 class YoastCommentHacksAdmin {
 	const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
 	/**
-	 * @var string The plugin page hook
+	 * The plugin page hook
+	 *
+	 * @var string
 	 */
 	private $hook = 'yoast-comment-hacks';
+
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options
+	 *
+	 * @var array
 	 */
 	private $options = array();
+
 	/**
-	 * @var int The absolute minimum comment length when this plugin is enabled
+	 * The absolute minimum comment length when this plugin is enabled
+	 *
+	 * @var int
 	 */
 	private $absolute_min = 0;
 

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Manage links in comments
+ *
  * @package YoastCommentHacks\Email_Links
  */
 
@@ -9,7 +11,9 @@
 class YoastCommentHacksEmailLinks {
 
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options
+	 *
+	 * @var array
 	 */
 	private $options = array();
 

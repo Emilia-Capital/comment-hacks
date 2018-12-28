@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Comment parent handling class.
+ *
  * @package YoastCommentHacks\Admin
  */
 

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Notifications about comments
+ *
  * @package YoastCommentHacks
  */
 
@@ -45,10 +47,10 @@ class YoastCommentNotifications {
 	/**
 	 * Filter the headers of the comment notification
 	 *
-	 * @param string $message_headers
-	 * @param int    $comment_id
+	 * @param string $message_headers The headers of the message.
+	 * @param int    $comment_id      The ID of the comment.
 	 *
-	 * @return string
+	 * @return string Enhanced headers.
 	 */
 	public function filter_notification_headers( $message_headers, $comment_id ) {
 		$comment = get_comment( $comment_id );
