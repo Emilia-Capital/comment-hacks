@@ -56,7 +56,7 @@ class YoastCommentLength {
 		}
 
 		if ( $error ) {
-			wp_die( esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . __( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+			wp_die( esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
 		}
 		return $comment_data;
 	}
