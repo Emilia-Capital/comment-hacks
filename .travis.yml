@@ -37,6 +37,11 @@ install:
       composer install --no-interaction
       if [[ $TRAVIS_PHP_VERSION == "5.2" ]]; then phpenv local --unset; fi
     fi
+  - |
+    if [[ "$CHECK" == "1" ]]; then
+      yarn global add grunt-cli
+      yarn install
+    fi
 
 before_script:
   - export -f travis_fold
