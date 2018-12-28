@@ -12,6 +12,7 @@
     <arg value="nsp" />
 
     <rule ref="Yoast">
+        <exclude name="Yoast.Files.FileName.InvalidClassFileName"/>
     </rule>
 
 </ruleset>
