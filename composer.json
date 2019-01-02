@@ -28,7 +28,7 @@
 		"xrstf/composer-php52": "^1.0.20"
 	},
 	"require-dev": {
-		"yoast/yoastcs": "0.3"
+		"yoast/yoastcs": "^1.2.1"
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,

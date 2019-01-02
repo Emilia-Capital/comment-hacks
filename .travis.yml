@@ -13,7 +13,7 @@ jobs:
   fast_finish: true
   include:
     - php: 7.3
-      env: PHPLINT=1 CHECK=1
+      env: PHPLINT=1 CHECK=1 TRAVIS_NODE_VERSION=node
     - php: 5.3
       # As 'trusty' is not supporting PHP 5.2/5.3 anymore, we need to force using 'precise'.
       dist: precise
@@ -23,12 +23,19 @@ jobs:
       dist: precise
 
 cache:
+  yarn: true
   directories:
-    - vendor
     - $HOME/.composer/cache
+    - node_modules
 
 before_install:
   - if [[ "$COVERAGE" != "1" ]]; then phpenv config-rm xdebug.ini || echo 'No xdebug config.'; fi
+  - |
+    if [[ "$CHECK" == "1" ]]; then
+      nvm install $TRAVIS_NODE_VERSION
+      curl -o- -L https://yarnpkg.com/install.sh | bash
+      export PATH=$HOME/.yarn/bin:$PATH
+    fi
 
 install:
   - |
@@ -36,6 +43,11 @@ install:
       if [[ $TRAVIS_PHP_VERSION == "5.2" ]]; then phpenv local 5.6.13; fi
       composer install --no-interaction
       if [[ $TRAVIS_PHP_VERSION == "5.2" ]]; then phpenv local --unset; fi
+    fi
+  - |
+    if [[ "$CHECK" == "1" ]]; then
+      yarn global add grunt-cli
+      yarn install
     fi
 
 before_script:

@@ -1,5 +1,7 @@
 <?php
 /**
+ * Notifications about comments
+ *
  * @package YoastCommentHacks
  */
 
@@ -24,12 +26,12 @@ class YoastCommentNotifications {
 	 * Filter the recipients of the comment notification
 	 *
 	 * @param array $recipients Recipients of the notification email.
-	 * @param int   $comment_ID Comment the notification is sent for.
+	 * @param int   $comment_id Comment the notification is sent for.
 	 *
 	 * @return array
 	 */
-	public function filter_notification_recipients( $recipients, $comment_ID ) {
-		$comment = get_comment( $comment_ID );
+	public function filter_notification_recipients( $recipients, $comment_id ) {
+		$comment = get_comment( $comment_id );
 
 		$new_recipient = get_post_meta( $comment->comment_post_ID, '_comment_notification_recipient', true );
 
@@ -45,10 +47,10 @@ class YoastCommentNotifications {
 	/**
 	 * Filter the headers of the comment notification
 	 *
-	 * @param string $message_headers
-	 * @param int    $comment_id
+	 * @param string $message_headers The headers of the message.
+	 * @param int    $comment_id      The ID of the comment.
 	 *
-	 * @return string
+	 * @return string Enhanced headers.
 	 */
 	public function filter_notification_headers( $message_headers, $comment_id ) {
 		$comment = get_comment( $comment_id );
