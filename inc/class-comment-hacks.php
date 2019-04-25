@@ -6,28 +6,28 @@
  */
 
 /**
- * Class YoastCommentHacks
+ * Class YoastCommentHacks.
  *
  * @since 1.0
  */
 class YoastCommentHacks {
 
 	/**
-	 * Holds the plugins option name
+	 * Holds the plugins option name.
 	 *
 	 * @var string
 	 */
 	public static $option_name = 'yoast_comment_hacks';
 
 	/**
-	 * Holds the plugins options
+	 * Holds the plugins options.
 	 *
 	 * @var array
 	 */
 	private $options = array();
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->options = self::get_options();
@@ -52,7 +52,7 @@ class YoastCommentHacks {
 	}
 
 	/**
-	 * Returns the comment hacks options
+	 * Returns the comment hacks options.
 	 *
 	 * @return array
 	 */
@@ -111,7 +111,7 @@ class YoastCommentHacks {
 	}
 
 	/**
-	 * Check whether any old options are in there and if so upgrade them
+	 * Check whether any old options are in there and if so upgrade them.
 	 *
 	 * @since 1.0
 	 */
@@ -137,7 +137,7 @@ class YoastCommentHacks {
 	}
 
 	/**
-	 * Returns the default settings
+	 * Returns the default settings.
 	 *
 	 * @return array
 	 */
