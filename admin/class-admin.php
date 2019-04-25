@@ -10,6 +10,11 @@
  */
 class YoastCommentHacksAdmin {
 
+	/**
+	 * Recipient key.
+	 *
+	 * @var string
+	 */
 	const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
 
 	/**
