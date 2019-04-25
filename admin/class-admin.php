@@ -110,7 +110,10 @@ class YoastCommentHacksAdmin {
 		$post_id = filter_input( INPUT_GET, 'post', FILTER_VALIDATE_INT );
 
 		/**
-		 * This filter allows filtering which roles should be shown in the dropdown for notifications. Defaults to contributor and up.
+		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
+		 * Defaults to contributor and up.
+		 *
+		 * @param array $roles Array with user roles.
 		 */
 		$roles = apply_filters(
 			'yoast_comment_hacks_notification_roles',
