@@ -214,7 +214,7 @@ class YoastCleanEmails {
 		$comments_waiting = $wpdb->get_var( "SELECT count(comment_ID) FROM $wpdb->comments WHERE comment_approved = '0'" );
 
 		if ( $comments_waiting > 1 ) {
-			$comments_waiting --;
+			$comments_waiting--;
 			/* translators: %s is replaced with the number of comments waiting for approval */
 			$this->message .= sprintf( __( 'Currently this and %s other comments are waiting for approval.', 'yoast-comment-hacks' ), number_format_i18n( $comments_waiting ) );
 			$this->message .= ' ';

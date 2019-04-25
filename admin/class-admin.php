@@ -9,7 +9,9 @@
  * Class YoastCommentHacksAdmin
  */
 class YoastCommentHacksAdmin {
+
 	const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
+
 	/**
 	 * The plugin page hook
 	 *

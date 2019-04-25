@@ -56,7 +56,7 @@ class YoastCommentNotifications {
 		$comment = get_comment( $comment_id );
 
 		if ( '' !== $comment->comment_author && '' !== $comment->comment_author_email ) {
-			$name = esc_html( $comment->comment_author );
+			$name             = esc_html( $comment->comment_author );
 			$message_headers .= "\nReply-To: $name <$comment->comment_author_email>\n";
 
 			return $message_headers;

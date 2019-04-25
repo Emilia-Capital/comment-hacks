@@ -74,8 +74,8 @@ class YoastCommentHacks {
 		$has_approved_comment = get_comments(
 			array(
 				'author_email' => $comment->comment_author_email,
-				'number' => 1,
-				'status' => 'approve',
+				'number'       => 1,
+				'status'       => 'approve',
 			)
 		);
 

@@ -153,7 +153,7 @@ class YoastCommentHacksEmailLinks {
 		if ( is_numeric( $post ) ) {
 			$post = get_post( $post );
 		}
-		else if ( is_object( $comment ) && $comment->comment_post_ID > 0 ) {
+		elseif ( is_object( $comment ) && $comment->comment_post_ID > 0 ) {
 			$post = get_post( $comment->comment_post_ID );
 		}
 
