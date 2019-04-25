@@ -260,9 +260,14 @@ class Admin {
 		if ( \defined( 'WP_DEBUG' ) && \WP_DEBUG ) {
 			echo '<h4>', \esc_html__( 'Options debug', 'yoast-comment-hacks' ), '</h4>';
 			echo '<div style="border: 1px solid #aaa; padding: 20px;">';
-			// @codingStandardsIgnoreStart
-			echo str_replace( '<code>', '<code style="background-color: #eee; margin: 0; padding: 0;">', highlight_string( "<?php\n\$this->options = " . var_export( $this->options, true ) . ';', true ), $num );
-			// @codingStandardsIgnoreEnd
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Debug output.
+			echo \str_replace(
+				'<code>',
+				'<code style="background-color: #eee; margin: 0; padding: 0;">',
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export -- This is only shown in debug mode.
+				\highlight_string( "<?php\n\$this->options = " . \var_export( $this->options, true ) . ';', true ),
+				$num
+			);
 			echo '</div>';
 		}
 	}
