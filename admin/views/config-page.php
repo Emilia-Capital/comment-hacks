@@ -12,13 +12,13 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 
 		<h2 class="nav-tab-wrapper" id="yoast-tabs">
 			<a class="nav-tab nav-tab-active" id="comment-length-tab"
-			   href="#top#comment-length"><?php esc_html_e( 'Comment length', 'yoast-comment-hacks' ); ?></a>
+				href="#top#comment-length"><?php esc_html_e( 'Comment length', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="email-links-tab"
-			   href="#top#email-links"><?php esc_html_e( 'Email links', 'yoast-comment-hacks' ); ?></a>
+				href="#top#email-links"><?php esc_html_e( 'Email links', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="comment-redirect-tab"
-			   href="#top#comment-redirect"><?php esc_html_e( 'Comment redirect', 'yoast-comment-hacks' ); ?></a>
+				href="#top#comment-redirect"><?php esc_html_e( 'Comment redirect', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="clean-emails-tab"
-			   href="#top#clean-emails"><?php esc_html_e( 'Clean emails', 'yoast-comment-hacks' ); ?></a>
+				href="#top#clean-emails"><?php esc_html_e( 'Clean emails', 'yoast-comment-hacks' ); ?></a>
 		</h2>
 
 		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="yoast-ch-conf" method="post">
@@ -37,9 +37,9 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 						</th>
 						<td>
 							<input type="number" class="small-text" min="5" max="255"
-								   value="<?php echo esc_attr( $this->options['mincomlength'] ); ?>"
-								   name="<?php echo esc_attr( $option_name . '[mincomlength]' ); ?>"
-								   id="mincomlength"/>
+								value="<?php echo esc_attr( $this->options['mincomlength'] ); ?>"
+								name="<?php echo esc_attr( $option_name . '[mincomlength]' ); ?>"
+								id="mincomlength"/>
 						</td>
 					</tr>
 					<tr valign="top">
@@ -48,9 +48,9 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 								for="mincomlengtherror"><?php esc_html_e( 'Error message for comment that is too short', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-					<textarea rows="4" cols="80"
-							  name="<?php echo esc_attr( $option_name . '[mincomlengtherror]' ); ?>"
-							  id="mincomlengtherror"><?php echo esc_html( $this->options['mincomlengtherror'] ); ?></textarea>
+							<textarea rows="4" cols="80"
+								name="<?php echo esc_attr( $option_name . '[mincomlengtherror]' ); ?>"
+								id="mincomlengtherror"><?php echo esc_html( $this->options['mincomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -62,25 +62,25 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 					<tr valign="top">
 						<th scrope="row">
 							<label
-									for="maxcomlength"><?php esc_html_e( 'Maximum length', 'yoast-comment-hacks' ); ?>
+								for="maxcomlength"><?php esc_html_e( 'Maximum length', 'yoast-comment-hacks' ); ?>
 							</label>
 						</th>
 						<td>
 							<input type="number" class="small-text" min="5"
-								   value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
-								   name="<?php echo esc_attr( $option_name . '[maxcomlength]' ); ?>"
-								   id="maxcomlength"/>
+								value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
+								name="<?php echo esc_attr( $option_name . '[maxcomlength]' ); ?>"
+								id="maxcomlength"/>
 						</td>
 					</tr>
 					<tr valign="top">
 						<th scrope="row">
 							<label
-									for="maxcomlengtherror"><?php esc_html_e( 'Error message for comment that is too long', 'yoast-comment-hacks' ); ?></label>
+								for="maxcomlengtherror"><?php esc_html_e( 'Error message for comment that is too long', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-					<textarea rows="4" cols="80"
-							  name="<?php echo esc_attr( $option_name . '[maxcomlengtherror]' ); ?>"
-							  id="maxcomlengtherror"><?php echo esc_html( $this->options['maxcomlengtherror'] ); ?></textarea>
+							<textarea rows="4" cols="80"
+								name="<?php echo esc_attr( $option_name . '[maxcomlengtherror]' ); ?>"
+								id="maxcomlengtherror"><?php echo esc_html( $this->options['maxcomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -102,8 +102,8 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 						</th>
 						<td>
 							<input type="text" name="<?php echo esc_attr( $option_name . '[email_subject]' ); ?>"
-								   id="email_subject"
-								   value="<?php echo esc_attr( $this->options['email_subject'] ); ?>"/>
+								id="email_subject"
+								value="<?php echo esc_attr( $this->options['email_subject'] ); ?>"/>
 						</td>
 					</tr>
 					<tr>
@@ -111,8 +111,8 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 							<label for="email_body"><?php esc_html_e( 'E-mail body', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-					<textarea rows="4" cols="100" name="<?php echo esc_attr( $option_name . '[email_body]' ); ?>"
-							  id="email_body"><?php echo esc_html( $this->options['email_body'] ); ?></textarea>
+							<textarea rows="4" cols="100" name="<?php echo esc_attr( $option_name . '[email_body]' ); ?>"
+								id="email_body"><?php echo esc_html( $this->options['email_body'] ); ?></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -121,8 +121,8 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 								for="mass_email_body"><?php esc_html_e( 'E-mail all commenters body', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-					<textarea rows="4" cols="100" name="<?php echo esc_attr( $option_name . '[mass_email_body]' ); ?>"
-							  id="mass_email_body"><?php echo esc_html( $this->options['mass_email_body'] ); ?></textarea>
+							<textarea rows="4" cols="100" name="<?php echo esc_attr( $option_name . '[mass_email_body]' ); ?>"
+								id="mass_email_body"><?php echo esc_html( $this->options['mass_email_body'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -171,7 +171,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 								for="clean_emails"><?php esc_html_e( 'Clean comment emails', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="checkbox" id="clean_emails"
-								   name="<?php echo esc_attr( $option_name . '[clean_emails]' ); ?>" <?php checked( $this->options['clean_emails'] ); ?> />
+							name="<?php echo esc_attr( $option_name . '[clean_emails]' ); ?>" <?php checked( $this->options['clean_emails'] ); ?> />
 						</td>
 					</tr>
 				</table>
