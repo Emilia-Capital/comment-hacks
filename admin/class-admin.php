@@ -211,7 +211,7 @@ class YoastCommentHacksAdmin {
 			$this_plugin = plugin_basename( __FILE__ );
 		}
 
-		if ( $file == $this_plugin ) {
+		if ( $file === $this_plugin ) {
 			$settings_link = '<a href="' . admin_url( 'options-general.php?page=' . $this->hook ) . '">' . __( 'Settings', 'yoast-comment-hacks' ) . '</a>';
 			// Put our link before other links.
 			array_unshift( $links, $settings_link );
