@@ -2,7 +2,7 @@
 /**
  * Parent Box view.
  *
- * @package yoast_comment_hacks\admin
+ * @package YoastCommentHacks\admin
  */
 
 ?>

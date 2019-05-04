@@ -2,7 +2,7 @@
 /**
  * Config page admin view.
  *
- * @package yoast_comment_hacks\admin
+ * @package YoastCommentHacks\admin
  */
 
 $option_name = esc_attr( YoastCommentHacks::$option_name );
