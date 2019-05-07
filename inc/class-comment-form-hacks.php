@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Add comment note.
+ *
  * @package YoastCommentHacks
  */
 
@@ -12,7 +13,9 @@
 class YoastCommentFormHacks {
 
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options.
+	 *
+	 * @var array
 	 */
 	private $options = array();
 
@@ -26,9 +29,11 @@ class YoastCommentFormHacks {
 	}
 
 	/**
-	 * @param array $defaults
+	 * Filters the comment defaults.
 	 *
-	 * @return array
+	 * @param array $defaults The current defaults.
+	 *
+	 * @return array The filtered defaults.
 	 */
 	public function filter_defaults( $defaults ) {
 		$defaults['comment_notes_before'] = '<span class="agree-comment-policy">You have to agree to the comment policy.</span>';

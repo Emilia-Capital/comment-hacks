@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Comment parent handling class.
+ *
  * @package YoastCommentHacks\Admin
  */
 
@@ -34,10 +35,16 @@ class YoastCommentParent {
 	 */
 	public function load_comment_parent_box() {
 		if ( function_exists( 'add_meta_box' ) ) {
-			add_meta_box( 'comment_parent', 'Comment Parent', array(
-				$this,
-				'comment_parent_box',
-			), 'comment', 'normal' );
+			add_meta_box(
+				'comment_parent',
+				'Comment Parent',
+				array(
+					$this,
+					'comment_parent_box',
+				),
+				'comment',
+				'normal'
+			);
 		}
 	}
 

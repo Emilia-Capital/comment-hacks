@@ -23,8 +23,7 @@ build:
 # Check health of the project
 check:
   - 'jsonlint'
-  - 'jsvalidate'
-  - 'jscs'
+  - 'eslint'
   - 'phplint'
   - 'phpcs'
   - 'checktextdomain'

@@ -1,0 +1,83 @@
+language: php
+dist: trusty
+sudo: false
+
+branches:
+  only:
+    - master
+    - trunk
+    - /^release\/*/
+    - /^hotfix\/\d+\.\d+(\.\d+)?(-\S*)?$/
+
+jobs:
+  fast_finish: true
+  include:
+    - php: 7.3
+      env: PHPLINT=1 CHECK=1 TRAVIS_NODE_VERSION=node
+    - php: 5.3
+      # As 'trusty' is not supporting PHP 5.2/5.3 anymore, we need to force using 'precise'.
+      dist: precise
+    - php: 5.2
+      env: PHPLINT=1
+      # As 'trusty' is not supporting PHP 5.2/5.3 anymore, we need to force using 'precise'.
+      dist: precise
+
+cache:
+  yarn: true
+  directories:
+    - $HOME/.composer/cache
+    - node_modules
+
+before_install:
+  - if [[ "$COVERAGE" != "1" ]]; then phpenv config-rm xdebug.ini || echo 'No xdebug config.'; fi
+  - |
+    if [[ "$CHECK" == "1" ]]; then
+      nvm install $TRAVIS_NODE_VERSION
+      curl -o- -L https://yarnpkg.com/install.sh | bash
+      export PATH=$HOME/.yarn/bin:$PATH
+    fi
+
+install:
+  - |
+    if [[ "$CHECK" == "1" ]]; then
+      if [[ $TRAVIS_PHP_VERSION == "5.2" ]]; then phpenv local 5.6.13; fi
+      composer install --no-interaction
+      if [[ $TRAVIS_PHP_VERSION == "5.2" ]]; then phpenv local --unset; fi
+    fi
+  - |
+    if [[ "$CHECK" == "1" ]]; then
+      yarn global add grunt-cli
+      yarn install
+    fi
+
+before_script:
+  - export -f travis_fold
+  - export -f travis_time_start
+  - export -f travis_time_finish
+  - mysql --version
+  - phpenv versions
+  - php --version
+  - php -m
+  - curl --version
+  - git --version
+  - svn --version
+  - locale -a
+
+script:
+  # PHP Linting
+  - |
+    if [[ "$PHPLINT" == "1" ]]; then
+      travis_fold start "PHP.check" && travis_time_start
+      find -L . -path ./vendor -prune -o -path ./node_modules -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+      travis_time_finish && travis_fold end "PHP.check"
+    fi
+  # PHP CS
+  - |
+    if [[ "$CHECK" == "1" ]]; then
+      travis_fold start "Grunt.check" && travis_time_start
+      grunt check
+      travis_time_finish && travis_fold end "Grunt.check"
+    fi
+  # Validate the composer.json file.
+  # @link https://getcomposer.org/doc/03-cli.md#validate
+  - if [[ $TRAVIS_PHP_VERSION == "5.3" || $TRAVIS_PHP_VERSION == "7.3" ]]; then composer validate --no-check-all; fi

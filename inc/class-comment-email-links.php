@@ -1,5 +1,7 @@
 <?php
 /**
+ * Manage links in comments
+ *
  * @package YoastCommentHacks\Email_Links
  */
 
@@ -9,7 +11,9 @@
 class YoastCommentHacksEmailLinks {
 
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options
+	 *
+	 * @var array
 	 */
 	private $options = array();
 
@@ -73,12 +77,14 @@ class YoastCommentHacksEmailLinks {
 			}
 		</script>';
 
-		$wp_admin_bar->add_menu( array(
-			'id'    => 'yst-email-commenters',
-			'title' => '<span class="ab-icon" title="' . __( 'Email commenters', 'yoast-comment-hacks' ) . '"></span>',
-			'href'  => '#',
-			'meta'  => array( 'onclick' => 'yst_email_commenters(event)' ),
-		) );
+		$wp_admin_bar->add_menu(
+			array(
+				'id'    => 'yst-email-commenters',
+				'title' => '<span class="ab-icon" title="' . __( 'Email commenters', 'yoast-comment-hacks' ) . '"></span>',
+				'href'  => '#',
+				'meta'  => array( 'onclick' => 'yst_email_commenters(event)' ),
+			)
+		);
 	}
 
 	/**
@@ -102,7 +108,6 @@ class YoastCommentHacksEmailLinks {
 		}
 		</style>';
 	}
-
 
 	/**
 	 * Adds an "E-Mail" action to the comment action list on the comments overview page
@@ -156,7 +161,9 @@ class YoastCommentHacksEmailLinks {
 			return $msg;
 		}
 
-		$replacements = array_merge( $replacements, array(
+		$replacements = array_merge(
+			$replacements,
+			array(
 				'title'     => $post->post_title,
 				'permalink' => get_permalink( $post->ID ),
 			)

@@ -1,6 +1,7 @@
 <?php
-
 /**
+ * Checks the comments for allowed length.
+ *
  * @package YoastCommentHacks
  */
 
@@ -12,7 +13,9 @@
 class YoastCommentLength {
 
 	/**
-	 * @var array Holds the plugins options
+	 * Holds the plugins options
+	 *
+	 * @var array
 	 */
 	private $options = array();
 
@@ -53,7 +56,7 @@ class YoastCommentLength {
 		}
 
 		if ( $error ) {
-			wp_die( esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . __( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+			wp_die( esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
 		}
 		return $comment_data;
 	}
@@ -63,9 +66,9 @@ class YoastCommentLength {
 	 *
 	 * @since 1.3
 	 *
-	 * @param string $comment
+	 * @param string $comment The comment to determine length.
 	 *
-	 * @return int
+	 * @return int The length of the comment.
 	 */
 	private function get_comment_length( $comment ) {
 		$comment = trim( $comment );
