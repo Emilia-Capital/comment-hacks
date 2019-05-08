@@ -7,7 +7,7 @@
         "emails"
 	],
 	"homepage": "https://yoast.com/wordpress/plugins/comment-hacks/",
-	"license": "GPL-2.0+",
+	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
 			"name": "Team Yoast",
