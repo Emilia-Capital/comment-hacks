@@ -1,24 +1,24 @@
 <?php
 /**
- * Manage links in comments
+ * Manage links in comments.
  *
  * @package YoastCommentHacks\Email_Links
  */
 
 /**
- * Class YoastCommentHacksEmailLinks
+ * Class YoastCommentHacksEmailLinks.
  */
 class YoastCommentHacksEmailLinks {
 
 	/**
-	 * Holds the plugins options
+	 * Holds the plugins options.
 	 *
 	 * @var array
 	 */
 	private $options = array();
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->options = YoastCommentHacks::get_options();
@@ -27,7 +27,7 @@ class YoastCommentHacksEmailLinks {
 	}
 
 	/**
-	 * Init our hooks
+	 * Init our hooks.
 	 */
 	public function init() {
 		if ( is_admin() ) {
@@ -41,7 +41,7 @@ class YoastCommentHacksEmailLinks {
 	}
 
 	/**
-	 * Adds an email link to the admin bar to email all commenters
+	 * Adds an email link to the admin bar to email all commenters.
 	 */
 	public function admin_bar_comment_link() {
 		if ( ! is_singular() ) {
@@ -67,7 +67,7 @@ class YoastCommentHacksEmailLinks {
 		$url .= '&subject=' . $this->replace_variables( $this->options['email_subject'], false, $post->ID );
 		$url .= '&body=' . $this->replace_variables( $this->options['mass_email_body'], false, $post->ID );
 
-		// We can't set the 'href' attribute to the $url as then esc_url would garble the mailto link
+		// We can't set the 'href' attribute to the $url as then esc_url would garble the mailto link.
 		// So we do a nasty bit of JS workaround. The reason we grab the a href from the alternate link is
 		// so browser extensions like the Google Mail one that change mailto: links still work.
 		echo '<a href="' . esc_attr( $url ) . '" id="yst_email_commenters_alternate"></a><script>
@@ -88,7 +88,7 @@ class YoastCommentHacksEmailLinks {
 	}
 
 	/**
-	 * Adds styling to our email button
+	 * Adds styling to our email button.
 	 */
 	public function wp_head_css() {
 		if ( ! is_admin_bar_showing() ) {
@@ -110,7 +110,7 @@ class YoastCommentHacksEmailLinks {
 	}
 
 	/**
-	 * Adds an "E-Mail" action to the comment action list on the comments overview page
+	 * Adds an "E-Mail" action to the comment action list on the comments overview page.
 	 *
 	 * @param array $actions Array of actions we'll be adding our action to.
 	 *
@@ -139,7 +139,7 @@ class YoastCommentHacksEmailLinks {
 	}
 
 	/**
-	 * Replace variables with values in the message
+	 * Replace variables with values in the message.
 	 *
 	 * @param string         $msg     The message in which we're replacing variables.
 	 * @param boolean|object $comment The comment object.

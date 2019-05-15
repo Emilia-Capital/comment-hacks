@@ -31,12 +31,12 @@
  */
 
 /**
- * Used for version checks
+ * Used for version checks.
  */
 define( 'YOAST_COMMENT_HACKS_VERSION', '1.5' );
 
 /**
- * Used for asset embedding
+ * Used for asset embedding.
  */
 define( 'YOAST_COMMENT_HACKS_FILE', __FILE__ );
 

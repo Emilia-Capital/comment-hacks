@@ -6,7 +6,7 @@
  */
 
 /**
- * Class YoastCommentFormHacks
+ * Class YoastCommentFormHacks.
  *
  * @since 1.3
  */

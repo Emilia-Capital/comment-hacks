@@ -6,14 +6,14 @@
  */
 
 /**
- * Class YoastCommentParent
+ * Class YoastCommentParent.
  *
  * @since 1.3
  */
 class YoastCommentParent {
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		// The hooks for editing and saving the comment parent.
@@ -22,7 +22,7 @@ class YoastCommentParent {
 	}
 
 	/**
-	 * Shows the comment parent box where you can change the comment parent
+	 * Shows the comment parent box where you can change the comment parent.
 	 *
 	 * @param object $comment The comment object.
 	 */
@@ -31,7 +31,7 @@ class YoastCommentParent {
 	}
 
 	/**
-	 * Adds the comment parent box to the meta box
+	 * Adds the comment parent box to the meta box.
 	 */
 	public function load_comment_parent_box() {
 		if ( function_exists( 'add_meta_box' ) ) {
@@ -49,7 +49,7 @@ class YoastCommentParent {
 	}
 
 	/**
-	 * Updates the comment parent field
+	 * Updates the comment parent field.
 	 */
 	public function update_comment_parent() {
 		$comment_parent = filter_input( INPUT_POST, 'yst_comment_parent', FILTER_VALIDATE_INT );

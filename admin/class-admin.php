@@ -6,7 +6,7 @@
  */
 
 /**
- * Class YoastCommentHacksAdmin
+ * Class YoastCommentHacksAdmin.
  */
 class YoastCommentHacksAdmin {
 
@@ -18,28 +18,28 @@ class YoastCommentHacksAdmin {
 	const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
 
 	/**
-	 * The plugin page hook
+	 * The plugin page hook.
 	 *
 	 * @var string
 	 */
 	private $hook = 'yoast-comment-hacks';
 
 	/**
-	 * Holds the plugins options
+	 * Holds the plugins options.
 	 *
 	 * @var array
 	 */
 	private $options = array();
 
 	/**
-	 * The absolute minimum comment length when this plugin is enabled
+	 * The absolute minimum comment length when this plugin is enabled.
 	 *
 	 * @var int
 	 */
 	private $absolute_min = 0;
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->options = YoastCommentHacks::get_options();
@@ -62,7 +62,7 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Register the text domain and the options array along with the validation function
+	 * Register the text domain and the options array along with the validation function.
 	 */
 	public function init() {
 		// Register our option array.
@@ -77,7 +77,7 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Enqueue our admin script
+	 * Enqueue our admin script.
 	 */
 	public function enqueue() {
 		$page = filter_input( INPUT_GET, 'page' );
@@ -93,7 +93,7 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Register the promotion class for our GlotPress instance
+	 * Register the promotion class for our GlotPress instance.
 	 *
 	 * @link https://github.com/Yoast/i18n-module
 	 */
@@ -108,7 +108,7 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Adds the comment email recipients dropdown
+	 * Adds the comment email recipients dropdown.
 	 */
 	public function reroute_comment_emails_option() {
 		echo '<br><br>';
@@ -142,7 +142,7 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Saves the comment email recipients post meta
+	 * Saves the comment email recipients post meta.
 	 */
 	public function save_reroute_comment_emails() {
 
@@ -159,9 +159,9 @@ class YoastCommentHacksAdmin {
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $input with unvalidated options.
+	 * @param array $input Input with unvalidated options.
 	 *
-	 * @return array $input with validated options.
+	 * @return array $input Validated input.
 	 */
 	public function options_validate( $input ) {
 		$defaults = YoastCommentHacks::get_defaults();
@@ -188,7 +188,7 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Register the config page for all users that have the manage_options capability
+	 * Register the config page for all users that have the manage_options capability.
 	 */
 	public function add_config_page() {
 		add_options_page(
@@ -204,7 +204,7 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Register the settings link for the plugins page
+	 * Register the settings link for the plugins page.
 	 *
 	 * @param array  $links The plugin action links.
 	 * @param string $file  The plugin file.
@@ -228,7 +228,7 @@ class YoastCommentHacksAdmin {
 	}
 
 	/**
-	 * Output the config page
+	 * Output the config page.
 	 *
 	 * @since 0.5
 	 */

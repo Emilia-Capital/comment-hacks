@@ -1,19 +1,19 @@
 <?php
 /**
- * Notifications about comments
+ * Notifications about comments.
  *
  * @package YoastCommentHacks
  */
 
 /**
- * Class YoastCommentNotifications
+ * Class YoastCommentNotifications.
  *
  * @since 1.1
  */
 class YoastCommentNotifications {
 
 	/**
-	 * YoastCommentNotifications constructor
+	 * YoastCommentNotifications constructor.
 	 */
 	public function __construct() {
 		add_filter( 'comment_notification_recipients', array( $this, 'filter_notification_recipients' ), 10, 2 );
@@ -23,7 +23,7 @@ class YoastCommentNotifications {
 	}
 
 	/**
-	 * Filter the recipients of the comment notification
+	 * Filter the recipients of the comment notification.
 	 *
 	 * @param array $recipients Recipients of the notification email.
 	 * @param int   $comment_id Comment the notification is sent for.
@@ -45,7 +45,7 @@ class YoastCommentNotifications {
 	}
 
 	/**
-	 * Filter the headers of the comment notification
+	 * Filter the headers of the comment notification.
 	 *
 	 * @param string $message_headers The headers of the message.
 	 * @param int    $comment_id      The ID of the comment.

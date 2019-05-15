@@ -6,40 +6,40 @@
  */
 
 /**
- * Class YoastCleanEmails
+ * Class YoastCleanEmails.
  */
 class YoastCleanEmails {
 
 	/**
-	 * Holds the current comment's ID
+	 * Holds the current comment's ID.
 	 *
 	 * @var int
 	 */
 	private $comment_id = 0;
 
 	/**
-	 * Holds the current comment
+	 * Holds the current comment.
 	 *
 	 * @var object
 	 */
 	private $comment;
 
 	/**
-	 * Holds the comment's post
+	 * Holds the comment's post.
 	 *
 	 * @var object
 	 */
 	private $post;
 
 	/**
-	 * Holds the email message
+	 * Holds the email message.
 	 *
 	 * @var string
 	 */
 	private $message;
 
 	/**
-	 * Class constructor
+	 * Class constructor.
 	 */
 	public function __construct() {
 		add_filter( 'comment_notification_text', array( $this, 'comment_notification_text' ), 10, 2 );
@@ -50,7 +50,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Set the comment email headers to HTML
+	 * Set the comment email headers to HTML.
 	 *
 	 * @param string $message_headers The message headers for the comment email.
 	 *
@@ -65,7 +65,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Clean up the comment notification message
+	 * Clean up the comment notification message.
 	 *
 	 * @param string $message    The comment notification message.
 	 * @param int    $comment_id The ID of the comment the notification is for.
@@ -99,7 +99,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Clean up the comment moderation message
+	 * Clean up the comment moderation message.
 	 *
 	 * @param string $message    The comment moderation message.
 	 * @param int    $comment_id The ID of the comment the moderation notification is for.
@@ -135,7 +135,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Adds the basics of the email
+	 * Adds the basics of the email.
 	 */
 	private function add_comment_basics() {
 		$this->add_author_line();
@@ -145,7 +145,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Adds the author line to the message
+	 * Adds the author line to the message.
 	 */
 	private function add_author_line() {
 		if ( '' === $this->comment->comment_type ) {
@@ -159,7 +159,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Adds the content line to the message
+	 * Adds the content line to the message.
 	 */
 	private function add_content_line() {
 		if ( '' === $this->comment->comment_type ) {
@@ -173,7 +173,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Adds the URL line to the message
+	 * Adds the URL line to the message.
 	 */
 	private function add_url_line() {
 		if ( isset( $this->comment->comment_author_url ) && '' !== $this->comment->comment_author_url ) {
@@ -183,7 +183,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Wraps the message in some styling
+	 * Wraps the message in some styling.
 	 *
 	 * @return string
 	 */
@@ -192,7 +192,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Sets up class variables used with all emails
+	 * Sets up class variables used with all emails.
 	 *
 	 * @param int $comment_id The comment we're setting up variables for.
 	 */
@@ -207,7 +207,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Adds a sentence about the number of comments awaiting moderation
+	 * Adds a sentence about the number of comments awaiting moderation.
 	 */
 	private function get_moderation_msg() {
 		global $wpdb;
@@ -224,7 +224,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Returns a string containing comment moderation links
+	 * Returns a string containing comment moderation links.
 	 */
 	private function comment_moderation_actions() {
 		$actions = array(
@@ -238,7 +238,7 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Returns a string containing comment action links
+	 * Returns a string containing comment action links.
 	 */
 	private function comment_notification_actions() {
 		$actions = array(
@@ -267,9 +267,9 @@ class YoastCleanEmails {
 	}
 
 	/**
-	 * Creates a comment action link
+	 * Creates a comment action link.
 	 *
-	 * @param string $label The label for the comment action link.
+	 * @param string $label  The label for the comment action link.
 	 * @param string $action The action we're going to add.
 	 *
 	 * @return string

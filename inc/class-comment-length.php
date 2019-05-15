@@ -6,14 +6,14 @@
  */
 
 /**
- * Class YoastCommentLength
+ * Class YoastCommentLength.
  *
  * @since 1.3
  */
 class YoastCommentLength {
 
 	/**
-	 * Holds the plugins options
+	 * Holds the plugins options.
 	 *
 	 * @var array
 	 */
@@ -34,9 +34,9 @@ class YoastCommentLength {
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $comment_data all the data for the comment.
+	 * @param array $comment_data All the data for the comment.
 	 *
-	 * @return array $comment_data all the data for the comment (only returned when the comment is long enough).
+	 * @return array $comment_data All the data for the comment (only returned when the comment is long enough).
 	 */
 	public function check_comment_length( $comment_data ) {
 		// Bail early for editors and admins, they can leave short or long comments if they want.
@@ -62,7 +62,7 @@ class YoastCommentLength {
 	}
 
 	/**
-	 * Returns the comment length for a comment
+	 * Returns the comment length for a comment.
 	 *
 	 * @since 1.3
 	 *
