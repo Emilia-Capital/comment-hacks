@@ -6,11 +6,11 @@
  *
  * @wordpress-plugin
  * Plugin Name: Yoast Comment Hacks
- * Version: 1.5
- * Plugin URI: https://yoast.com/wordpress/plugins/comment-hacks/
+ * Version:     1.5
+ * Plugin URI:  https://yoast.com/wordpress/plugins/comment-hacks/
  * Description: Make comments management easier by applying some of the simple hacks the Yoast team uses.
- * Author: Team Yoast
- * Author URI: https://yoast.com/
+ * Author:      Team Yoast
+ * Author URI:  https://yoast.com/
  * Text Domain: yoast-comment-hacks
  *
  * Copyright 2009-2017 Team Yoast (email: support@yoast.com)
