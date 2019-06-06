@@ -85,7 +85,13 @@ class YoastCommentHacks {
 			if ( isset( $this->options['redirect_page'] ) && 0 != $this->options['redirect_page'] ) {
 				$url = get_permalink( $this->options['redirect_page'] );
 
-				// Allow other plugins to hook when the user is being redirected, for analytics calls or even to change the target URL.
+				/**
+				 * Allow other plugins to hook in when the user is being redirected,
+				 * for analytics calls or even to change the target URL.
+				 *
+				 * @param string $url     URL to which the first-time commenter will be redirected.
+				 * @param object $comment The comment object.
+				 */
 				$url = apply_filters( 'yoast_comment_redirect', $url, $comment );
 			}
 		}

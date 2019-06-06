@@ -181,4 +181,8 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 	</div>
 
 <?php
+/**
+ * Action hook to allow other plugins to add additional information to the
+ * Yoast Comment Hacks admin page.
+ */
 do_action( 'yoast_ch_admin_footer' );
