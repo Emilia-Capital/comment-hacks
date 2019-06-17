@@ -13,7 +13,7 @@
  * Author URI:  https://yoast.com/
  * Text Domain: yoast-comment-hacks
  *
- * Copyright 2009-2017 Team Yoast (email: support@yoast.com)
+ * Copyright 2009-2019 Team Yoast (email: support@yoast.com)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 /**
  * Used for version checks.
  */
-define( 'YOAST_COMMENT_HACKS_VERSION', '1.5' );
+define( 'YOAST_COMMENT_HACKS_VERSION', '1.6' );
 
 /**
  * Used for asset embedding.
