@@ -1,9 +1,10 @@
 === Yoast Comment Hacks ===
 Contributors: joostdevalk, yoast
 Tags: comments, spam, emails
+Text Domain: yoast-comment-hacks
 Requires at least: 4.5
 Tested up to: 5.2
-Stable tag: 1.5
+Stable tag: 1.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +49,10 @@ See the screenshots to get an even better idea of the plugins functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.6 =
+
+* Fix language packs.
 
 = 1.5 =
 

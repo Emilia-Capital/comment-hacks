@@ -1,9 +1,10 @@
 {
   "name": "yoast-comment-hacks",
+  "description": "Development files for the Yoast Comment Hacks plugin",
   "plugin": {
+    "glotpress": "https://translate.wordpress.org",
     "textdomain": "yoast-comment-hacks"
   },
-  "description": "Development files for the Yoast Comment Hacks plugin",
   "pot": {
     "reportmsgidbugsto": "https://github.com/yoast/comment-hacks/issues",
     "languageteam": "Yoast Translate <translations@yoast.com>",
@@ -14,30 +15,9 @@
     "url": "https://github.com/Yoast/comment-hacks"
   },
   "devDependencies": {
-    "grunt-autoprefixer": "^1.0.1",
-    "grunt-checktextdomain": "^1.0.1",
-    "grunt-contrib-clean": "~2.0.0",
-    "grunt-contrib-cssmin": "^3.0.0",
-    "grunt-contrib-imagemin": "^3.1.0",
-    "grunt-contrib-jshint": "^2.0.0",
-    "grunt-contrib-uglify": "^4.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "grunt-jsbeautifier": "~0.2.7",
-    "grunt-jsonlint": "^1.0.4",
-    "grunt-phpcs": "^0.4.0",
-    "grunt-phplint": "0.1.0",
-    "grunt-replace": "^1.0.1",
-    "grunt-shell": "~3.0.1",
-    "grunt-wp-css": "cedaro/grunt-wp-css#develop",
-    "grunt-wp-i18n": "^1.0.3",
-    "load-grunt-config": "^1.0.1",
-    "time-grunt": "^2.0.0"
+    "@yoast/grunt-plugin-tasks": "https://github.com/Yoast/plugin-grunt-tasks.git#develop"
   },
-  "dependencies": {
-    "eslint-config-yoast": "^5.0.1",
-    "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-plugin-react": "^7.12.0",
-    "eslint-plugin-yoast": "^1.0.1",
-    "grunt-eslint": "^21.0.0"
+  "yoast": {
+    "pluginVersion": "1.6"
   }
 }

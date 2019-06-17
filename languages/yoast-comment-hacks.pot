@@ -1,0 +1,364 @@
+# Copyright (C) 2019 Team Yoast
+# This file is distributed under the same license as the Yoast Comment Hacks package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Yoast Comment Hacks 1.5\n"
+"Report-Msgid-Bugs-To: https://github.com/yoast/comment-hacks/issues\n"
+"POT-Creation-Date: 2019-06-17 06:52:49+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Yoast Translate Team <translations@yoast.com>\n"
+"Language-Team: Yoast Translate <translations@yoast.com>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: admin/class-admin.php:115 artifact/admin/class-admin.php:115
+msgid "Comment notification recipients:"
+msgstr ""
+
+#: admin/class-admin.php:186 artifact/admin/class-admin.php:186
+#. translators: %d is replaced with the minimum number of characters
+msgid ""
+"The minimum length you entered is invalid, please enter a minimum length "
+"above %d."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Yoast Comment Hacks"
+msgstr ""
+
+#: admin/class-admin.php:199 artifact/admin/class-admin.php:199
+msgid "Comment Hacks"
+msgstr ""
+
+#: admin/class-admin.php:225 artifact/admin/class-admin.php:225
+msgid "Settings"
+msgstr ""
+
+#: admin/views/comment-parent-box.php:12
+#: artifact/admin/views/comment-parent-box.php:12
+msgid "Comment parent:"
+msgstr ""
+
+#: admin/views/config-page.php:15 artifact/admin/views/config-page.php:15
+msgid "Comment length"
+msgstr ""
+
+#: admin/views/config-page.php:17 admin/views/config-page.php:90
+#: artifact/admin/views/config-page.php:17
+#: artifact/admin/views/config-page.php:90
+msgid "Email links"
+msgstr ""
+
+#: admin/views/config-page.php:19 artifact/admin/views/config-page.php:19
+msgid "Comment redirect"
+msgstr ""
+
+#: admin/views/config-page.php:21 artifact/admin/views/config-page.php:21
+msgid "Clean emails"
+msgstr ""
+
+#: admin/views/config-page.php:28 artifact/admin/views/config-page.php:28
+msgid "Minimum comment length"
+msgstr ""
+
+#: admin/views/config-page.php:30 artifact/admin/views/config-page.php:30
+msgid ""
+"Users that try to submit a comment smaller than the length you set below "
+"will get an error immediately. The text of that error is specified below "
+"too."
+msgstr ""
+
+#: admin/views/config-page.php:35 artifact/admin/views/config-page.php:35
+msgid "Minimum length"
+msgstr ""
+
+#: admin/views/config-page.php:48 artifact/admin/views/config-page.php:48
+msgid "Error message for comment that is too short"
+msgstr ""
+
+#: admin/views/config-page.php:58 artifact/admin/views/config-page.php:58
+msgid "Maximum comment length"
+msgstr ""
+
+#: admin/views/config-page.php:60 artifact/admin/views/config-page.php:60
+msgid ""
+"Users that try to submit a comment longer than the length you set below "
+"will get an error immediately. The text of that error is specified below "
+"too."
+msgstr ""
+
+#: admin/views/config-page.php:65 artifact/admin/views/config-page.php:65
+msgid "Maximum length"
+msgstr ""
+
+#: admin/views/config-page.php:78 artifact/admin/views/config-page.php:78
+msgid "Error message for comment that is too long"
+msgstr ""
+
+#: admin/views/config-page.php:95 artifact/admin/views/config-page.php:95
+#. translators: %s expands to an email button icon
+msgid ""
+"This plugin adds an \"E-mail\" action link on the comments overview page as "
+"well as an email all commenters button (%s) on individual post pages in the "
+"admin bar. You can customize the default messages here."
+msgstr ""
+
+#: admin/views/config-page.php:101 artifact/admin/views/config-page.php:101
+msgid "E-mail subject"
+msgstr ""
+
+#: admin/views/config-page.php:111 artifact/admin/views/config-page.php:111
+msgid "E-mail body"
+msgstr ""
+
+#: admin/views/config-page.php:121 artifact/admin/views/config-page.php:121
+msgid "E-mail all commenters body"
+msgstr ""
+
+#: admin/views/config-page.php:132 artifact/admin/views/config-page.php:132
+msgid "Redirect first time commenters"
+msgstr ""
+
+#: admin/views/config-page.php:134 artifact/admin/views/config-page.php:134
+msgid "Select the page below that a first time commenter should be redirected to"
+msgstr ""
+
+#: admin/views/config-page.php:138 artifact/admin/views/config-page.php:138
+msgid "Redirect to"
+msgstr ""
+
+#: admin/views/config-page.php:150 artifact/admin/views/config-page.php:150
+msgid "Don't redirect first time commenters"
+msgstr ""
+
+#: admin/views/config-page.php:155 artifact/admin/views/config-page.php:155
+msgid "Current redirect page"
+msgstr ""
+
+#: admin/views/config-page.php:164 artifact/admin/views/config-page.php:164
+msgid "Clean Emails"
+msgstr ""
+
+#: admin/views/config-page.php:166 artifact/admin/views/config-page.php:166
+msgid ""
+"Checking this option will make your default comment notification and "
+"moderation emails a lot cleaner."
+msgstr ""
+
+#: admin/views/config-page.php:171 artifact/admin/views/config-page.php:171
+msgid "Clean comment emails"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:81 inc/class-clean-emails.php:81
+#. translators: %s is replaced with the post title
+msgid "New pingback on \"%s\""
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:85 inc/class-clean-emails.php:85
+#. translators: %s is replaced with the post title
+msgid "New trackback on \"%s\""
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:89 inc/class-clean-emails.php:89
+#. translators: %s is replaced with the post title
+msgid "New comment on \"%s\""
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:115 inc/class-clean-emails.php:115
+#. translators: %1$s is replaced with the post title
+msgid "A new pingback on the post \"%1$s\" is waiting for your approval:"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:119 inc/class-clean-emails.php:119
+#. translators: %1$s is replaced with the post title
+msgid "A new trackback on the post \"%1$s\" is waiting for your approval:"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:123 inc/class-clean-emails.php:123
+#. translators: %1$s is replaced with the post title
+msgid "A new comment on the post \"%1$s\" is waiting for your approval:"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:129 inc/class-clean-emails.php:129
+msgid "Whois"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:153 inc/class-clean-emails.php:153
+#. translators: %1$s is replaced with the comment author's name, %2$s is
+#. replaced with the comment author's email
+msgid "Author: %1$s (%2$s)"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:157 inc/class-clean-emails.php:157
+#. translators: %1$s is replaced with the website doing the ping or trackback
+msgid "Website: %1$s"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:166 inc/class-clean-emails.php:166
+msgid "Comment:"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:169 inc/class-clean-emails.php:169
+msgid "Excerpt:"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:181 inc/class-clean-emails.php:181
+#. translators: %s is replaced with the URL
+msgid "URL: %s"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:219 inc/class-clean-emails.php:219
+#. translators: %s is replaced with the number of comments waiting for approval
+msgid "Currently this and %s other comments are waiting for approval."
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:222 inc/class-clean-emails.php:222
+#. translators: %1$s and %2$s are replaced with the HTML for a link to the
+#. moderation panel
+msgid "Please visit the %1$smoderation panel%2$s."
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:231 inc/class-clean-emails.php:231
+msgid "Approve"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:232
+#: artifact/inc/class-clean-emails.php:245 inc/class-clean-emails.php:232
+#: inc/class-clean-emails.php:245
+msgid "Spam"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:233
+#: artifact/inc/class-clean-emails.php:246 inc/class-clean-emails.php:233
+#: inc/class-clean-emails.php:246
+msgid "Trash"
+msgstr ""
+
+#: artifact/inc/class-clean-emails.php:234
+#: artifact/inc/class-clean-emails.php:247 inc/class-clean-emails.php:234
+#: inc/class-clean-emails.php:247
+msgid "Edit"
+msgstr ""
+
+#: artifact/inc/class-comment-email-links.php:83
+#: inc/class-comment-email-links.php:83
+msgid "Email commenters"
+msgstr ""
+
+#: artifact/inc/class-comment-email-links.php:135
+#: inc/class-comment-email-links.php:135
+#. translators: %s is replaced with the comment authors name
+msgid "E-mail %s"
+msgstr ""
+
+#: artifact/inc/class-comment-hacks.php:156 inc/class-comment-hacks.php:156
+#. translators: %s expands to the post title
+msgid "RE: %s"
+msgstr ""
+
+#: artifact/inc/class-comment-hacks.php:158 inc/class-comment-hacks.php:158
+#. translators: %1$s expands to the commenters first name, %2$s to the post
+#. tittle, %3$s to the post permalink, %4$s expands to a double line break.
+msgid ""
+"Hi %1$s,%4$sI'm emailing you because you commented on my post \"%2$s\" - "
+"%3$s"
+msgstr ""
+
+#: artifact/inc/class-comment-hacks.php:160 inc/class-comment-hacks.php:160
+#. translators: %1$s expands to the the post tittle, %2$s to the post
+#. permalink, %3$s expands to a double line break.
+msgid ""
+"Hi,%3$sI'm sending you all this email because you commented on my post "
+"\"%1$s\" - %2$s"
+msgstr ""
+
+#: artifact/inc/class-comment-hacks.php:162 inc/class-comment-hacks.php:162
+msgid "Error: Your comment is too short. Please try to say something useful."
+msgstr ""
+
+#: artifact/inc/class-comment-hacks.php:164 inc/class-comment-hacks.php:164
+msgid "Error: Your comment is too long. Please try to be more concise."
+msgstr ""
+
+#: artifact/inc/class-comment-length.php:59 inc/class-comment-length.php:59
+msgid "Go back and try again."
+msgstr ""
+
+#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:233
+#: vendor/yoast/i18n-module/src/i18n-v3.php:233
+#. translators: 1: language name; 3: completion percentage; 4: link to
+#. translation platform.
+msgid ""
+"As you can see, there is a translation of this plugin in %1$s. This "
+"translation is currently %3$d%% complete. We need your help to make it "
+"complete and to fix any errors. Please register at %4$s to help complete "
+"the translation to %1$s!"
+msgstr ""
+
+#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:237
+#: vendor/yoast/i18n-module/src/i18n-v3.php:237
+#. translators: 1: language name; 2: plugin name; 3: completion percentage; 4:
+#. link to translation platform.
+msgid ""
+"You're using WordPress in %1$s. While %2$s has been translated to %1$s for "
+"%3$d%%, it's not been shipped with the plugin yet. You can help! Register "
+"at %4$s to help complete the translation to %1$s!"
+msgstr ""
+
+#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:241
+#: vendor/yoast/i18n-module/src/i18n-v3.php:241
+#. translators: 2: plugin name; 4: link to translation platform.
+msgid ""
+"You're using WordPress in a language we don't support yet. We'd love for "
+"%2$s to be translated in that language too, but unfortunately, it isn't "
+"right now. You can change that! Register at %4$s to help translate it!"
+msgstr ""
+
+#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:259
+#: vendor/yoast/i18n-module/src/i18n-v3.php:259
+msgid "Register now &raquo;"
+msgstr ""
+
+#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:275
+#: vendor/yoast/i18n-module/src/i18n-v3.php:275
+#. translators: %1$s is the notification dismissal link start tag, %2$s is the
+#. link closing tag.
+msgid "%1$sPlease don't show me this notification anymore%2$s"
+msgstr ""
+
+#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:295
+#: vendor/yoast/i18n-module/src/i18n-v3.php:295
+#. translators: %s: plugin name.
+msgid "Translation of %s"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://yoast.com/wordpress/plugins/comment-hacks/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Make comments management easier by applying some of the simple hacks the "
+"Yoast team uses."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Team Yoast"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://yoast.com/"
+msgstr ""

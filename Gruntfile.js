@@ -1,11 +1,23 @@
-/*global require, process, module */
+/*global global require, process, module */
+var path = require( "path" );
+var loadGruntConfig = require( "load-grunt-config" );
+var timeGrunt = require( "time-grunt" );
+global.developmentBuild = true;
+
+/* global global, require, process */
 module.exports = function(grunt) {
 	'use strict';
 
-	require('time-grunt')(grunt);
+	timeGrunt(grunt);
+
+	const pkg = grunt.file.readJSON( "package.json" );
+	const pluginVersion = pkg.yoast.pluginVersion;
 
 	// Define project configuration
 	var project = {
+		pluginVersion: pluginVersion,
+		pluginSlug: "yoast-comment-hacks",
+		pluginMainFile: "yoast-comment-hacks.php",
 		paths: {
 			get config() {
 				return this.grunt + 'config/';
@@ -13,7 +25,10 @@ module.exports = function(grunt) {
             css: 'admin/assets/css/',
             js: 'admin/assets/js/',
 			grunt: 'grunt/',
-			images: 'svn-assets/',
+			assets: 'svn-assets/',
+			languages: 'languages/',
+			svnCheckoutDir: ".wordpress-svn",
+			vendor: "vendor/",
 			logs: 'logs/'
 		},
 		files: {
@@ -33,21 +48,32 @@ module.exports = function(grunt) {
 			get config() {
 				return project.paths.config + '*.js';
 			},
-			grunt: 'Gruntfile.js'
+			grunt: 'Gruntfile.js',
+			artifact: "artifact",
+		},
+		sassFiles: {
+			'admin/assets/css/yoast-comment-hacks.css' : 'admin/assets/css/yoast-comment-hacks.scss',
 		},
 		pkg: grunt.file.readJSON( 'package.json' )
 	};
 
+	// Used to switch between development and release builds
+	if ( [ "release", "artifact", "deploy:trunk", "deploy:master" ].includes( process.argv[ 2 ] ) ) {
+		global.developmentBuild = false;
+	}
+
 	// Load Grunt configurations and tasks
-	require( 'load-grunt-config' )(grunt, {
-		configPath: require( 'path' ).join( process.cwd(), project.paths.config ),
+	loadGruntConfig(grunt, {
+		configPath: path.join( process.cwd(), "node_modules/@yoast/grunt-plugin-tasks/config/" ),
+		overridePath: path.join( process.cwd(), project.paths.config ),
 		data: project,
 		jitGrunt: {
 			staticMappings: {
 				addtextdomain: 'grunt-wp-i18n',
 				makepot: 'grunt-wp-i18n',
 				glotpress_download: 'grunt-glotpress',
-				wpcss: 'grunt-wp-css'
+				"update-version": "@yoast/grunt-plugin-tasks",
+				"set-version": "@yoast/grunt-plugin-tasks",
 			}
 		}
 	});

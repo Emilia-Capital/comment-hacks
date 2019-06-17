@@ -1,3 +1,10 @@
 .idea/
 vendor/
 node_modules/
+/admin/assets/css/*.css
+/admin/assets/css/*.css.map
+/admin/assets/js/*.min.js
+/admin/assets/js/*.js.map
+.wordpress-svn/
+artifact.zip
+artifact/

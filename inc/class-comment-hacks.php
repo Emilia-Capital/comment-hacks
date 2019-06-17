@@ -34,6 +34,8 @@ class YoastCommentHacks {
 		$this->set_defaults();
 		$this->upgrade();
 
+		add_action( 'init', array( $this, 'load_text_domain' ) );
+
 		// Filter the redirect URL.
 		add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
 
@@ -173,5 +175,12 @@ class YoastCommentHacks {
 		$this->options = wp_parse_args( $this->options, self::get_defaults() );
 
 		update_option( self::$option_name, $this->options );
+	}
+
+	/**
+	 * Load plugin textdomain.
+	 */
+	public function load_text_domain() {
+		load_plugin_textdomain( 'yoast-comment-hacks', false, dirname( plugin_basename( YOAST_COMMENT_HACKS_FILE ) ) . '/languages' );
 	}
 }

@@ -87,8 +87,8 @@ class YoastCommentHacksAdmin {
 			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 				$min = '';
 			}
-			wp_enqueue_style( 'yoast-comment-hacks-admin-css', plugins_url( 'admin/assets/css/yoast-comment-hacks' . $min . '.css', YOAST_COMMENT_HACKS_FILE ), array(), YOAST_COMMENT_HACKS_VERSION );
-			wp_enqueue_script( 'yoast-comment-hacks-admin-js', plugins_url( 'admin/assets/js/yoast-comment-hacks' . $min . '.js', YOAST_COMMENT_HACKS_FILE ), array(), YOAST_COMMENT_HACKS_VERSION );
+			wp_enqueue_style( 'yoast-comment-hacks-admin-css', plugins_url( 'admin/assets/css/yoast-comment-hacks.css', YOAST_COMMENT_HACKS_FILE ), array(), YOAST_COMMENT_HACKS_VERSION );
+			wp_enqueue_script( 'yoast-comment-hacks-admin-js', plugins_url( 'admin/assets/js/yoast-comment-hacks.min.js', YOAST_COMMENT_HACKS_FILE ), array(), YOAST_COMMENT_HACKS_VERSION );
 		}
 	}
 
