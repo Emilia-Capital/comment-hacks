@@ -12,7 +12,7 @@ jobs:
   fast_finish: true
   include:
     - php: 7.3
-      env: PHPLINT=1 CHECK=1 TRAVIS_NODE_VERSION=node
+      env: PHPLINT=1 CHECK=1 PHPCS=1 TRAVIS_NODE_VERSION=node
     - php: 5.6
       env: PHPLINT=1
     - php: "7.4snapshot"
@@ -40,7 +40,7 @@ before_install:
 
 install:
   - |
-    if [[ "$CHECK" == "1" ]]; then
+    if [[ "$CHECK" == "1" || "$PHPCS" == "1" ]]; then
       composer install --no-interaction
     fi
   - |
@@ -70,13 +70,15 @@ script:
       find -L . -path ./vendor -prune -o -path ./node_modules -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
       travis_time_finish && travis_fold end "PHP.check"
     fi
-  # PHP CS
+  # GRUNT Tasks
   - |
     if [[ "$CHECK" == "1" ]]; then
       travis_fold start "Grunt.check" && travis_time_start
       grunt check
       travis_time_finish && travis_fold end "Grunt.check"
     fi
+  # PHPCS
+  - if [[ "$PHPCS" == "1" ]]; then composer check-cs;fi
   # Validate the composer.json file.
   # @link https://getcomposer.org/doc/03-cli.md#validate
   - if [[ $TRAVIS_PHP_VERSION == "5.6" || $TRAVIS_PHP_VERSION == "7.3" ]]; then composer validate --no-check-all; fi
