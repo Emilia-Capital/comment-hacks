@@ -146,7 +146,7 @@ $yoast_comment_option_name = YoastCommentHacks::$option_name;
 									'id'                => 'redirect_page',
 									'name'              => $yoast_comment_option_name . '[redirect_page]', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									'option_none_value' => 0,
-									'selected'          => isset( $this->options['redirect_page'] ) ? $this->options['redirect_page'] : 0, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									'selected'          => ( isset( $this->options['redirect_page'] ) ? (int) $this->options['redirect_page'] : 0 ),
 									'show_option_none'  => esc_html__( 'Don\'t redirect first time commenters', 'yoast-comment-hacks' ),
 								)
 							);
