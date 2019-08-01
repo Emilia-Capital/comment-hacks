@@ -242,7 +242,7 @@ class YoastCommentHacksAdmin {
 
 		// Show the content of the options array when debug is enabled.
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
-			echo '<h4>Options debug</h4>';
+			echo '<h4>', esc_html__( 'Options debug', 'yoast-comment-hacks' ), '</h4>';
 			echo '<div style="border: 1px solid #aaa; padding: 20px;">';
 			// @codingStandardsIgnoreStart
 			echo str_replace( '<code>', '<code style="background-color: #eee; margin: 0; padding: 0;">', highlight_string( "<?php\n\$this->options = " . var_export( $this->options, true ) . ';', true ), $num );
