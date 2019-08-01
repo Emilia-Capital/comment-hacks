@@ -85,4 +85,21 @@
 		<exclude-pattern>*/deprecated/*\.php$</exclude-pattern>
 	</rule>
 
+
+	<!--
+	#############################################################################
+	TEMPORARY ADJUSTMENTS
+	Adjustments which should be removed once the associated issue has been resolved.
+	#############################################################################
+	-->
+
+	<!-- Direct database queries need careful review.
+		 Ticket: https://github.com/Yoast/comment-hacks/issues/50
+	-->
+	<rule ref="WordPress.DB.DirectDatabaseQuery">
+		<exclude-pattern>/admin/comment-parent\.php$</exclude-pattern>
+		<exclude-pattern>/inc/clean-emails\.php$</exclude-pattern>
+		<exclude-pattern>/inc/email-links\.php$</exclude-pattern>
+	</rule>
+
 </ruleset>
