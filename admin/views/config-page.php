@@ -5,7 +5,7 @@
  * @package YoastCommentHacks\admin
  */
 
-$option_name = esc_attr( YoastCommentHacks::$option_name );
+$yoast_comment_option_name = YoastCommentHacks::$option_name;
 ?>
 	<div class="wrap">
 		<h2><?php esc_html_e( 'Yoast Comment Hacks', 'yoast-comment-hacks' ); ?></h2>
@@ -22,7 +22,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 		</h2>
 
 		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="yoast-ch-conf" method="post">
-			<?php settings_fields( $option_name ); ?>
+			<?php settings_fields( $yoast_comment_option_name ); ?>
 
 			<div id="comment-length" class="yoasttab active">
 				<h3><?php esc_html_e( 'Minimum comment length', 'yoast-comment-hacks' ); ?></h3>
@@ -38,7 +38,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 						<td>
 							<input type="number" class="small-text" min="5" max="255"
 								value="<?php echo esc_attr( $this->options['mincomlength'] ); ?>"
-								name="<?php echo esc_attr( $option_name . '[mincomlength]' ); ?>"
+								name="<?php echo esc_attr( $yoast_comment_option_name . '[mincomlength]' ); ?>"
 								id="mincomlength"/>
 						</td>
 					</tr>
@@ -49,7 +49,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 						</th>
 						<td>
 							<textarea rows="4" cols="80"
-								name="<?php echo esc_attr( $option_name . '[mincomlengtherror]' ); ?>"
+								name="<?php echo esc_attr( $yoast_comment_option_name . '[mincomlengtherror]' ); ?>"
 								id="mincomlengtherror"><?php echo esc_html( $this->options['mincomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
@@ -68,7 +68,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 						<td>
 							<input type="number" class="small-text" min="5"
 								value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
-								name="<?php echo esc_attr( $option_name . '[maxcomlength]' ); ?>"
+								name="<?php echo esc_attr( $yoast_comment_option_name . '[maxcomlength]' ); ?>"
 								id="maxcomlength"/>
 						</td>
 					</tr>
@@ -79,7 +79,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 						</th>
 						<td>
 							<textarea rows="4" cols="80"
-								name="<?php echo esc_attr( $option_name . '[maxcomlengtherror]' ); ?>"
+								name="<?php echo esc_attr( $yoast_comment_option_name . '[maxcomlengtherror]' ); ?>"
 								id="maxcomlengtherror"><?php echo esc_html( $this->options['maxcomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
@@ -101,7 +101,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 							<label for="email_body"><?php esc_html_e( 'E-mail subject', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-							<input type="text" name="<?php echo esc_attr( $option_name . '[email_subject]' ); ?>"
+							<input type="text" name="<?php echo esc_attr( $yoast_comment_option_name . '[email_subject]' ); ?>"
 								id="email_subject"
 								value="<?php echo esc_attr( $this->options['email_subject'] ); ?>"/>
 						</td>
@@ -111,7 +111,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 							<label for="email_body"><?php esc_html_e( 'E-mail body', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-							<textarea rows="4" cols="100" name="<?php echo esc_attr( $option_name . '[email_body]' ); ?>"
+							<textarea rows="4" cols="100" name="<?php echo esc_attr( $yoast_comment_option_name . '[email_body]' ); ?>"
 								id="email_body"><?php echo esc_html( $this->options['email_body'] ); ?></textarea>
 						</td>
 					</tr>
@@ -121,7 +121,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 								for="mass_email_body"><?php esc_html_e( 'E-mail all commenters body', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
-							<textarea rows="4" cols="100" name="<?php echo esc_attr( $option_name . '[mass_email_body]' ); ?>"
+							<textarea rows="4" cols="100" name="<?php echo esc_attr( $yoast_comment_option_name . '[mass_email_body]' ); ?>"
 								id="mass_email_body"><?php echo esc_html( $this->options['mass_email_body'] ); ?></textarea>
 						</td>
 					</tr>
@@ -144,7 +144,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 								array(
 									'depth'             => 0,
 									'id'                => 'redirect_page',
-									'name'              => $option_name . '[redirect_page]', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									'name'              => $yoast_comment_option_name . '[redirect_page]', // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									'option_none_value' => 0,
 									'selected'          => isset( $this->options['redirect_page'] ) ? $this->options['redirect_page'] : 0, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									'show_option_none'  => esc_html__( 'Don\'t redirect first time commenters', 'yoast-comment-hacks' ),
@@ -171,7 +171,7 @@ $option_name = esc_attr( YoastCommentHacks::$option_name );
 								for="clean_emails"><?php esc_html_e( 'Clean comment emails', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="checkbox" id="clean_emails"
-							name="<?php echo esc_attr( $option_name . '[clean_emails]' ); ?>" <?php checked( $this->options['clean_emails'] ); ?> />
+							name="<?php echo esc_attr( $yoast_comment_option_name . '[clean_emails]' ); ?>" <?php checked( $this->options['clean_emails'] ); ?> />
 						</td>
 					</tr>
 				</table>
