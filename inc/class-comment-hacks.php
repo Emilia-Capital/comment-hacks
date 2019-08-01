@@ -84,7 +84,7 @@ class YoastCommentHacks {
 		// If no approved comments have been found, show the thank-you page.
 		if ( empty( $has_approved_comment ) ) {
 			// Only change $url when the page option is actually set and not zero.
-			if ( isset( $this->options['redirect_page'] ) && 0 != $this->options['redirect_page'] ) {
+			if ( isset( $this->options['redirect_page'] ) && 0 !== $this->options['redirect_page'] ) {
 				$url = get_permalink( $this->options['redirect_page'] );
 
 				/**
