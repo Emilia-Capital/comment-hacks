@@ -27,7 +27,7 @@ class YoastCommentParent {
 	 * @param object $comment The comment object.
 	 */
 	public function comment_parent_box( $comment ) {
-		require_once 'views/comment-parent-box.php';
+		require_once YST_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
 	}
 
 	/**

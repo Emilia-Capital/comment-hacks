@@ -45,8 +45,8 @@ if ( ! defined( 'YST_COMMENT_HACKS_PATH' ) ) {
 }
 
 /* ***************************** CLASS AUTOLOADING *************************** */
-if ( file_exists( YST_COMMENT_HACKS_PATH . '/vendor/autoload_52.php' ) ) {
-	require YST_COMMENT_HACKS_PATH . '/vendor/autoload_52.php';
+if ( file_exists( YST_COMMENT_HACKS_PATH . 'vendor/autoload_52.php' ) ) {
+	require YST_COMMENT_HACKS_PATH . 'vendor/autoload_52.php';
 }
 
 new YoastCommentHacks();
