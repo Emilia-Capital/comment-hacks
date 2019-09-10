@@ -18,7 +18,11 @@ module.exports = function( grunt ) {
 		pluginSlug: "yoast-comment-hacks",
 		pluginMainFile: "yoast-comment-hacks.php",
 		paths: {
-			// Get the config files.
+			/**
+			 * Gets the config path.
+			 *
+			 * @returns {string} The config path.
+			 */
 			get config() {
 				return this.grunt + "config/";
 			},
@@ -32,19 +36,24 @@ module.exports = function( grunt ) {
 			logs: "logs/",
 		},
 		files: {
-            css: [
-                "admin/assets/css/*.css",
-                "!admin/assets/css/*.min.css"
-            ],
-            js: [
-                "admin/assets/js/*.js",
-                "!admin/assets/js/*.min.js"
-            ],
+			css: [
+				"admin/assets/css/*.css",
+				"!admin/assets/css/*.min.css",
+			],
+			js: [
+				"admin/assets/js/*.js",
+				"!admin/assets/js/*.min.js",
+			],
 			php: [
 				"*.php",
 				"admin/**/*.php",
-				"inc/**/*.php"
+				"inc/**/*.php",
 			],
+			/**
+			 * Gets the config path.
+			 *
+			 * @returns {string} The config path.
+			 */
 			get config() {
 				return project.paths.config + "*.js";
 			},
@@ -52,9 +61,9 @@ module.exports = function( grunt ) {
 			artifact: "artifact",
 		},
 		sassFiles: {
-			"admin/assets/css/yoast-comment-hacks.css" : "admin/assets/css/yoast-comment-hacks.scss",
+			"admin/assets/css/yoast-comment-hacks.css": "admin/assets/css/yoast-comment-hacks.scss",
 		},
-		pkg: grunt.file.readJSON( "package.json" )
+		pkg: grunt.file.readJSON( "package.json" ),
 	};
 
 	// Used to switch between development and release builds
@@ -71,10 +80,11 @@ module.exports = function( grunt ) {
 			staticMappings: {
 				addtextdomain: "grunt-wp-i18n",
 				makepot: "grunt-wp-i18n",
+				// eslint-disable-next-line camelcase
 				glotpress_download: "grunt-glotpress",
 				"update-version": "@yoast/grunt-plugin-tasks",
 				"set-version": "@yoast/grunt-plugin-tasks",
 			},
 		},
-	});
+	} );
 };
