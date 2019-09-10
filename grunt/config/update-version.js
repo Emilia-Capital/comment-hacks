@@ -24,7 +24,9 @@ module.exports = {
 	},
 	initializer: {
 		options: {
-			regEx: new RegExp( "/(define\( \'YOAST_COMMENT_HACKS_VERSION\'\, \')(\d+(\.\d+){0,3})([^\.^\'\d]?.*?)(\' \);\n)/" ),
+			// Reason for disable: it triggers on a \x0a character we can't find in the string below.
+			// eslint-disable-next-line no-control-regex
+			regEx: new RegExp( "/(define\( \'YOAST_COMMENT_HACKS_VERSION\'\, \')(\d+(\.\d+){0.3})([^\.^\'\d]?.*?)(\' \);\n)/" ),
 			preVersionMatch: "$1",
 			postVersionMatch: "$5",
 		},

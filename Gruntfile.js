@@ -6,7 +6,6 @@ global.developmentBuild = true;
 
 /* global global, require, process */
 module.exports = function( grunt ) {
-
 	timeGrunt( grunt );
 
 	const pkg = grunt.file.readJSON( "package.json" );
