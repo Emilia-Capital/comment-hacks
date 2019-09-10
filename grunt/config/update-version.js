@@ -24,7 +24,7 @@ module.exports = {
 	},
 	initializer: {
 		options: {
-			regEx: new RegExp( '/(define\( \'YOAST_COMMENT_HACKS_VERSION\'\, \')(\d+(\.\d+){0,3})([^\.^\'\d]?.*?)(\' \);\n)/' ),
+			regEx: new RegExp( "/(define\( \'YOAST_COMMENT_HACKS_VERSION\'\, \')(\d+(\.\d+){0,3})([^\.^\'\d]?.*?)(\' \);\n)/" ),
 			preVersionMatch: "$1",
 			postVersionMatch: "$5",
 		},

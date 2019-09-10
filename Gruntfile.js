@@ -1,14 +1,13 @@
-/*global global require, process, module */
+/* global global require, process, module */
 var path = require( "path" );
 var loadGruntConfig = require( "load-grunt-config" );
 var timeGrunt = require( "time-grunt" );
 global.developmentBuild = true;
 
 /* global global, require, process */
-module.exports = function(grunt) {
-	'use strict';
+module.exports = function( grunt ) {
 
-	timeGrunt(grunt);
+	timeGrunt( grunt );
 
 	const pkg = grunt.file.readJSON( "package.json" );
 	const pluginVersion = pkg.yoast.pluginVersion;
@@ -19,42 +18,43 @@ module.exports = function(grunt) {
 		pluginSlug: "yoast-comment-hacks",
 		pluginMainFile: "yoast-comment-hacks.php",
 		paths: {
+			// Get the config files.
 			get config() {
-				return this.grunt + 'config/';
+				return this.grunt + "config/";
 			},
-            css: 'admin/assets/css/',
-            js: 'admin/assets/js/',
-			grunt: 'grunt/',
-			assets: 'svn-assets/',
-			languages: 'languages/',
+			css: "admin/assets/css/",
+			js: "admin/assets/js/",
+			grunt: "grunt/",
+			assets: "svn-assets/",
+			languages: "languages/",
 			svnCheckoutDir: ".wordpress-svn",
 			vendor: "vendor/",
-			logs: 'logs/'
+			logs: "logs/",
 		},
 		files: {
             css: [
-                'admin/assets/css/*.css',
-                '!admin/assets/css/*.min.css'
+                "admin/assets/css/*.css",
+                "!admin/assets/css/*.min.css"
             ],
             js: [
-                'admin/assets/js/*.js',
-                '!admin/assets/js/*.min.js'
+                "admin/assets/js/*.js",
+                "!admin/assets/js/*.min.js"
             ],
 			php: [
-				'*.php',
-				'admin/**/*.php',
-				'inc/**/*.php'
+				"*.php",
+				"admin/**/*.php",
+				"inc/**/*.php"
 			],
 			get config() {
-				return project.paths.config + '*.js';
+				return project.paths.config + "*.js";
 			},
-			grunt: 'Gruntfile.js',
+			grunt: "Gruntfile.js",
 			artifact: "artifact",
 		},
 		sassFiles: {
-			'admin/assets/css/yoast-comment-hacks.css' : 'admin/assets/css/yoast-comment-hacks.scss',
+			"admin/assets/css/yoast-comment-hacks.css" : "admin/assets/css/yoast-comment-hacks.scss",
 		},
-		pkg: grunt.file.readJSON( 'package.json' )
+		pkg: grunt.file.readJSON( "package.json" )
 	};
 
 	// Used to switch between development and release builds
@@ -63,18 +63,18 @@ module.exports = function(grunt) {
 	}
 
 	// Load Grunt configurations and tasks
-	loadGruntConfig(grunt, {
+	loadGruntConfig( grunt, {
 		configPath: path.join( process.cwd(), "node_modules/@yoast/grunt-plugin-tasks/config/" ),
 		overridePath: path.join( process.cwd(), project.paths.config ),
 		data: project,
 		jitGrunt: {
 			staticMappings: {
-				addtextdomain: 'grunt-wp-i18n',
-				makepot: 'grunt-wp-i18n',
-				glotpress_download: 'grunt-glotpress',
+				addtextdomain: "grunt-wp-i18n",
+				makepot: "grunt-wp-i18n",
+				glotpress_download: "grunt-glotpress",
 				"update-version": "@yoast/grunt-plugin-tasks",
 				"set-version": "@yoast/grunt-plugin-tasks",
-			}
-		}
+			},
+		},
 	});
 };
