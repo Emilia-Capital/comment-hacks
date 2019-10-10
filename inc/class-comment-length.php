@@ -74,7 +74,7 @@ class YoastCommentLength {
 		$comment = trim( $comment );
 
 		if ( function_exists( 'mb_strlen' ) ) {
-			return mb_strlen( $comment );
+			return mb_strlen( $comment, get_bloginfo( 'charset' ) );
 		}
 		return strlen( $comment );
 	}
