@@ -238,7 +238,7 @@ class YoastCommentHacksAdmin {
 	public function config_page() {
 		$this->register_i18n_promo_class();
 
-		require_once 'views/config-page.php';
+		require_once YST_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
 
 		// Show the content of the options array when debug is enabled.
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
