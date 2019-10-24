@@ -6,11 +6,12 @@
  */
 
 /**
- * Class YoastCommentLength.
+ * Class Yoast_Comment_Length.
  *
  * @since 1.3
+ * @since 1.6.0 Class renamed from `YoastCommentLength` to `Yoast_Comment_Length`.
  */
-class YoastCommentLength {
+class Yoast_Comment_Length {
 
 	/**
 	 * Holds the plugins options.
@@ -20,7 +21,7 @@ class YoastCommentLength {
 	private $options = array();
 
 	/**
-	 * YoastCommentLength constructor.
+	 * Constructor.
 	 */
 	public function __construct() {
 		$this->options = Yoast_Comment_Hacks::get_options();

@@ -51,7 +51,7 @@ class Yoast_Comment_Hacks {
 		new YoastCommentNotifications();
 		new Yoast_Comment_Email_Links();
 		new Yoast_Comment_Forms();
-		new YoastCommentLength();
+		new Yoast_Comment_Length();
 	}
 
 	/**
