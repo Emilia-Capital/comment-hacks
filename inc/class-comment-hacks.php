@@ -6,6 +6,7 @@
  */
 
 use Yoast\WP\Comment\Admin\Admin;
+use Yoast\WP\Comment\Inc\Clean_Emails;
 
 /**
  * Class YoastCommentHacks.
@@ -42,7 +43,7 @@ class YoastCommentHacks {
 		add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
 
 		if ( $this->options['clean_emails'] ) {
-			new YoastCleanEmails();
+			new Clean_Emails();
 		}
 
 		if ( is_admin() ) {

@@ -17,6 +17,7 @@
 
 use Yoast\WP\Comment\Admin\Admin;
 use Yoast\WP\Comment\Admin\Comment_Parent;
+use Yoast\WP\Comment\Inc\Clean_Emails;
 
 _deprecated_file( basename( __FILE__ ), 'Yoast Comment Hacks 1.6.0' );
 
@@ -55,6 +56,26 @@ class YoastCommentParent extends Comment_Parent {
 	 */
 	public function __construct() {
 		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', '\Yoast\WP\Comment\Admin\Comment_Parent' );
+		parent::__construct();
+	}
+}
+
+/* ******************* /inc/ ******************* */
+
+/**
+ * Class YoastCleanEmails.
+ *
+ * @deprecated 1.6.0 Use {@see \Yoast\WP\Comment\Inc\Clean_Emails} instead.
+ */
+class YoastCleanEmails extends Clean_Emails {
+
+	/**
+	 * Class constructor.
+	 *
+	 * @deprecated 1.6.0 Use {@see \Yoast\WP\Comment\Inc\Clean_Emails} instead.
+	 */
+	public function __construct() {
+		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', '\Yoast\WP\Comment\Inc\Clean_Emails' );
 		parent::__construct();
 	}
 }

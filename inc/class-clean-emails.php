@@ -1,14 +1,13 @@
 <?php
+
+namespace Yoast\WP\Comment\Inc;
+
 /**
  * Clean the emails.
  *
- * @package YoastCommentHacks\CleanEmails
+ * @since 1.6.0 Class renamed from `YoastCleanEmails` to `Yoast\WP\Comment\Inc\Clean_Emails`.
  */
-
-/**
- * Class YoastCleanEmails.
- */
-class YoastCleanEmails {
+class Clean_Emails {
 
 	/**
 	 * Holds the current comment's ID.
