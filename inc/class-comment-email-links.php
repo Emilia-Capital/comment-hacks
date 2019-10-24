@@ -1,14 +1,13 @@
 <?php
+
+namespace Yoast\WP\Comment\Inc;
+
 /**
  * Manage links in comments.
  *
- * @package YoastCommentHacks\Email_Links
+ * @since 1.6.0 Class renamed from `YoastCommentHacksEmailLinks` to `Yoast\WP\Comment\Inc\Email_Links`.
  */
-
-/**
- * Class YoastCommentHacksEmailLinks.
- */
-class YoastCommentHacksEmailLinks {
+class Email_Links {
 
 	/**
 	 * Holds the plugins options.
