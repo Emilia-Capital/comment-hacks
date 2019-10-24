@@ -2,6 +2,8 @@
 
 namespace Yoast\WP\Comment\Inc;
 
+use Yoast\WP\Comment\Inc\Hacks;
+
 /**
  * Manage links in comments.
  *
@@ -20,7 +22,7 @@ class Email_Links {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		$this->options = YoastCommentHacks::get_options();
+		$this->options = Hacks::get_options();
 
 		add_action( 'init', array( $this, 'init' ) );
 	}

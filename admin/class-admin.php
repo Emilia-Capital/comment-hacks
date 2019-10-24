@@ -3,6 +3,7 @@
 namespace Yoast\WP\Comment\Admin;
 
 use Yoast\WP\Comment\Admin\Comment_Parent;
+use Yoast\WP\Comment\Inc\Hacks;
 
 /**
  * Admin handling class.
@@ -43,7 +44,7 @@ class Admin {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		$this->options = YoastCommentHacks::get_options();
+		$this->options = Hacks::get_options();
 
 		// Hook into init for registration of the option and the language files.
 		add_action( 'admin_init', array( $this, 'init' ) );
@@ -68,8 +69,8 @@ class Admin {
 	public function init() {
 		// Register our option array.
 		register_setting(
-			YoastCommentHacks::$option_name,
-			YoastCommentHacks::$option_name,
+			Hacks::$option_name,
+			Hacks::$option_name,
 			array(
 				$this,
 				'options_validate',
@@ -181,7 +182,7 @@ class Admin {
 	 * @return array $input Validated input.
 	 */
 	public function options_validate( $input ) {
-		$defaults = YoastCommentHacks::get_defaults();
+		$defaults = Hacks::get_defaults();
 
 		$input['mincomlength']  = (int) $input['mincomlength'];
 		$input['maxcomlength']  = (int) $input['maxcomlength'];

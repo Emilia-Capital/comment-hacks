@@ -2,6 +2,8 @@
 
 namespace Yoast\WP\Comment\Inc;
 
+use Yoast\WP\Comment\Inc\Hacks;
+
 /**
  * Add comment note.
  *
@@ -21,7 +23,7 @@ class Forms {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		$this->options = YoastCommentHacks::get_options();
+		$this->options = Hacks::get_options();
 
 		add_filter( 'comment_form_defaults', array( $this, 'filter_defaults' ) );
 	}

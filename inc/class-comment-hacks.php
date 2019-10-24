@@ -1,9 +1,6 @@
 <?php
-/**
- * Main comment hacks functionality.
- *
- * @package YoastCommentHacks
- */
+
+namespace Yoast\WP\Comment\Inc;
 
 use Yoast\WP\Comment\Admin\Admin;
 use Yoast\WP\Comment\Inc\Clean_Emails;
@@ -11,11 +8,12 @@ use Yoast\WP\Comment\Inc\Email_Links;
 use Yoast\WP\Comment\Inc\Forms;
 
 /**
- * Class YoastCommentHacks.
+ * Main comment hacks functionality.
  *
  * @since 1.0
+ * @since 1.6.0 Class renamed from `YoastCommentHacks` to `Yoast\WP\Comment\Inc\Hacks`.
  */
-class YoastCommentHacks {
+class Hacks {
 
 	/**
 	 * Holds the plugins option name.
