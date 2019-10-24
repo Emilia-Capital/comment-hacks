@@ -93,3 +93,22 @@ class YoastCommentHacksEmailLinks extends Yoast_Comment_Email_Links {
 		parent::__construct();
 	}
 }
+
+/**
+ * Class YoastCommentFormHacks.
+ *
+ * @since      1.3
+ * @deprecated 1.6.0 Use {@see Yoast_Comment_Forms} instead.
+ */
+class YoastCommentFormHacks extends Yoast_Comment_Forms {
+
+	/**
+	 * Class constructor.
+	 *
+	 * @deprecated 1.6.0 Use {@see Yoast_Comment_Forms} instead.
+	 */
+	public function __construct() {
+		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', 'Yoast_Comment_Forms' );
+		parent::__construct();
+	}
+}

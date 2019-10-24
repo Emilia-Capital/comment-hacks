@@ -49,7 +49,7 @@ class YoastCommentHacks {
 
 		new YoastCommentNotifications();
 		new Yoast_Comment_Email_Links();
-		new YoastCommentFormHacks();
+		new Yoast_Comment_Forms();
 		new YoastCommentLength();
 	}
 

@@ -6,11 +6,12 @@
  */
 
 /**
- * Class YoastCommentFormHacks.
+ * Class Yoast_Comment_Forms.
  *
  * @since 1.3
+ * @since 1.6.0 Class renamed from `YoastCommentFormHacks` to `Yoast_Comment_Forms`.
  */
-class YoastCommentFormHacks {
+class Yoast_Comment_Forms {
 
 	/**
 	 * Holds the plugins options.
@@ -20,7 +21,7 @@ class YoastCommentFormHacks {
 	private $options = array();
 
 	/**
-	 * YoastCommentFormHacks constructor.
+	 * Constructor.
 	 */
 	public function __construct() {
 		$this->options = YoastCommentHacks::get_options();
