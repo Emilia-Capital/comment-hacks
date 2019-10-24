@@ -21,6 +21,7 @@ use Yoast\WP\Comment\Inc\Clean_Emails;
 use Yoast\WP\Comment\Inc\Email_Links;
 use Yoast\WP\Comment\Inc\Forms;
 use Yoast\WP\Comment\Inc\Hacks;
+use Yoast\WP\Comment\Inc\Length;
 
 _deprecated_file( basename( __FILE__ ), 'Yoast Comment Hacks 1.6.0' );
 
@@ -135,6 +136,25 @@ class YoastCommentHacks extends Hacks {
 	 */
 	public function __construct() {
 		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', '\Yoast\WP\Comment\Inc\Hacks' );
+		parent::__construct();
+	}
+}
+
+/**
+ * Class YoastCommentLength.
+ *
+ * @since      1.3
+ * @deprecated 1.6.0 Use {@see \Yoast\WP\Comment\Inc\Length} instead.
+ */
+class YoastCommentLength extends Length {
+
+	/**
+	 * Class constructor.
+	 *
+	 * @deprecated 1.6.0 Use {@see \Yoast\WP\Comment\Inc\Length} instead.
+	 */
+	public function __construct() {
+		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', '\Yoast\WP\Comment\Inc\Length' );
 		parent::__construct();
 	}
 }

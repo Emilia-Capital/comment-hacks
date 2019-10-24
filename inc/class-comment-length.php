@@ -1,18 +1,16 @@
 <?php
-/**
- * Checks the comments for allowed length.
- *
- * @package YoastCommentHacks
- */
+
+namespace Yoast\WP\Comment\Inc;
 
 use Yoast\WP\Comment\Inc\Hacks;
 
 /**
- * Class YoastCommentLength.
+ * Checks the comments for allowed length.
  *
  * @since 1.3
+ * @since 1.6.0 Class renamed from `YoastCommentLength` to `Yoast\WP\Comment\Inc\Length`.
  */
-class YoastCommentLength {
+class Length {
 
 	/**
 	 * Holds the plugins options.
@@ -22,7 +20,7 @@ class YoastCommentLength {
 	private $options = array();
 
 	/**
-	 * YoastCommentLength constructor.
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->options = Hacks::get_options();

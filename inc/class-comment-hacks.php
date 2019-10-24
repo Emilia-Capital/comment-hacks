@@ -6,6 +6,7 @@ use Yoast\WP\Comment\Admin\Admin;
 use Yoast\WP\Comment\Inc\Clean_Emails;
 use Yoast\WP\Comment\Inc\Email_Links;
 use Yoast\WP\Comment\Inc\Forms;
+use Yoast\WP\Comment\Inc\Length;
 
 /**
  * Main comment hacks functionality.
@@ -53,7 +54,7 @@ class Hacks {
 		new YoastCommentNotifications();
 		new Email_Links();
 		new Forms();
-		new YoastCommentLength();
+		new Length();
 	}
 
 	/**
