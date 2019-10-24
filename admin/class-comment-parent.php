@@ -6,11 +6,12 @@
  */
 
 /**
- * Class YoastCommentParent.
+ * Class Yoast_Comment_Parent.
  *
  * @since 1.3
+ * @since 1.6.0 Class renamed from `YoastCommentParent` to `Yoast_Comment_Parent`.
  */
-class YoastCommentParent {
+class Yoast_Comment_Parent {
 
 	/**
 	 * Class constructor.
