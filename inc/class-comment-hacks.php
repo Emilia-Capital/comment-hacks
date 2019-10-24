@@ -5,6 +5,8 @@
  * @package YoastCommentHacks
  */
 
+use Yoast\WP\Comment\Admin\Admin;
+
 /**
  * Class YoastCommentHacks.
  *
@@ -44,7 +46,7 @@ class YoastCommentHacks {
 		}
 
 		if ( is_admin() ) {
-			new YoastCommentHacksAdmin();
+			new Admin();
 		}
 
 		new YoastCommentNotifications();

@@ -1,14 +1,13 @@
 <?php
+
+namespace Yoast\WP\Comment\Admin;
+
 /**
  * Admin handling class.
  *
- * @package YoastCommentHacks\Admin
+ * @since 1.6.0 Class renamed from `YoastCommentHacksAdmin` to `Yoast\WP\Comment\Admin\Admin`.
  */
-
-/**
- * Class YoastCommentHacksAdmin.
- */
-class YoastCommentHacksAdmin {
+class Admin {
 
 	/**
 	 * Recipient key.
