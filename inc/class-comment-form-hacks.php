@@ -1,16 +1,14 @@
 <?php
+
+namespace Yoast\WP\Comment\Inc;
+
 /**
  * Add comment note.
  *
- * @package YoastCommentHacks
- */
-
-/**
- * Class YoastCommentFormHacks.
- *
  * @since 1.3
+ * @since 1.6.0 Class renamed from `YoastCommentFormHacks` to `Yoast\WP\Comment\Inc\Forms`.
  */
-class YoastCommentFormHacks {
+class Forms {
 
 	/**
 	 * Holds the plugins options.
@@ -20,7 +18,7 @@ class YoastCommentFormHacks {
 	private $options = array();
 
 	/**
-	 * YoastCommentFormHacks constructor.
+	 * Class constructor.
 	 */
 	public function __construct() {
 		$this->options = YoastCommentHacks::get_options();

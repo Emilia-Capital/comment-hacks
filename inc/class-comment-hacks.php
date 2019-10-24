@@ -8,6 +8,7 @@
 use Yoast\WP\Comment\Admin\Admin;
 use Yoast\WP\Comment\Inc\Clean_Emails;
 use Yoast\WP\Comment\Inc\Email_Links;
+use Yoast\WP\Comment\Inc\Forms;
 
 /**
  * Class YoastCommentHacks.
@@ -53,7 +54,7 @@ class YoastCommentHacks {
 
 		new YoastCommentNotifications();
 		new Email_Links();
-		new YoastCommentFormHacks();
+		new Forms();
 		new YoastCommentLength();
 	}
 
