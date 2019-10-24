@@ -40,7 +40,7 @@ class YoastCommentHacks {
 		add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
 
 		if ( $this->options['clean_emails'] ) {
-			new YoastCleanEmails();
+			new Yoast_Comment_Clean_Emails();
 		}
 
 		if ( is_admin() ) {

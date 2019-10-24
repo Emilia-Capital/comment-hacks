@@ -6,9 +6,11 @@
  */
 
 /**
- * Class YoastCleanEmails.
+ * Class Yoast_Comment_Clean_Emails.
+ *
+ * @since 1.6.0 Class renamed from `YoastCleanEmails` to `Yoast_Comment_Clean_Emails`.
  */
-class YoastCleanEmails {
+class Yoast_Comment_Clean_Emails {
 
 	/**
 	 * Holds the current comment's ID.
