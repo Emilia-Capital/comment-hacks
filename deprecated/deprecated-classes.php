@@ -150,3 +150,22 @@ class YoastCommentLength extends Yoast_Comment_Length {
 		parent::__construct();
 	}
 }
+
+/**
+ * Class YoastCommentNotifications.
+ *
+ * @since      1.1
+ * @deprecated 1.6.0 Use {@see Yoast_Comment_Notifications} instead.
+ */
+class YoastCommentNotifications extends Yoast_Comment_Notifications {
+
+	/**
+	 * Class constructor.
+	 *
+	 * @deprecated 1.6.0 Use {@see Yoast_Comment_Notifications} instead.
+	 */
+	public function __construct() {
+		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', 'Yoast_Comment_Notifications' );
+		parent::__construct();
+	}
+}

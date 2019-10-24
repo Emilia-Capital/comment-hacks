@@ -6,14 +6,15 @@
  */
 
 /**
- * Class YoastCommentNotifications.
+ * Class Yoast_Comment_Notifications.
  *
  * @since 1.1
+ * @since 1.6.0 Class renamed from `YoastCommentNotifications` to `Yoast_Comment_Notifications`.
  */
-class YoastCommentNotifications {
+class Yoast_Comment_Notifications {
 
 	/**
-	 * YoastCommentNotifications constructor.
+	 * Constructor.
 	 */
 	public function __construct() {
 		add_filter( 'comment_notification_recipients', array( $this, 'filter_notification_recipients' ), 10, 2 );
