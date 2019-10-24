@@ -6,9 +6,11 @@
  */
 
 /**
- * Class YoastCommentHacksAdmin.
+ * Class Yoast_Comment_Admin.
+ *
+ * @since 1.6.0 Class renamed from `YoastCommentHacksAdmin` to `Yoast_Comment_Admin`.
  */
-class YoastCommentHacksAdmin {
+class Yoast_Comment_Admin {
 
 	/**
 	 * Recipient key.

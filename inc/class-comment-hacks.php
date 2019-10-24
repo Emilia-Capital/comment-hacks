@@ -44,7 +44,7 @@ class YoastCommentHacks {
 		}
 
 		if ( is_admin() ) {
-			new YoastCommentHacksAdmin();
+			new Yoast_Comment_Admin();
 		}
 
 		new YoastCommentNotifications();
