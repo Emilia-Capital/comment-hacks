@@ -1,16 +1,14 @@
 <?php
+
+namespace Yoast\WP\Comment\Admin;
+
 /**
  * Comment parent handling class.
  *
- * @package YoastCommentHacks\Admin
- */
-
-/**
- * Class YoastCommentParent.
- *
  * @since 1.3
+ * @since 1.6.0 Class renamed from `YoastCommentParent` to `Yoast\WP\Comment\Admin\Comment_Parent`.
  */
-class YoastCommentParent {
+class Comment_Parent {
 
 	/**
 	 * Class constructor.

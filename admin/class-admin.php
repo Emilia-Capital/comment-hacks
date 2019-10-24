@@ -2,6 +2,8 @@
 
 namespace Yoast\WP\Comment\Admin;
 
+use Yoast\WP\Comment\Admin\Comment_Parent;
+
 /**
  * Admin handling class.
  *
@@ -57,7 +59,7 @@ class Admin {
 		add_action( 'post_comment_status_meta_box-options', array( $this, 'reroute_comment_emails_option' ) );
 		add_action( 'save_post', array( $this, 'save_reroute_comment_emails' ) );
 
-		new YoastCommentParent();
+		new Comment_Parent();
 	}
 
 	/**

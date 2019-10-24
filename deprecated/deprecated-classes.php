@@ -12,9 +12,11 @@
  *
  * @phpcs:disable Yoast.Files.FileName.InvalidClassFileName
  * @phpcs:disable Yoast.Commenting.CodeCoverageIgnoreDeprecated
+ * @phpcs:disable Generic.Files.OneObjectStructurePerFile.MultipleFound
  */
 
 use Yoast\WP\Comment\Admin\Admin;
+use Yoast\WP\Comment\Admin\Comment_Parent;
 
 _deprecated_file( basename( __FILE__ ), 'Yoast Comment Hacks 1.6.0' );
 
@@ -34,6 +36,25 @@ class YoastCommentHacksAdmin extends Admin {
 	 */
 	public function __construct() {
 		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', '\Yoast\WP\Comment\Admin\Admin' );
+		parent::__construct();
+	}
+}
+
+/**
+ * Class YoastCommentParent.
+ *
+ * @since      1.3
+ * @deprecated 1.6.0 Use {@see \Yoast\WP\Comment\Admin\Comment_Parent} instead.
+ */
+class YoastCommentParent extends Comment_Parent {
+
+	/**
+	 * Class constructor.
+	 *
+	 * @deprecated 1.6.0 Use {@see \Yoast\WP\Comment\Admin\Comment_Parent} instead.
+	 */
+	public function __construct() {
+		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', '\Yoast\WP\Comment\Admin\Comment_Parent' );
 		parent::__construct();
 	}
 }
