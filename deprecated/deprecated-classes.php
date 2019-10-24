@@ -22,6 +22,7 @@ use Yoast\WP\Comment\Inc\Email_Links;
 use Yoast\WP\Comment\Inc\Forms;
 use Yoast\WP\Comment\Inc\Hacks;
 use Yoast\WP\Comment\Inc\Length;
+use Yoast\WP\Comment\Inc\Notifications;
 
 _deprecated_file( basename( __FILE__ ), 'Yoast Comment Hacks 1.6.0' );
 
@@ -155,6 +156,25 @@ class YoastCommentLength extends Length {
 	 */
 	public function __construct() {
 		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', '\Yoast\WP\Comment\Inc\Length' );
+		parent::__construct();
+	}
+}
+
+/**
+ * Class YoastCommentNotifications.
+ *
+ * @since      1.1
+ * @deprecated 1.6.0 Use {@see \Yoast\WP\Comment\Inc\Notifications} instead.
+ */
+class YoastCommentNotifications extends Notifications {
+
+	/**
+	 * Class constructor.
+	 *
+	 * @deprecated 1.6.0 Use {@see \Yoast\WP\Comment\Inc\Notifications} instead.
+	 */
+	public function __construct() {
+		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', '\Yoast\WP\Comment\Inc\Notifications' );
 		parent::__construct();
 	}
 }
