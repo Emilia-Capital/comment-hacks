@@ -5,7 +5,7 @@
  * @package YoastCommentHacks\admin
  */
 
-$yoast_comment_option_name = YoastCommentHacks::$option_name;
+$yoast_comment_option_name = Yoast_Comment_Hacks::$option_name;
 ?>
 	<div class="wrap">
 		<h2><?php esc_html_e( 'Yoast Comment Hacks', 'yoast-comment-hacks' ); ?></h2>

@@ -23,7 +23,7 @@ class YoastCommentLength {
 	 * YoastCommentLength constructor.
 	 */
 	public function __construct() {
-		$this->options = YoastCommentHacks::get_options();
+		$this->options = Yoast_Comment_Hacks::get_options();
 
 		// Process the comment and check it for length.
 		add_filter( 'preprocess_comment', array( $this, 'check_comment_length' ) );

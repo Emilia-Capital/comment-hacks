@@ -23,7 +23,7 @@ class Yoast_Comment_Email_Links {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		$this->options = YoastCommentHacks::get_options();
+		$this->options = Yoast_Comment_Hacks::get_options();
 
 		add_action( 'init', array( $this, 'init' ) );
 	}

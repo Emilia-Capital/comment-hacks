@@ -6,11 +6,12 @@
  */
 
 /**
- * Class YoastCommentHacks.
+ * Class Yoast_Comment_Hacks.
  *
  * @since 1.0
+ * @since 1.6.0 Class renamed from `YoastCommentHacks` to `Yoast_Comment_Hacks`.
  */
-class YoastCommentHacks {
+class Yoast_Comment_Hacks {
 
 	/**
 	 * Holds the plugins option name.

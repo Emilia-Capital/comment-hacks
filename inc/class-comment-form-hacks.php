@@ -24,7 +24,7 @@ class Yoast_Comment_Forms {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->options = YoastCommentHacks::get_options();
+		$this->options = Yoast_Comment_Hacks::get_options();
 
 		add_filter( 'comment_form_defaults', array( $this, 'filter_defaults' ) );
 	}

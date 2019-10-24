@@ -49,4 +49,4 @@ if ( file_exists( YST_COMMENT_HACKS_PATH . 'vendor/autoload_52.php' ) ) {
 	require YST_COMMENT_HACKS_PATH . 'vendor/autoload_52.php';
 }
 
-new YoastCommentHacks();
+new Yoast_Comment_Hacks();
