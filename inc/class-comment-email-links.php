@@ -6,9 +6,11 @@
  */
 
 /**
- * Class YoastCommentHacksEmailLinks.
+ * Class Yoast_Comment_Email_Links.
+ *
+ * @since 1.6.0 Class renamed from `YoastCommentHacksEmailLinks` to `Yoast_Comment_Email_Links`.
  */
-class YoastCommentHacksEmailLinks {
+class Yoast_Comment_Email_Links {
 
 	/**
 	 * Holds the plugins options.

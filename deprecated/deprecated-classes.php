@@ -75,3 +75,21 @@ class YoastCleanEmails extends Yoast_Comment_Clean_Emails {
 		parent::__construct();
 	}
 }
+
+/**
+ * Class YoastCommentHacksEmailLinks.
+ *
+ * @deprecated 1.6.0 Use {@see Yoast_Comment_Email_Links} instead.
+ */
+class YoastCommentHacksEmailLinks extends Yoast_Comment_Email_Links {
+
+	/**
+	 * Class constructor.
+	 *
+	 * @deprecated 1.6.0 Use {@see Yoast_Comment_Email_Links} instead.
+	 */
+	public function __construct() {
+		_deprecated_function( __METHOD__, 'Yoast Comment Hacks 1.6.0', 'Yoast_Comment_Email_Links' );
+		parent::__construct();
+	}
+}
