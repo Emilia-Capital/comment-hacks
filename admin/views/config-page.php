@@ -187,5 +187,15 @@ $yoast_comment_option_name = Hacks::$option_name;
 /**
  * Action hook to allow other plugins to add additional information to the
  * Yoast Comment Hacks admin page.
+ *
+ * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\admin_footer'} action instead.
  */
-do_action( 'yoast_ch_admin_footer' );
+do_action_deprecated( 'yoast_ch_admin_footer', array(), 'Yoast Comment 1.6.0', 'Yoast\WP\Comment\admin_footer' );
+
+/**
+ * Action hook to allow other plugins to add additional information to the
+ * Yoast Comment Hacks admin page.
+ *
+ * @since 1.6.0
+ */
+do_action( 'Yoast\WP\Comment\admin_footer' );

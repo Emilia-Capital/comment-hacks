@@ -75,7 +75,6 @@
 		<exclude-pattern>*/deprecated/deprecated-classes\.php$</exclude-pattern>
 	</rule>
 
-				<element value="yoast_ch"/>
 
 	<!--
 	#############################################################################

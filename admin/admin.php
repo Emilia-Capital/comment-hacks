@@ -118,7 +118,7 @@ class Admin {
 			array(
 				'textdomain'  => 'yoast-comment-hacks',
 				'plugin_name' => 'Yoast Comment Hacks',
-				'hook'        => 'yoast_ch_admin_footer',
+				'hook'        => 'Yoast\WP\Comment\admin_footer',
 			)
 		);
 	}
