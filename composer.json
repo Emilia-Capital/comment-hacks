@@ -4,7 +4,7 @@
 	"keywords": [
 		"comments",
 		"spam",
-        "emails"
+		"emails"
 	],
 	"homepage": "https://yoast.com/wordpress/plugins/comment-hacks/",
 	"license": "GPL-2.0-or-later",
@@ -23,9 +23,9 @@
 		"source": "https://github.com/Yoast/comment-hacks"
 	},
 	"require": {
+		"php": ">=5.6",
 		"composer/installers": "~1.0",
-		"yoast/i18n-module": "^3.1.1",
-		"xrstf/composer-php52": "^1.0.20"
+		"yoast/i18n-module": "^3.1.1"
 	},
 	"require-dev": {
 		"yoast/yoastcs": "^1.2.1"
@@ -42,15 +42,6 @@
 		"config-yoastcs": [
 			"\"vendor/bin/phpcs\" --config-set installed_paths ../../../vendor/wp-coding-standards/wpcs,../../../vendor/yoast/yoastcs",
 			"\"vendor/bin/phpcs\" --config-set default_standard Yoast"
-		],
-		"post-install-cmd": [
-			"xrstf\\Composer52\\Generator::onPostInstallCmd"
-		],
-		"post-update-cmd": [
-			"xrstf\\Composer52\\Generator::onPostInstallCmd"
-		],
-		"post-autoload-dump": [
-			"xrstf\\Composer52\\Generator::onPostInstallCmd"
 		]
 	}
 }

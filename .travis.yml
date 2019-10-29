@@ -1,6 +1,5 @@
 language: php
 dist: trusty
-sudo: false
 
 branches:
   only:
@@ -14,13 +13,15 @@ jobs:
   include:
     - php: 7.3
       env: PHPLINT=1 CHECK=1 TRAVIS_NODE_VERSION=node
-    - php: 5.3
-      # As 'trusty' is not supporting PHP 5.2/5.3 anymore, we need to force using 'precise'.
-      dist: precise
-    - php: 5.2
+    - php: 5.6
       env: PHPLINT=1
-      # As 'trusty' is not supporting PHP 5.2/5.3 anymore, we need to force using 'precise'.
-      dist: precise
+    - php: "7.4snapshot"
+      env: PHPLINT=1
+    - php: "nightly"
+      env: PHPLINT=1
+  allow_failures:
+    # Allow failures for unstable builds.
+    - php: "nightly"
 
 cache:
   yarn: true
@@ -78,4 +79,4 @@ script:
     fi
   # Validate the composer.json file.
   # @link https://getcomposer.org/doc/03-cli.md#validate
-  - if [[ $TRAVIS_PHP_VERSION == "5.3" || $TRAVIS_PHP_VERSION == "7.3" ]]; then composer validate --no-check-all; fi
+  - if [[ $TRAVIS_PHP_VERSION == "5.6" || $TRAVIS_PHP_VERSION == "7.3" ]]; then composer validate --no-check-all; fi
