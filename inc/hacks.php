@@ -29,7 +29,7 @@ class Hacks {
 	 *
 	 * @var array
 	 */
-	private $options = array();
+	private $options = [];
 
 	/**
 	 * Class constructor.
@@ -39,10 +39,10 @@ class Hacks {
 		$this->set_defaults();
 		$this->upgrade();
 
-		\add_action( 'init', array( $this, 'load_text_domain' ) );
+		\add_action( 'init', [ $this, 'load_text_domain' ] );
 
 		// Filter the redirect URL.
-		\add_filter( 'comment_post_redirect', array( $this, 'comment_redirect' ), 10, 2 );
+		\add_filter( 'comment_post_redirect', [ $this, 'comment_redirect' ], 10, 2 );
 
 		if ( $this->options['clean_emails'] ) {
 			new Clean_Emails();
@@ -79,11 +79,11 @@ class Hacks {
 	 */
 	public function comment_redirect( $url, $comment ) {
 		$has_approved_comment = \get_comments(
-			array(
+			[
 				'author_email' => $comment->comment_author_email,
 				'number'       => 1,
 				'status'       => 'approve',
-			)
+			]
 		);
 
 		// If no approved comments have been found, show the thank-you page.
@@ -103,7 +103,7 @@ class Hacks {
 				 */
 				$url = \apply_filters_deprecated(
 					'yoast_comment_redirect',
-					array( $url, $comment ),
+					[ $url, $comment ],
 					'Yoast Comment 1.6.0',
 					'Yoast\WP\Comment\redirect'
 				);
@@ -147,7 +147,7 @@ class Hacks {
 	 * @since 1.0
 	 */
 	private function upgrade() {
-		foreach ( array( 'MinComLengthOptions', 'min_comment_length_option', 'CommentRedirect' ) as $old_option ) {
+		foreach ( [ 'MinComLengthOptions', 'min_comment_length_option', 'CommentRedirect' ] as $old_option ) {
 			$old_option_values = $this->get_option_from_cache( $old_option );
 			if ( \is_array( $old_option_values ) ) {
 				if ( isset( $old_option_values['page'] ) ) {
@@ -173,7 +173,7 @@ class Hacks {
 	 * @return array
 	 */
 	public static function get_defaults() {
-		return array(
+		return [
 			'clean_emails'      => true,
 			/* translators: %s expands to the post title */
 			'email_subject'     => \sprintf( \__( 'RE: %s', 'yoast-comment-hacks' ), '%title%' ),
@@ -186,7 +186,7 @@ class Hacks {
 			'maxcomlength'      => 1500,
 			'maxcomlengtherror' => \__( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
 			'redirect_page'     => 0,
-		);
+		];
 	}
 
 	/**

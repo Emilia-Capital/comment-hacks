@@ -16,7 +16,7 @@ class Email_Links {
 	 *
 	 * @var array
 	 */
-	private $options = array();
+	private $options = [];
 
 	/**
 	 * Class constructor.
@@ -24,7 +24,7 @@ class Email_Links {
 	public function __construct() {
 		$this->options = Hacks::get_options();
 
-		\add_action( 'init', array( $this, 'init' ) );
+		\add_action( 'init', [ $this, 'init' ] );
 	}
 
 	/**
@@ -33,12 +33,12 @@ class Email_Links {
 	public function init() {
 		if ( \is_admin() ) {
 			// Adds the email link to the actions on the comment overview page.
-			\add_filter( 'comment_row_actions', array( $this, 'add_mailto_action_row' ) );
+			\add_filter( 'comment_row_actions', [ $this, 'add_mailto_action_row' ] );
 
 			return;
 		}
-		\add_action( 'admin_bar_menu', array( $this, 'admin_bar_comment_link' ), 65 );
-		\add_action( 'wp_head', array( $this, 'wp_head_css' ) );
+		\add_action( 'admin_bar_menu', [ $this, 'admin_bar_comment_link' ], 65 );
+		\add_action( 'wp_head', [ $this, 'wp_head_css' ] );
 	}
 
 	/**
@@ -79,12 +79,12 @@ class Email_Links {
 		</script>';
 
 		$wp_admin_bar->add_menu(
-			array(
+			[
 				'id'    => 'yst-email-commenters',
 				'title' => '<span class="ab-icon" title="' . \__( 'Email commenters', 'yoast-comment-hacks' ) . '"></span>',
 				'href'  => '#',
-				'meta'  => array( 'onclick' => 'yst_email_commenters(event)' ),
-			)
+				'meta'  => [ 'onclick' => 'yst_email_commenters(event)' ],
+			]
 		);
 	}
 
@@ -131,10 +131,10 @@ class Email_Links {
 		$left_actions  = \array_slice( $actions, 0, 5 );
 		$right_actions = \array_slice( $actions, 5 );
 
-		$new_action = array(
+		$new_action = [
 			/* translators: %s is replaced with the comment authors name */
 			'mailto' => '<a href="' . \esc_attr( $link ) . '"><span class="dashicons dashicons-email-alt"></span> ' . \esc_html( \sprintf( \__( 'E-mail %s', 'yoast-comment-hacks' ), $comment->comment_author ) ) . '</a>',
-		);
+		];
 
 		return \array_merge( $left_actions, $new_action, $right_actions );
 	}
@@ -164,10 +164,10 @@ class Email_Links {
 
 		$replacements = \array_merge(
 			$replacements,
-			array(
+			[
 				'title'     => $post->post_title,
 				'permalink' => \get_permalink( $post->ID ),
-			)
+			]
 		);
 
 		foreach ( $replacements as $key => $value ) {
@@ -185,22 +185,22 @@ class Email_Links {
 	 * @return array
 	 */
 	private function get_replacements( $comment ) {
-		$replacements = array(
+		$replacements = [
 			'email'     => '',
 			'firstname' => '',
 			'name'      => '',
 			'url'       => '',
-		);
+		];
 
 		if ( \is_object( $comment ) ) {
 			$name = \explode( ' ', $comment->comment_author );
 
-			$replacements = array(
+			$replacements = [
 				'email'     => $comment->comment_author_email,
 				'firstname' => $name[0],
 				'name'      => $comment->comment_author,
 				'url'       => $comment->comment_author_url,
-			);
+			];
 		}
 
 		return $replacements;

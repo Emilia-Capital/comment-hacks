@@ -17,7 +17,7 @@ class Length {
 	 *
 	 * @var array
 	 */
-	private $options = array();
+	private $options = [];
 
 	/**
 	 * Class constructor.
@@ -26,7 +26,7 @@ class Length {
 		$this->options = Hacks::get_options();
 
 		// Process the comment and check it for length.
-		\add_filter( 'preprocess_comment', array( $this, 'check_comment_length' ) );
+		\add_filter( 'preprocess_comment', [ $this, 'check_comment_length' ] );
 	}
 
 	/**

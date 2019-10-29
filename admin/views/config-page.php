@@ -143,7 +143,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 						<?php
 							// A dropdown of all pages in the current WP install.
 							wp_dropdown_pages(
-								array(
+								[
 									'depth'             => 0,
 									'id'                => 'redirect_page',
 									// phpcs:ignore WordPress.Security.EscapeOutput -- This is a hard-coded string, just passed around as a variable.
@@ -151,7 +151,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 									'option_none_value' => 0,
 									'selected'          => ( isset( $this->options['redirect_page'] ) ? (int) $this->options['redirect_page'] : 0 ),
 									'show_option_none'  => esc_html__( 'Don\'t redirect first time commenters', 'yoast-comment-hacks' ),
-								)
+								]
 							);
 
 							if ( isset( $this->options['redirect_page'] ) && $this->options['redirect_page'] !== 0 ) {
@@ -190,7 +190,7 @@ $yoast_comment_option_name = Hacks::$option_name;
  *
  * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\admin_footer'} action instead.
  */
-do_action_deprecated( 'yoast_ch_admin_footer', array(), 'Yoast Comment 1.6.0', 'Yoast\WP\Comment\admin_footer' );
+do_action_deprecated( 'yoast_ch_admin_footer', [], 'Yoast Comment 1.6.0', 'Yoast\WP\Comment\admin_footer' );
 
 /**
  * Action hook to allow other plugins to add additional information to the
