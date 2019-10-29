@@ -136,17 +136,33 @@ class Admin {
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
 		 * Defaults to contributor and up.
 		 *
+		 * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\notification_roles'} filter instead.
+		 *
 		 * @param array $roles Array with user roles.
 		 */
-		$roles = \apply_filters(
+		$roles = \apply_filters_deprecated(
 			'yoast_comment_hacks_notification_roles',
 			array(
-				'author',
-				'contributor',
-				'editor',
-				'administrator',
-			)
+				array(
+					'author',
+					'contributor',
+					'editor',
+					'administrator',
+				),
+			),
+			'Yoast Comment 1.6.0',
+			'Yoast\WP\Comment\notification_roles'
 		);
+
+		/**
+		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
+		 * Defaults to contributor and up.
+		 *
+		 * @since 1.6.0
+		 *
+		 * @param array $roles Array with user roles.
+		 */
+		$roles = \apply_filters( 'Yoast\WP\Comment\notification_roles', $roles );
 
 		\wp_dropdown_users(
 			array(
