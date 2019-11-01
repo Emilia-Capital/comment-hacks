@@ -4,6 +4,7 @@ namespace Yoast\WP\Comment\Admin;
 
 use Yoast\WP\Comment\Admin\Comment_Parent;
 use Yoast\WP\Comment\Inc\Hacks;
+use Yoast_I18n_WordPressOrg_v3;
 
 /**
  * Admin handling class.
