@@ -48,18 +48,18 @@ class Admin {
 		$this->options = Hacks::get_options();
 
 		// Hook into init for registration of the option and the language files.
-		add_action( 'admin_init', array( $this, 'init' ) );
+		\add_action( 'admin_init', array( $this, 'init' ) );
 
 		// Register the settings page.
-		add_action( 'admin_menu', array( $this, 'add_config_page' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+		\add_action( 'admin_menu', array( $this, 'add_config_page' ) );
+		\add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
 
 		// Register a link to the settings page on the plugins overview page.
-		add_filter( 'plugin_action_links', array( $this, 'filter_plugin_actions' ), 10, 2 );
+		\add_filter( 'plugin_action_links', array( $this, 'filter_plugin_actions' ), 10, 2 );
 
 		// Filter the comment notification recipients.
-		add_action( 'post_comment_status_meta_box-options', array( $this, 'reroute_comment_emails_option' ) );
-		add_action( 'save_post', array( $this, 'save_reroute_comment_emails' ) );
+		\add_action( 'post_comment_status_meta_box-options', array( $this, 'reroute_comment_emails_option' ) );
+		\add_action( 'save_post', array( $this, 'save_reroute_comment_emails' ) );
 
 		new Comment_Parent();
 	}
@@ -69,7 +69,7 @@ class Admin {
 	 */
 	public function init() {
 		// Register our option array.
-		register_setting(
+		\register_setting(
 			Hacks::$option_name,
 			Hacks::$option_name,
 			array(
@@ -83,24 +83,24 @@ class Admin {
 	 * Enqueue our admin script.
 	 */
 	public function enqueue() {
-		$page = filter_input( \INPUT_GET, 'page' );
+		$page = \filter_input( \INPUT_GET, 'page' );
 
 		if ( $page === 'yoast-comment-hacks' ) {
 			$min = '.min';
-			if ( defined( 'SCRIPT_DEBUG' ) && \SCRIPT_DEBUG ) {
+			if ( \defined( 'SCRIPT_DEBUG' ) && \SCRIPT_DEBUG ) {
 				$min = '';
 			}
 
-			wp_enqueue_style(
+			\wp_enqueue_style(
 				'yoast-comment-hacks-admin-css',
-				plugins_url( 'admin/assets/css/yoast-comment-hacks.css', \YOAST_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/css/yoast-comment-hacks.css', \YOAST_COMMENT_HACKS_FILE ),
 				array(),
 				\YOAST_COMMENT_HACKS_VERSION
 			);
 
-			wp_enqueue_script(
+			\wp_enqueue_script(
 				'yoast-comment-hacks-admin-js',
-				plugins_url( 'admin/assets/js/yoast-comment-hacks.min.js', \YOAST_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/js/yoast-comment-hacks.min.js', \YOAST_COMMENT_HACKS_FILE ),
 				array(),
 				\YOAST_COMMENT_HACKS_VERSION,
 				true
@@ -128,9 +128,9 @@ class Admin {
 	 */
 	public function reroute_comment_emails_option() {
 		echo '<br><br>';
-		echo '<label for="comment_notification_recipient">' . esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
+		echo '<label for="comment_notification_recipient">' . \esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
 
-		$post_id = filter_input( \INPUT_GET, 'post', \FILTER_VALIDATE_INT );
+		$post_id = \filter_input( \INPUT_GET, 'post', \FILTER_VALIDATE_INT );
 
 		/**
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
@@ -138,7 +138,7 @@ class Admin {
 		 *
 		 * @param array $roles Array with user roles.
 		 */
-		$roles = apply_filters(
+		$roles = \apply_filters(
 			'yoast_comment_hacks_notification_roles',
 			array(
 				'author',
@@ -148,9 +148,9 @@ class Admin {
 			)
 		);
 
-		wp_dropdown_users(
+		\wp_dropdown_users(
 			array(
-				'selected'          => get_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, true ),
+				'selected'          => \get_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, true ),
 				'show_option_none'  => 'Post author',
 				'name'              => 'comment_notification_recipient',
 				'id'                => 'comment_notification_recipient',
@@ -165,11 +165,11 @@ class Admin {
 	 */
 	public function save_reroute_comment_emails() {
 
-		$post_id      = filter_input( \INPUT_POST, 'ID', \FILTER_VALIDATE_INT );
-		$recipient_id = filter_input( \INPUT_POST, 'comment_notification_recipient', \FILTER_VALIDATE_INT );
+		$post_id      = \filter_input( \INPUT_POST, 'ID', \FILTER_VALIDATE_INT );
+		$recipient_id = \filter_input( \INPUT_POST, 'comment_notification_recipient', \FILTER_VALIDATE_INT );
 
 		if ( $recipient_id && $post_id ) {
-			update_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, $recipient_id );
+			\update_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, $recipient_id );
 		}
 	}
 
@@ -199,7 +199,7 @@ class Admin {
 
 		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
 			/* translators: %d is replaced with the minimum number of characters */
-			add_settings_error( $this->option_name, 'min_length_invalid', sprintf( __( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'yoast-comment-hacks' ), $this->absolute_min ) );
+			\add_settings_error( $this->option_name, 'min_length_invalid', \sprintf( \__( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'yoast-comment-hacks' ), $this->absolute_min ) );
 			$input['mincomlength'] = 15;
 		}
 
@@ -210,9 +210,9 @@ class Admin {
 	 * Register the config page for all users that have the manage_options capability.
 	 */
 	public function add_config_page() {
-		add_options_page(
-			__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
-			__( 'Comment Hacks', 'yoast-comment-hacks' ),
+		\add_options_page(
+			\__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
+			\__( 'Comment Hacks', 'yoast-comment-hacks' ),
 			'manage_options',
 			$this->hook,
 			array(
@@ -234,13 +234,13 @@ class Admin {
 		/* Static so we don't call plugin_basename on every plugin row. */
 		static $this_plugin;
 		if ( ! $this_plugin ) {
-			$this_plugin = plugin_basename( __FILE__ );
+			$this_plugin = \plugin_basename( __FILE__ );
 		}
 
 		if ( $file === $this_plugin ) {
-			$settings_link = '<a href="' . admin_url( 'options-general.php?page=' . $this->hook ) . '">' . __( 'Settings', 'yoast-comment-hacks' ) . '</a>';
+			$settings_link = '<a href="' . \admin_url( 'options-general.php?page=' . $this->hook ) . '">' . \__( 'Settings', 'yoast-comment-hacks' ) . '</a>';
 			// Put our link before other links.
-			array_unshift( $links, $settings_link );
+			\array_unshift( $links, $settings_link );
 		}
 
 		return $links;
@@ -257,8 +257,8 @@ class Admin {
 		require_once \YST_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
 
 		// Show the content of the options array when debug is enabled.
-		if ( defined( 'WP_DEBUG' ) && \WP_DEBUG ) {
-			echo '<h4>', esc_html__( 'Options debug', 'yoast-comment-hacks' ), '</h4>';
+		if ( \defined( 'WP_DEBUG' ) && \WP_DEBUG ) {
+			echo '<h4>', \esc_html__( 'Options debug', 'yoast-comment-hacks' ), '</h4>';
 			echo '<div style="border: 1px solid #aaa; padding: 20px;">';
 			// @codingStandardsIgnoreStart
 			echo str_replace( '<code>', '<code style="background-color: #eee; margin: 0; padding: 0;">', highlight_string( "<?php\n\$this->options = " . var_export( $this->options, true ) . ';', true ), $num );

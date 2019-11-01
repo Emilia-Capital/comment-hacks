@@ -25,7 +25,7 @@ class Forms {
 	public function __construct() {
 		$this->options = Hacks::get_options();
 
-		add_filter( 'comment_form_defaults', array( $this, 'filter_defaults' ) );
+		\add_filter( 'comment_form_defaults', array( $this, 'filter_defaults' ) );
 	}
 
 	/**
