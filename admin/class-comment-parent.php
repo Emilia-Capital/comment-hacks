@@ -25,7 +25,7 @@ class Comment_Parent {
 	 * @param object $comment The comment object.
 	 */
 	public function comment_parent_box( $comment ) {
-		require_once YST_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
+		require_once \YST_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
 	}
 
 	/**
@@ -50,18 +50,18 @@ class Comment_Parent {
 	 * Updates the comment parent field.
 	 */
 	public function update_comment_parent() {
-		$comment_parent = filter_input( INPUT_POST, 'yst_comment_parent', FILTER_VALIDATE_INT );
-		$comment_id     = filter_input( INPUT_POST, 'comment_ID', FILTER_VALIDATE_INT );
+		$comment_parent = filter_input( \INPUT_POST, 'yst_comment_parent', \FILTER_VALIDATE_INT );
+		$comment_id     = filter_input( \INPUT_POST, 'comment_ID', \FILTER_VALIDATE_INT );
 
 		if ( empty( $comment_id ) && empty( $comment_parent ) ) {
 			return; // There might be another reason for a comment to be updated.
 		}
 
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX === true ) {
+		if ( defined( 'DOING_AJAX' ) && \DOING_AJAX === true ) {
 			check_ajax_referer( 'replyto-comment', '_ajax_nonce-replyto-comment' );
 		}
 
-		if ( ! defined( 'DOING_AJAX' ) || DOING_AJAX !== true ) {
+		if ( ! defined( 'DOING_AJAX' ) || \DOING_AJAX !== true ) {
 			check_admin_referer( 'update-comment_' . $comment_id );
 		}
 

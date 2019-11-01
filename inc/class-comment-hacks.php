@@ -143,7 +143,7 @@ class Hacks {
 
 		if ( ! isset( $this->options['version'] ) ) {
 			$this->options['clean_emails'] = true;
-			$this->options['version']      = YOAST_COMMENT_HACKS_VERSION;
+			$this->options['version']      = \YOAST_COMMENT_HACKS_VERSION;
 		}
 
 		update_option( self::$option_name, $this->options );
@@ -186,6 +186,6 @@ class Hacks {
 	 * Load plugin textdomain.
 	 */
 	public function load_text_domain() {
-		load_plugin_textdomain( 'yoast-comment-hacks', false, dirname( plugin_basename( YOAST_COMMENT_HACKS_FILE ) ) . '/languages' );
+		load_plugin_textdomain( 'yoast-comment-hacks', false, dirname( plugin_basename( \YOAST_COMMENT_HACKS_FILE ) ) . '/languages' );
 	}
 }

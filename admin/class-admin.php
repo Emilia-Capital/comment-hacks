@@ -83,26 +83,26 @@ class Admin {
 	 * Enqueue our admin script.
 	 */
 	public function enqueue() {
-		$page = filter_input( INPUT_GET, 'page' );
+		$page = filter_input( \INPUT_GET, 'page' );
 
 		if ( $page === 'yoast-comment-hacks' ) {
 			$min = '.min';
-			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			if ( defined( 'SCRIPT_DEBUG' ) && \SCRIPT_DEBUG ) {
 				$min = '';
 			}
 
 			wp_enqueue_style(
 				'yoast-comment-hacks-admin-css',
-				plugins_url( 'admin/assets/css/yoast-comment-hacks.css', YOAST_COMMENT_HACKS_FILE ),
+				plugins_url( 'admin/assets/css/yoast-comment-hacks.css', \YOAST_COMMENT_HACKS_FILE ),
 				array(),
-				YOAST_COMMENT_HACKS_VERSION
+				\YOAST_COMMENT_HACKS_VERSION
 			);
 
 			wp_enqueue_script(
 				'yoast-comment-hacks-admin-js',
-				plugins_url( 'admin/assets/js/yoast-comment-hacks.min.js', YOAST_COMMENT_HACKS_FILE ),
+				plugins_url( 'admin/assets/js/yoast-comment-hacks.min.js', \YOAST_COMMENT_HACKS_FILE ),
 				array(),
-				YOAST_COMMENT_HACKS_VERSION,
+				\YOAST_COMMENT_HACKS_VERSION,
 				true
 			);
 		}
@@ -130,7 +130,7 @@ class Admin {
 		echo '<br><br>';
 		echo '<label for="comment_notification_recipient">' . esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
 
-		$post_id = filter_input( INPUT_GET, 'post', FILTER_VALIDATE_INT );
+		$post_id = filter_input( \INPUT_GET, 'post', \FILTER_VALIDATE_INT );
 
 		/**
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
@@ -165,8 +165,8 @@ class Admin {
 	 */
 	public function save_reroute_comment_emails() {
 
-		$post_id      = filter_input( INPUT_POST, 'ID', FILTER_VALIDATE_INT );
-		$recipient_id = filter_input( INPUT_POST, 'comment_notification_recipient', FILTER_VALIDATE_INT );
+		$post_id      = filter_input( \INPUT_POST, 'ID', \FILTER_VALIDATE_INT );
+		$recipient_id = filter_input( \INPUT_POST, 'comment_notification_recipient', \FILTER_VALIDATE_INT );
 
 		if ( $recipient_id && $post_id ) {
 			update_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, $recipient_id );
@@ -189,7 +189,7 @@ class Admin {
 		$input['maxcomlength']  = (int) $input['maxcomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
 		$input['clean_emails']  = isset( $input['clean_emails'] ) ? 1 : 0;
-		$input['version']       = YOAST_COMMENT_HACKS_VERSION;
+		$input['version']       = \YOAST_COMMENT_HACKS_VERSION;
 
 		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
 			if ( '' === $input[ $key ] ) {
@@ -254,10 +254,10 @@ class Admin {
 	public function config_page() {
 		$this->register_i18n_promo_class();
 
-		require_once YST_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
+		require_once \YST_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
 
 		// Show the content of the options array when debug is enabled.
-		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+		if ( defined( 'WP_DEBUG' ) && \WP_DEBUG ) {
 			echo '<h4>', esc_html__( 'Options debug', 'yoast-comment-hacks' ), '</h4>';
 			echo '<div style="border: 1px solid #aaa; padding: 20px;">';
 			// @codingStandardsIgnoreStart
