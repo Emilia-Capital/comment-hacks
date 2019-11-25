@@ -1,16 +1,16 @@
 <?php
+
+namespace Yoast\WP\Comment\Inc;
+
+use Yoast\WP\Comment\Inc\Hacks;
+
 /**
  * Checks the comments for allowed length.
  *
- * @package YoastCommentHacks
- */
-
-/**
- * Class YoastCommentLength.
- *
  * @since 1.3
+ * @since 1.6.0 Class renamed from `YoastCommentLength` to `Yoast\WP\Comment\Inc\Length`.
  */
-class YoastCommentLength {
+class Length {
 
 	/**
 	 * Holds the plugins options.
@@ -20,13 +20,13 @@ class YoastCommentLength {
 	private $options = array();
 
 	/**
-	 * YoastCommentLength constructor.
+	 * Class constructor.
 	 */
 	public function __construct() {
-		$this->options = YoastCommentHacks::get_options();
+		$this->options = Hacks::get_options();
 
 		// Process the comment and check it for length.
-		add_filter( 'preprocess_comment', array( $this, 'check_comment_length' ) );
+		\add_filter( 'preprocess_comment', array( $this, 'check_comment_length' ) );
 	}
 
 	/**
@@ -40,7 +40,7 @@ class YoastCommentLength {
 	 */
 	public function check_comment_length( $comment_data ) {
 		// Bail early for editors and admins, they can leave short or long comments if they want.
-		if ( current_user_can( 'edit_posts' ) ) {
+		if ( \current_user_can( 'edit_posts' ) ) {
 			return $comment_data;
 		}
 
@@ -56,7 +56,7 @@ class YoastCommentLength {
 		}
 
 		if ( $error ) {
-			wp_die( esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+			\wp_die( \esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . \esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
 		}
 		return $comment_data;
 	}
@@ -71,11 +71,11 @@ class YoastCommentLength {
 	 * @return int The length of the comment.
 	 */
 	private function get_comment_length( $comment ) {
-		$comment = trim( $comment );
+		$comment = \trim( $comment );
 
-		if ( function_exists( 'mb_strlen' ) ) {
-			return mb_strlen( $comment, get_bloginfo( 'charset' ) );
+		if ( \function_exists( 'mb_strlen' ) ) {
+			return \mb_strlen( $comment, \get_bloginfo( 'charset' ) );
 		}
-		return strlen( $comment );
+		return \strlen( $comment );
 	}
 }

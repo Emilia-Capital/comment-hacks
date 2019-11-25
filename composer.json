@@ -35,6 +35,7 @@
 	"autoload": {
 		"classmap": [
 			"admin/",
+			"deprecated/",
 			"inc/"
 		]
 	},
