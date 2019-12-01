@@ -153,7 +153,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 								)
 							);
 
-							if ( isset( $this->options['redirect_page'] ) && 0 !== $this->options['redirect_page'] ) {
+							if ( isset( $this->options['redirect_page'] ) && $this->options['redirect_page'] !== 0 ) {
 								echo '<br><br><a target="_blank" href="' . esc_url( get_permalink( $this->options['redirect_page'] ) ) . '">' . esc_html__( 'Current redirect page', 'yoast-comment-hacks' ) . '</a>';
 							}
 

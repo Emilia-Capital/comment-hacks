@@ -56,7 +56,7 @@ class Clean_Emails {
 	 * @return string $message_headers
 	 */
 	public function comment_email_headers( $message_headers ) {
-		if ( '' === $message_headers ) {
+		if ( $message_headers === '' ) {
 			return 'Content-Type: text/html; charset="' . \get_option( 'blog_charset' ) . "\"\n";
 		}
 
@@ -147,7 +147,7 @@ class Clean_Emails {
 	 * Adds the author line to the message.
 	 */
 	private function add_author_line() {
-		if ( '' === $this->comment->comment_type ) {
+		if ( $this->comment->comment_type === '' ) {
 			/* translators: %1$s is replaced with the comment author's name, %2$s is replaced with the comment author's email */
 			$this->message .= \sprintf( \__( 'Author: %1$s (%2$s)', 'yoast-comment-hacks' ), \esc_html( $this->comment->comment_author ), '<a href="' . \esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . \esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
 		}
@@ -161,7 +161,7 @@ class Clean_Emails {
 	 * Adds the content line to the message.
 	 */
 	private function add_content_line() {
-		if ( '' === $this->comment->comment_type ) {
+		if ( $this->comment->comment_type === '' ) {
 			$this->message .= \__( 'Comment:', 'yoast-comment-hacks' );
 		}
 		else {
@@ -175,7 +175,7 @@ class Clean_Emails {
 	 * Adds the URL line to the message.
 	 */
 	private function add_url_line() {
-		if ( isset( $this->comment->comment_author_url ) && '' !== $this->comment->comment_author_url ) {
+		if ( isset( $this->comment->comment_author_url ) && $this->comment->comment_author_url !== '' ) {
 			/* translators: %s is replaced with the URL */
 			$this->message .= \sprintf( \__( 'URL: %s', 'yoast-comment-hacks' ), '<a href="' . \esc_url( $this->comment->comment_author_url ) . '">' . \esc_html( $this->comment->comment_author_url ) . '</a>' ) . '<br/>';
 		}
@@ -200,7 +200,7 @@ class Clean_Emails {
 		$this->comment    = \get_comment( $this->comment_id );
 		$this->post       = \get_post( $this->comment->comment_post_ID );
 
-		if ( 'comment' === $this->comment->comment_type ) {
+		if ( $this->comment->comment_type === 'comment' ) {
 			$this->comment->comment_type = '';
 		}
 	}

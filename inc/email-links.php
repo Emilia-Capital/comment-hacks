@@ -55,7 +55,7 @@ class Email_Links {
 
 		$results = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT comment_author_email FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_type = '' AND comment_approved = '1'", $post->ID ) );
 
-		if ( 0 === \count( $results ) ) {
+		if ( \count( $results ) === 0 ) {
 			return;
 		}
 
