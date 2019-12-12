@@ -192,7 +192,7 @@ class Admin {
 		$input['version']       = \YOAST_COMMENT_HACKS_VERSION;
 
 		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
-			if ( '' === $input[ $key ] ) {
+			if ( $input[ $key ] === '' ) {
 				$input[ $key ] = $defaults[ $key ];
 			}
 		}

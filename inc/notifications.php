@@ -53,14 +53,14 @@ class Notifications {
 	public function filter_notification_headers( $message_headers, $comment_id ) {
 		$comment = \get_comment( $comment_id );
 
-		if ( '' !== $comment->comment_author && '' !== $comment->comment_author_email ) {
+		if ( $comment->comment_author !== '' && $comment->comment_author_email !== '' ) {
 			$name             = \esc_html( $comment->comment_author );
 			$message_headers .= "\nReply-To: $name <$comment->comment_author_email>\n";
 
 			return $message_headers;
 		}
 
-		if ( '' !== $comment->comment_author_email ) {
+		if ( $comment->comment_author_email !== '' ) {
 			$message_headers .= "\nReply-To: $comment->comment_author_email <$comment->comment_author_email>\n";
 
 			return $message_headers;
