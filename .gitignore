@@ -8,3 +8,5 @@ node_modules/
 .wordpress-svn/
 artifact.zip
 artifact/
+.phpcs.xml
+phpcs.xml

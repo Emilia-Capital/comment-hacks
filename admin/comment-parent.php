@@ -24,7 +24,7 @@ class Comment_Parent {
 	 *
 	 * @param object $comment The comment object.
 	 */
-	public function comment_parent_box( $comment ) {
+	public function comment_parent_box( $comment ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Param used in included file.
 		require_once \YST_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
 	}
 
