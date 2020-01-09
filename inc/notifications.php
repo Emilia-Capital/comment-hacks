@@ -14,10 +14,10 @@ class Notifications {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		\add_filter( 'comment_notification_recipients', array( $this, 'filter_notification_recipients' ), 10, 2 );
-		\add_filter( 'comment_moderation_recipients', array( $this, 'filter_notification_recipients' ), 10, 2 );
-		\add_filter( 'comment_notification_headers', array( $this, 'filter_notification_headers' ), 10, 2 );
-		\add_filter( 'comment_moderation_headers', array( $this, 'filter_notification_headers' ), 10, 2 );
+		\add_filter( 'comment_notification_recipients', [ $this, 'filter_notification_recipients' ], 10, 2 );
+		\add_filter( 'comment_moderation_recipients', [ $this, 'filter_notification_recipients' ], 10, 2 );
+		\add_filter( 'comment_notification_headers', [ $this, 'filter_notification_headers' ], 10, 2 );
+		\add_filter( 'comment_moderation_headers', [ $this, 'filter_notification_headers' ], 10, 2 );
 	}
 
 	/**
@@ -36,7 +36,7 @@ class Notifications {
 		if ( ! empty( $new_recipient ) ) {
 			$user = \get_userdata( $new_recipient );
 
-			return array( $user->user_email );
+			return [ $user->user_email ];
 		}
 
 		return $recipients;

@@ -33,7 +33,15 @@
 	#############################################################################
 	-->
 
-	<rule ref="Yoast"/>
+	<rule ref="Yoast">
+		<properties>
+			<!-- Provide the plugin specific prefix for use with namespace and hook names. -->
+			<property name="prefixes" type="array">
+				<element value="Yoast\WP\Comment"/>
+				<element value="yoast_comment"/>
+			</property>
+		</properties>
+	</rule>
 
 
 	<!--
@@ -54,12 +62,12 @@
 	<rule ref="Yoast.Files.FileName">
 		<properties>
 			<!-- Don't trigger on the main file as renaming it would deactivate the plugin. -->
-			<property name="exclude" type="array">
+			<property name="excluded_files_strict_check" type="array">
 				<element value="yoast-comment-hacks.php"/>
 			</property>
 
 			<!-- Remove the following prefixes from the names of object structures. -->
-			<property name="prefixes" type="array">
+			<property name="oo_prefixes" type="array">
 				<element value="yoast_comment"/>
 			</property>
 		</properties>
@@ -67,21 +75,16 @@
 		<exclude-pattern>*/deprecated/deprecated-classes\.php$</exclude-pattern>
 	</rule>
 
-	<!-- Verify that everything in the global namespace is prefixed with a plugin specific prefix. -->
+
+	<!--
+	#############################################################################
+	SELECTIVE EXCLUSIONS
+	Exclude specific files for specific sniffs and/or exclude sub-groups in sniffs.
+	#############################################################################
+	-->
+
+	<!-- Valid: These classes were deprecated to comply with the prefixing rules. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
-		<properties>
-			<!-- Provide the prefixes to look for. -->
-			<property name="prefixes" type="array">
-				<!-- Temporarily allowed until the prefixes are fixed. -->
-				<element value="yoast_ch"/>
-				<element value="yst_comment"/>
-
-				<!-- These are the new prefixes which all code should comply with in the future. -->
-				<element value="yoast_comment"/>
-				<element value="Yoast\WP\Comment"/>
-			</property>
-		</properties>
-
 		<exclude-pattern>*/deprecated/*\.php$</exclude-pattern>
 	</rule>
 
@@ -92,6 +95,15 @@
 	Adjustments which should be removed once the associated issue has been resolved.
 	#############################################################################
 	-->
+
+	<!-- Until all prefixes are fixed, some exceptions are allowed to the PrefixAllGlobals sniff. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array" extend="true">
+				<element value="yst_comment"/>
+			</property>
+		</properties>
+	</rule>
 
 	<!-- Direct database queries need careful review.
 		 Ticket: https://github.com/Yoast/comment-hacks/issues/50

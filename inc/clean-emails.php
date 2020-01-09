@@ -41,11 +41,11 @@ class Clean_Emails {
 	 * Class constructor.
 	 */
 	public function __construct() {
-		\add_filter( 'comment_notification_text', array( $this, 'comment_notification_text' ), 10, 2 );
-		\add_filter( 'comment_moderation_text', array( $this, 'comment_moderation_text' ), 10, 2 );
+		\add_filter( 'comment_notification_text', [ $this, 'comment_notification_text' ], 10, 2 );
+		\add_filter( 'comment_moderation_text', [ $this, 'comment_moderation_text' ], 10, 2 );
 
-		\add_filter( 'comment_notification_headers', array( $this, 'comment_email_headers' ) );
-		\add_filter( 'comment_moderation_headers', array( $this, 'comment_email_headers' ) );
+		\add_filter( 'comment_notification_headers', [ $this, 'comment_email_headers' ] );
+		\add_filter( 'comment_moderation_headers', [ $this, 'comment_email_headers' ] );
 	}
 
 	/**
@@ -226,12 +226,12 @@ class Clean_Emails {
 	 * Returns a string containing comment moderation links.
 	 */
 	private function comment_moderation_actions() {
-		$actions = array(
+		$actions = [
 			'approve'     => \__( 'Approve', 'yoast-comment-hacks' ),
 			'spam'        => \__( 'Spam', 'yoast-comment-hacks' ),
 			'trash'       => \__( 'Trash', 'yoast-comment-hacks' ),
 			'editcomment' => \__( 'Edit', 'yoast-comment-hacks' ),
-		);
+		];
 
 		$this->comment_action_links( $actions );
 	}
@@ -240,11 +240,11 @@ class Clean_Emails {
 	 * Returns a string containing comment action links.
 	 */
 	private function comment_notification_actions() {
-		$actions = array(
+		$actions = [
 			'spam'        => \__( 'Spam', 'yoast-comment-hacks' ),
 			'trash'       => \__( 'Trash', 'yoast-comment-hacks' ),
 			'editcomment' => \__( 'Edit', 'yoast-comment-hacks' ),
-		);
+		];
 
 		$this->comment_action_links( $actions );
 	}

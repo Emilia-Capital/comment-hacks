@@ -15,8 +15,8 @@ class Comment_Parent {
 	 */
 	public function __construct() {
 		// The hooks for editing and saving the comment parent.
-		\add_action( 'admin_menu', array( $this, 'load_comment_parent_box' ) );
-		\add_action( 'edit_comment', array( $this, 'update_comment_parent' ) );
+		\add_action( 'admin_menu', [ $this, 'load_comment_parent_box' ] );
+		\add_action( 'edit_comment', [ $this, 'update_comment_parent' ] );
 	}
 
 	/**
@@ -36,10 +36,10 @@ class Comment_Parent {
 			\add_meta_box(
 				'comment_parent',
 				'Comment Parent',
-				array(
+				[
 					$this,
 					'comment_parent_box',
-				),
+				],
 				'comment',
 				'normal'
 			);

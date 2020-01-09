@@ -32,7 +32,7 @@ class Admin {
 	 *
 	 * @var array
 	 */
-	private $options = array();
+	private $options = [];
 
 	/**
 	 * The absolute minimum comment length when this plugin is enabled.
@@ -48,18 +48,18 @@ class Admin {
 		$this->options = Hacks::get_options();
 
 		// Hook into init for registration of the option and the language files.
-		\add_action( 'admin_init', array( $this, 'init' ) );
+		\add_action( 'admin_init', [ $this, 'init' ] );
 
 		// Register the settings page.
-		\add_action( 'admin_menu', array( $this, 'add_config_page' ) );
-		\add_action( 'admin_enqueue_scripts', array( $this, 'enqueue' ) );
+		\add_action( 'admin_menu', [ $this, 'add_config_page' ] );
+		\add_action( 'admin_enqueue_scripts', [ $this, 'enqueue' ] );
 
 		// Register a link to the settings page on the plugins overview page.
-		\add_filter( 'plugin_action_links', array( $this, 'filter_plugin_actions' ), 10, 2 );
+		\add_filter( 'plugin_action_links', [ $this, 'filter_plugin_actions' ], 10, 2 );
 
 		// Filter the comment notification recipients.
-		\add_action( 'post_comment_status_meta_box-options', array( $this, 'reroute_comment_emails_option' ) );
-		\add_action( 'save_post', array( $this, 'save_reroute_comment_emails' ) );
+		\add_action( 'post_comment_status_meta_box-options', [ $this, 'reroute_comment_emails_option' ] );
+		\add_action( 'save_post', [ $this, 'save_reroute_comment_emails' ] );
 
 		new Comment_Parent();
 	}
@@ -72,10 +72,10 @@ class Admin {
 		\register_setting(
 			Hacks::$option_name,
 			Hacks::$option_name,
-			array(
+			[
 				$this,
 				'options_validate',
-			)
+			]
 		);
 	}
 
@@ -94,14 +94,14 @@ class Admin {
 			\wp_enqueue_style(
 				'yoast-comment-hacks-admin-css',
 				\plugins_url( 'admin/assets/css/yoast-comment-hacks.css', \YOAST_COMMENT_HACKS_FILE ),
-				array(),
+				[],
 				\YOAST_COMMENT_HACKS_VERSION
 			);
 
 			\wp_enqueue_script(
 				'yoast-comment-hacks-admin-js',
 				\plugins_url( 'admin/assets/js/yoast-comment-hacks.min.js', \YOAST_COMMENT_HACKS_FILE ),
-				array(),
+				[],
 				\YOAST_COMMENT_HACKS_VERSION,
 				true
 			);
@@ -115,11 +115,11 @@ class Admin {
 	 */
 	public function register_i18n_promo_class() {
 		new Yoast_I18n_WordPressOrg_v3(
-			array(
+			[
 				'textdomain'  => 'yoast-comment-hacks',
 				'plugin_name' => 'Yoast Comment Hacks',
-				'hook'        => 'yoast_ch_admin_footer',
-			)
+				'hook'        => 'Yoast\WP\Comment\admin_footer',
+			]
 		);
 	}
 
@@ -136,27 +136,43 @@ class Admin {
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
 		 * Defaults to contributor and up.
 		 *
+		 * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\notification_roles'} filter instead.
+		 *
 		 * @param array $roles Array with user roles.
 		 */
-		$roles = \apply_filters(
+		$roles = \apply_filters_deprecated(
 			'yoast_comment_hacks_notification_roles',
-			array(
-				'author',
-				'contributor',
-				'editor',
-				'administrator',
-			)
+			[
+				[
+					'author',
+					'contributor',
+					'editor',
+					'administrator',
+				],
+			],
+			'Yoast Comment 1.6.0',
+			'Yoast\WP\Comment\notification_roles'
 		);
 
+		/**
+		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
+		 * Defaults to contributor and up.
+		 *
+		 * @since 1.6.0
+		 *
+		 * @param array $roles Array with user roles.
+		 */
+		$roles = \apply_filters( 'Yoast\WP\Comment\notification_roles', $roles );
+
 		\wp_dropdown_users(
-			array(
+			[
 				'selected'          => \get_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, true ),
 				'show_option_none'  => 'Post author',
 				'name'              => 'comment_notification_recipient',
 				'id'                => 'comment_notification_recipient',
 				'role__in'          => $roles,
 				'option_none_value' => 0,
-			)
+			]
 		);
 	}
 
@@ -191,7 +207,7 @@ class Admin {
 		$input['clean_emails']  = isset( $input['clean_emails'] ) ? 1 : 0;
 		$input['version']       = \YOAST_COMMENT_HACKS_VERSION;
 
-		foreach ( array( 'email_subject', 'email_body', 'mass_email_body' ) as $key ) {
+		foreach ( [ 'email_subject', 'email_body', 'mass_email_body' ] as $key ) {
 			if ( $input[ $key ] === '' ) {
 				$input[ $key ] = $defaults[ $key ];
 			}
@@ -215,10 +231,10 @@ class Admin {
 			\__( 'Comment Hacks', 'yoast-comment-hacks' ),
 			'manage_options',
 			$this->hook,
-			array(
+			[
 				$this,
 				'config_page',
-			)
+			]
 		);
 	}
 
