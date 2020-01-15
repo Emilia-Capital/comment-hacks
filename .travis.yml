@@ -11,11 +11,9 @@ branches:
 jobs:
   fast_finish: true
   include:
-    - php: 7.3
+    - php: 7.4
       env: PHPLINT=1 CHECK=1 PHPCS=1 TRAVIS_NODE_VERSION=node
     - php: 5.6
-      env: PHPLINT=1
-    - php: "7.4snapshot"
       env: PHPLINT=1
     - php: "nightly"
       env: PHPLINT=1
@@ -81,4 +79,4 @@ script:
   - if [[ "$PHPCS" == "1" ]]; then composer check-cs;fi
   # Validate the composer.json file.
   # @link https://getcomposer.org/doc/03-cli.md#validate
-  - if [[ $TRAVIS_PHP_VERSION == "5.6" || $TRAVIS_PHP_VERSION == "7.3" ]]; then composer validate --no-check-all; fi
+  - if [[ $TRAVIS_PHP_VERSION == "5.6" || $TRAVIS_PHP_VERSION == "7.4" ]]; then composer validate --no-check-all; fi
