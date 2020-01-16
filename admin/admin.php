@@ -100,7 +100,7 @@ class Admin {
 
 			\wp_enqueue_script(
 				'yoast-comment-hacks-admin-js',
-				\plugins_url( 'admin/assets/js/yoast-comment-hacks.min.js', \YOAST_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/js/yoast-comment-hacks' . $min . '.js', \YOAST_COMMENT_HACKS_FILE ),
 				[],
 				\YOAST_COMMENT_HACKS_VERSION,
 				true
