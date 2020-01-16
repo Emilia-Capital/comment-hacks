@@ -142,9 +142,9 @@ class Email_Links {
 	/**
 	 * Replace variables with values in the message.
 	 *
-	 * @param string         $msg     The message in which we're replacing variables.
-	 * @param boolean|object $comment The comment object.
-	 * @param int|boolean    $post    The post the comment belongs to.
+	 * @param string      $msg     The message in which we're replacing variables.
+	 * @param bool|object $comment The comment object.
+	 * @param int|bool    $post    The post the comment belongs to.
 	 *
 	 * @return string
 	 */
@@ -180,7 +180,7 @@ class Email_Links {
 	/**
 	 * Getting the replacements with comment data if there is a comment.
 	 *
-	 * @param boolean|object $comment The comment object.
+	 * @param bool|object $comment The comment object.
 	 *
 	 * @return array
 	 */
