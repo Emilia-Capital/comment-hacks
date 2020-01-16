@@ -75,7 +75,7 @@ class Hacks {
 	 * @param string $url     The original redirect URL.
 	 * @param object $comment The comment object.
 	 *
-	 * @return string $url the URL to be redirected to, altered if this was a first time comment.
+	 * @return string The URL to be redirected to, altered if this was a first time comment.
 	 */
 	public function comment_redirect( $url, $comment ) {
 		$has_approved_comment = \get_comments(

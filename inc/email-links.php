@@ -115,7 +115,7 @@ class Email_Links {
 	 *
 	 * @param array $actions Array of actions we'll be adding our action to.
 	 *
-	 * @return array $actions
+	 * @return array
 	 */
 	public function add_mailto_action_row( $actions ) {
 		global $comment;
@@ -146,7 +146,7 @@ class Email_Links {
 	 * @param boolean|object $comment The comment object.
 	 * @param int|boolean    $post    The post the comment belongs to.
 	 *
-	 * @return string $msg
+	 * @return string
 	 */
 	private function replace_variables( $msg, $comment = false, $post = false ) {
 		$replacements = $this->get_replacements( $comment );
