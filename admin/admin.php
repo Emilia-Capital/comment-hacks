@@ -196,7 +196,7 @@ class Admin {
 	 *
 	 * @param array $input Input with unvalidated options.
 	 *
-	 * @return array $input Validated input.
+	 * @return array Validated input.
 	 */
 	public function options_validate( $input ) {
 		$defaults = Hacks::get_defaults();

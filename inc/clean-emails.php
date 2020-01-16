@@ -53,7 +53,7 @@ class Clean_Emails {
 	 *
 	 * @param string $message_headers The message headers for the comment email.
 	 *
-	 * @return string $message_headers
+	 * @return string
 	 */
 	public function comment_email_headers( $message_headers ) {
 		if ( $message_headers === '' ) {
@@ -69,7 +69,7 @@ class Clean_Emails {
 	 * @param string $message    The comment notification message.
 	 * @param int    $comment_id The ID of the comment the notification is for.
 	 *
-	 * @return string $message
+	 * @return string
 	 */
 	public function comment_notification_text( $message, $comment_id ) {
 		$this->setup_data( $comment_id );
@@ -103,7 +103,7 @@ class Clean_Emails {
 	 * @param string $message    The comment moderation message.
 	 * @param int    $comment_id The ID of the comment the moderation notification is for.
 	 *
-	 * @return string $message
+	 * @return string
 	 */
 	public function comment_moderation_text( $message, $comment_id ) {
 		$this->setup_data( $comment_id );
