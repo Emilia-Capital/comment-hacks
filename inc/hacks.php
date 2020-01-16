@@ -127,9 +127,9 @@ class Hacks {
 	/**
 	 * See if the option has been cached, if it is, return it, otherwise return false.
 	 *
-	 * @param string $option The option to check for.
-	 *
 	 * @since 1.3
+	 *
+	 * @param string $option The option to check for.
 	 *
 	 * @return bool|mixed
 	 */
