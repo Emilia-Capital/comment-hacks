@@ -484,16 +484,16 @@
         },
         {
             "name": "yoast/yoastcs",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Yoast/yoastcs.git",
-                "reference": "42e415049024e56c6f0e208371010a52f3f94510"
+                "reference": "0f6d2a18545e4b0751d7966a61f0cfc95a9f8d72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/yoastcs/zipball/42e415049024e56c6f0e208371010a52f3f94510",
-                "reference": "42e415049024e56c6f0e208371010a52f3f94510",
+                "url": "https://api.github.com/repos/Yoast/yoastcs/zipball/0f6d2a18545e4b0751d7966a61f0cfc95a9f8d72",
+                "reference": "0f6d2a18545e4b0751d7966a61f0cfc95a9f8d72",
                 "shasum": ""
             },
             "require": {
@@ -507,6 +507,7 @@
                 "jakub-onderka/php-console-highlighter": "^0.4",
                 "jakub-onderka/php-parallel-lint": "^1.0",
                 "phpcompatibility/php-compatibility": "^9.2.0",
+                "phpcsstandards/phpcsdevtools": "^1.0",
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0",
                 "roave/security-advisories": "dev-master"
             },
@@ -530,7 +531,7 @@
                 "wordpress",
                 "yoast"
             ],
-            "time": "2020-02-06T11:57:15+00:00"
+            "time": "2020-04-02T17:16:18+00:00"
         }
     ],
     "aliases": [],
@@ -541,5 +542,6 @@
     "platform": {
         "php": ">=5.6"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
