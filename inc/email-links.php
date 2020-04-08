@@ -2,8 +2,6 @@
 
 namespace Yoast\WP\Comment\Inc;
 
-use Yoast\WP\Comment\Inc\Hacks;
-
 /**
  * Manage links in comments.
  *

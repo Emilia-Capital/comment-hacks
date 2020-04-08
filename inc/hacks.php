@@ -3,11 +3,6 @@
 namespace Yoast\WP\Comment\Inc;
 
 use Yoast\WP\Comment\Admin\Admin;
-use Yoast\WP\Comment\Inc\Clean_Emails;
-use Yoast\WP\Comment\Inc\Email_Links;
-use Yoast\WP\Comment\Inc\Forms;
-use Yoast\WP\Comment\Inc\Length;
-use Yoast\WP\Comment\Inc\Notifications;
 
 /**
  * Main comment hacks functionality.
