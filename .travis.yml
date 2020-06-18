@@ -20,6 +20,7 @@ jobs:
   allow_failures:
     # Allow failures for unstable builds.
     - php: "nightly"
+      env: PHPLINT=1
 
 cache:
   yarn: true
@@ -38,7 +39,9 @@ before_install:
 
 install:
   - |
-    if [[ "$CHECK" == "1" || "$PHPCS" == "1" ]]; then
+    if [[ $TRAVIS_PHP_VERSION == "nightly" && "$PHPLINT" == "1" ]]; then
+      composer install --no-interaction --ignore-platform-reqs
+    elif [[ "$CHECK" == "1" || "$PHPCS" == "1" || "$PHPLINT" == "1" ]]; then
       composer install --no-interaction
     fi
   - |
@@ -65,7 +68,7 @@ script:
   - |
     if [[ "$PHPLINT" == "1" ]]; then
       travis_fold start "PHP.check" && travis_time_start
-      find -L . -path ./vendor -prune -o -path ./node_modules -prune -o -name '*.php' -print0 | xargs -0 -n 1 -P 4 php -l
+      composer lint
       travis_time_finish && travis_fold end "PHP.check"
     fi
   # GRUNT Tasks
