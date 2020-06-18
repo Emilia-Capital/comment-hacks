@@ -24,6 +24,7 @@ jobs:
 cache:
   yarn: true
   directories:
+    - .cache
     - $HOME/.composer/cache
     - node_modules
 

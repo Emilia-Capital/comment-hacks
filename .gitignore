@@ -10,3 +10,4 @@ artifact.zip
 artifact/
 .phpcs.xml
 phpcs.xml
+.cache/phpcs.cache
