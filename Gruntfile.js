@@ -36,8 +36,8 @@ module.exports = function( grunt ) {
 		},
 		files: {
 			css: [
-				"admin/assets/css/*.css",
-				"!admin/assets/css/*.min.css",
+				"admin/assets/css/src/*.css",
+				"!admin/assets/css/dist/*.css",
 			],
 			js: [
 				"admin/assets/js/*.js",
@@ -58,9 +58,6 @@ module.exports = function( grunt ) {
 			},
 			grunt: "Gruntfile.js",
 			artifact: "artifact",
-		},
-		sassFiles: {
-			"admin/assets/css/yoast-comment-hacks.css": "admin/assets/css/yoast-comment-hacks.scss",
 		},
 		pkg: grunt.file.readJSON( "package.json" ),
 	};

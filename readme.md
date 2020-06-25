@@ -1,5 +1,3 @@
-[![Code Climate](https://codeclimate.com/repos/58ad835fff41cf0d3c004232/badges/0dfcb83f5d8df8d77b1f/gpa.svg)](https://codeclimate.com/repos/58ad835fff41cf0d3c004232/feed)
-
 # Yoast comment hacks
 
 Make comments management easier by applying some of the simple hacks the Yoast team uses.

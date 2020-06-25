@@ -92,7 +92,7 @@ class Admin {
 
 			\wp_enqueue_style(
 				'yoast-comment-hacks-admin-css',
-				\plugins_url( 'admin/assets/css/yoast-comment-hacks.css', \YOAST_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/css/dist/comment-hacks.css', \YOAST_COMMENT_HACKS_FILE ),
 				[],
 				\YOAST_COMMENT_HACKS_VERSION
 			);

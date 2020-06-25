@@ -51,4 +51,17 @@ module.exports = {
 		"composer.lock": [ "<%= files.artifact %>/composer.lock" ],
 		"composer.json": [ "<%= files.artifact %>/composer.json" ],
 	},
+	"css-files": {
+		files: [
+			{
+				expand: true,
+				cwd: "admin/assets/css/src",
+				// TO DO: remove the exclude when ready
+				src: ["**/**.css"],
+				flatten: false,
+				dest: "admin/assets/css/dist/",
+			},
+		],
+	}
+
 };
