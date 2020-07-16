@@ -57,11 +57,11 @@ module.exports = {
 				expand: true,
 				cwd: "admin/assets/css/src",
 				// TO DO: remove the exclude when ready
-				src: ["**/**.css"],
+				src: [ "**/**.css" ],
 				flatten: false,
 				dest: "admin/assets/css/dist/",
 			},
 		],
-	}
+	},
 
 };
