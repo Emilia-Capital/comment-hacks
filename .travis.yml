@@ -1,5 +1,5 @@
+os: linux
 language: php
-dist: trusty
 
 branches:
   only:
@@ -55,7 +55,6 @@ before_script:
   - export -f travis_fold
   - export -f travis_time_start
   - export -f travis_time_finish
-  - mysql --version
   - phpenv versions
   - php --version
   - php -m
