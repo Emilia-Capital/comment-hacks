@@ -87,25 +87,13 @@ class Admin {
 			$comment    = get_comment( $comment_id );
 			echo '<div class="msg updated"><p>' . sprintf( __( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . esc_html( $comment->comment_author ) . '</strong>', $this->options['forward_name'] ) . '</div></div>';
 
-			// Code below taken from WP core's pluggable.php file.
-			if ( ! isset( $from_email ) ) {
-				// Get the site domain and get rid of www.
-				$sitename = wp_parse_url( network_home_url(), PHP_URL_HOST );
-				if ( 'www.' === substr( $sitename, 0, 4 ) ) {
-					$sitename = substr( $sitename, 4 );
-				}
-
-				$from_email = 'wordpress@' . $sitename;
-			}
-
 			$intro = '---------- Forwarded message ---------
 From: ' . esc_html( $comment->comment_author ) . ' <' . esc_html( $comment->comment_author_email ) . '>
 Date: ' . date( 'D, M j, Y \a\t h:i A', strtotime( $comment->comment_date ) ) . '
 Subject: ' . __( 'Comment on', 'yoast-comment-hacks' ) . ' ' . get_bloginfo( 'name' ) . '
-To: WordPress &lt;' . esc_html( $from_email ) . '&gt;';
+To: ' . get_bloginfo( 'name' ) . ' <' . esc_html( $this->options['forward_from_email'] ) . '>';
 
-			$content = nl2br( $intro . "\n\n&gt; " . preg_replace( "/\n/", "\n&gt; ", $comment->comment_content ) );
-			$content .= "<br/>";
+			$content = $intro . "\n\n" . $comment->comment_content;
 
 			wp_mail( $this->options['forward_email'], $this->options['forward_subject'], $content );
 
@@ -290,12 +278,13 @@ To: WordPress &lt;' . esc_html( $from_email ) . '&gt;';
 	public function options_validate( $input ) {
 		$defaults = Hacks::get_defaults();
 
-		$input['mincomlength']  = (int) $input['mincomlength'];
-		$input['maxcomlength']  = (int) $input['maxcomlength'];
-		$input['redirect_page'] = (int) $input['redirect_page'];
-		$input['forward_email'] = sanitize_email( $input['forward_email'] );
-		$input['clean_emails']  = isset( $input['clean_emails'] ) ? 1 : 0;
-		$input['version']       = \YOAST_COMMENT_HACKS_VERSION;
+		$input['mincomlength']       = (int) $input['mincomlength'];
+		$input['maxcomlength']       = (int) $input['maxcomlength'];
+		$input['redirect_page']      = (int) $input['redirect_page'];
+		$input['forward_email']      = sanitize_email( $input['forward_email'] );
+		$input['forward_from_email'] = sanitize_email( $input['forward_from_email'] );
+		$input['clean_emails']       = isset( $input['clean_emails'] ) ? 1 : 0;
+		$input['version']            = \YOAST_COMMENT_HACKS_VERSION;
 
 		foreach ( [ 'email_subject', 'email_body', 'mass_email_body', 'forward_name', 'forward_subject' ] as $key ) {
 			$input[ $key ] = wp_strip_all_tags( $input[ $key ] );
