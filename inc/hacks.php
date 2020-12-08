@@ -181,6 +181,9 @@ class Hacks {
 			'maxcomlength'      => 1500,
 			'maxcomlengtherror' => \__( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
 			'redirect_page'     => 0,
+			'forward_email'     => '',
+			'forward_name'      => \__( 'Support', 'yoast-comment-hacks' ),
+			'forward_subject'   => sprintf( \__( 'Comment forwarded from %1$s', 'yoast-comment-hacks' ), get_bloginfo( 'name' ) ),
 		];
 	}
 

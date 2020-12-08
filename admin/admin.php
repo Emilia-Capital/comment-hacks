@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\Comment\Admin;
 
+use WP_Post;
 use Yoast\WP\Comment\Inc\Hacks;
 use Yoast_I18n_WordPressOrg_v3;
 
@@ -57,10 +58,152 @@ class Admin {
 		\add_filter( 'plugin_action_links', [ $this, 'filter_plugin_actions' ], 10, 2 );
 
 		// Filter the comment notification recipients.
-		\add_action( 'post_comment_status_meta_box-options', [ $this, 'reroute_comment_emails_option' ] );
+		\add_action( 'add_meta_boxes', [ $this, 'register_meta_boxes' ] );
 		\add_action( 'save_post', [ $this, 'save_reroute_comment_emails' ] );
 
+		\add_filter( 'comment_row_actions', [ $this, 'forward_to_support_action_link' ], 10, 2 );
+		\add_action( 'admin_head', [ $this, 'forward_comment' ] );
+
 		new Comment_Parent();
+	}
+
+	/**
+	 * Forwards a comment to an email address chosen in the settings.
+	 *
+	 * @return void
+	 */
+	public function forward_comment() {
+		if ( empty( $this->options['forward_email'] ) ) {
+			return;
+		}
+
+		if (
+			isset( $_GET['ch_action'] )
+			&& $_GET['ch_action'] === 'forward_comment'
+			&& isset( $_GET['comment_id'] )
+			&& wp_verify_nonce( $_GET['nonce'], 'comment-hacks-forward' )
+		) {
+			$comment_id = (int) $_GET['comment_id'];
+			$comment    = get_comment( $comment_id );
+			echo '<div class="msg updated"><p>' . sprintf( __( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . esc_html( $comment->comment_author ) . '</strong>', $this->options['forward_name'] ) . '</div></div>';
+
+			// Code below taken from WP core's pluggable.php file.
+			if ( ! isset( $from_email ) ) {
+				// Get the site domain and get rid of www.
+				$sitename = wp_parse_url( network_home_url(), PHP_URL_HOST );
+				if ( 'www.' === substr( $sitename, 0, 4 ) ) {
+					$sitename = substr( $sitename, 4 );
+				}
+
+				$from_email = 'wordpress@' . $sitename;
+			}
+
+			$intro = '---------- Forwarded message ---------
+From: ' . esc_html( $comment->comment_author ) . ' <' . esc_html( $comment->comment_author_email ) . '>
+Date: ' . date( 'D, M j, Y \a\t h:i A', strtotime( $comment->comment_date ) ) . '
+Subject: ' . __( 'Comment on', 'yoast-comment-hacks' ) . ' ' . get_bloginfo( 'name' ) . '
+To: WordPress &lt;' . esc_html( $from_email ) . '&gt;';
+
+			$content = nl2br( $intro . "\n\n&gt; " . preg_replace( "/\n/", "\n&gt; ", $comment->comment_content ) );
+			$content .= "<br/>";
+
+			wp_mail( $this->options['forward_email'], $this->options['forward_subject'], $content );
+
+			// Don't send an already approved comment to the trash.
+			if ( ! $comment->comment_approved ) {
+				update_comment_meta( $comment_id, 'ch_forwarded', true );
+				wp_set_comment_status( $comment_id, 'trash' );
+			}
+		}
+	}
+
+	/**
+	 * Adds an action link to forward a comment to your support team.
+	 *
+	 * @param string[]    $actions The actions shown underneath comments.
+	 * @param \WP_Comment $comment The individual comment object.
+	 *
+	 * @return string[] The actions shown underneath comments.
+	 */
+	public function forward_to_support_action_link( $actions, $comment ) {
+		if ( empty( $this->options['forward_email'] ) ) {
+			return $actions;
+		}
+
+		$label = esc_html__( 'Forward to support', 'yoast-comment-hacks' );
+
+		// '1' === approved, 'trash' === trashed.
+		if ( $comment->comment_approved !== '1' && $comment->comment_approved !== 'trash' ) {
+			$label = esc_html__( 'Forward to support & trash', 'yoast-comment-hacks' );
+		}
+
+		$actions['ch_forward'] = '<a href="' . admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . wp_create_nonce( 'comment-hacks-forward' ) . '">' . $label . '</a>';
+
+		return $actions;
+	}
+
+	/**
+	 * Register meta box(es).
+	 */
+	public function register_meta_boxes() {
+		add_meta_box( 'comment-hacks-reroute', __( 'Yoast Comment Hacks', 'textdomain' ), [
+			$this,
+			'meta_box_callback'
+		], 'post', 'side' );
+	}
+
+	/**
+	 * Meta box display callback.
+	 *
+	 * @param WP_Post $post Current post object.
+	 */
+	function meta_box_callback( $post ) {
+		echo '<label for="comment_notification_recipient">' . \esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
+
+		/**
+		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
+		 * Defaults to contributor and up.
+		 *
+		 * @param array $roles Array with user roles.
+		 *
+		 * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\notification_roles'} filter instead.
+		 *
+		 */
+		$roles = \apply_filters_deprecated(
+			'yoast_comment_hacks_notification_roles',
+			[
+				[
+					'author',
+					'contributor',
+					'editor',
+					'administrator',
+				],
+			],
+			'Yoast Comment 1.6.0',
+			'Yoast\WP\Comment\notification_roles'
+		);
+
+		/**
+		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
+		 * Defaults to contributor and up.
+		 *
+		 * @param array $roles Array with user roles.
+		 *
+		 * @since 1.6.0
+		 *
+		 */
+		$roles = \apply_filters( 'Yoast\WP\Comment\notification_roles', $roles );
+
+		\wp_dropdown_users(
+			[
+				'selected'          => \get_post_meta( $post->ID, self::NOTIFICATION_RECIPIENT_KEY, true ),
+				'show_option_none'  => 'Post author',
+				'name'              => 'comment_notification_recipient',
+				'id'                => 'comment_notification_recipient',
+				'role__in'          => $roles,
+				'option_none_value' => 0,
+			]
+		);
 	}
 
 	/**
@@ -123,59 +266,6 @@ class Admin {
 	}
 
 	/**
-	 * Adds the comment email recipients dropdown.
-	 */
-	public function reroute_comment_emails_option() {
-		echo '<br><br>';
-		echo '<label for="comment_notification_recipient">' . \esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
-
-		$post_id = \filter_input( \INPUT_GET, 'post', \FILTER_VALIDATE_INT );
-
-		/**
-		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
-		 * Defaults to contributor and up.
-		 *
-		 * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\notification_roles'} filter instead.
-		 *
-		 * @param array $roles Array with user roles.
-		 */
-		$roles = \apply_filters_deprecated(
-			'yoast_comment_hacks_notification_roles',
-			[
-				[
-					'author',
-					'contributor',
-					'editor',
-					'administrator',
-				],
-			],
-			'Yoast Comment 1.6.0',
-			'Yoast\WP\Comment\notification_roles'
-		);
-
-		/**
-		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
-		 * Defaults to contributor and up.
-		 *
-		 * @since 1.6.0
-		 *
-		 * @param array $roles Array with user roles.
-		 */
-		$roles = \apply_filters( 'Yoast\WP\Comment\notification_roles', $roles );
-
-		\wp_dropdown_users(
-			[
-				'selected'          => \get_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, true ),
-				'show_option_none'  => 'Post author',
-				'name'              => 'comment_notification_recipient',
-				'id'                => 'comment_notification_recipient',
-				'role__in'          => $roles,
-				'option_none_value' => 0,
-			]
-		);
-	}
-
-	/**
 	 * Saves the comment email recipients post meta.
 	 */
 	public function save_reroute_comment_emails() {
@@ -191,11 +281,11 @@ class Admin {
 	/**
 	 * Validate the input, make sure comment length is an integer and above the minimum value.
 	 *
-	 * @since 1.0
-	 *
 	 * @param array $input Input with unvalidated options.
 	 *
 	 * @return array Validated input.
+	 * @since 1.0
+	 *
 	 */
 	public function options_validate( $input ) {
 		$defaults = Hacks::get_defaults();
@@ -203,10 +293,12 @@ class Admin {
 		$input['mincomlength']  = (int) $input['mincomlength'];
 		$input['maxcomlength']  = (int) $input['maxcomlength'];
 		$input['redirect_page'] = (int) $input['redirect_page'];
+		$input['forward_email'] = sanitize_email( $input['forward_email'] );
 		$input['clean_emails']  = isset( $input['clean_emails'] ) ? 1 : 0;
 		$input['version']       = \YOAST_COMMENT_HACKS_VERSION;
 
-		foreach ( [ 'email_subject', 'email_body', 'mass_email_body' ] as $key ) {
+		foreach ( [ 'email_subject', 'email_body', 'mass_email_body', 'forward_name', 'forward_subject' ] as $key ) {
+			$input[ $key ] = wp_strip_all_tags( $input[ $key ] );
 			if ( $input[ $key ] === '' ) {
 				$input[ $key ] = $defaults[ $key ];
 			}

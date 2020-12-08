@@ -1,14 +1,14 @@
-# Copyright (C) 2019 Team Yoast
+# Copyright (C) 2020 Team Yoast
 # This file is distributed under the same license as the Yoast Comment Hacks package.
 msgid ""
 msgstr ""
 "Project-Id-Version: Yoast Comment Hacks 1.6\n"
 "Report-Msgid-Bugs-To: https://github.com/yoast/comment-hacks/issues\n"
-"POT-Creation-Date: 2019-06-17 09:01:40+00:00\n"
+"POT-Creation-Date: 2020-12-08 07:30:26+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Yoast Translate Team <translations@yoast.com>\n"
 "Language-Team: Yoast Translate <translations@yoast.com>\n"
 "Language: en\n"
@@ -24,110 +24,69 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/class-admin.php:115
-#: admin/class-admin.php:115 artifact/admin/class-admin.php:115
-msgid "Comment notification recipients:"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/class-admin.php:186
-#: admin/class-admin.php:186 artifact/admin/class-admin.php:186
-#. translators: %d is replaced with the minimum number of characters
-msgid ""
-"The minimum length you entered is invalid, please enter a minimum length "
-"above %d."
-msgstr ""
-
 #. Plugin Name of the plugin/theme
 msgid "Yoast Comment Hacks"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/class-admin.php:199
-#: admin/class-admin.php:199 artifact/admin/class-admin.php:199
-msgid "Comment Hacks"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/class-admin.php:225
-#: admin/class-admin.php:225 artifact/admin/class-admin.php:225
-msgid "Settings"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/comment-parent-box.php:12
 #: admin/views/comment-parent-box.php:12
-#: artifact/admin/views/comment-parent-box.php:12
 msgid "Comment parent:"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:15
-#: admin/views/config-page.php:15 artifact/admin/views/config-page.php:15
+#: admin/views/config-page.php:17
 msgid "Comment length"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:17
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:90
-#: admin/views/config-page.php:17 admin/views/config-page.php:90
-#: artifact/admin/views/config-page.php:17
-#: artifact/admin/views/config-page.php:90
+#: admin/views/config-page.php:19 admin/views/config-page.php:92
 msgid "Email links"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:19
-#: admin/views/config-page.php:19 artifact/admin/views/config-page.php:19
+#: admin/views/config-page.php:21
 msgid "Comment redirect"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:21
-#: admin/views/config-page.php:21 artifact/admin/views/config-page.php:21
+#: admin/views/config-page.php:23
 msgid "Clean emails"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:28
-#: admin/views/config-page.php:28 artifact/admin/views/config-page.php:28
+#: admin/views/config-page.php:30
 msgid "Minimum comment length"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:30
-#: admin/views/config-page.php:30 artifact/admin/views/config-page.php:30
+#: admin/views/config-page.php:32
 msgid ""
 "Users that try to submit a comment smaller than the length you set below "
 "will get an error immediately. The text of that error is specified below "
 "too."
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:35
-#: admin/views/config-page.php:35 artifact/admin/views/config-page.php:35
+#: admin/views/config-page.php:37
 msgid "Minimum length"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:48
-#: admin/views/config-page.php:48 artifact/admin/views/config-page.php:48
+#: admin/views/config-page.php:50
 msgid "Error message for comment that is too short"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:58
-#: admin/views/config-page.php:58 artifact/admin/views/config-page.php:58
+#: admin/views/config-page.php:60
 msgid "Maximum comment length"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:60
-#: admin/views/config-page.php:60 artifact/admin/views/config-page.php:60
+#: admin/views/config-page.php:62
 msgid ""
 "Users that try to submit a comment longer than the length you set below "
 "will get an error immediately. The text of that error is specified below "
 "too."
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:65
-#: admin/views/config-page.php:65 artifact/admin/views/config-page.php:65
+#: admin/views/config-page.php:67
 msgid "Maximum length"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:78
-#: admin/views/config-page.php:78 artifact/admin/views/config-page.php:78
+#: admin/views/config-page.php:80
 msgid "Error message for comment that is too long"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:95
-#: admin/views/config-page.php:95 artifact/admin/views/config-page.php:95
+#: admin/views/config-page.php:97
 #. translators: %s expands to an email button icon
 msgid ""
 "This plugin adds an \"E-mail\" action link on the comments overview page as "
@@ -135,229 +94,52 @@ msgid ""
 "admin bar. You can customize the default messages here."
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:101
-#: admin/views/config-page.php:101 artifact/admin/views/config-page.php:101
+#: admin/views/config-page.php:103
 msgid "E-mail subject"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:111
-#: admin/views/config-page.php:111 artifact/admin/views/config-page.php:111
+#: admin/views/config-page.php:113
 msgid "E-mail body"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:121
-#: admin/views/config-page.php:121 artifact/admin/views/config-page.php:121
+#: admin/views/config-page.php:123
 msgid "E-mail all commenters body"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:132
-#: admin/views/config-page.php:132 artifact/admin/views/config-page.php:132
+#: admin/views/config-page.php:134
 msgid "Redirect first time commenters"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:134
-#: admin/views/config-page.php:134 artifact/admin/views/config-page.php:134
+#: admin/views/config-page.php:136
 msgid "Select the page below that a first time commenter should be redirected to"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:138
-#: admin/views/config-page.php:138 artifact/admin/views/config-page.php:138
+#: admin/views/config-page.php:140
 msgid "Redirect to"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:150
-#: admin/views/config-page.php:150 artifact/admin/views/config-page.php:150
+#: admin/views/config-page.php:153
 msgid "Don't redirect first time commenters"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:155
-#: admin/views/config-page.php:155 artifact/admin/views/config-page.php:155
+#: admin/views/config-page.php:158
 msgid "Current redirect page"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:164
-#: admin/views/config-page.php:164 artifact/admin/views/config-page.php:164
+#: admin/views/config-page.php:167
 msgid "Clean Emails"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:166
-#: admin/views/config-page.php:166 artifact/admin/views/config-page.php:166
+#: admin/views/config-page.php:169
 msgid ""
 "Checking this option will make your default comment notification and "
 "moderation emails a lot cleaner."
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/admin/views/config-page.php:171
-#: admin/views/config-page.php:171 artifact/admin/views/config-page.php:171
+#: admin/views/config-page.php:174
 msgid "Clean comment emails"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:81
-#: artifact/inc/class-clean-emails.php:81 inc/class-clean-emails.php:81
-#. translators: %s is replaced with the post title
-msgid "New pingback on \"%s\""
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:85
-#: artifact/inc/class-clean-emails.php:85 inc/class-clean-emails.php:85
-#. translators: %s is replaced with the post title
-msgid "New trackback on \"%s\""
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:89
-#: artifact/inc/class-clean-emails.php:89 inc/class-clean-emails.php:89
-#. translators: %s is replaced with the post title
-msgid "New comment on \"%s\""
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:115
-#: artifact/inc/class-clean-emails.php:115 inc/class-clean-emails.php:115
-#. translators: %1$s is replaced with the post title
-msgid "A new pingback on the post \"%1$s\" is waiting for your approval:"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:119
-#: artifact/inc/class-clean-emails.php:119 inc/class-clean-emails.php:119
-#. translators: %1$s is replaced with the post title
-msgid "A new trackback on the post \"%1$s\" is waiting for your approval:"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:123
-#: artifact/inc/class-clean-emails.php:123 inc/class-clean-emails.php:123
-#. translators: %1$s is replaced with the post title
-msgid "A new comment on the post \"%1$s\" is waiting for your approval:"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:129
-#: artifact/inc/class-clean-emails.php:129 inc/class-clean-emails.php:129
-msgid "Whois"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:153
-#: artifact/inc/class-clean-emails.php:153 inc/class-clean-emails.php:153
-#. translators: %1$s is replaced with the comment author's name, %2$s is
-#. replaced with the comment author's email
-msgid "Author: %1$s (%2$s)"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:157
-#: artifact/inc/class-clean-emails.php:157 inc/class-clean-emails.php:157
-#. translators: %1$s is replaced with the website doing the ping or trackback
-msgid "Website: %1$s"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:166
-#: artifact/inc/class-clean-emails.php:166 inc/class-clean-emails.php:166
-msgid "Comment:"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:169
-#: artifact/inc/class-clean-emails.php:169 inc/class-clean-emails.php:169
-msgid "Excerpt:"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:181
-#: artifact/inc/class-clean-emails.php:181 inc/class-clean-emails.php:181
-#. translators: %s is replaced with the URL
-msgid "URL: %s"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:219
-#: artifact/inc/class-clean-emails.php:219 inc/class-clean-emails.php:219
-#. translators: %s is replaced with the number of comments waiting for approval
-msgid "Currently this and %s other comments are waiting for approval."
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:222
-#: artifact/inc/class-clean-emails.php:222 inc/class-clean-emails.php:222
-#. translators: %1$s and %2$s are replaced with the HTML for a link to the
-#. moderation panel
-msgid "Please visit the %1$smoderation panel%2$s."
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:231
-#: artifact/inc/class-clean-emails.php:231 inc/class-clean-emails.php:231
-msgid "Approve"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:232
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:245
-#: artifact/inc/class-clean-emails.php:232
-#: artifact/inc/class-clean-emails.php:245 inc/class-clean-emails.php:232
-#: inc/class-clean-emails.php:245
-msgid "Spam"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:233
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:246
-#: artifact/inc/class-clean-emails.php:233
-#: artifact/inc/class-clean-emails.php:246 inc/class-clean-emails.php:233
-#: inc/class-clean-emails.php:246
-msgid "Trash"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:234
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-clean-emails.php:247
-#: artifact/inc/class-clean-emails.php:234
-#: artifact/inc/class-clean-emails.php:247 inc/class-clean-emails.php:234
-#: inc/class-clean-emails.php:247
-msgid "Edit"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-comment-email-links.php:83
-#: artifact/inc/class-comment-email-links.php:83
-#: inc/class-comment-email-links.php:83
-msgid "Email commenters"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-comment-email-links.php:135
-#: artifact/inc/class-comment-email-links.php:135
-#: inc/class-comment-email-links.php:135
-#. translators: %s is replaced with the comment authors name
-msgid "E-mail %s"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-comment-hacks.php:156
-#: artifact/inc/class-comment-hacks.php:156 inc/class-comment-hacks.php:156
-#. translators: %s expands to the post title
-msgid "RE: %s"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-comment-hacks.php:158
-#: artifact/inc/class-comment-hacks.php:158 inc/class-comment-hacks.php:158
-#. translators: %1$s expands to the commenters first name, %2$s to the post
-#. tittle, %3$s to the post permalink, %4$s expands to a double line break.
-msgid ""
-"Hi %1$s,%4$sI'm emailing you because you commented on my post \"%2$s\" - "
-"%3$s"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-comment-hacks.php:160
-#: artifact/inc/class-comment-hacks.php:160 inc/class-comment-hacks.php:160
-#. translators: %1$s expands to the the post tittle, %2$s to the post
-#. permalink, %3$s expands to a double line break.
-msgid ""
-"Hi,%3$sI'm sending you all this email because you commented on my post "
-"\"%1$s\" - %2$s"
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-comment-hacks.php:162
-#: artifact/inc/class-comment-hacks.php:162 inc/class-comment-hacks.php:162
-msgid "Error: Your comment is too short. Please try to say something useful."
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-comment-hacks.php:164
-#: artifact/inc/class-comment-hacks.php:164 inc/class-comment-hacks.php:164
-msgid "Error: Your comment is too long. Please try to be more concise."
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/inc/class-comment-length.php:59
-#: artifact/inc/class-comment-length.php:59 inc/class-comment-length.php:59
-msgid "Go back and try again."
-msgstr ""
-
-#: .wordpress-svn/yoast-comment-hacks/trunk/vendor/yoast/i18n-module/src/i18n-v3.php:233
-#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:233
 #: vendor/yoast/i18n-module/src/i18n-v3.php:233
 #. translators: 1: language name; 3: completion percentage; 4: link to
 #. translation platform.
@@ -368,8 +150,6 @@ msgid ""
 "the translation to %1$s!"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/vendor/yoast/i18n-module/src/i18n-v3.php:237
-#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:237
 #: vendor/yoast/i18n-module/src/i18n-v3.php:237
 #. translators: 1: language name; 2: plugin name; 3: completion percentage; 4:
 #. link to translation platform.
@@ -379,8 +159,6 @@ msgid ""
 "at %4$s to help complete the translation to %1$s!"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/vendor/yoast/i18n-module/src/i18n-v3.php:241
-#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:241
 #: vendor/yoast/i18n-module/src/i18n-v3.php:241
 #. translators: 2: plugin name; 4: link to translation platform.
 msgid ""
@@ -389,22 +167,16 @@ msgid ""
 "right now. You can change that! Register at %4$s to help translate it!"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/vendor/yoast/i18n-module/src/i18n-v3.php:259
-#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:259
 #: vendor/yoast/i18n-module/src/i18n-v3.php:259
 msgid "Register now &raquo;"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/vendor/yoast/i18n-module/src/i18n-v3.php:275
-#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:275
 #: vendor/yoast/i18n-module/src/i18n-v3.php:275
 #. translators: %1$s is the notification dismissal link start tag, %2$s is the
 #. link closing tag.
 msgid "%1$sPlease don't show me this notification anymore%2$s"
 msgstr ""
 
-#: .wordpress-svn/yoast-comment-hacks/trunk/vendor/yoast/i18n-module/src/i18n-v3.php:295
-#: artifact/vendor/yoast/i18n-module/src/i18n-v3.php:295
 #: vendor/yoast/i18n-module/src/i18n-v3.php:295
 #. translators: %s: plugin name.
 msgid "Translation of %s"
