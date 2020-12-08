@@ -95,7 +95,8 @@ To: ' . get_bloginfo( 'name' ) . ' <' . esc_html( $this->options['forward_from_e
 
 			$content = $intro . "\n\n" . $comment->comment_content;
 
-			wp_mail( $this->options['forward_email'], $this->options['forward_subject'], $content );
+			$headers = [ 'From: ' . get_bloginfo( 'name' ) . ' <' . esc_html( $this->options['forward_from_email'] ) . '>' ];
+			wp_mail( $this->options['forward_email'], $this->options['forward_subject'], $content, $headers );
 
 			// Don't send an already approved comment to the trash.
 			if ( ! $comment->comment_approved ) {
