@@ -58,6 +58,7 @@ module.exports = function( grunt ) {
 			},
 			grunt: "Gruntfile.js",
 			artifact: "artifact",
+			artifactComposer: "artifact-composer",
 		},
 		pkg: grunt.file.readJSON( "package.json" ),
 	};
