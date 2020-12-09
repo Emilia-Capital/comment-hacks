@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\Comment\Admin;
 
+use WP_Comment;
 use WP_Post;
 use Yoast\WP\Comment\Inc\Hacks;
 use Yoast_I18n_WordPressOrg_v3;
@@ -63,8 +64,30 @@ class Admin {
 
 		\add_filter( 'comment_row_actions', [ $this, 'forward_to_support_action_link' ], 10, 2 );
 		\add_action( 'admin_head', [ $this, 'forward_comment' ] );
+		\add_filter( 'comment_text', [ $this, 'show_forward_status' ], 10, 2 );
 
 		new Comment_Parent();
+	}
+
+	/**
+	 * Show when a comment was forwarded already.
+	 *
+	 * @param string     $comment_text Text of the current comment.
+	 * @param WP_Comment $comment      The comment object. Null if not found.
+	 *
+	 * @return mixed
+	 */
+	public function show_forward_status( $comment_text, $comment ) {
+		if ( ! is_admin() ) {
+			return $comment_text;
+		}
+		$ch_forwarded = get_comment_meta( $comment->comment_ID, 'ch_forwarded' );
+		if ( $ch_forwarded ) {
+			// translators: %s is replace by the name you're forwarding to.
+			$pre          = '<div style="background: #fff;border: 1px solid #46b450;border-left-width: 4px;box-shadow: 0 1px 1px rgba(0,0,0,.04);margin: 5px 15px 2px 0;padding: 1px 12px 1px;"><p><strong>' . sprintf( esc_html__( 'This comment was forwarded to %s.', 'yoast-comment-hacks' ), esc_html( $this->options['forward_name'] ) ) . '</strong></p></div>';
+			$comment_text = $pre . $comment_text;
+		}
+		return $comment_text;
 	}
 
 	/**
@@ -86,10 +109,15 @@ class Admin {
 		) {
 			$comment_id = (int) $_GET['comment_id'];
 			$comment    = get_comment( $comment_id );
+
 			// translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the blogpost.
 			echo '<div class="msg updated"><p>' . sprintf( esc_html__( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . esc_html( $comment->comment_author ) . '</strong>', esc_html( $this->options['forward_name'] ) ) . '</div></div>';
 
 			$intro = sprintf( 'This comment was forwarded from %s where it was left on: %s.', '<a href=" ' . get_site_url() . ' ">' . esc_html( get_bloginfo( 'name' ) ) . '</a>', '<a href="' . get_permalink( $comment->comment_post_ID ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>' ) . "\n\n";
+
+			if ( ! empty( $this->options['forward_extra'] ) ) {
+				$intro .= $this->options['forward_extra'] . "\n\n";
+			}
 
 			$intro .= '---------- Forwarded message ---------
 From: ' . esc_html( $comment->comment_author ) . ' &lt;' . esc_html( $comment->comment_author_email ) . '&gt;

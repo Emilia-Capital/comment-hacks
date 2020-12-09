@@ -14,15 +14,15 @@ $yoast_comment_option_name = Hacks::$option_name;
 
 		<h2 class="nav-tab-wrapper" id="yoast-tabs">
 			<a class="nav-tab nav-tab-active" id="comment-length-tab"
-			href="#top#comment-length"><?php esc_html_e( 'Comment length', 'yoast-comment-hacks' ); ?></a>
+					href="#top#comment-length"><?php esc_html_e( 'Comment length', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="email-links-tab"
-			href="#top#email-links"><?php esc_html_e( 'Email links', 'yoast-comment-hacks' ); ?></a>
+					href="#top#email-links"><?php esc_html_e( 'Email links', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="comment-redirect-tab"
-			href="#top#comment-redirect"><?php esc_html_e( 'Comment redirect', 'yoast-comment-hacks' ); ?></a>
+					href="#top#comment-redirect"><?php esc_html_e( 'Comment redirect', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="clean-emails-tab"
-			href="#top#clean-emails"><?php esc_html_e( 'Clean emails', 'yoast-comment-hacks' ); ?></a>
+					href="#top#clean-emails"><?php esc_html_e( 'Clean emails', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="forward-emails-tab"
-			href="#top#forward-emails"><?php esc_html_e( 'Forward emails', 'yoast-comment-hacks' ); ?></a>
+					href="#top#forward-emails"><?php esc_html_e( 'Forward emails', 'yoast-comment-hacks' ); ?></a>
 		</h2>
 
 		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="yoast-ch-conf" method="post">
@@ -40,9 +40,9 @@ $yoast_comment_option_name = Hacks::$option_name;
 						</th>
 						<td>
 							<input type="number" class="small-text" min="5" max="255"
-								value="<?php echo esc_attr( $this->options['mincomlength'] ); ?>"
-								name="<?php echo esc_attr( $yoast_comment_option_name . '[mincomlength]' ); ?>"
-								id="mincomlength"/>
+									value="<?php echo esc_attr( $this->options['mincomlength'] ); ?>"
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[mincomlength]' ); ?>"
+									id="mincomlength"/>
 						</td>
 					</tr>
 					<tr>
@@ -68,9 +68,9 @@ $yoast_comment_option_name = Hacks::$option_name;
 						</th>
 						<td>
 							<input type="number" class="small-text" min="5"
-								value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
-								name="<?php echo esc_attr( $yoast_comment_option_name . '[maxcomlength]' ); ?>"
-								id="maxcomlength"/>
+									value="<?php echo esc_attr( $this->options['maxcomlength'] ); ?>"
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[maxcomlength]' ); ?>"
+									id="maxcomlength"/>
 						</td>
 					</tr>
 					<tr>
@@ -102,9 +102,9 @@ $yoast_comment_option_name = Hacks::$option_name;
 						</th>
 						<td>
 							<input type="text"
-								name="<?php echo esc_attr( $yoast_comment_option_name . '[email_subject]' ); ?>"
-								id="email_subject" class="regular-text"
-								value="<?php echo esc_attr( $this->options['email_subject'] ); ?>"/>
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[email_subject]' ); ?>"
+									id="email_subject" class="regular-text"
+									value="<?php echo esc_attr( $this->options['email_subject'] ); ?>"/>
 						</td>
 					</tr>
 					<tr>
@@ -174,7 +174,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 							<label for="clean_emails"><?php esc_html_e( 'Clean comment emails', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="checkbox" id="clean_emails"
-								name="<?php echo esc_attr( $yoast_comment_option_name . '[clean_emails]' ); ?>" <?php checked( $this->options['clean_emails'] ); ?> />
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[clean_emails]' ); ?>" <?php checked( $this->options['clean_emails'] ); ?> />
 						</td>
 					</tr>
 				</table>
@@ -190,8 +190,8 @@ $yoast_comment_option_name = Hacks::$option_name;
 							<label for="forward-emails-email"><?php esc_html_e( 'Forward email to', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="email" id="forward-emails-email" class="regular-text"
-								name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_email]' ); ?>"
-								value="<?php echo esc_attr( $this->options['forward_email'] ); ?>"/>
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_email]' ); ?>"
+									value="<?php echo esc_attr( $this->options['forward_email'] ); ?>"/>
 						</td>
 					</tr>
 					<tr>
@@ -200,8 +200,8 @@ $yoast_comment_option_name = Hacks::$option_name;
 									for="forward-emails-name"><?php esc_html_e( 'Forward "From" name', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="text" id="forward-emails-name" class="regular-text"
-								name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_name]' ); ?>"
-								value="<?php echo esc_attr( $this->options['forward_name'] ); ?>"/>
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_name]' ); ?>"
+									value="<?php echo esc_attr( $this->options['forward_name'] ); ?>"/>
 						</td>
 					</tr>
 					<tr>
@@ -209,8 +209,8 @@ $yoast_comment_option_name = Hacks::$option_name;
 							<label for="forward-emails-from-email"><?php esc_html_e( 'Forward "From" email address', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="email" id="forward-emails-from-email" class="regular-text"
-								name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_from_email]' ); ?>"
-								value="<?php echo esc_attr( $this->options['forward_from_email'] ); ?>"/>
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_from_email]' ); ?>"
+									value="<?php echo esc_attr( $this->options['forward_from_email'] ); ?>"/>
 						</td>
 					</tr>
 					<tr>
@@ -218,8 +218,16 @@ $yoast_comment_option_name = Hacks::$option_name;
 							<label for="forward-emails-subject"><?php esc_html_e( 'Forward subject', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><input type="text" id="forward-emails-subject" class="regular-text"
-								name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_subject]' ); ?>"
-								value="<?php echo esc_attr( $this->options['forward_subject'] ); ?>"/>
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_subject]' ); ?>"
+									value="<?php echo esc_attr( $this->options['forward_subject'] ); ?>"/>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<label for="forward-emails-intro-extra"><?php esc_html_e( 'Forward intro additional text', 'yoast-comment-hacks' ); ?></label>
+						</th>
+						<td><textarea rows="4" cols="80" id="forward-emails-extra"
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_extra]' ); ?>"><?php echo esc_html( $this->options['forward_extra'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
