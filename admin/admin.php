@@ -87,15 +87,21 @@ class Admin {
 			$comment    = get_comment( $comment_id );
 			echo '<div class="msg updated"><p>' . sprintf( __( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . esc_html( $comment->comment_author ) . '</strong>', $this->options['forward_name'] ) . '</div></div>';
 
-			$intro = '---------- Forwarded message ---------
-From: ' . esc_html( $comment->comment_author ) . ' <' . esc_html( $comment->comment_author_email ) . '>
+			$intro = sprintf( 'This comment was forwarded from %s where it was left on: %s.', '<a href=" ' . get_site_url() . ' ">' . esc_html( get_bloginfo( 'name' ) ) . '</a>', '<a href="' . get_permalink( $comment->comment_post_ID ). '">' . get_the_title( $comment->comment_post_ID ) . '</a>' ) . "\n\n";
+
+			$intro .= '---------- Forwarded message ---------
+From: ' . esc_html( $comment->comment_author ) . ' &lt;' . esc_html( $comment->comment_author_email ) . '&gt;
 Date: ' . date( 'D, M j, Y \a\t h:i A', strtotime( $comment->comment_date ) ) . '
-Subject: ' . __( 'Comment on', 'yoast-comment-hacks' ) . ' ' . get_bloginfo( 'name' ) . '
-To: ' . get_bloginfo( 'name' ) . ' <' . esc_html( $this->options['forward_from_email'] ) . '>';
+Subject: ' . esc_html__( 'Comment on', 'yoast-comment-hacks' ) . ' ' . esc_html( get_bloginfo( 'name' ) ) . '
+To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options['forward_from_email'] ) . '&gt;';
+			$intro .= "\n\n";
 
-			$content = $intro . "\n\n" . $comment->comment_content;
+			$content = nl2br( $intro . $comment->comment_content );
 
-			$headers = [ 'From: ' . get_bloginfo( 'name' ) . ' <' . esc_html( $this->options['forward_from_email'] ) . '>' ];
+			$headers = [
+				'From: ' . get_bloginfo( 'name' ) . ' <' . esc_html( $this->options['forward_from_email'] ) . '>',
+				'Content-Type: text/html; charset=UTF-8',
+			];
 			wp_mail( $this->options['forward_email'], $this->options['forward_subject'], $content, $headers );
 
 			// Don't send an already approved comment to the trash.
