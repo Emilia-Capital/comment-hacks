@@ -71,7 +71,7 @@ class Hacks {
 		// Code below taken from WP core's pluggable.php file.
 		// Get the site domain and get rid of www.
 		$sitename = wp_parse_url( network_home_url(), PHP_URL_HOST );
-		if ( 'www.' === substr( $sitename, 0, 4 ) ) {
+		if ( substr( $sitename, 0, 4 ) === 'www.' ) {
 			$sitename = substr( $sitename, 4 );
 		}
 
@@ -86,7 +86,6 @@ class Hacks {
 	 *
 	 * @return string The URL to be redirected to, altered if this was a first time comment.
 	 * @since 1.0
-	 *
 	 */
 	public function comment_redirect( $url, $comment ) {
 		$has_approved_comment = \get_comments(
@@ -111,7 +110,6 @@ class Hacks {
 				 * @param object $comment The comment object.
 				 *
 				 * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\redirect'} filter instead.
-				 *
 				 */
 				$url = \apply_filters_deprecated(
 					'yoast_comment_redirect',
@@ -128,7 +126,6 @@ class Hacks {
 				 * @param object $comment The comment object.
 				 *
 				 * @since 1.6.0
-				 *
 				 */
 				$url = \apply_filters( 'Yoast\WP\Comment\redirect', $url, $comment );
 			}
@@ -144,7 +141,6 @@ class Hacks {
 	 *
 	 * @return bool|mixed
 	 * @since 1.3
-	 *
 	 */
 	private function get_option_from_cache( $option ) {
 		$options = \wp_load_alloptions();
@@ -202,6 +198,7 @@ class Hacks {
 			'redirect_page'      => 0,
 			'forward_email'      => '',
 			'forward_name'       => \__( 'Support', 'yoast-comment-hacks' ),
+			// translators: %1$s is replaced by the blog's name.
 			'forward_subject'    => sprintf( \__( 'Comment forwarded from %1$s', 'yoast-comment-hacks' ), get_bloginfo( 'name' ) ),
 			'forward_from_email' => self::get_from_email_default(),
 		];

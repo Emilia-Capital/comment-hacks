@@ -79,19 +79,21 @@ class Admin {
 
 		if (
 			isset( $_GET['ch_action'] )
-			&& $_GET['ch_action'] === 'forward_comment'
+			&& isset( $_GET['nonce'] )
 			&& isset( $_GET['comment_id'] )
-			&& wp_verify_nonce( $_GET['nonce'], 'comment-hacks-forward' )
+			&& $_GET['ch_action'] === 'forward_comment'
+			&& wp_verify_nonce( wp_strip_all_tags( wp_unslash( $_GET['nonce'] ) ), 'comment-hacks-forward' )
 		) {
 			$comment_id = (int) $_GET['comment_id'];
 			$comment    = get_comment( $comment_id );
-			echo '<div class="msg updated"><p>' . sprintf( __( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . esc_html( $comment->comment_author ) . '</strong>', $this->options['forward_name'] ) . '</div></div>';
+			// translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the blogpost.
+			echo '<div class="msg updated"><p>' . sprintf( esc_html__( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . esc_html( $comment->comment_author ) . '</strong>', esc_html( $this->options['forward_name'] ) ) . '</div></div>';
 
-			$intro = sprintf( 'This comment was forwarded from %s where it was left on: %s.', '<a href=" ' . get_site_url() . ' ">' . esc_html( get_bloginfo( 'name' ) ) . '</a>', '<a href="' . get_permalink( $comment->comment_post_ID ). '">' . get_the_title( $comment->comment_post_ID ) . '</a>' ) . "\n\n";
+			$intro = sprintf( 'This comment was forwarded from %s where it was left on: %s.', '<a href=" ' . get_site_url() . ' ">' . esc_html( get_bloginfo( 'name' ) ) . '</a>', '<a href="' . get_permalink( $comment->comment_post_ID ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>' ) . "\n\n";
 
 			$intro .= '---------- Forwarded message ---------
 From: ' . esc_html( $comment->comment_author ) . ' &lt;' . esc_html( $comment->comment_author_email ) . '&gt;
-Date: ' . date( 'D, M j, Y \a\t h:i A', strtotime( $comment->comment_date ) ) . '
+Date: ' . gmdate( 'D, M j, Y \a\t h:i A', strtotime( $comment->comment_date ) ) . '
 Subject: ' . esc_html__( 'Comment on', 'yoast-comment-hacks' ) . ' ' . esc_html( get_bloginfo( 'name' ) ) . '
 To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options['forward_from_email'] ) . '&gt;';
 			$intro .= "\n\n";
@@ -141,10 +143,16 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 	 * Register meta box(es).
 	 */
 	public function register_meta_boxes() {
-		add_meta_box( 'comment-hacks-reroute', __( 'Yoast Comment Hacks', 'textdomain' ), [
-			$this,
-			'meta_box_callback'
-		], 'post', 'side' );
+		add_meta_box(
+			'comment-hacks-reroute',
+			__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
+			[
+				$this,
+				'meta_box_callback',
+			],
+			'post',
+			'side'
+		);
 	}
 
 	/**
@@ -152,7 +160,7 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 	 *
 	 * @param WP_Post $post Current post object.
 	 */
-	function meta_box_callback( $post ) {
+	public function meta_box_callback( $post ) {
 		echo '<label for="comment_notification_recipient">' . \esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
 
 		/**
@@ -162,7 +170,6 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 		 * @param array $roles Array with user roles.
 		 *
 		 * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\notification_roles'} filter instead.
-		 *
 		 */
 		$roles = \apply_filters_deprecated(
 			'yoast_comment_hacks_notification_roles',
@@ -185,7 +192,6 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 		 * @param array $roles Array with user roles.
 		 *
 		 * @since 1.6.0
-		 *
 		 */
 		$roles = \apply_filters( 'Yoast\WP\Comment\notification_roles', $roles );
 
@@ -280,7 +286,6 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 	 *
 	 * @return array Validated input.
 	 * @since 1.0
-	 *
 	 */
 	public function options_validate( $input ) {
 		$defaults = Hacks::get_defaults();
