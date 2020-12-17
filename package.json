@@ -15,7 +15,7 @@
     "url": "https://github.com/Yoast/comment-hacks"
   },
   "devDependencies": {
-    "@yoast/grunt-plugin-tasks": "^1.7.2"
+    "@yoast/grunt-plugin-tasks": "^2.0.0"
   },
   "yoast": {
     "pluginVersion": "1.6"
