@@ -78,15 +78,17 @@ class Admin {
 	 * @return mixed
 	 */
 	public function show_forward_status( $comment_text, $comment ) {
-		if ( ! is_admin() ) {
+		if ( ! \is_admin() ) {
 			return $comment_text;
 		}
-		$ch_forwarded = get_comment_meta( $comment->comment_ID, 'ch_forwarded' );
+
+		$ch_forwarded = \get_comment_meta( $comment->comment_ID, 'ch_forwarded' );
 		if ( $ch_forwarded ) {
-			// translators: %s is replace by the name you're forwarding to.
-			$pre          = '<div style="background: #fff;border: 1px solid #46b450;border-left-width: 4px;box-shadow: 0 1px 1px rgba(0,0,0,.04);margin: 5px 15px 2px 0;padding: 1px 12px 1px;"><p><strong>' . sprintf( esc_html__( 'This comment was forwarded to %s.', 'yoast-comment-hacks' ), esc_html( $this->options['forward_name'] ) ) . '</strong></p></div>';
+			/* translators: %s is replace by the name you're forwarding to. */
+			$pre          = '<div style="background: #fff;border: 1px solid #46b450;border-left-width: 4px;box-shadow: 0 1px 1px rgba(0,0,0,.04);margin: 5px 15px 2px 0;padding: 1px 12px 1px;"><p><strong>' . \sprintf( \esc_html__( 'This comment was forwarded to %s.', 'yoast-comment-hacks' ), \esc_html( $this->options['forward_name'] ) ) . '</strong></p></div>';
 			$comment_text = $pre . $comment_text;
 		}
+
 		return $comment_text;
 	}
 
@@ -105,39 +107,39 @@ class Admin {
 			&& isset( $_GET['nonce'] )
 			&& isset( $_GET['comment_id'] )
 			&& $_GET['ch_action'] === 'forward_comment'
-			&& wp_verify_nonce( wp_strip_all_tags( wp_unslash( $_GET['nonce'] ) ), 'comment-hacks-forward' )
+			&& \wp_verify_nonce( \wp_strip_all_tags( \wp_unslash( $_GET['nonce'] ) ), 'comment-hacks-forward' )
 		) {
 			$comment_id = (int) $_GET['comment_id'];
-			$comment    = get_comment( $comment_id );
+			$comment    = \get_comment( $comment_id );
 
-			// translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the blogpost.
-			echo '<div class="msg updated"><p>' . sprintf( esc_html__( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . esc_html( $comment->comment_author ) . '</strong>', esc_html( $this->options['forward_name'] ) ) . '</div></div>';
+			/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the blogpost. */
+			echo '<div class="msg updated"><p>' . \sprintf( \esc_html__( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . \esc_html( $comment->comment_author ) . '</strong>', \esc_html( $this->options['forward_name'] ) ) . '</div></div>';
 
-			$intro = sprintf( 'This comment was forwarded from %s where it was left on: %s.', '<a href=" ' . get_site_url() . ' ">' . esc_html( get_bloginfo( 'name' ) ) . '</a>', '<a href="' . get_permalink( $comment->comment_post_ID ) . '">' . get_the_title( $comment->comment_post_ID ) . '</a>' ) . "\n\n";
+			$intro = \sprintf( 'This comment was forwarded from %s where it was left on: %s.', '<a href=" ' . \get_site_url() . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>', '<a href="' . \get_permalink( $comment->comment_post_ID ) . '">' . \get_the_title( $comment->comment_post_ID ) . '</a>' ) . "\n\n";
 
 			if ( ! empty( $this->options['forward_extra'] ) ) {
 				$intro .= $this->options['forward_extra'] . "\n\n";
 			}
 
 			$intro .= '---------- Forwarded message ---------
-From: ' . esc_html( $comment->comment_author ) . ' &lt;' . esc_html( $comment->comment_author_email ) . '&gt;
-Date: ' . gmdate( 'D, M j, Y \a\t h:i A', strtotime( $comment->comment_date ) ) . '
-Subject: ' . esc_html__( 'Comment on', 'yoast-comment-hacks' ) . ' ' . esc_html( get_bloginfo( 'name' ) ) . '
-To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options['forward_from_email'] ) . '&gt;';
+From: ' . \esc_html( $comment->comment_author ) . ' &lt;' . \esc_html( $comment->comment_author_email ) . '&gt;
+Date: ' . \gmdate( 'D, M j, Y \a\t h:i A', \strtotime( $comment->comment_date ) ) . '
+Subject: ' . \esc_html__( 'Comment on', 'yoast-comment-hacks' ) . ' ' . \esc_html( \get_bloginfo( 'name' ) ) . '
+To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->options['forward_from_email'] ) . '&gt;';
 			$intro .= "\n\n";
 
-			$content = nl2br( $intro . $comment->comment_content );
+			$content = \nl2br( $intro . $comment->comment_content );
 
 			$headers = [
-				'From: ' . get_bloginfo( 'name' ) . ' <' . esc_html( $this->options['forward_from_email'] ) . '>',
+				'From: ' . \get_bloginfo( 'name' ) . ' <' . \esc_html( $this->options['forward_from_email'] ) . '>',
 				'Content-Type: text/html; charset=UTF-8',
 			];
-			wp_mail( $this->options['forward_email'], $this->options['forward_subject'], $content, $headers );
+			\wp_mail( $this->options['forward_email'], $this->options['forward_subject'], $content, $headers );
 
 			// Don't send an already approved comment to the trash.
 			if ( ! $comment->comment_approved ) {
-				update_comment_meta( $comment_id, 'ch_forwarded', true );
-				wp_set_comment_status( $comment_id, 'trash' );
+				\update_comment_meta( $comment_id, 'ch_forwarded', true );
+				\wp_set_comment_status( $comment_id, 'trash' );
 			}
 		}
 	}
@@ -145,8 +147,8 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 	/**
 	 * Adds an action link to forward a comment to your support team.
 	 *
-	 * @param string[]    $actions The actions shown underneath comments.
-	 * @param \WP_Comment $comment The individual comment object.
+	 * @param string[]   $actions The actions shown underneath comments.
+	 * @param WP_Comment $comment The individual comment object.
 	 *
 	 * @return string[] The actions shown underneath comments.
 	 */
@@ -155,14 +157,14 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 			return $actions;
 		}
 
-		$label = esc_html__( 'Forward to support', 'yoast-comment-hacks' );
+		$label = \esc_html__( 'Forward to support', 'yoast-comment-hacks' );
 
 		// '1' === approved, 'trash' === trashed.
 		if ( $comment->comment_approved !== '1' && $comment->comment_approved !== 'trash' ) {
-			$label = esc_html__( 'Forward to support & trash', 'yoast-comment-hacks' );
+			$label = \esc_html__( 'Forward to support & trash', 'yoast-comment-hacks' );
 		}
 
-		$actions['ch_forward'] = '<a href="' . admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . wp_create_nonce( 'comment-hacks-forward' ) . '">' . $label . '</a>';
+		$actions['ch_forward'] = '<a href="' . \admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . \wp_create_nonce( 'comment-hacks-forward' ) . '">' . $label . '</a>';
 
 		return $actions;
 	}
@@ -171,9 +173,9 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 	 * Register meta box(es).
 	 */
 	public function register_meta_boxes() {
-		add_meta_box(
+		\add_meta_box(
 			'comment-hacks-reroute',
-			__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
+			\__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
 			[
 				$this,
 				'meta_box_callback',
@@ -310,10 +312,11 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 	/**
 	 * Validate the input, make sure comment length is an integer and above the minimum value.
 	 *
+	 * @since 1.0
+	 *
 	 * @param array $input Input with unvalidated options.
 	 *
 	 * @return array Validated input.
-	 * @since 1.0
 	 */
 	public function options_validate( $input ) {
 		$defaults = Hacks::get_defaults();
@@ -321,13 +324,13 @@ To: ' . esc_html( get_bloginfo( 'name' ) ) . ' &lt;' . esc_html( $this->options[
 		$input['mincomlength']       = (int) $input['mincomlength'];
 		$input['maxcomlength']       = (int) $input['maxcomlength'];
 		$input['redirect_page']      = (int) $input['redirect_page'];
-		$input['forward_email']      = sanitize_email( $input['forward_email'] );
-		$input['forward_from_email'] = sanitize_email( $input['forward_from_email'] );
+		$input['forward_email']      = \sanitize_email( $input['forward_email'] );
+		$input['forward_from_email'] = \sanitize_email( $input['forward_from_email'] );
 		$input['clean_emails']       = isset( $input['clean_emails'] ) ? 1 : 0;
 		$input['version']            = \YOAST_COMMENT_HACKS_VERSION;
 
 		foreach ( [ 'email_subject', 'email_body', 'mass_email_body', 'forward_name', 'forward_subject' ] as $key ) {
-			$input[ $key ] = wp_strip_all_tags( $input[ $key ] );
+			$input[ $key ] = \wp_strip_all_tags( $input[ $key ] );
 			if ( $input[ $key ] === '' ) {
 				$input[ $key ] = $defaults[ $key ];
 			}
