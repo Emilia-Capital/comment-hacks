@@ -70,9 +70,9 @@ class Hacks {
 	private static function get_from_email_default() {
 		// Code below taken from WP core's pluggable.php file.
 		// Get the site domain and get rid of www.
-		$sitename = wp_parse_url( network_home_url(), PHP_URL_HOST );
-		if ( substr( $sitename, 0, 4 ) === 'www.' ) {
-			$sitename = substr( $sitename, 4 );
+		$sitename = \wp_parse_url( \network_home_url(), \PHP_URL_HOST );
+		if ( \substr( $sitename, 0, 4 ) === 'www.' ) {
+			$sitename = \substr( $sitename, 4 );
 		}
 
 		return 'wordpress@' . $sitename;
@@ -81,11 +81,12 @@ class Hacks {
 	/**
 	 * Check whether the current commenter is a first time commenter, if so, redirect them to the specified settings.
 	 *
+	 * @since 1.0
+	 *
 	 * @param string $url     The original redirect URL.
 	 * @param object $comment The comment object.
 	 *
 	 * @return string The URL to be redirected to, altered if this was a first time comment.
-	 * @since 1.0
 	 */
 	public function comment_redirect( $url, $comment ) {
 		$has_approved_comment = \get_comments(
@@ -137,10 +138,11 @@ class Hacks {
 	/**
 	 * See if the option has been cached, if it is, return it, otherwise return false.
 	 *
+	 * @since 1.3
+	 *
 	 * @param string $option The option to check for.
 	 *
 	 * @return bool|mixed
-	 * @since 1.3
 	 */
 	private function get_option_from_cache( $option ) {
 		$options = \wp_load_alloptions();
@@ -198,8 +200,8 @@ class Hacks {
 			'redirect_page'      => 0,
 			'forward_email'      => '',
 			'forward_name'       => \__( 'Support', 'yoast-comment-hacks' ),
-			// translators: %1$s is replaced by the blog's name.
-			'forward_subject'    => sprintf( \__( 'Comment forwarded from %1$s', 'yoast-comment-hacks' ), get_bloginfo( 'name' ) ),
+			/* translators: %1$s is replaced by the blog's name. */
+			'forward_subject'    => \sprintf( \__( 'Comment forwarded from %1$s', 'yoast-comment-hacks' ), \get_bloginfo( 'name' ) ),
 			'forward_from_email' => self::get_from_email_default(),
 		];
 	}
