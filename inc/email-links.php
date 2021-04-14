@@ -71,8 +71,12 @@ class Email_Links {
 		// so browser extensions like the Google Mail one that change mailto: links still work.
 		echo '<a href="' . \esc_attr( $url ) . '" id="yst_email_commenters_alternate"></a><script>
 			function yst_email_commenters(e){
+				var ystEmailCommentersLink = document.getElementById( "yst_email_commenters_alternate" );
 				e.preventDefault();
-				window.location = jQuery(\'#yst_email_commenters_alternate\').attr(\'href\');
+				if ( ystEmailCommentersLink === null ) {
+					return;
+				}
+				window.location = ystEmailCommentersLink.getAttribute( "href" );
 			}
 		</script>';
 
