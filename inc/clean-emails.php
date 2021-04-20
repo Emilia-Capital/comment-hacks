@@ -147,7 +147,7 @@ class Clean_Emails {
 	 * Adds the author line to the message.
 	 */
 	private function add_author_line() {
-		if ( $this->comment->comment_type === '' ) {
+		if ( $this->comment->comment_type === 'comment' ) {
 			/* translators: %1$s is replaced with the comment author's name, %2$s is replaced with the comment author's email */
 			$this->message .= \sprintf( \__( 'Author: %1$s (%2$s)', 'yoast-comment-hacks' ), \esc_html( $this->comment->comment_author ), '<a href="' . \esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . \esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
 		}
@@ -161,7 +161,7 @@ class Clean_Emails {
 	 * Adds the content line to the message.
 	 */
 	private function add_content_line() {
-		if ( $this->comment->comment_type === '' ) {
+		if ( $this->comment->comment_type === 'comment' ) {
 			$this->message .= \__( 'Comment:', 'yoast-comment-hacks' );
 		}
 		else {
@@ -199,10 +199,6 @@ class Clean_Emails {
 		$this->comment_id = $comment_id;
 		$this->comment    = \get_comment( $this->comment_id );
 		$this->post       = \get_post( $this->comment->comment_post_ID );
-
-		if ( $this->comment->comment_type === 'comment' ) {
-			$this->comment->comment_type = '';
-		}
 	}
 
 	/**

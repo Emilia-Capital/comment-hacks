@@ -51,7 +51,7 @@ class Email_Links {
 
 		$current_user = \wp_get_current_user();
 
-		$results = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT comment_author_email FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_type = '' AND comment_approved = '1'", $post->ID ) );
+		$results = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT comment_author_email FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_type = 'comment' AND comment_approved = '1'", $post->ID ) );
 
 		if ( \count( $results ) === 0 ) {
 			return;
@@ -71,8 +71,12 @@ class Email_Links {
 		// so browser extensions like the Google Mail one that change mailto: links still work.
 		echo '<a href="' . \esc_attr( $url ) . '" id="yst_email_commenters_alternate"></a><script>
 			function yst_email_commenters(e){
+				var ystEmailCommentersLink = document.getElementById( "yst_email_commenters_alternate" );
 				e.preventDefault();
-				window.location = jQuery(\'#yst_email_commenters_alternate\').attr(\'href\');
+				if ( ystEmailCommentersLink === null ) {
+					return;
+				}
+				window.location = ystEmailCommentersLink.getAttribute( "href" );
 			}
 		</script>';
 
@@ -118,7 +122,7 @@ class Email_Links {
 	public function add_mailto_action_row( $actions ) {
 		global $comment;
 
-		if ( $comment->comment_type !== '' ) {
+		if ( $comment->comment_type !== 'comment' ) {
 			return $actions;
 		}
 
