@@ -35,7 +35,7 @@ use Yoast\WP\Comment\Inc\Hacks;
 /**
  * Used for version checks.
  */
-define( 'YOAST_COMMENT_HACKS_VERSION', '1.6' );
+define( 'YOAST_COMMENT_HACKS_VERSION', '1.7-RC1' );
 
 /**
  * Used for asset embedding.
