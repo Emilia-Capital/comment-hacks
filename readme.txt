@@ -4,7 +4,7 @@ Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
 Requires at least: 5.6
 Tested up to: 5.7
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP: 5.6.20
@@ -54,9 +54,9 @@ See the screenshots to get an even better idea of the plugins functionality.
 = 1.7 =
 
 * Bugfixes:
-    * Fixed: the "Email commenters" link would not be displayed any longer in the WordPress admin bar and in the Comments list.
-    * Fixed: the "Email commenters" link in the front end admin bar didn't work when jQuery wasn't enqueued.
-    * Fixed: the notification emails for new comments had wrong content for the Author line and the text displayed before the comment.
+    * Fixed: the "Email commenters" link would not be displayed in the WordPress admin bar and in the Comments list.
+    * Fixed: the "Email commenters" link in the front end admin bar wouldn't work when jQuery wasn't enqueued.
+    * Fixed: the notification emails for new comments would have incorrect content for the Author line and the text displayed before the comment.
 
 = 1.6 =
 
