@@ -54,9 +54,9 @@ See the screenshots to get an even better idea of the plugins functionality.
 = 1.7 =
 
 * Bugfixes:
-    * Fixed: the "Email commenters" link would not be displayed any longer in the WordPress admin bar and in the Comments list.
-    * Fixed: the "Email commenters" link in the front end admin bar didn't work when jQuery wasn't enqueued.
-    * Fixed: the notification emails for new comments had wrong content for the Author line and the text displayed before the comment.
+    * Fixed: the "Email commenters" link would not be displayed in the WordPress admin bar and in the Comments list.
+    * Fixed: the "Email commenters" link in the front end admin bar wouldn't work when jQuery wasn't enqueued.
+    * Fixed: the notification emails for new comments would have incorrect content for the Author line and the text displayed before the comment.
 
 = 1.6 =
 
