@@ -15,11 +15,7 @@ jobs:
       env: PHPLINT=1 CHECK=1 PHPCS=1 TRAVIS_NODE_VERSION=node
     - php: 5.6
       env: PHPLINT=1
-    - php: "nightly"
-      env: PHPLINT=1
-  allow_failures:
-    # Allow failures for unstable builds.
-    - php: "nightly"
+    - php: 8.0
       env: PHPLINT=1
 
 cache:
@@ -40,9 +36,7 @@ before_install:
 
 install:
   - |
-    if [[ $TRAVIS_PHP_VERSION == "nightly" && "$PHPLINT" == "1" ]]; then
-      composer install --no-interaction --ignore-platform-reqs
-    elif [[ "$CHECK" == "1" || "$PHPCS" == "1" || "$PHPLINT" == "1" ]]; then
+    if [[ "$CHECK" == "1" || "$PHPCS" == "1" || "$PHPLINT" == "1" ]]; then
       composer install --no-interaction
     fi
   - |
