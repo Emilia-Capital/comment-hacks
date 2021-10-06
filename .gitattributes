@@ -20,6 +20,7 @@ phpunit.xml.dist export-ignore
 readme.md export-ignore
 yarn.lock export-ignore
 /.cache export-ignore
+/.github export-ignore
 /grunt export-ignore
 /svn-assets export-ignore
 
