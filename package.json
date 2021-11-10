@@ -1,6 +1,7 @@
 {
   "name": "yoast-comment-hacks",
   "description": "Development files for the Yoast Comment Hacks plugin",
+  "license": "GPL-2.0+",
   "plugin": {
     "glotpress": "https://translate.wordpress.org",
     "textdomain": "yoast-comment-hacks"
