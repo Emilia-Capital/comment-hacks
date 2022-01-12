@@ -2,11 +2,11 @@
 module.exports = function() {
 	return {
 		"composer-install-production": {
-			command: "composer install --prefer-dist --optimize-autoloader --no-dev",
+			command: "composer install --prefer-dist --optimize-autoloader --no-dev --no-interaction",
 		},
 
 		"composer-install-dev": {
-			command: "composer install",
+			command: "composer install --no-interaction",
 		},
 
 		"composer-reset-config": {
