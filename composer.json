@@ -28,7 +28,7 @@
 		"yoast/i18n-module": "^3.1.1"
 	},
 	"require-dev": {
-		"yoast/yoastcs": "^2.2.0"
+		"yoast/yoastcs": "^2.2.1"
 	},
 	"config": {
 		"allow-plugins": {
@@ -47,7 +47,7 @@
 	},
 	"scripts": {
 		"lint": [
-			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --exclude vendor --exclude node_modules --exclude .git"
+			"@php ./vendor/php-parallel-lint/php-parallel-lint/parallel-lint . -e php --show-deprecated --exclude vendor --exclude node_modules --exclude .git"
 		],
 		"config-yoastcs" : [
 			"Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run",
