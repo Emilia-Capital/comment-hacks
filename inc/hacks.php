@@ -71,6 +71,10 @@ class Hacks {
 		// Code below taken from WP core's pluggable.php file.
 		// Get the site domain and get rid of www.
 		$sitename = \wp_parse_url( \network_home_url(), \PHP_URL_HOST );
+		if ( $sitename === null ) {
+			return '';
+		}
+
 		if ( \substr( $sitename, 0, 4 ) === 'www.' ) {
 			$sitename = \substr( $sitename, 4 );
 		}
