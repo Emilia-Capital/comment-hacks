@@ -2,8 +2,8 @@
 Contributors: joostdevalk, yoast
 Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
-Requires at least: 5.6
-Tested up to: 5.8
+Requires at least: 5.8
+Tested up to: 5.9
 Stable tag: 1.7
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
