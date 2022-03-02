@@ -22,6 +22,7 @@ yarn.lock export-ignore
 /.github export-ignore
 /grunt export-ignore
 /svn-assets export-ignore
+/tests export-ignore
 
 #
 # Auto detect text files and perform LF normalization
