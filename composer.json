@@ -28,9 +28,13 @@
 		"yoast/i18n-module": "^3.1.1"
 	},
 	"require-dev": {
-		"yoast/yoastcs": "^2.2.1"
+		"yoast/yoastcs": "^2.2.1",
+		"yoast/wp-test-utils": "^1.0.0"
 	},
 	"config": {
+		"platform": {
+			"php": "5.6.40"
+		},
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true,
 			"composer/installers": true
@@ -43,6 +47,11 @@
 			"admin/",
 			"deprecated/",
 			"inc/"
+		]
+	},
+	"autoload-dev": {
+		"classmap": [
+			"tests/"
 		]
 	},
 	"scripts": {
@@ -58,6 +67,9 @@
 		],
 		"fix-cs": [
 			"@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+		],
+		"test": [
+			"@php ./vendor/phpunit/phpunit/phpunit"
 		]
 	}
 }

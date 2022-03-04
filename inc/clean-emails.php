@@ -56,8 +56,22 @@ class Clean_Emails {
 	 * @return string
 	 */
 	public function comment_email_headers( $message_headers ) {
-		if ( $message_headers === '' ) {
+		if ( $message_headers !== null && \is_scalar( $message_headers ) === false ) {
+			// Some other plugin must be doing it wrong, bow out.
+			return $message_headers;
+		}
+
+		if ( $message_headers === null
+			|| \is_string( $message_headers ) === false
+			|| $message_headers === ''
+		) {
 			return 'Content-Type: text/html; charset="' . \get_option( 'blog_charset' ) . "\"\n";
+		}
+
+		if ( \strpos( $message_headers, 'Content-Type: ' ) === false ) {
+			$message_headers  = \rtrim( $message_headers, "\r\n" ) . "\n";
+			$message_headers .= 'Content-Type: text/html; charset="' . \get_option( 'blog_charset' ) . "\"\n";
+			return $message_headers;
 		}
 
 		return \str_replace( 'Content-Type: text/plain', 'Content-Type: text/html', $message_headers );
