@@ -2,6 +2,7 @@
 
 namespace Yoast\WP\Comment\Tests\Inc;
 
+use stdClass;
 use Yoast\WP\Comment\Inc\Clean_Emails;
 use Yoast\WP\Comment\Tests\TestCase;
 
@@ -62,6 +63,8 @@ class Clean_Emails_Test extends TestCase {
 	 * @return array
 	 */
 	public function data_comment_email_headers() {
+		$object = new stdClass();
+
 		return [
 			// Ensure the header is added when it is missing.
 			'empty header string' => [
@@ -133,6 +136,47 @@ Reply-To: "comment_author@theirdomain.com" <comment_author@theirdomain.com>
 Content-Type: message/partial;
 Reply-To: "comment_author@theirdomain.com" <comment_author@theirdomain.com>
 ',
+			],
+
+			/*
+			 * The `comment_notification_headers` filter $message_header parameter is **always** supposed to be
+			 * a string.
+			 * If a non-string value is received, another plugin hooked in before us is _doing_it_wrong_.
+			 * For null and scalar input, the value should be corrected.
+			 * For non-scalar input, we leave things as they are to avoid breaking the other plugins integration
+			 * (and to let the onus of things going wrong land on them).
+			 */
+			'invalid input type: null' => [
+				'headers'  => null,
+				'expected' => "Content-Type: text/html; charset=\"UTF-8\"\n",
+			],
+			'invalid input type: false' => [
+				'headers'  => false,
+				'expected' => "Content-Type: text/html; charset=\"UTF-8\"\n",
+			],
+			'invalid input type: true' => [
+				'headers'  => true,
+				'expected' => "Content-Type: text/html; charset=\"UTF-8\"\n",
+			],
+			'invalid input type: integer' => [
+				'headers'  => 105,
+				'expected' => "Content-Type: text/html; charset=\"UTF-8\"\n",
+			],
+			'invalid input type: array' => [
+				'headers'  => [
+					'From: "Blogname" <blogname@blogdomain.com>',
+					'Content-Type: text/plain; charset="UTF-8"',
+					'Reply-To: "comment_author@theirdomain.com" <comment_author@theirdomain.com>',
+				],
+				'expected' => [
+					'From: "Blogname" <blogname@blogdomain.com>',
+					'Content-Type: text/plain; charset="UTF-8"',
+					'Reply-To: "comment_author@theirdomain.com" <comment_author@theirdomain.com>',
+				],
+			],
+			'invalid input type: object' => [
+				'headers'  => $object,
+				'expected' => $object,
 			],
 		];
 	}
