@@ -68,6 +68,23 @@ class Clean_Emails_Test extends TestCase {
 				'headers'  => '',
 				'expected' => "Content-Type: text/html; charset=\"UTF-8\"\n",
 			],
+			'header string with headers, but without content type header' => [
+				'headers'  => 'From: "Blogname" <blogname@blogdomain.com>
+Reply-To: "comment_author@theirdomain.com" <comment_author@theirdomain.com>
+',
+				'expected' => 'From: "Blogname" <blogname@blogdomain.com>
+Reply-To: "comment_author@theirdomain.com" <comment_author@theirdomain.com>
+Content-Type: text/html; charset="UTF-8"
+',
+			],
+			'header string with headers, but without content type header and missing new line at end of headers' => [
+				'headers'  => 'From: "Blogname" <blogname@blogdomain.com>
+Reply-To: "comment_author@theirdomain.com" <comment_author@theirdomain.com>',
+				'expected' => 'From: "Blogname" <blogname@blogdomain.com>
+Reply-To: "comment_author@theirdomain.com" <comment_author@theirdomain.com>
+Content-Type: text/html; charset="UTF-8"
+',
+			],
 
 			// Ensure the header is changed to "text/html" when it exists and is set to "text/plain".
 			'header string consisting of only a "text/plain" content type header' => [

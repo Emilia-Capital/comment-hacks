@@ -60,6 +60,12 @@ class Clean_Emails {
 			return 'Content-Type: text/html; charset="' . \get_option( 'blog_charset' ) . "\"\n";
 		}
 
+		if ( \strpos( $message_headers, 'Content-Type: ' ) === false ) {
+			$message_headers  = \rtrim( $message_headers, "\r\n" ) . "\n";
+			$message_headers .= 'Content-Type: text/html; charset="' . \get_option( 'blog_charset' ) . "\"\n";
+			return $message_headers;
+		}
+
 		return \str_replace( 'Content-Type: text/plain', 'Content-Type: text/html', $message_headers );
 	}
 
