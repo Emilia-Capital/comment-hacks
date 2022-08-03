@@ -82,11 +82,7 @@ jobs:
           coverage: none
 
       # Install dependencies and handle caching in one go.
-      # Includes updating the test dependencies to the most appropriate version
-      # for the PHP/WP version combination on which the tests will be run.
       # @link https://github.com/marketplace/actions/install-composer-dependencies
-
-      ### Install type 1.
       - name: "Composer: remove the PHP platform requirement"
         run: composer config --unset platform.php
 
