@@ -75,7 +75,7 @@ class Admin {
 	 * @param string     $comment_text Text of the current comment.
 	 * @param WP_Comment $comment      The comment object. Null if not found.
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public function show_forward_status( $comment_text, $comment ) {
 		if ( ! \is_admin() ) {
