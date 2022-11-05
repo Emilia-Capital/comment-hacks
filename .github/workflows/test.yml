@@ -93,6 +93,8 @@ jobs:
           dependency-versions: "highest"
           # But make it selective.
           composer-options: "yoast/wp-test-utils --with-dependencies"
+          # Bust the cache at least once a month - output format: YYYY-MM-DD.
+          custom-cache-suffix: $(date -u -d "-0 month -$(($(date +%d)-1)) days" "+%F")
 
       - name: Install WP
         shell: bash
