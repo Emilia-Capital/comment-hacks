@@ -1,31 +1,30 @@
 {
-	"name": "yoast/comment-hacks",
-	"description": "Make comments management easier by applying some of the simple hacks the Yoast team uses.",
+	"name": "jdevalk/comment-hacks",
+	"description": "Make comments management easier by applying some of the simple hacks we've acquired over the years.",
 	"keywords": [
 		"comments",
 		"spam",
 		"emails"
 	],
-	"homepage": "https://yoast.com/wordpress/plugins/comment-hacks/",
+	"homepage": "https://joost.blog/plugins/comment-hacks/",
 	"license": "GPL-2.0-or-later",
 	"authors": [
 		{
-			"name": "Team Yoast",
-			"email": "support@yoast.com",
-			"homepage": "https://yoast.com"
+			"name": "Joost de Valk",
+			"email": "joost@joost.blog",
+			"homepage": "https://joost.blog"
 		}
 	],
 	"type": "wordpress-plugin",
 	"support": {
-		"issues": "https://github.com/Yoast/comment-hacks/issues",
+		"issues": "https://github.com/jdevalk/comment-hacks/issues",
 		"forum": "https://wordpress.org/support/plugin/yoast-comment-hacks",
-		"wiki": "https://github.com/Yoast/comment-hacks/wiki",
-		"source": "https://github.com/Yoast/comment-hacks"
+		"wiki": "https://github.com/jdevalk/comment-hacks/wiki",
+		"source": "https://github.com/jdevalk/comment-hacks"
 	},
 	"require": {
 		"php": ">=5.6",
-		"composer/installers": "^1.12.0",
-		"yoast/i18n-module": "^3.1.1"
+		"composer/installers": "^1.12.0"
 	},
 	"require-dev": {
 		"yoast/yoastcs": "^2.2.1",

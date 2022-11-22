@@ -1,10 +1,10 @@
 <?php
 
-namespace Yoast\WP\Comment\Tests\Inc;
+namespace JdeValk\WP\Comment\Tests\Inc;
 
 use stdClass;
-use Yoast\WP\Comment\Inc\Clean_Emails;
-use Yoast\WP\Comment\Tests\TestCase;
+use JdeValk\WP\Comment\Inc\Clean_Emails;
+use JdeValk\WP\Comment\Tests\TestCase;
 
 /**
  * Test class to test the Clean_Emails class.

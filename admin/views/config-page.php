@@ -5,12 +5,12 @@
  * @package YoastCommentHacks\admin
  */
 
-use Yoast\WP\Comment\Inc\Hacks;
+use JdeValk\WP\Comment\Inc\Hacks;
 
 $yoast_comment_option_name = Hacks::$option_name;
 ?>
 	<div class="wrap">
-		<h2><?php esc_html_e( 'Yoast Comment Hacks', 'yoast-comment-hacks' ); ?></h2>
+		<h2><?php esc_html_e( 'Comment Hacks', 'yoast-comment-hacks' ); ?></h2>
 
 		<h2 class="nav-tab-wrapper" id="yoast-tabs">
 			<a class="nav-tab nav-tab-active" id="comment-length-tab"
@@ -239,7 +239,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 <?php
 /**
  * Action hook to allow other plugins to add additional information to the
- * Yoast Comment Hacks admin page.
+ * Comment Hacks admin page.
  *
  * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\admin_footer'} action instead.
  */

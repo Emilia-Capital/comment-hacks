@@ -1,14 +1,11 @@
 <?php
 
-namespace Yoast\WP\Comment\Inc;
+namespace JdeValk\WP\Comment\Inc;
 
-use Yoast\WP\Comment\Admin\Admin;
+use JdeValk\WP\Comment\Admin\Admin;
 
 /**
  * Main comment hacks functionality.
- *
- * @since 1.0
- * @since 1.6.0 Class renamed from `YoastCommentHacks` to `Yoast\WP\Comment\Inc\Hacks`.
  */
 class Hacks {
 
@@ -173,7 +170,7 @@ class Hacks {
 
 		if ( ! isset( $this->options['version'] ) ) {
 			$this->options['clean_emails'] = true;
-			$this->options['version']      = \YOAST_COMMENT_HACKS_VERSION;
+			$this->options['version']      = \COMMENT_HACKS_VERSION;
 		}
 
 		\update_option( self::$option_name, $this->options );
@@ -221,6 +218,6 @@ class Hacks {
 	 * Load plugin textdomain.
 	 */
 	public function load_text_domain() {
-		\load_plugin_textdomain( 'yoast-comment-hacks', false, \dirname( \plugin_basename( \YOAST_COMMENT_HACKS_FILE ) ) . '/languages' );
+		\load_plugin_textdomain( 'yoast-comment-hacks', false, \dirname( \plugin_basename( \COMMENT_HACKS_FILE ) ) . '/languages' );
 	}
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "027dc52c82c2e2716082e031da19acf5",
+    "content-hash": "f165e702a687a7cf231764f605f69463",
     "packages": [
         {
             "name": "composer/installers",
@@ -156,55 +156,6 @@
                 }
             ],
             "time": "2021-09-13T08:19:44+00:00"
-        },
-        {
-            "name": "yoast/i18n-module",
-            "version": "3.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Yoast/i18n-module.git",
-                "reference": "9d0a2f6daea6fb42376b023e7778294d19edd85d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Yoast/i18n-module/zipball/9d0a2f6daea6fb42376b023e7778294d19edd85d",
-                "reference": "9d0a2f6daea6fb42376b023e7778294d19edd85d",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2"
-            },
-            "require-dev": {
-                "roave/security-advisories": "dev-master",
-                "yoast/yoastcs": "^1.2.2"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Team Yoast",
-                    "email": "support@yoast.com",
-                    "homepage": "https://yoast.com"
-                }
-            ],
-            "description": "Handle i18n for WordPress plugins.",
-            "homepage": "https://github.com/Yoast/i18n-module",
-            "keywords": [
-                "wordpress"
-            ],
-            "support": {
-                "issues": "https://github.com/Yoast/i18n-module/issues",
-                "source": "https://github.com/Yoast/i18n-module"
-            },
-            "time": "2019-05-07T06:45:05+00:00"
         }
     ],
     "packages-dev": [

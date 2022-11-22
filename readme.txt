@@ -1,5 +1,5 @@
-=== Yoast Comment Hacks ===
-Contributors: joostdevalk, yoast
+=== Comment hacks ===
+Contributors: joostdevalk
 Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
 Requires at least: 5.9
@@ -31,7 +31,7 @@ See the screenshots to get an even better idea of the plugins functionality.
 
 **Install through your backend**
 
-1. Search for "yoast comment hacks", click install.
+1. Search for "comment hacks", click install.
 1. You're done.
 
 **Install manually**
@@ -50,6 +50,12 @@ See the screenshots to get an even better idea of the plugins functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.8 =
+
+* "Enhancements":
+    * Remove Yoast branding.
+    * Remove Yoast i18n dependency.
 
 = 1.7 =
 

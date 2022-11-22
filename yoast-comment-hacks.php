@@ -1,19 +1,19 @@
 <?php
 /**
- * Yoast Comment Hacks plugin.
+ * Comment hacks plugin.
  *
- * @package YoastCommentHacks
+ * @package CommentHacks
  *
  * @wordpress-plugin
- * Plugin Name: Yoast Comment Hacks
- * Version:     1.7
- * Plugin URI:  https://yoast.com/wordpress/plugins/comment-hacks/
- * Description: Make comments management easier by applying some of the simple hacks the Yoast team uses.
- * Author:      Team Yoast
- * Author URI:  https://yoast.com/
+ * Plugin Name: Comment Hacks
+ * Version:     1.8
+ * Plugin URI:  https://joost.blog/plugins/comment-hacks/
+ * Description: Make comments management easier by applying some of the simple hacks I've collected over the years.
+ * Author:      Joost de Valk
+ * Author URI:  https://josot.blog/
  * Text Domain: yoast-comment-hacks
  *
- * Copyright 2009-2019 Team Yoast (email: support@yoast.com)
+ * Copyright 2009-2022 Joost de Valk (email: first name @ joost.blog)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,25 +30,25 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-use Yoast\WP\Comment\Inc\Hacks;
+use JdeValk\WP\Comment\Inc\Hacks;
 
 /**
  * Used for version checks.
  */
-define( 'YOAST_COMMENT_HACKS_VERSION', '1.7' );
+define( 'COMMENT_HACKS_VERSION', '1.8' );
 
 /**
  * Used for asset embedding.
  */
-define( 'YOAST_COMMENT_HACKS_FILE', __FILE__ );
+define( 'COMMENT_HACKS_FILE', __FILE__ );
 
-if ( ! defined( 'YST_COMMENT_HACKS_PATH' ) ) {
-	define( 'YST_COMMENT_HACKS_PATH', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'COMMENT_HACKS_PATH' ) ) {
+	define( 'COMMENT_HACKS_PATH', plugin_dir_path( __FILE__ ) );
 }
 
 /* ***************************** CLASS AUTOLOADING *************************** */
-if ( file_exists( YST_COMMENT_HACKS_PATH . 'vendor/autoload.php' ) ) {
-	require YST_COMMENT_HACKS_PATH . 'vendor/autoload.php';
+if ( file_exists( COMMENT_HACKS_PATH . 'vendor/autoload.php' ) ) {
+	require COMMENT_HACKS_PATH . 'vendor/autoload.php';
 }
 
 new Hacks();

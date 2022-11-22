@@ -1,11 +1,11 @@
 <?php
 
-namespace Yoast\WP\Comment\Admin;
+namespace JdeValk\WP\Comment\Admin;
 
 use WP_Comment;
 use WP_Post;
-use Yoast\WP\Comment\Inc\Hacks;
-use Yoast_I18n_WordPressOrg_v3;
+use JdeValk\WP\Comment\Inc\Hacks;
+use JdeValk_I18n_WordPressOrg_v3;
 
 /**
  * Admin handling class.
@@ -84,7 +84,7 @@ class Admin {
 
 		$ch_forwarded = \get_comment_meta( $comment->comment_ID, 'ch_forwarded' );
 		if ( $ch_forwarded ) {
-			/* translators: %s is replace by the name you're forwarding to. */
+			/* translators: %s is replaced by the name you're forwarding to. */
 			$pre          = '<div style="background: #fff;border: 1px solid #46b450;border-left-width: 4px;box-shadow: 0 1px 1px rgba(0,0,0,.04);margin: 5px 15px 2px 0;padding: 1px 12px 1px;"><p><strong>' . \sprintf( \esc_html__( 'This comment was forwarded to %s.', 'yoast-comment-hacks' ), \esc_html( $this->options['forward_name'] ) ) . '</strong></p></div>';
 			$comment_text = $pre . $comment_text;
 		}
@@ -175,7 +175,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	public function register_meta_boxes() {
 		\add_meta_box(
 			'comment-hacks-reroute',
-			\__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
+			\__( 'Comment Hacks', 'yoast-comment-hacks' ),
 			[
 				$this,
 				'meta_box_callback',
@@ -211,7 +211,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 					'administrator',
 				],
 			],
-			'Yoast Comment 1.6.0',
+			'Comment Hacks 1.6.0',
 			'Yoast\WP\Comment\notification_roles'
 		);
 
@@ -266,34 +266,19 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 			\wp_enqueue_style(
 				'yoast-comment-hacks-admin-css',
-				\plugins_url( 'admin/assets/css/dist/comment-hacks.css', \YOAST_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/css/dist/comment-hacks.css', \COMMENT_HACKS_FILE ),
 				[],
-				\YOAST_COMMENT_HACKS_VERSION
+				\COMMENT_HACKS_VERSION
 			);
 
 			\wp_enqueue_script(
 				'yoast-comment-hacks-admin-js',
-				\plugins_url( 'admin/assets/js/yoast-comment-hacks' . $min . '.js', \YOAST_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/js/yoast-comment-hacks' . $min . '.js', \COMMENT_HACKS_FILE ),
 				[],
-				\YOAST_COMMENT_HACKS_VERSION,
+				\COMMENT_HACKS_VERSION,
 				true
 			);
 		}
-	}
-
-	/**
-	 * Register the promotion class for our GlotPress instance.
-	 *
-	 * @link https://github.com/Yoast/i18n-module
-	 */
-	public function register_i18n_promo_class() {
-		new Yoast_I18n_WordPressOrg_v3(
-			[
-				'textdomain'  => 'yoast-comment-hacks',
-				'plugin_name' => 'Yoast Comment Hacks',
-				'hook'        => 'Yoast\WP\Comment\admin_footer',
-			]
-		);
 	}
 
 	/**
@@ -327,7 +312,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		$input['forward_email']      = \sanitize_email( $input['forward_email'] );
 		$input['forward_from_email'] = \sanitize_email( $input['forward_from_email'] );
 		$input['clean_emails']       = isset( $input['clean_emails'] ) ? 1 : 0;
-		$input['version']            = \YOAST_COMMENT_HACKS_VERSION;
+		$input['version']            = \COMMENT_HACKS_VERSION;
 
 		foreach ( [ 'email_subject', 'email_body', 'mass_email_body', 'forward_name', 'forward_subject' ] as $key ) {
 			$input[ $key ] = \wp_strip_all_tags( $input[ $key ] );
@@ -350,7 +335,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 */
 	public function add_config_page() {
 		\add_options_page(
-			\__( 'Yoast Comment Hacks', 'yoast-comment-hacks' ),
+			\__( 'Comment Hacks', 'yoast-comment-hacks' ),
 			\__( 'Comment Hacks', 'yoast-comment-hacks' ),
 			'manage_options',
 			$this->hook,
@@ -391,9 +376,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * @since 0.5
 	 */
 	public function config_page() {
-		$this->register_i18n_promo_class();
-
-		require_once \YST_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
+		require_once \COMMENT_HACKS_PATH . 'admin/views/config-page.php';
 
 		// Show the content of the options array when debug is enabled.
 		if ( \defined( 'WP_DEBUG' ) && \WP_DEBUG ) {

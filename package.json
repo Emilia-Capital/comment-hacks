@@ -1,19 +1,19 @@
 {
-  "name": "yoast-comment-hacks",
-  "description": "Development files for the Yoast Comment Hacks plugin",
+  "name": "comment-hacks",
+  "description": "Development files for the Comment Hacks plugin",
   "license": "GPL-2.0+",
   "plugin": {
     "glotpress": "https://translate.wordpress.org",
     "textdomain": "yoast-comment-hacks"
   },
   "pot": {
-    "reportmsgidbugsto": "https://github.com/yoast/comment-hacks/issues",
-    "languageteam": "Yoast Translate <translations@yoast.com>",
-    "lasttranslator": "Yoast Translate Team <translations@yoast.com>"
+    "reportmsgidbugsto": "https://github.com/jdevalk/comment-hacks/issues",
+    "languageteam": "Joost de Valk",
+    "lasttranslator": "Joost de Valk"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Yoast/comment-hacks"
+    "url": "https://github.com/jdevalk/comment-hacks"
   },
   "devDependencies": {
     "@yoast/grunt-plugin-tasks": "^2.0.0"

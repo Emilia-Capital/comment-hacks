@@ -1,8 +1,8 @@
 <?php
 
-namespace Yoast\WP\Comment\Tests;
+namespace JdeValk\WP\Comment\Tests;
 
-use Yoast\WPTestUtils\WPIntegration\TestCase as TestUtils_TestCase;
+use JdeValk\WPTestUtils\WPIntegration\TestCase as TestUtils_TestCase;
 
 /**
  * TestCase base class.

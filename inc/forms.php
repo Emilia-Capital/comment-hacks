@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoast\WP\Comment\Inc;
+namespace JdeValk\WP\Comment\Inc;
 
 /**
  * Add comment note.
