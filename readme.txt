@@ -1,5 +1,5 @@
-=== Yoast Comment Hacks ===
-Contributors: joostdevalk, yoast
+=== Comment Hacks ===
+Contributors: joostdevalk
 Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
 Requires at least: 5.9

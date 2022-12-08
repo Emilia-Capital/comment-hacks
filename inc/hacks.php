@@ -11,11 +11,15 @@ class Hacks {
 
 	/**
 	 * Holds the plugins option name.
+	 *
+	 * @var string
 	 */
 	public static string $option_name = 'yoast_comment_hacks';
 
 	/**
 	 * Holds the plugins options.
+	 *
+	 * @var array
 	 */
 	private array $options = [];
 

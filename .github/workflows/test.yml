@@ -25,29 +25,13 @@ jobs:
     strategy:
       matrix:
         include:
-          - php_version: '5.6'
-            wp_version: '5.9'
-            multisite: true
-
-          - php_version: '7.0'
-            wp_version: 'latest'
-            multisite: false
-
-          - php_version: '7.2'
-            wp_version: '5.9'
-            multisite: false
-
-          - php_version: '7.3'
-            wp_version: 'trunk'
-            multisite: true
-
           - php_version: '7.4'
-            wp_version: '5.9'
+            wp_version: '6.0'
             multisite: false
 
           # WP 5.6 is the earliest version which (sort of) supports PHP 8.0.
           - php_version: '8.0'
-            wp_version: '5.9'
+            wp_version: '6.1'
             multisite: false
 
           # WP 5.9 is the earliest version which (sort of) supports PHP 8.1.
@@ -67,8 +51,7 @@ jobs:
 
     services:
       mysql:
-        # Use MySQL 5.7 for PHP < 7.4, otherwise MySQL 8.0.
-        image: mysql:${{ ( matrix.php_version < 7.4 && '5.7' ) || '8.0' }}
+        image: mysql:8.0
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: false
         ports:

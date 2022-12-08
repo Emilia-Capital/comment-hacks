@@ -117,6 +117,8 @@ class Email_Links {
 	 */
 	public function add_mailto_action_row( $actions ): array {
 		/**
+		 * The comment.
+		 *
 		 * @var $comment \WP_Comment
 		 */
 		global $comment;

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	name="Yoast Comment Hacks"
+	name="Comment Hacks"
 	xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
-	<description>Yoast Comment Hacks rules for PHP_CodeSniffer</description>
+	<description>Comment Hacks rules for PHP_CodeSniffer</description>
 
 	<!--
 	#############################################################################
@@ -29,7 +29,6 @@
 	<!-- Cache the results between runs. -->
 	<arg name="cache" value="./.cache/phpcs.cache"/>
 
-
 	<!--
 	#############################################################################
 	USE THE YoastCS RULESET
@@ -37,17 +36,19 @@
 	-->
 
 	<rule ref="Yoast">
+	    <exclude name="Yoast.Commenting.FileComment"/>
+	    <exclude name="Squiz.Commenting.VariableComment.MissingVar"/>
 		<properties>
 			<!-- Set the custom test class whitelist for all sniffs which use it in one go.
 				 Ref: https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#custom-unit-test-classes
 			-->
 			<property name="custom_test_class_whitelist" type="array">
-				<element value="Yoast\WP\Comment\Tests\TestCase"/>
+				<element value="JoostBlog\WP\Comment\Tests\TestCase"/>
 			</property>
 
 			<!-- Provide the plugin specific prefix for use with namespace and hook names. -->
 			<property name="prefixes" type="array">
-				<element value="Yoast\WP\Comment"/>
+				<element value="JoostBlog\WP\Comment"/>
 				<element value="yoast_comment"/>
 			</property>
 		</properties>
@@ -65,6 +66,7 @@
 		<properties>
 			<property name="text_domain" type="array">
 				<element value="yoast-comment-hacks"/>
+				<element value="default"/>
 			</property>
 		</properties>
 	</rule>
@@ -115,6 +117,7 @@
 		<properties>
 			<property name="prefixes" type="array" extend="true">
 				<element value="yst_comment"/>
+				<element value="JOOST_COMMENT_HACKS"/>
 			</property>
 		</properties>
 	</rule>
