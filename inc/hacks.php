@@ -21,7 +21,7 @@ class Hacks {
 	 *
 	 * @var array
 	 */
-	private array $options = [];
+	private $options = [];
 
 	/**
 	 * Class constructor.
@@ -52,11 +52,13 @@ class Hacks {
 
 	/**
 	 * Returns the comment hacks options.
-	 *
-	 * @return array|bool
 	 */
-	public static function get_options() {
-		return \get_option( self::$option_name );
+	public static function get_options(): array {
+		$options = \get_option( self::$option_name );
+		if ( ! is_array( $options ) ) {
+			return [];
+		}
+		return $options;
 	}
 
 	/**
