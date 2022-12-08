@@ -1,6 +1,6 @@
-# Yoast comment hacks
+# Comment Hacks
 
-Make comments management easier by applying some of the simple hacks the Yoast team uses.
+Make comments management easier by applying the simple hacks Joost has gathered over the years.
 
 ## Description
 
@@ -8,7 +8,7 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 
 * Cleaner comment notification emails.
 * The option to disallow comments below a certain length.
-* The option to redirect first time commenters to a thank you page.
+* The option to redirect first time commenters to a "thank you" page.
 * An input field on the comment edit screen to change the comment parent ID.
 * Links in the admin comments section to email individual commenters.
 * A button in the WP toolbar to email all the commenters on a post.
