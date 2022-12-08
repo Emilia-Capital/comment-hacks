@@ -52,8 +52,10 @@ class Hacks {
 
 	/**
 	 * Returns the comment hacks options.
+	 *
+	 * @return array|bool
 	 */
-	public static function get_options(): array {
+	public static function get_options() {
 		return \get_option( self::$option_name );
 	}
 
