@@ -1,20 +1,16 @@
 <?php
 
-namespace Yoast\WP\Comment\Inc;
+namespace JoostBlog\WP\Comment\Inc;
 
 /**
  * Manage links in comments.
- *
- * @since 1.6.0 Class renamed from `YoastCommentHacksEmailLinks` to `Yoast\WP\Comment\Inc\Email_Links`.
  */
 class Email_Links {
 
 	/**
 	 * Holds the plugins options.
-	 *
-	 * @var array
 	 */
-	private $options = [];
+	private array $options = [];
 
 	/**
 	 * Class constructor.
@@ -28,7 +24,7 @@ class Email_Links {
 	/**
 	 * Init our hooks.
 	 */
-	public function init() {
+	public function init(): void {
 		if ( \is_admin() ) {
 			// Adds the email link to the actions on the comment overview page.
 			\add_filter( 'comment_row_actions', [ $this, 'add_mailto_action_row' ] );
@@ -42,7 +38,7 @@ class Email_Links {
 	/**
 	 * Adds an email link to the admin bar to email all commenters.
 	 */
-	public function admin_bar_comment_link() {
+	public function admin_bar_comment_link(): void {
 		if ( ! \is_singular() ) {
 			return;
 		}
@@ -93,7 +89,7 @@ class Email_Links {
 	/**
 	 * Adds styling to our email button.
 	 */
-	public function wp_head_css() {
+	public function wp_head_css(): void {
 		if ( ! \is_admin_bar_showing() ) {
 			return;
 		}
@@ -119,7 +115,10 @@ class Email_Links {
 	 *
 	 * @return array
 	 */
-	public function add_mailto_action_row( $actions ) {
+	public function add_mailto_action_row( $actions ): array {
+		/**
+		 * @var $comment \WP_Comment
+		 */
 		global $comment;
 
 		if ( $comment->comment_type !== 'comment' ) {
@@ -147,10 +146,8 @@ class Email_Links {
 	 * @param string      $msg     The message in which we're replacing variables.
 	 * @param bool|object $comment The comment object.
 	 * @param int|bool    $post    The post the comment belongs to.
-	 *
-	 * @return string
 	 */
-	private function replace_variables( $msg, $comment = false, $post = false ) {
+	private function replace_variables( $msg, $comment = false, $post = false ): string {
 		$replacements = $this->get_replacements( $comment );
 
 		if ( \is_numeric( $post ) ) {
@@ -183,10 +180,8 @@ class Email_Links {
 	 * Getting the replacements with comment data if there is a comment.
 	 *
 	 * @param bool|object $comment The comment object.
-	 *
-	 * @return array
 	 */
-	private function get_replacements( $comment ) {
+	private function get_replacements( $comment ): array {
 		$replacements = [
 			'email'     => '',
 			'firstname' => '',

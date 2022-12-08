@@ -1,16 +1,14 @@
 <?php
 /**
  * Config page admin view.
- *
- * @package YoastCommentHacks\admin
  */
 
-use Yoast\WP\Comment\Inc\Hacks;
+use JoostBlog\WP\Comment\Inc\Hacks;
 
 $yoast_comment_option_name = Hacks::$option_name;
 ?>
 	<div class="wrap">
-		<h2><?php esc_html_e( 'Yoast Comment Hacks', 'yoast-comment-hacks' ); ?></h2>
+		<h2><?php esc_html_e( 'Comment Hacks', 'yoast-comment-hacks' ); ?></h2>
 
 		<h2 class="nav-tab-wrapper" id="yoast-tabs">
 			<a class="nav-tab nav-tab-active" id="comment-length-tab"
@@ -34,7 +32,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 				<p><?php esc_html_e( 'Users that try to submit a comment smaller than the length you set below will get an error immediately. The text of that error is specified below too.', 'yoast-comment-hacks' ); ?></p>
 				<table class="form-table">
 					<tr>
-						<th scrope="row">
+						<th scope="row">
 							<label for="mincomlength"><?php esc_html_e( 'Minimum length', 'yoast-comment-hacks' ); ?>
 							</label>
 						</th>
@@ -46,7 +44,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 						</td>
 					</tr>
 					<tr>
-						<th scrope="row">
+						<th scope="row">
 							<label for="mincomlengtherror"><?php esc_html_e( 'Error message for comment that is too short', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
@@ -62,7 +60,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 				<p><?php esc_html_e( 'Users that try to submit a comment longer than the length you set below will get an error immediately. The text of that error is specified below too.', 'yoast-comment-hacks' ); ?></p>
 				<table class="form-table">
 					<tr>
-						<th scrope="row">
+						<th scope="row">
 							<label for="maxcomlength"><?php esc_html_e( 'Maximum length', 'yoast-comment-hacks' ); ?>
 							</label>
 						</th>
@@ -74,7 +72,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 						</td>
 					</tr>
 					<tr>
-						<th scrope="row">
+						<th scope="row">
 							<label for="maxcomlengtherror"><?php esc_html_e( 'Error message for comment that is too long', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td>
@@ -227,7 +225,7 @@ $yoast_comment_option_name = Hacks::$option_name;
 							<label for="forward-emails-intro-extra"><?php esc_html_e( 'Forward intro additional text', 'yoast-comment-hacks' ); ?></label>
 						</th>
 						<td><textarea rows="4" cols="80" id="forward-emails-extra"
-									name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_extra]' ); ?>"><?php echo esc_html( $this->options['forward_extra'] ); ?></textarea>
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_extra]' ); ?>"><?php echo isset( $this->options['forward_extra'] ) ? esc_html( $this->options['forward_extra'] ) : ''; ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -239,16 +237,16 @@ $yoast_comment_option_name = Hacks::$option_name;
 <?php
 /**
  * Action hook to allow other plugins to add additional information to the
- * Yoast Comment Hacks admin page.
+ * Comment Hacks admin page.
  *
- * @deprecated 1.6.0. Use the {@see 'Yoast\WP\Comment\admin_footer'} action instead.
+ * @deprecated 1.6.0. Use the {@see 'JoostBlog\WP\Comment\admin_footer'} action instead.
  */
-do_action_deprecated( 'yoast_ch_admin_footer', [], 'Yoast Comment 1.6.0', 'Yoast\WP\Comment\admin_footer' );
+do_action_deprecated( 'yoast_ch_admin_footer', [], 'Comment Hacks 1.6.0', 'JoostBlog\WP\Comment\admin_footer' );
 
 /**
  * Action hook to allow other plugins to add additional information to the
- * Yoast Comment Hacks admin page.
+ * Comment Hacks admin page.
  *
  * @since 1.6.0
  */
-do_action( 'Yoast\WP\Comment\admin_footer' );
+do_action( 'JoostBlog\WP\Comment\admin_footer' );

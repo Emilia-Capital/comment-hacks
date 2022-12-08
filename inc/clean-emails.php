@@ -1,41 +1,31 @@
 <?php
 
-namespace Yoast\WP\Comment\Inc;
+namespace JoostBlog\WP\Comment\Inc;
 
 /**
  * Clean the emails.
- *
- * @since 1.6.0 Class renamed from `YoastCleanEmails` to `Yoast\WP\Comment\Inc\Clean_Emails`.
  */
 class Clean_Emails {
 
 	/**
 	 * Holds the current comment's ID.
-	 *
-	 * @var int
 	 */
-	private $comment_id = 0;
+	private int $comment_id = 0;
 
 	/**
 	 * Holds the current comment.
-	 *
-	 * @var object
 	 */
-	private $comment;
+	private \WP_Comment $comment;
 
 	/**
 	 * Holds the comment's post.
-	 *
-	 * @var object
 	 */
-	private $post;
+	private \WP_Post $post;
 
 	/**
 	 * Holds the email message.
-	 *
-	 * @var string
 	 */
-	private $message;
+	private string $message;
 
 	/**
 	 * Class constructor.
@@ -52,10 +42,8 @@ class Clean_Emails {
 	 * Set the comment email headers to HTML.
 	 *
 	 * @param string $message_headers The message headers for the comment email.
-	 *
-	 * @return string
 	 */
-	public function comment_email_headers( $message_headers ) {
+	public function comment_email_headers( $message_headers ): string {
 		if ( $message_headers !== null && \is_scalar( $message_headers ) === false ) {
 			// Some other plugin must be doing it wrong, bow out.
 			return $message_headers;
@@ -82,10 +70,8 @@ class Clean_Emails {
 	 *
 	 * @param string $message    The comment notification message.
 	 * @param int    $comment_id The ID of the comment the notification is for.
-	 *
-	 * @return string
 	 */
-	public function comment_notification_text( $message, $comment_id ) {
+	public function comment_notification_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
 
 		switch ( $this->comment->comment_type ) {
@@ -116,10 +102,8 @@ class Clean_Emails {
 	 *
 	 * @param string $message    The comment moderation message.
 	 * @param int    $comment_id The ID of the comment the moderation notification is for.
-	 *
-	 * @return string
 	 */
-	public function comment_moderation_text( $message, $comment_id ) {
+	public function comment_moderation_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
 
 		switch ( $this->comment->comment_type ) {
@@ -150,7 +134,7 @@ class Clean_Emails {
 	/**
 	 * Adds the basics of the email.
 	 */
-	private function add_comment_basics() {
+	private function add_comment_basics(): void {
 		$this->add_author_line();
 		$this->add_url_line();
 		$this->message .= '<br/>';
@@ -160,7 +144,7 @@ class Clean_Emails {
 	/**
 	 * Adds the author line to the message.
 	 */
-	private function add_author_line() {
+	private function add_author_line(): void {
 		if ( $this->comment->comment_type === 'comment' ) {
 			/* translators: %1$s is replaced with the comment author's name, %2$s is replaced with the comment author's email */
 			$this->message .= \sprintf( \__( 'Author: %1$s (%2$s)', 'yoast-comment-hacks' ), \esc_html( $this->comment->comment_author ), '<a href="' . \esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . \esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
@@ -174,7 +158,7 @@ class Clean_Emails {
 	/**
 	 * Adds the content line to the message.
 	 */
-	private function add_content_line() {
+	private function add_content_line(): void {
 		if ( $this->comment->comment_type === 'comment' ) {
 			$this->message .= \__( 'Comment:', 'yoast-comment-hacks' );
 		}
@@ -188,7 +172,7 @@ class Clean_Emails {
 	/**
 	 * Adds the URL line to the message.
 	 */
-	private function add_url_line() {
+	private function add_url_line(): void {
 		if ( isset( $this->comment->comment_author_url ) && $this->comment->comment_author_url !== '' ) {
 			/* translators: %s is replaced with the URL */
 			$this->message .= \sprintf( \__( 'URL: %s', 'yoast-comment-hacks' ), '<a href="' . \esc_url( $this->comment->comment_author_url ) . '">' . \esc_html( $this->comment->comment_author_url ) . '</a>' ) . '<br/>';
@@ -197,10 +181,8 @@ class Clean_Emails {
 
 	/**
 	 * Wraps the message in some styling.
-	 *
-	 * @return string
 	 */
-	private function wrap_message() {
+	private function wrap_message(): string {
 		return '<div style="font-family:Helvetica,Arial,sans-serif; font-size:14px;">' . $this->message . '</div>';
 	}
 
@@ -209,7 +191,7 @@ class Clean_Emails {
 	 *
 	 * @param int $comment_id The comment we're setting up variables for.
 	 */
-	private function setup_data( $comment_id ) {
+	private function setup_data( int $comment_id ): void {
 		$this->comment_id = $comment_id;
 		$this->comment    = \get_comment( $this->comment_id );
 		$this->post       = \get_post( $this->comment->comment_post_ID );
@@ -218,7 +200,7 @@ class Clean_Emails {
 	/**
 	 * Adds a sentence about the number of comments awaiting moderation.
 	 */
-	private function get_moderation_msg() {
+	private function get_moderation_msg(): void {
 		global $wpdb;
 		$comments_waiting = $wpdb->get_var( "SELECT count(comment_ID) FROM $wpdb->comments WHERE comment_approved = '0'" );
 
@@ -235,7 +217,7 @@ class Clean_Emails {
 	/**
 	 * Returns a string containing comment moderation links.
 	 */
-	private function comment_moderation_actions() {
+	private function comment_moderation_actions(): void {
 		$actions = [
 			'approve'     => \__( 'Approve', 'yoast-comment-hacks' ),
 			'spam'        => \__( 'Spam', 'yoast-comment-hacks' ),
@@ -249,7 +231,7 @@ class Clean_Emails {
 	/**
 	 * Returns a string containing comment action links.
 	 */
-	private function comment_notification_actions() {
+	private function comment_notification_actions(): void {
 		$actions = [
 			'spam'        => \__( 'Spam', 'yoast-comment-hacks' ),
 			'trash'       => \__( 'Trash', 'yoast-comment-hacks' ),
@@ -264,7 +246,7 @@ class Clean_Emails {
 	 *
 	 * @param array $actions The array of actions we're adding our action for.
 	 */
-	private function comment_action_links( $actions ) {
+	private function comment_action_links( array $actions ): void {
 		$links = '';
 		foreach ( $actions as $action => $label ) {
 			$links .= $this->comment_action_link( $label, $action ) . ' | ';
@@ -280,10 +262,8 @@ class Clean_Emails {
 	 *
 	 * @param string $label  The label for the comment action link.
 	 * @param string $action The action we're going to add.
-	 *
-	 * @return string
 	 */
-	private function comment_action_link( $label, $action ) {
+	private function comment_action_link( string $label, string $action ): string {
 		$url = \admin_url( \sprintf( 'comment.php?action=%s&c=%d', $action, $this->comment_id ) );
 
 		return \sprintf( '<a href="%1$s">%2$s</a>', \esc_url( $url ), \esc_html( $label ) );

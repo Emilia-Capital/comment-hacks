@@ -4,34 +4,34 @@ Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.7
-License: GPLv2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Requires PHP: 5.6.20
+Stable tag: 1.8
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+Requires PHP: 7.4
 
-Make comments management easier by applying some of the simple hacks the Yoast team uses.
+Make comments management easier by applying the simple hacks Joost has gathered over the years.
 
 == Description ==
 
-Make comments management easier by applying some of the simple hacks the Yoast team uses.
+Make comments management easier by applying the simple hacks Joost has gathered over the years.
 
 This plugin adds some small hacks around core WordPress comments to make them more bearable:
 
 * Cleaner comment notification emails.
 * The option to disallow comments below and above a certain length.
-* The option to redirect first time commenters to a thank you page.
+* The option to redirect first time commenters to a "thank you" page.
 * An input field on the comment edit screen to change the comment parent ID.
 * Links in the admin comments section to email individual commenters.
 * A button in the WP toolbar to email all the commenters on a post.
 * Adds a comment routing option. This adds a dropdown in a post's discussion settings, allowing the routing of comment emails to another user.
 
-See the screenshots to get an even better idea of the plugins functionality.
+See the screenshots to get an even better idea of the plugins' functionality.
 
 == Installation ==
 
 **Install through your backend**
 
-1. Search for "yoast comment hacks", click install.
+1. Search for "comment hacks", click install.
 1. You're done.
 
 **Install manually**
@@ -50,6 +50,12 @@ See the screenshots to get an even better idea of the plugins functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.8 =
+
+* Changed namespace to `JoostBlog`.
+* Removed Yoast branding.
+* Updated plugin to require PHP 7.4.
 
 = 1.7 =
 

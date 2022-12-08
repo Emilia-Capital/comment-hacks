@@ -1,21 +1,16 @@
 <?php
 
-namespace Yoast\WP\Comment\Inc;
+namespace JoostBlog\WP\Comment\Inc;
 
 /**
  * Checks the comments for allowed length.
- *
- * @since 1.3
- * @since 1.6.0 Class renamed from `YoastCommentLength` to `Yoast\WP\Comment\Inc\Length`.
  */
 class Length {
 
 	/**
 	 * Holds the plugins options.
-	 *
-	 * @var array
 	 */
-	private $options = [];
+	private array $options = [];
 
 	/**
 	 * Class constructor.
@@ -36,7 +31,7 @@ class Length {
 	 *
 	 * @return array All the data for the comment (only returned when the comment is long enough).
 	 */
-	public function check_comment_length( $comment_data ) {
+	public function check_comment_length( $comment_data ): array {
 		// Bail early for editors and admins, they can leave short or long comments if they want.
 		if ( \current_user_can( 'edit_posts' ) ) {
 			return $comment_data;
@@ -68,7 +63,7 @@ class Length {
 	 *
 	 * @return int The length of the comment.
 	 */
-	private function get_comment_length( $comment ) {
+	private function get_comment_length( string $comment ): int {
 		$comment = \trim( $comment );
 
 		if ( \function_exists( 'mb_strlen' ) ) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Yoast\WP\Comment\Tests;
+namespace JoostBlog\WP\Comment\Tests;
 
 use Yoast\WPTestUtils\WPIntegration;
 

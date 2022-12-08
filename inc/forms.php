@@ -1,12 +1,9 @@
 <?php
 
-namespace Yoast\WP\Comment\Inc;
+namespace JoostBlog\WP\Comment\Inc;
 
 /**
  * Add comment note.
- *
- * @since 1.3
- * @since 1.6.0 Class renamed from `YoastCommentFormHacks` to `Yoast\WP\Comment\Inc\Forms`.
  */
 class Forms {
 
@@ -24,7 +21,7 @@ class Forms {
 	 *
 	 * @return array The filtered defaults.
 	 */
-	public function filter_defaults( $defaults ) {
+	public function filter_defaults( $defaults ): array {
 		$defaults['comment_notes_before'] = '<span class="agree-comment-policy">You have to agree to the comment policy.</span>';
 
 		return $defaults;

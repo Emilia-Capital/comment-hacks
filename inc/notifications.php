@@ -1,12 +1,9 @@
 <?php
 
-namespace Yoast\WP\Comment\Inc;
+namespace JoostBlog\WP\Comment\Inc;
 
 /**
  * Notifications about comments.
- *
- * @since 1.1
- * @since 1.6.0 Class renamed from `YoastCommentNotifications` to `Yoast\WP\Comment\Inc\Notifications`.
  */
 class Notifications {
 
@@ -25,10 +22,8 @@ class Notifications {
 	 *
 	 * @param array $recipients Recipients of the notification email.
 	 * @param int   $comment_id Comment the notification is sent for.
-	 *
-	 * @return array
 	 */
-	public function filter_notification_recipients( $recipients, $comment_id ) {
+	public function filter_notification_recipients( $recipients, $comment_id ): array {
 		$comment = \get_comment( $comment_id );
 
 		$new_recipient = \get_post_meta( $comment->comment_post_ID, '_comment_notification_recipient', true );
@@ -50,7 +45,7 @@ class Notifications {
 	 *
 	 * @return string Enhanced headers.
 	 */
-	public function filter_notification_headers( $message_headers, $comment_id ) {
+	public function filter_notification_headers( $message_headers, $comment_id ): string {
 		$comment = \get_comment( $comment_id );
 
 		if ( $comment->comment_author !== '' && $comment->comment_author_email !== '' ) {

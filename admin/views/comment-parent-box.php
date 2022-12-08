@@ -1,8 +1,6 @@
 <?php
 /**
  * Parent Box view.
- *
- * @package YoastCommentHacks\admin
  */
 
 ?>

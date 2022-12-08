@@ -19,7 +19,6 @@ module.exports = {
 					"!vendor/bin/**",
 					"!vendor/composer/installed.json",
 					"!vendor/composer/installers/**",
-					"!vendor/yoast/i18n-module/LICENSE",
 					"!**/composer.json",
 					"!**/README.md",
 				],

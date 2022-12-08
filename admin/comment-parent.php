@@ -1,12 +1,9 @@
 <?php
 
-namespace Yoast\WP\Comment\Admin;
+namespace JoostBlog\WP\Comment\Admin;
 
 /**
  * Comment parent handling class.
- *
- * @since 1.3
- * @since 1.6.0 Class renamed from `YoastCommentParent` to `Yoast\WP\Comment\Admin\Comment_Parent`.
  */
 class Comment_Parent {
 
@@ -25,7 +22,7 @@ class Comment_Parent {
 	 * @param object $comment The comment object.
 	 */
 	public function comment_parent_box( $comment ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Param used in included file.
-		require_once \YST_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
+		require_once \JOOST_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
 	}
 
 	/**

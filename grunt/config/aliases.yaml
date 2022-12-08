@@ -19,7 +19,7 @@
   - 'restore-environment-after-artifact'
 
 # Get the project ready for release
-# Note that using this command triggers some global variables to be different than if you use simply `build`
+# Note that using this command triggers some global variables to be different from if you use simply `build`
 release:
   - build
 
