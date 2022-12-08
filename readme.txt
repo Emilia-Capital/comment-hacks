@@ -4,7 +4,7 @@ Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.8
+Stable tag: 1.8.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -50,6 +50,10 @@ See the screenshots to get an even better idea of the plugins' functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.8.1 =
+
+* Fixed a couple of PHP 7.4 related issues.
 
 = 1.8 =
 
