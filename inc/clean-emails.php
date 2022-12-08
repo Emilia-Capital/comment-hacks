@@ -42,8 +42,10 @@ class Clean_Emails {
 	 * Set the comment email headers to HTML.
 	 *
 	 * @param string $message_headers The message headers for the comment email.
+	 *
+	 * @return string Not hard typed because core may throw something else in.
 	 */
-	public function comment_email_headers( $message_headers ): string {
+	public function comment_email_headers( $message_headers ) {
 		if ( $message_headers !== null && \is_scalar( $message_headers ) === false ) {
 			// Some other plugin must be doing it wrong, bow out.
 			return $message_headers;
