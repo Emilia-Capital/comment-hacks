@@ -49,6 +49,11 @@ class Comment_Parent {
 	public function update_comment_parent() {
 		$comment_parent = \filter_input( \INPUT_POST, 'yst_comment_parent', \FILTER_VALIDATE_INT );
 		$comment_id     = \filter_input( \INPUT_POST, 'comment_ID', \FILTER_VALIDATE_INT );
+		$action         = \filter_input( \INPUT_POST, 'action' );
+
+        if ( $action === 'edit-comment' ) {
+            return; // We're on the quick edit screen. As the comment parent isn't sent along here, we might lose it if we do anything.
+        }
 
 		if ( empty( $comment_id ) && empty( $comment_parent ) ) {
 			return; // There might be another reason for a comment to be updated.
