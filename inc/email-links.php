@@ -47,23 +47,33 @@ class Email_Links {
 
 		$current_user = \wp_get_current_user();
 
-		$results = $wpdb->get_results( $wpdb->prepare( "SELECT DISTINCT comment_author_email FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_type = 'comment' AND comment_approved = '1'", $post->ID ) );
-
-		if ( \count( $results ) === 0 ) {
+		$comments = get_comments(
+			[
+				'post_id' => $post->ID,
+				'type'    => 'comment',
+				'status'  => 'approve',
+			]
+		);
+		if ( count( $comments ) === 0 ) {
 			return;
 		}
+		$emails = [];
+		foreach ( $comments as $comment ) {
+			$emails[] = $comment->comment_author_email;
+		}
+		$emails = array_unique( $emails );
 
 		$url = 'mailto:' . $current_user->user_email . '?bcc=';
-		foreach ( $results as $comment ) {
-			if ( $comment->comment_author_email !== $current_user->user_email ) {
-				$url .= \rawurlencode( $comment->comment_author_email . ',' );
+		foreach ( $emails as $email ) {
+			if ( $email !== $current_user->user_email ) {
+				$url .= \rawurlencode( $email . ',' );
 			}
 		}
 		$url .= '&subject=' . $this->replace_variables( $this->options['email_subject'], false, $post->ID );
 		$url .= '&body=' . $this->replace_variables( $this->options['mass_email_body'], false, $post->ID );
 
 		// We can't set the 'href' attribute to the $url as then esc_url would garble the mailto link.
-		// So we do a nasty bit of JS workaround. The reason we grab the a href from the alternate link is
+		// So we do a nasty bit of JS workaround. The reason we grab the href from the alternate link is
 		// so browser extensions like the Google Mail one that change mailto: links still work.
 		echo '<a href="' . \esc_attr( $url ) . '" id="yst_email_commenters_alternate"></a><script>
 			function yst_email_commenters(e){

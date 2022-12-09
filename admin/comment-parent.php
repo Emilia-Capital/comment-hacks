@@ -67,8 +67,9 @@ class Comment_Parent {
 		}
 
 		if ( $comment_id ) {
-			global $wpdb;
-			$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->comments SET comment_parent = %d WHERE comment_ID = %d", $comment_parent, $comment_id ) );
+			$comment                 = get_comment( $comment_id );
+			$comment->comment_parent = $comment_parent;
+			wp_update_comment( $comment );
 		}
 	}
 }
