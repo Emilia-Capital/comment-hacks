@@ -4,7 +4,7 @@ Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.8.1
+Stable tag: 1.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -60,6 +60,8 @@ See the screenshots to get an even better idea of the plugins' functionality.
 policy page, toggle the option on and select it, and commenters will have to accept your comment policy before being
 able to comment.
 * Fixes a bug where editing a comment on the quick edit screen would cause that comment to lose its parent.
+* Enhances performance by preventing too frequent option updates.
+* Remove all direct DB queries in favor of using WordPress core functions.
 
 = 1.8.1 =
 
