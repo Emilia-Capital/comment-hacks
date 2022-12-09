@@ -13,6 +13,8 @@ $yoast_comment_option_name = Hacks::$option_name;
 		<h2 class="nav-tab-wrapper" id="yoast-tabs">
 			<a class="nav-tab nav-tab-active" id="comment-length-tab"
 					href="#top#comment-length"><?php esc_html_e( 'Comment length', 'yoast-comment-hacks' ); ?></a>
+            <a class="nav-tab" id="comment-policy-tab"
+               href="#top#comment-policy"><?php esc_html_e( 'Comment policy', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="email-links-tab"
 					href="#top#email-links"><?php esc_html_e( 'Email links', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="comment-redirect-tab"
@@ -83,6 +85,71 @@ $yoast_comment_option_name = Hacks::$option_name;
 					</tr>
 				</table>
 			</div>
+
+            <div id="comment-policy" class="yoasttab">
+                <h3><?php esc_html_e( 'Comment policy', 'yoast-comment-hacks' ); ?></h3>
+                <p><?php esc_html_e( 'This feature allows you to institute a comment policy for your site. To enable it, set a text in the input field below.', 'yoast-comment-hacks' ); ?></p>
+                <table class="form-table">
+                    <tr>
+                        <th scope="row">
+                            <label for="comment_policy"><?php esc_html_e( 'Comment policy', 'yoast-comment-hacks' ); ?></label>
+                        </th>
+                        <td>
+                            <input type="checkbox" <?php checked( $this->options['comment_policy'] ); ?>
+                                   name="<?php echo esc_attr( $yoast_comment_option_name . '[comment_policy]' ); ?>" id="comment_policy"/>
+                            <p>
+                                <label for="comment_policy"><?php esc_html_e( 'Enable the comment policy functionality.', 'yoast-comment-hacks' ); ?></label>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="comment_policy_page"><?php esc_html_e( 'Comment policy page', 'yoast-comment-hacks' ); ?></label>
+                        </th>
+                        <td>
+							<?php
+							// A dropdown of all pages in the current WP install.
+							$selected = 0;
+							if ( isset( $this->options['comment_policy_page'] ) ) {
+								$selected = $this->options['comment_policy_page'];
+							}
+							wp_dropdown_pages(
+								array(
+									'depth'             => 0,
+									'id'                => 'comment_policy_page',
+									'name'              => $yoast_comment_option_name . '[comment_policy_page]',
+									'option_none_value' => 0,
+									// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $selected is not put out, only compared against.
+									'selected'          => $selected,
+									'show_option_none'  => esc_html__( 'Select comment policy page', 'yoast-comment-hacks' ),
+								)
+							);
+							?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="comment_policy_text"><?php esc_html_e( 'Comment policy line', 'yoast-comment-hacks' ); ?></label>
+                        </th>
+                        <td>
+                            <input type="text" class="regular-text"
+                                   value="<?php echo esc_attr( $this->options['comment_policy_text'] ); ?>"
+                                   name="<?php echo esc_attr( $yoast_comment_option_name . '[comment_policy_text]' ); ?>"
+                                   id="comment_policy_text"/>
+                            <p><?php esc_html_e( 'Text that appears along with a checkbox above the comment submit button.', 'yoast-comment-hacks' ); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label
+                                    for="comment_policyesc_html_error"><?php esc_html_e( 'Error message for not checking comment policy checkbox', 'yoast-comment-hacks' ); ?></label>
+                        </th>
+                        <td>
+                            <textarea rows="4" cols="80" name="<?php echo esc_attr( $yoast_comment_option_name . '[comment_policy_error]' ); ?>" id="comment_policy"><?php echo esc_html( $this->options['comment_policy_error'] ); ?></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
 			<div id="email-links" class="yoasttab">
 				<h3><?php esc_html_e( 'Email links', 'yoast-comment-hacks' ); ?></h3>

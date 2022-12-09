@@ -290,18 +290,31 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	public function options_validate( array $input ): array {
 		$defaults = Hacks::get_defaults();
 
-		$input['mincomlength']       = (int) $input['mincomlength'];
-		$input['maxcomlength']       = (int) $input['maxcomlength'];
-		$input['redirect_page']      = (int) $input['redirect_page'];
-		$input['forward_email']      = \sanitize_email( $input['forward_email'] );
-		$input['forward_from_email'] = \sanitize_email( $input['forward_from_email'] );
-		$input['clean_emails']       = isset( $input['clean_emails'] ) ? 1 : 0;
-		$input['version']            = \JOOST_COMMENT_HACKS_VERSION;
-
-		foreach ( [ 'email_subject', 'email_body', 'mass_email_body', 'forward_name', 'forward_subject' ] as $key ) {
-			$input[ $key ] = \wp_strip_all_tags( $input[ $key ] );
-			if ( $input[ $key ] === '' ) {
-				$input[ $key ] = $defaults[ $key ];
+		foreach ( $input as $key => $value ) {
+			switch ( $key ) {
+				case 'mincomlength':
+				case 'maxcomlength':
+				case 'redirect_page':
+				case 'comment_policy_page':
+					$input[ $key ] = (int) $value;
+					break;
+				case 'version':
+					$input[ $key ] = JOOST_COMMENT_HACKS_VERSION;
+					break;
+				case 'comment_policy':
+				case 'clean_emails':
+					$input[ $key ] = $this->sanitize_bool( $value );
+					break;
+				case 'email_subject':
+				case 'email_body':
+				case 'mass_email_body':
+				case 'forward_name':
+				case 'forward_subject':
+					$input[ $key ] = $this->sanitize_string( $value, $defaults[ $key ] );
+					break;
+				case 'forward_email':
+				case 'forward_from_email':
+					$input[ $key ] = \sanitize_email( $value );
 			}
 		}
 
@@ -312,6 +325,38 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		}
 
 		return $input;
+	}
+
+	/**
+	 * Turns checkbox values into booleans.
+	 *
+	 * @param mixed $value The input value to cast to boolean.
+	 */
+	private function sanitize_bool( $value ): bool {
+		if ( $value ) {
+			$value = true;
+		}
+		if ( empty( $value ) ) {
+			$value = false;
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Turns empty string into defaults.
+	 *
+	 * @param mixed  $value   The input value.
+	 * @param string $default The default value of the string.
+	 *
+	 * @return array $input The array with sanitized input values.
+	 */
+	private function sanitize_string( $value, $default ) {
+		if ( '' === $value ) {
+			$value = $default;
+		}
+
+		return $value;
 	}
 
 	/**
