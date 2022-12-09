@@ -3,10 +3,8 @@ name: "Deploy to WordPress.org and create release on GitHub"
 on:
   workflow_dispatch:
     inputs:
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
+      tags:
+        description: 'Tag to run for'
   push:
     tags:
       - "v*"
