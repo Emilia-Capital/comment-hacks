@@ -1,0 +1,17 @@
+/.wordpress-org
+/.git
+/.github
+/.cache
+/node_modules
+/tests
+/grunt
+
+.phpcs.xml.dist
+.distignore
+.gitignore
+.removeable-files
+Gruntfile.js
+package.json
+phpmd.xml
+phpunit.xml.dist
+yarn.lock

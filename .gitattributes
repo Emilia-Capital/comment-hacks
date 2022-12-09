@@ -5,7 +5,6 @@
 # https://www.reddit.com/r/PHP/comments/2jzp6k/i_dont_need_your_tests_in_my_production
 # https://blog.madewithlove.be/post/gitattributes/
 #
-.codeclimate.yml export-ignore
 .eslintignore export-ignore
 .eslintrc export-ignore
 .gitattributes export-ignore
@@ -21,7 +20,7 @@ yarn.lock export-ignore
 /.cache export-ignore
 /.github export-ignore
 /grunt export-ignore
-/svn-assets export-ignore
+/.wordpress-org export-ignore
 /tests export-ignore
 
 #
