@@ -24,8 +24,10 @@ class Hacks {
 	 */
 	public function __construct() {
 		$this->options = self::get_options();
-		$this->set_defaults();
-		$this->upgrade();
+		if ( ! isset( $this->options['version'] ) || \JOOST_COMMENT_HACKS_VERSION > $this->options['version'] ) {
+			$this->set_defaults();
+			$this->upgrade();
+		}
 
 		\add_action( 'init', [ $this, 'load_text_domain' ] );
 
