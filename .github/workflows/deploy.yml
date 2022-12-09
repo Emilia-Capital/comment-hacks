@@ -15,7 +15,7 @@ jobs:
         run: |
           composer install --no-dev --prefer-dist --optimize-autoloader --no-scripts
           yarn install
-          grunt:build
+          grunt build
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
         env:
