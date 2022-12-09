@@ -352,7 +352,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * @return array $input The array with sanitized input values.
 	 */
 	private function sanitize_string( $value, $default ) {
-		if ( '' === $value ) {
+		if ( $value === '' ) {
 			$value = $default;
 		}
 

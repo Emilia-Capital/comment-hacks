@@ -6,6 +6,7 @@ namespace JoostBlog\WP\Comment\Inc;
  * Add comment note.
  */
 class Forms {
+
 	/**
 	 * Holds our options.
 	 */
@@ -32,7 +33,7 @@ class Forms {
 	public function comment_form_fields() {
 		echo '<label class="agree-comment-policy">';
 		echo '<input type="checkbox" name="comment_policy">';
-		echo ' <a href="' . esc_url( get_permalink( $this->options['comment_policy_page'] ) ) . '">';
+		echo ' <a href="' . esc_url( get_permalink( $this->options['comment_policy_page'] ) ) . '" target="_blank">';
 		echo esc_html( $this->options['comment_policy_text'] );
 		echo '</a>';
 		echo '</label>';
@@ -41,14 +42,14 @@ class Forms {
 	/**
 	 * Checks whether the comment policy box was checked or not.
 	 *
-	 * @param array $comment_data Array with comment data.
+	 * @param array $comment_data Array with comment data. Unused.
 	 *
 	 * @return array
 	 */
 	public function check_comment_policy( $comment_data ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.NoNonceVerification -- Comment forms (unfortunately) are always without nonces.
-		if ( ! isset( $_POST['comment_policy'] ) && ( $_POST['comment_policy'] !== 'on' || $_POST['comment_policy'] !== true ) ) {
-			wp_die( esc_html( $this->options['comment_policy_error'] ) . '<br /><a href="javascript:history.go(-1);">' . esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Comment forms (unfortunately) are always without nonces.
+		if ( ! isset( $_POST['comment_policy'] ) || ! ( $_POST['comment_policy'] === 'on' || $_POST['comment_policy'] === true ) ) {
+			wp_die( esc_html( $this->options['comment_policy_error'] ) . '<br /><br /><a href="javascript:history.go(-1);">' . esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
 		}
 
 		return $comment_data;
@@ -61,7 +62,7 @@ class Forms {
 	 *
 	 * @return array The filtered defaults.
 	 */
-	public function filter_defaults( $defaults ): array {
+	public function filter_defaults( array $defaults ): array {
 		$defaults['comment_notes_before'] = '<span class="agree-comment-policy">You have to agree to the comment policy.</span>';
 
 		return $defaults;

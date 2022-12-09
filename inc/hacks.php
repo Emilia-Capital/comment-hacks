@@ -134,7 +134,6 @@ class Hacks {
 	 *
 	 * @return bool|mixed
 	 * @since 1.3
-	 *
 	 */
 	private function get_option_from_cache( string $option ) {
 		$options = \wp_load_alloptions();
