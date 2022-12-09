@@ -51,9 +51,9 @@ class Comment_Parent {
 		$comment_id     = \filter_input( \INPUT_POST, 'comment_ID', \FILTER_VALIDATE_INT );
 		$action         = \filter_input( \INPUT_POST, 'action' );
 
-        if ( $action === 'edit-comment' ) {
-            return; // We're on the quick edit screen. As the comment parent isn't sent along here, we might lose it if we do anything.
-        }
+		if ( $action === 'edit-comment' ) {
+			return; // We're on the quick edit screen. As the comment parent isn't sent along here, we might lose it if we do anything.
+		}
 
 		if ( empty( $comment_id ) && empty( $comment_parent ) ) {
 			return; // There might be another reason for a comment to be updated.
