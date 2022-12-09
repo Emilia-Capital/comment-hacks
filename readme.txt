@@ -59,6 +59,7 @@ See the screenshots to get an even better idea of the plugins' functionality.
 * Introduces a new option to the plugin: adding a comment policy was never easier than this: just create a comment
 policy page, toggle the option on and select it, and commenters will have to accept your comment policy before being
 able to comment.
+* Fixes a bug where editing a comment on the quick edit screen would cause that comment to lose its parent.
 
 = 1.8.1 =
 
