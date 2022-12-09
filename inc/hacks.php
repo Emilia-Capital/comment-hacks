@@ -11,17 +11,13 @@ class Hacks {
 
 	/**
 	 * Holds the plugins option name.
-	 *
-	 * @var string
 	 */
 	public static string $option_name = 'yoast_comment_hacks';
 
 	/**
 	 * Holds the plugins options.
-	 *
-	 * @var array
 	 */
-	private $options = [];
+	private array $options = [];
 
 	/**
 	 * Class constructor.
@@ -58,6 +54,7 @@ class Hacks {
 		if ( ! is_array( $options ) ) {
 			return [];
 		}
+
 		return $options;
 	}
 
@@ -78,14 +75,12 @@ class Hacks {
 	/**
 	 * Check whether the current commenter is a first time commenter, if so, redirect them to the specified settings.
 	 *
-	 * @since 1.0
-	 *
-	 * @param string $url     The original redirect URL.
-	 * @param object $comment The comment object.
+	 * @param string      $url     The original redirect URL.
+	 * @param \WP_Comment $comment The comment object.
 	 *
 	 * @return string The URL to be redirected to, altered if this was a first time comment.
 	 */
-	public function comment_redirect( $url, $comment ) {
+	public function comment_redirect( string $url, \WP_Comment $comment ): string {
 		$has_approved_comment = \get_comments(
 			[
 				'author_email' => $comment->comment_author_email,
@@ -135,11 +130,10 @@ class Hacks {
 	/**
 	 * See if the option has been cached, if it is, return it, otherwise return false.
 	 *
-	 * @since 1.3
-	 *
 	 * @param string $option The option to check for.
 	 *
 	 * @return bool|mixed
+	 * @since 1.3
 	 */
 	private function get_option_from_cache( string $option ) {
 		$options = \wp_load_alloptions();
@@ -181,23 +175,27 @@ class Hacks {
 	 */
 	public static function get_defaults(): array {
 		return [
-			'clean_emails'       => true,
+			'clean_emails'         => true,
+			'comment_policy'       => false,
+			'comment_policy_text'  => __( 'I agree to the comment policy.', 'yoast-comment-hacks' ),
+			'comment_policy_error' => __( 'You have to agree to the comment policy.', 'yoast-comment-hacks' ),
+			'comment_policy_page'  => 0,
 			/* translators: %s expands to the post title */
-			'email_subject'      => \sprintf( \__( 'RE: %s', 'yoast-comment-hacks' ), '%title%' ),
+			'email_subject'        => \sprintf( \__( 'RE: %s', 'yoast-comment-hacks' ), '%title%' ),
 			/* translators: %1$s expands to the commenters first name, %2$s to the post tittle, %3$s to the post permalink, %4$s expands to a double line break. */
-			'email_body'         => \sprintf( \__( 'Hi %1$s,%4$sI\'m emailing you because you commented on my post "%2$s" - %3$s', 'yoast-comment-hacks' ), '%firstname%', '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
+			'email_body'           => \sprintf( \__( 'Hi %1$s,%4$sI\'m emailing you because you commented on my post "%2$s" - %3$s', 'yoast-comment-hacks' ), '%firstname%', '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
 			/* translators: %1$s expands to the post tittle, %2$s to the post permalink, %3$s expands to a double line break. */
-			'mass_email_body'    => \sprintf( \__( 'Hi,%3$sI\'m sending you all this email because you commented on my post "%1$s" - %2$s', 'yoast-comment-hacks' ), '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
-			'mincomlength'       => 15,
-			'mincomlengtherror'  => \__( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
-			'maxcomlength'       => 1500,
-			'maxcomlengtherror'  => \__( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
-			'redirect_page'      => 0,
-			'forward_email'      => '',
-			'forward_name'       => \__( 'Support', 'yoast-comment-hacks' ),
+			'mass_email_body'      => \sprintf( \__( 'Hi,%3$sI\'m sending you all this email because you commented on my post "%1$s" - %2$s', 'yoast-comment-hacks' ), '%title%', '%permalink%', "\r\n\r\n" ) . "\r\n",
+			'mincomlength'         => 15,
+			'mincomlengtherror'    => \__( 'Error: Your comment is too short. Please try to say something useful.', 'yoast-comment-hacks' ),
+			'maxcomlength'         => 1500,
+			'maxcomlengtherror'    => \__( 'Error: Your comment is too long. Please try to be more concise.', 'yoast-comment-hacks' ),
+			'redirect_page'        => 0,
+			'forward_email'        => '',
+			'forward_name'         => \__( 'Support', 'yoast-comment-hacks' ),
 			/* translators: %1$s is replaced by the blog's name. */
-			'forward_subject'    => \sprintf( \__( 'Comment forwarded from %1$s', 'yoast-comment-hacks' ), \get_bloginfo( 'name' ) ),
-			'forward_from_email' => self::get_from_email_default(),
+			'forward_subject'      => \sprintf( \__( 'Comment forwarded from %1$s', 'yoast-comment-hacks' ), \get_bloginfo( 'name' ) ),
+			'forward_from_email'   => self::get_from_email_default(),
 		];
 	}
 

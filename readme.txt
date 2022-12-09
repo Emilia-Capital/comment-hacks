@@ -18,6 +18,9 @@ Make comments management easier by applying the simple hacks Joost has gathered 
 This plugin adds some small hacks around core WordPress comments to make them more bearable:
 
 * Cleaner comment notification emails.
+* The option to enforce a comment policy: just create a comment policy page, toggle the option on and select it, and
+commenters will have to accept your comment policy before being able to comment.
+* The option to forward comments to an email address (for instance for your support team) and then trash them.
 * The option to disallow comments below and above a certain length.
 * The option to redirect first time commenters to a "thank you" page.
 * An input field on the comment edit screen to change the comment parent ID.
@@ -50,6 +53,12 @@ See the screenshots to get an even better idea of the plugins' functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.9 =
+
+* Introduces a new option to the plugin: adding a comment policy was never easier than this: just create a comment
+policy page, toggle the option on and select it, and commenters will have to accept your comment policy before being
+able to comment.
 
 = 1.8.1 =
 
