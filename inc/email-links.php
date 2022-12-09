@@ -47,16 +47,18 @@ class Email_Links {
 
 		$current_user = \wp_get_current_user();
 
-		$comments = get_comments( [
-			'post_id' => $post->ID,
-			'type'    => 'comment',
-			'status'  => 'approve',
-		] );
+		$comments = get_comments(
+			[
+				'post_id' => $post->ID,
+				'type'    => 'comment',
+				'status'  => 'approve',
+			]
+		);
 		if ( count( $comments ) === 0 ) {
 			return;
 		}
 		$emails = [];
-		foreach( $comments as $comment ) {
+		foreach ( $comments as $comment ) {
 			$emails[] = $comment->comment_author_email;
 		}
 		$emails = array_unique( $emails );
@@ -162,7 +164,8 @@ class Email_Links {
 
 		if ( \is_numeric( $post ) ) {
 			$post = \get_post( $post );
-		} elseif ( \is_object( $comment ) && $comment->comment_post_ID > 0 ) {
+		}
+		elseif ( \is_object( $comment ) && $comment->comment_post_ID > 0 ) {
 			$post = \get_post( $comment->comment_post_ID );
 		}
 
