@@ -1,3 +1,7 @@
+[![CS](https://github.com/jdevalk/comment-hacks/actions/workflows/cs.yml/badge.svg)](https://github.com/jdevalk/comment-hacks/actions/workflows/cs.yml)
+[![Lint](https://github.com/jdevalk/comment-hacks/actions/workflows/lint.yml/badge.svg)](https://github.com/jdevalk/comment-hacks/actions/workflows/lint.yml)
+[![Test](https://github.com/jdevalk/comment-hacks/actions/workflows/test.yml/badge.svg)](https://github.com/jdevalk/comment-hacks/actions/workflows/test.yml)
+
 # Comment Hacks
 
 Make comments management easier by applying the simple hacks Joost has gathered over the years.
