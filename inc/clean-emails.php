@@ -203,7 +203,7 @@ class Clean_Emails {
 	 * Adds a sentence about the number of comments awaiting moderation.
 	 */
 	private function get_moderation_msg(): void {
-		$comments_waiting = get_comment_count()['awaiting_moderation'];
+		$comments_waiting = \get_comment_count()['awaiting_moderation'];
 
 		if ( $comments_waiting > 1 ) {
 			--$comments_waiting;

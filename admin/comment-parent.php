@@ -67,9 +67,15 @@ class Comment_Parent {
 		}
 
 		if ( $comment_id ) {
-			$comment                 = get_comment( $comment_id );
+			$comment                 = \get_comment( $comment_id );
 			$comment->comment_parent = $comment_parent;
-			wp_update_comment( $comment );
+
+			// Remove our filter, or we'll keep looping.
+			\remove_action( 'edit_comment', [ $this, 'update_comment_parent' ] );
+			\wp_update_comment( (array) $comment );
+
+			// Add our filter back.
+			\add_action( 'edit_comment', [ $this, 'update_comment_parent' ] );
 		}
 	}
 }

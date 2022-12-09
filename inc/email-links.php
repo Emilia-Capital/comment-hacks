@@ -47,7 +47,7 @@ class Email_Links {
 
 		$current_user = \wp_get_current_user();
 
-		$comments = get_comments(
+		$comments = \get_comments(
 			[
 				'post_id' => $post->ID,
 				'type'    => 'comment',
@@ -61,7 +61,7 @@ class Email_Links {
 		foreach ( $comments as $comment ) {
 			$emails[] = $comment->comment_author_email;
 		}
-		$emails = array_unique( $emails );
+		$emails = \array_unique( $emails );
 
 		$url = 'mailto:' . $current_user->user_email . '?bcc=';
 		foreach ( $emails as $email ) {
