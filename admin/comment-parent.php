@@ -49,6 +49,11 @@ class Comment_Parent {
 	public function update_comment_parent() {
 		$comment_parent = \filter_input( \INPUT_POST, 'yst_comment_parent', \FILTER_VALIDATE_INT );
 		$comment_id     = \filter_input( \INPUT_POST, 'comment_ID', \FILTER_VALIDATE_INT );
+		$action         = \filter_input( \INPUT_POST, 'action' );
+
+		if ( $action === 'edit-comment' ) {
+			return; // We're on the quick edit screen. As the comment parent isn't sent along here, we might lose it if we do anything.
+		}
 
 		if ( empty( $comment_id ) && empty( $comment_parent ) ) {
 			return; // There might be another reason for a comment to be updated.
@@ -67,8 +72,15 @@ class Comment_Parent {
 		}
 
 		if ( $comment_id ) {
-			global $wpdb;
-			$wpdb->query( $wpdb->prepare( "UPDATE $wpdb->comments SET comment_parent = %d WHERE comment_ID = %d", $comment_parent, $comment_id ) );
+			$comment                 = \get_comment( $comment_id );
+			$comment->comment_parent = $comment_parent;
+
+			// Remove our filter, or we'll keep looping.
+			\remove_action( 'edit_comment', [ $this, 'update_comment_parent' ] );
+			\wp_update_comment( (array) $comment );
+
+			// Add our filter back.
+			\add_action( 'edit_comment', [ $this, 'update_comment_parent' ] );
 		}
 	}
 }

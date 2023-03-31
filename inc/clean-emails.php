@@ -203,8 +203,7 @@ class Clean_Emails {
 	 * Adds a sentence about the number of comments awaiting moderation.
 	 */
 	private function get_moderation_msg(): void {
-		global $wpdb;
-		$comments_waiting = $wpdb->get_var( "SELECT count(comment_ID) FROM $wpdb->comments WHERE comment_approved = '0'" );
+		$comments_waiting = \get_comment_count()['awaiting_moderation'];
 
 		if ( $comments_waiting > 1 ) {
 			--$comments_waiting;

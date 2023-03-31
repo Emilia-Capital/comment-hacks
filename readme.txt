@@ -4,7 +4,7 @@ Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
 Requires at least: 5.9
 Tested up to: 6.1
-Stable tag: 1.8.1
+Stable tag: 1.9.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -18,6 +18,9 @@ Make comments management easier by applying the simple hacks Joost has gathered 
 This plugin adds some small hacks around core WordPress comments to make them more bearable:
 
 * Cleaner comment notification emails.
+* The option to enforce a comment policy: just create a comment policy page, toggle the option on and select it, and
+commenters will have to accept your comment policy before being able to comment.
+* The option to forward comments to an email address (for instance for your support team) and then trash them.
 * The option to disallow comments below and above a certain length.
 * The option to redirect first time commenters to a "thank you" page.
 * An input field on the comment edit screen to change the comment parent ID.
@@ -26,6 +29,8 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 * Adds a comment routing option. This adds a dropdown in a post's discussion settings, allowing the routing of comment emails to another user.
 
 See the screenshots to get an even better idea of the plugins' functionality.
+
+Issues are welcome on [this plugin's Github repository](https://github.com/jdevalk/comment-hacks/). Security reports are [handled by Patchstack](https://patchstack.com/database/vdp/yoast-comment-hacks).
 
 == Installation ==
 
@@ -50,6 +55,19 @@ See the screenshots to get an even better idea of the plugins' functionality.
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.9.2 =
+
+* Fix missing autoloader
+
+= 1.9 =
+
+* Introduces a new option to the plugin: adding a comment policy was never easier than this: just create a comment
+policy page, toggle the option on and select it, and commenters will have to accept your comment policy before being
+able to comment.
+* Fixes a bug where editing a comment on the quick edit screen would cause that comment to lose its parent.
+* Enhances performance by preventing too frequent option updates.
+* Remove all direct DB queries in favor of using WordPress core functions.
 
 = 1.8.1 =
 
