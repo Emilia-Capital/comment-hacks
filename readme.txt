@@ -30,6 +30,8 @@ commenters will have to accept your comment policy before being able to comment.
 
 See the screenshots to get an even better idea of the plugins' functionality.
 
+Issues are welcome on [this plugin's Github repository](https://github.com/jdevalk/comment-hacks/). Security reports are [handled by Patchstack](https://patchstack.com/database/vdp/yoast-comment-hacks).
+
 == Installation ==
 
 **Install through your backend**
