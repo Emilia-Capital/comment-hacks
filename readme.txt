@@ -30,6 +30,11 @@ commenters will have to accept your comment policy before being able to comment.
 
 See the screenshots to get an even better idea of the plugins' functionality.
 
+=== Have you found an issue? ===
+
+If you have bugs to report, please go to [the plugin's GitHub repository](https://github.com/jdevalk/comment-hacks). For security issues, please use our [vulnerability disclosure program](https://patchstack.com/database/vdp/yoast-comment-hacks), which is managed by PatchStack. They will assist you with verification, CVE assignment, and, of course, notify us.
+
+
 == Installation ==
 
 **Install through your backend**
