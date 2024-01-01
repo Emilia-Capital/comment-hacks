@@ -308,7 +308,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 					break;
 				case 'comment_policy':
 				case 'clean_emails':
-				case 'disable_email_all_commenters':	
+				case 'disable_email_all_commenters':
 					$input[ $key ] = $this->sanitize_bool( $value );
 					break;
 				case 'email_subject':
