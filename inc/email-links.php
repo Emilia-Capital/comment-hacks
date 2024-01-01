@@ -39,7 +39,7 @@ class Email_Links {
 	 * Adds an email link to the admin bar to email all commenters.
 	 */
 	public function admin_bar_comment_link(): void {
-		if ( ! \is_singular() ) {
+		if ( ! \is_singular() || $this->options['disable_email_all_commenters'] ) {
 			return;
 		}
 

@@ -22,6 +22,8 @@ $yoast_comment_option_name = Hacks::$option_name;
 					href="#top#clean-emails"><?php esc_html_e( 'Clean emails', 'yoast-comment-hacks' ); ?></a>
 			<a class="nav-tab" id="forward-emails-tab"
 					href="#top#forward-emails"><?php esc_html_e( 'Forward emails', 'yoast-comment-hacks' ); ?></a>
+			<a class="nav-tab" id="email-all-tab"
+					href="#top#email-all"><?php esc_html_e( 'Email all commenters', 'yoast-comment-hacks' ); ?></a>
 		</h2>
 
 		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="yoast-ch-conf" method="post">
@@ -283,6 +285,22 @@ $yoast_comment_option_name = Hacks::$option_name;
 						</th>
 						<td><textarea rows="4" cols="80" id="forward-emails-extra"
 									name="<?php echo esc_attr( $yoast_comment_option_name . '[forward_extra]' ); ?>"><?php echo isset( $this->options['forward_extra'] ) ? esc_html( $this->options['forward_extra'] ) : ''; ?></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="email-all" class="yoasttab">
+				<h3><?php esc_html_e( 'Email all commenters', 'yoast-comment-hacks' ); ?></h3>
+
+				<p><?php esc_html_e( 'This plugin comes with an "Email all commenters" admin bar button. You can disable it here.', 'yoast-comment-hacks' ); ?></p>
+				<table class="form-table">
+					<tr>
+						<th scope="row">
+							<label for="disable_email_all_commenters"><?php esc_html_e( 'Disable "Email all commenters" button', 'yoast-comment-hacks' ); ?></label>
+						</th>
+						<td><input type="checkbox" id="disable_email_all_commenters"
+									name="<?php echo esc_attr( $yoast_comment_option_name . '[disable_email_all_commenters]' ); ?>" <?php checked( $this->options['disable_email_all_commenters'] ); ?> />
 						</td>
 					</tr>
 				</table>

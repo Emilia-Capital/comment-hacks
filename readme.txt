@@ -3,8 +3,8 @@ Contributors: joostdevalk
 Tags: comments, spam, emails
 Text Domain: yoast-comment-hacks
 Requires at least: 5.9
-Tested up to: 6.1
-Stable tag: 1.9.2
+Tested up to: 6.4
+Stable tag: 2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -58,6 +58,11 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 1.9.3 =
+
+* Fix bug where comment reroute recipient would not save.
+* Added an option to disable the "Email all commenters" admin bar button.
 
 = 1.9.2 =
 

@@ -5,7 +5,7 @@ namespace JoostBlog\WP\Comment\Admin;
 use WP_Comment;
 use WP_Post;
 use JoostBlog\WP\Comment\Inc\Hacks;
-use Yoast_I18n_WordPressOrg_v3;
+use JoostBlog\WP\Comment\Inc\Comment_Parent;
 
 /**
  * Admin handling class.
@@ -52,7 +52,7 @@ class Admin {
 
 		// Filter the comment notification recipients.
 		\add_action( 'add_meta_boxes', [ $this, 'register_meta_boxes' ] );
-		\add_action( 'save_post', [ $this, 'save_reroute_comment_emails' ] );
+		\add_action( 'pre_post_update', [ $this, 'save_reroute_comment_emails' ] );
 
 		\add_filter( 'comment_row_actions', [ $this, 'forward_to_support_action_link' ], 10, 2 );
 		\add_action( 'admin_head', [ $this, 'forward_comment' ] );
@@ -177,6 +177,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * @param WP_Post $post Current post object.
 	 */
 	public function meta_box_callback( $post ): void {
+		echo '<input type="hidden" name="comment_notification_recipient_nonce" value="' . \esc_attr( \wp_create_nonce( 'comment_notification_recipient_nonce' ) ) . '" />';
 		echo '<label for="comment_notification_recipient">' . \esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
 
 		/**
@@ -224,7 +225,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	}
 
 	/**
-	 * Register the text domain and the options array along with the validation function.
+	 * Register the options array along with the validation function.
 	 */
 	public function init(): void {
 		// Register our option array.
@@ -269,13 +270,17 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 	/**
 	 * Saves the comment email recipients post meta.
+	 *
+	 * @param int $post_id The post ID.
 	 */
-	public function save_reroute_comment_emails(): void {
+	public function save_reroute_comment_emails( $post_id ): void {
 
-		$post_id      = \filter_input( \INPUT_POST, 'ID', \FILTER_VALIDATE_INT );
-		$recipient_id = \filter_input( \INPUT_POST, 'comment_notification_recipient', \FILTER_VALIDATE_INT );
+		if ( ! isset( $_POST['comment_notification_recipient'] ) || ! \wp_verify_nonce( \filter_input( \INPUT_POST, 'comment_notification_recipient_nonce' ), 'comment_notification_recipient_nonce' ) ) {
+			return;
+		}
 
-		if ( $recipient_id && $post_id ) {
+		$recipient_id = (int) \sanitize_key( \wp_unslash( $_POST['comment_notification_recipient'] ) );
+		if ( $recipient_id > 0 ) {
 			\update_post_meta( $post_id, self::NOTIFICATION_RECIPIENT_KEY, $recipient_id );
 		}
 	}
@@ -303,6 +308,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 					break;
 				case 'comment_policy':
 				case 'clean_emails':
+				case 'disable_email_all_commenters':	
 					$input[ $key ] = $this->sanitize_bool( $value );
 					break;
 				case 'email_subject':
