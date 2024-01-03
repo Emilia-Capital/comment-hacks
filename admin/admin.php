@@ -5,7 +5,6 @@ namespace JoostBlog\WP\Comment\Admin;
 use WP_Comment;
 use WP_Post;
 use JoostBlog\WP\Comment\Inc\Hacks;
-use JoostBlog\WP\Comment\Inc\Comment_Parent;
 
 /**
  * Admin handling class.
