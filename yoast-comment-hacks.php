@@ -4,7 +4,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:  Comment Hacks
- * Version:      1.9.3
+ * Version:      1.9.4
  * Plugin URI:   https://joost.blog/plugins/comment-hacks/
  * Description:  Make comments management easier by applying the simple hacks Joost has gathered over the years.
  * Requires PHP: 7.4
@@ -34,7 +34,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 /**
  * Used for version checks.
  */
-define( 'JOOST_COMMENT_HACKS_VERSION', '1.9.3' );
+define( 'JOOST_COMMENT_HACKS_VERSION', '1.9.4' );
 
 /**
  * Used for asset embedding.
