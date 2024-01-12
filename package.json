@@ -7,13 +7,13 @@
     "textdomain": "yoast-comment-hacks"
   },
   "pot": {
-    "reportmsgidbugsto": "https://github.com/jdevalk/comment-hacks/issues",
+    "reportmsgidbugsto": "https://github.com/emilia-capital/comment-hacks/issues",
     "languageteam": "Yoast Translate <translations@yoast.com>",
     "lasttranslator": "Yoast Translate Team <translations@yoast.com>"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jdevalk/comment-hacks"
+    "url": "https://github.com/emilia-capital/comment-hacks"
   },
   "devDependencies": {
     "@yoast/grunt-plugin-tasks": "^2.0.0"
