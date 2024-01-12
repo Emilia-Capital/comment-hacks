@@ -1,8 +1,8 @@
-[![CS](https://github.com/jdevalk/comment-hacks/actions/workflows/cs.yml/badge.svg)](https://github.com/jdevalk/comment-hacks/actions/workflows/cs.yml)
-[![Lint](https://github.com/jdevalk/comment-hacks/actions/workflows/lint.yml/badge.svg)](https://github.com/jdevalk/comment-hacks/actions/workflows/lint.yml)
-[![Test](https://github.com/jdevalk/comment-hacks/actions/workflows/test.yml/badge.svg)](https://github.com/jdevalk/comment-hacks/actions/workflows/test.yml)
-[![Release Version](https://img.shields.io/github/release/jdevalk/comment-hacks.svg)](https://github.com/jdevalk/comment-hacks/releases/latest) 
-[![MIT License](https://img.shields.io/github/license/jdevalk/comment-hacks.svg)](https://github.com/devalk/comment-hacks/blob/trunk/LICENSE)
+[![CS](https://github.com/emilia-capital/comment-hacks/actions/workflows/cs.yml/badge.svg)](https://github.com/emilia-capital/comment-hacks/actions/workflows/cs.yml)
+[![Lint](https://github.com/emilia-capital/comment-hacks/actions/workflows/lint.yml/badge.svg)](https://github.com/emilia-capital/comment-hacks/actions/workflows/lint.yml)
+[![Test](https://github.com/emilia-capital/comment-hacks/actions/workflows/test.yml/badge.svg)](https://github.com/emilia-capital/comment-hacks/actions/workflows/test.yml)
+[![Release Version](https://img.shields.io/github/release/emilia-capital/comment-hacks.svg)](https://github.com/emilia-capital/comment-hacks/releases/latest) 
+[![MIT License](https://img.shields.io/github/license/emilia-capital/comment-hacks.svg)](https://github.com/emilia-capital/comment-hacks/blob/trunk/LICENSE)
 
 # Comment Hacks
 
