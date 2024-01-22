@@ -21,7 +21,7 @@ class Admin {
 	/**
 	 * The plugin page hook.
 	 */
-	private string $hook = 'yoast-comment-hacks';
+	private string $hook = 'emiliacapital-comment-hacks';
 
 	/**
 	 * Holds the plugins options.
@@ -222,22 +222,22 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	public function enqueue(): void {
 		$page = \filter_input( \INPUT_GET, 'page' );
 
-		if ( $page === 'yoast-comment-hacks' ) {
+		if ( $page === 'emiliacapital-comment-hacks' ) {
 			$min = '.min';
 			if ( \defined( 'SCRIPT_DEBUG' ) && \SCRIPT_DEBUG ) {
 				$min = '';
 			}
 
 			\wp_enqueue_style(
-				'yoast-comment-hacks-admin-css',
+				'emiliacapital-comment-hacks-admin-css',
 				\plugins_url( 'admin/assets/css/dist/comment-hacks.css', \JOOST_COMMENT_HACKS_FILE ),
 				[],
 				\JOOST_COMMENT_HACKS_VERSION
 			);
 
 			\wp_enqueue_script(
-				'yoast-comment-hacks-admin-js',
-				\plugins_url( 'admin/assets/js/yoast-comment-hacks' . $min . '.js', \JOOST_COMMENT_HACKS_FILE ),
+				'emiliacapital-comment-hacks-admin-js',
+				\plugins_url( 'admin/assets/js/emiliacapital-comment-hacks' . $min . '.js', \JOOST_COMMENT_HACKS_FILE ),
 				[],
 				\JOOST_COMMENT_HACKS_VERSION,
 				true
