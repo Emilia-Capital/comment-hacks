@@ -9,7 +9,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 	<div class="wrap">
 		<h2><?php esc_html_e( 'Comment Hacks', 'comment-hacks' ); ?></h2>
 
-		<h2 class="nav-tab-wrapper" id="yoast-tabs">
+		<h2 class="nav-tab-wrapper" id="emiliaprojects-tabs">
 			<a class="nav-tab nav-tab-active" id="comment-length-tab"
 					href="#top#comment-length"><?php esc_html_e( 'Comment length', 'comment-hacks' ); ?></a>
 			<a class="nav-tab" id="comment-policy-tab" href="#top#comment-policy"><?php esc_html_e( 'Comment policy', 'comment-hacks' ); ?></a>
@@ -25,7 +25,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 					href="#top#email-all"><?php esc_html_e( 'Email all commenters', 'comment-hacks' ); ?></a>
 		</h2>
 
-		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="yoast-ch-conf" method="post">
+		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="emiliaprojects-ch-conf" method="post">
 			<?php settings_fields( Hacks::$option_name ); ?>
 
 			<div id="comment-length" class="emiliaprojectstab active">

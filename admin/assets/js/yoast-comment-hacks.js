@@ -1,7 +1,7 @@
 /* jslint browser:true */
 jQuery( document ).ready( function() {
-	jQuery( "#yoast-tabs" ).find( "a" ).click( function() {
-		jQuery( "#yoast-tabs" ).find( "a" ).removeClass( "nav-tab-active" );
+	jQuery( "#emiliaprojects-tabs" ).find( "a" ).click( function() {
+		jQuery( "#emiliaprojects-tabs" ).find( "a" ).removeClass( "nav-tab-active" );
 		jQuery( ".emiliaprojectstab" ).removeClass( "active" );
 
 		var id = jQuery( this ).attr( "id" ).replace( "-tab", "" );
@@ -15,7 +15,7 @@ jQuery( document ).ready( function() {
 	 * @returns {void}
 	 */
 	function yoastCHSetTabHash() {
-		var conf = jQuery( "#yoast-ch-conf" ),
+		var conf = jQuery( "#emiliaprojects-ch-conf" ),
 			currentUrl;
 
 		if ( conf.length ) {
