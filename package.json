@@ -16,7 +16,7 @@
     "url": "https://github.com/Emilia-Capital/comment-hacks"
   },
   "devDependencies": {
-    "@yoast/grunt-plugin-tasks": "^2.0.0"
+    "@yoast/grunt-plugin-tasks": "^2.4"
   },
   "yoast": {
     "pluginVersion": "1.9"
