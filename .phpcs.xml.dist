@@ -49,7 +49,7 @@
 			<!-- Provide the plugin specific prefix for use with namespace and hook names. -->
 			<property name="prefixes" type="array">
 				<element value="JoostBlog\WP\Comment"/>
-				<element value="emiliaprojects_comment"/>
+				<element value="comment_hacks"/>
 			</property>
 		</properties>
 	</rule>
