@@ -7,13 +7,13 @@
     "textdomain": "comment-hacks"
   },
   "pot": {
-    "reportmsgidbugsto": "https://github.com/emilia-capital/comment-hacks/issues",
+    "reportmsgidbugsto": "https://github.com/Emilia-Capital/comment-hacks/issues",
     "languageteam": "Emilia Projects Translate <translations@emilia.capital>",
     "lasttranslator": "Emilia Projects Translate Team <translations@emilia.capital>"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/emilia-capital/comment-hacks"
+    "url": "https://github.com/Emilia-Capital/comment-hacks"
   },
   "devDependencies": {
     "@yoast/grunt-plugin-tasks": "^2.0.0"
