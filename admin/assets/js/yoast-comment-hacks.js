@@ -14,7 +14,7 @@ jQuery( document ).ready( function() {
 	 *
 	 * @returns {void}
 	 */
-	function yoastCHSetTabHash() {
+	function emiliaProjectsCHSetTabHash() {
 		var conf = jQuery( "#emiliaprojects-ch-conf" ),
 			currentUrl;
 
@@ -27,7 +27,7 @@ jQuery( document ).ready( function() {
 	/**
 	 * When the hash changes, get the base url from the action and then add the current hash.
 	 */
-	jQuery( window ).on( "hashchange", yoastCHSetTabHash );
+	jQuery( window ).on( "hashchange", emiliaProjectsCHSetTabHash );
 
 	/**
 	 * Set the initial active tab in the settings pages.
@@ -55,7 +55,7 @@ jQuery( document ).ready( function() {
 	}
 
 	// When the hash changes, get the base url from the form action and then add the current hash to the url.
-	yoastCHSetTabHash();
+	emiliaProjectsCHSetTabHash();
 	// Set the initial active tab.
 	setInitialActiveTab();
 } );

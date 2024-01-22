@@ -1,5 +1,5 @@
 {
-  "name": "yoast-comment-hacks",
+  "name": "comment-hacks",
   "description": "Development files for the Comment Hacks plugin",
   "license": "GPL-2.0+",
   "plugin": {
@@ -8,8 +8,8 @@
   },
   "pot": {
     "reportmsgidbugsto": "https://github.com/emilia-capital/comment-hacks/issues",
-    "languageteam": "Yoast Translate <translations@yoast.com>",
-    "lasttranslator": "Yoast Translate Team <translations@yoast.com>"
+    "languageteam": "Emilia Projects Translate <translations@emilia.capital>",
+    "lasttranslator": "Emilia Projects Translate Team <translations@emilia.capital>"
   },
   "repository": {
     "type": "git",

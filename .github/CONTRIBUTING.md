@@ -5,7 +5,7 @@ Before filing a bug report or a feature request, be sure to read the contributio
 ## How to use GitHub
 We use GitHub exclusively for well-documented bugs, feature requests and code contributions. Communication is always done in English.
 
-To receive free support for this plugin, go to [the support formus](https://wordpress.org/support/plugin/yoast-comment-hacks/). Thanks for your understanding.
+To receive free support for this plugin, go to [the support formus](https://wordpress.org/support/plugin/comment-hacks/). Thanks for your understanding.
 
 ## Security issues
 Please do not report security issues here. Instead, report them per our [security policy](https://github.com/emilia-capital/comment-hacks/security/policy).

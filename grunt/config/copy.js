@@ -15,7 +15,7 @@ module.exports = {
 					"vendor/**",
 					"index.php",
 					"readme.txt",
-					"yoast-comment-hacks.php",
+					"comment-hacks.php",
 					"!vendor/bin/**",
 					"!vendor/composer/installed.json",
 					"!vendor/composer/installers/**",
