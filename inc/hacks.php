@@ -108,22 +108,6 @@ class Hacks {
 				 * @param string $url     URL to which the first-time commenter will be redirected.
 				 * @param object $comment The comment object.
 				 *
-				 * @deprecated 1.6.0. Use the {@see 'JoostBlog\WP\Comment\redirect'} filter instead.
-				 */
-				$url = \apply_filters_deprecated(
-					'yoast_comment_redirect',
-					[ $url, $comment ],
-					'Comment Hacks 1.6.0',
-					'JoostBlog\WP\Comment\redirect'
-				);
-
-				/**
-				 * Allow other plugins to hook in when the user is being redirected,
-				 * for analytics calls or even to change the target URL.
-				 *
-				 * @param string $url     URL to which the first-time commenter will be redirected.
-				 * @param object $comment The comment object.
-				 *
 				 * @since 1.6.0
 				 */
 				$url = \apply_filters( 'JoostBlog\WP\Comment\redirect', $url, $comment );

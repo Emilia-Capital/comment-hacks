@@ -310,13 +310,6 @@ $yoast_comment_option_name = Hacks::$option_name;
 	</div>
 
 <?php
-/**
- * Action hook to allow other plugins to add additional information to the
- * Comment Hacks admin page.
- *
- * @deprecated 1.6.0. Use the {@see 'JoostBlog\WP\Comment\admin_footer'} action instead.
- */
-do_action_deprecated( 'yoast_ch_admin_footer', [], 'Comment Hacks 1.6.0', 'JoostBlog\WP\Comment\admin_footer' );
 
 /**
  * Action hook to allow other plugins to add additional information to the

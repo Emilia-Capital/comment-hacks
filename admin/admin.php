@@ -185,28 +185,6 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		 *
 		 * @param array $roles Array with user roles.
 		 *
-		 * @deprecated 1.6.0. Use the {@see 'JoostBlog\WP\Comment\notification_roles'} filter instead.
-		 */
-		$roles = \apply_filters_deprecated(
-			'yoast_comment_hacks_notification_roles',
-			[
-				[
-					'author',
-					'contributor',
-					'editor',
-					'administrator',
-				],
-			],
-			'Comment Hacks 1.6.0',
-			'JoostBlog\WP\Comment\notification_roles'
-		);
-
-		/**
-		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
-		 * Defaults to contributor and up.
-		 *
-		 * @param array $roles Array with user roles.
-		 *
 		 * @since 1.6.0
 		 */
 		$roles = \apply_filters( 'JoostBlog\WP\Comment\notification_roles', $roles );

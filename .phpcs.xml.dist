@@ -83,8 +83,6 @@
 				<element value="yoast_comment"/>
 			</property>
 		</properties>
-
-		<exclude-pattern>*/deprecated/deprecated-classes\.php$</exclude-pattern>
 	</rule>
 
 
@@ -94,11 +92,6 @@
 	Exclude specific files for specific sniffs and/or exclude sub-groups in sniffs.
 	#############################################################################
 	-->
-
-	<!-- Valid: These classes were deprecated to comply with the prefixing rules. -->
-	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
-		<exclude-pattern>*/deprecated/*\.php$</exclude-pattern>
-	</rule>
 
 	<rule ref="Yoast.Files.FileName.InvalidFunctionsFileName">
 		<exclude-pattern>/tests/bootstrap\.php</exclude-pattern>
