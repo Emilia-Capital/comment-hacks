@@ -10,7 +10,7 @@
  * Requires PHP: 7.4
  * Author:       Joost de Valk
  * Author URI:   https://joost.blog/
- * Text Domain:  yoast-comment-hacks
+ * Text Domain:  comment-hacks
  *
  * Copyright 2009-2022 Joost de Valk (email: joost@joost.blog)
  *
@@ -29,25 +29,25 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-use JoostBlog\WP\Comment\Inc\Hacks;
+use EmiliaProjects\WP\Comment\Inc\Hacks;
 
 /**
  * Used for version checks.
  */
-define( 'JOOST_COMMENT_HACKS_VERSION', '1.9.4' );
+define( 'EMILIA_COMMENT_HACKS_VERSION', '1.9.4' );
 
 /**
  * Used for asset embedding.
  */
-define( 'JOOST_COMMENT_HACKS_FILE', __FILE__ );
+define( 'EMILIA_COMMENT_HACKS_FILE', __FILE__ );
 
-if ( ! defined( 'JOOST_COMMENT_HACKS_PATH' ) ) {
-	define( 'JOOST_COMMENT_HACKS_PATH', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'EMILIA_COMMENT_HACKS_PATH' ) ) {
+	define( 'EMILIA_COMMENT_HACKS_PATH', plugin_dir_path( __FILE__ ) );
 }
 
 /* ***************************** CLASS AUTOLOADING *************************** */
-if ( file_exists( JOOST_COMMENT_HACKS_PATH . 'vendor/autoload.php' ) ) {
-	require JOOST_COMMENT_HACKS_PATH . 'vendor/autoload.php';
+if ( file_exists( EMILIA_COMMENT_HACKS_PATH . 'vendor/autoload.php' ) ) {
+	require EMILIA_COMMENT_HACKS_PATH . 'vendor/autoload.php';
 }
 
 new Hacks();

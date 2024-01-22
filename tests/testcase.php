@@ -1,6 +1,6 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Tests;
+namespace EmiliaProjects\WP\Comment\Tests;
 
 use Yoast\WPTestUtils\WPIntegration\TestCase as TestUtils_TestCase;
 

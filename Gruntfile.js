@@ -14,8 +14,8 @@ module.exports = function( grunt ) {
 	// Define project configuration
 	var project = {
 		pluginVersion: pluginVersion,
-		pluginSlug: "yoast-comment-hacks",
-		pluginMainFile: "yoast-comment-hacks.php",
+		pluginSlug: "comment-hacks",
+		pluginMainFile: "comment-hacks.php",
 		paths: {
 			/**
 			 * Gets the config path.

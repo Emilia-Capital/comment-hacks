@@ -18,7 +18,7 @@
 	"type": "wordpress-plugin",
 	"support": {
 		"issues": "https://github.com/jdevalk/comment-hacks/issues",
-		"forum": "https://wordpress.org/support/plugin/yoast-comment-hacks",
+		"forum": "https://wordpress.org/support/plugin/comment-hacks",
 		"wiki": "https://github.com/jdevalk/comment-hacks/wiki",
 		"source": "https://github.com/jdevalk/comment-hacks"
 	},
@@ -44,7 +44,6 @@
 	"autoload": {
 		"classmap": [
 			"admin/",
-			"deprecated/",
 			"inc/"
 		]
 	},
