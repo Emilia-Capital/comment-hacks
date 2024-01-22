@@ -62,3 +62,5 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 = 1.0 =
 
 * Initial version.
+
+Note: The initial version is based on the plugin formerly known as "Yoast Comment Hacks" to remove the branding since Yoast no longer owns the plugin.
