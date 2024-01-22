@@ -28,7 +28,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 		<form action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" id="yoast-ch-conf" method="post">
 			<?php settings_fields( Hacks::$option_name ); ?>
 
-			<div id="comment-length" class="yoasttab active">
+			<div id="comment-length" class="emiliaprojectstab active">
 				<h3><?php esc_html_e( 'Minimum comment length', 'comment-hacks' ); ?></h3>
 
 				<p><?php esc_html_e( 'Users that try to submit a comment smaller than the length you set below will get an error immediately. The text of that error is specified below too.', 'comment-hacks' ); ?></p>
@@ -86,7 +86,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 				</table>
 			</div>
 
-			<div id="comment-policy" class="yoasttab">
+			<div id="comment-policy" class="emiliaprojectstab">
 				<h3><?php esc_html_e( 'Comment policy', 'comment-hacks' ); ?></h3>
 				<p><?php esc_html_e( 'This feature allows you to institute a comment policy for your site. To enable it, set a text in the input field below.', 'comment-hacks' ); ?></p>
 				<table class="form-table">
@@ -142,7 +142,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 				</table>
 			</div>
 
-			<div id="email-links" class="yoasttab">
+			<div id="email-links" class="emiliaprojectstab">
 				<h3><?php esc_html_e( 'Email links', 'comment-hacks' ); ?></h3>
 
 				<p>
@@ -187,7 +187,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 				</table>
 			</div>
 
-			<div id="comment-redirect" class="yoasttab">
+			<div id="comment-redirect" class="emiliaprojectstab">
 				<h3><?php esc_html_e( 'Redirect first time commenters', 'comment-hacks' ); ?></h3>
 
 				<p><?php esc_html_e( 'Select the page below that a first time commenter should be redirected to', 'comment-hacks' ); ?></p>
@@ -220,7 +220,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 					</tr>
 				</table>
 			</div>
-			<div id="clean-emails" class="yoasttab">
+			<div id="clean-emails" class="emiliaprojectstab">
 				<h3><?php esc_html_e( 'Clean Emails', 'comment-hacks' ); ?></h3>
 
 				<p><?php esc_html_e( 'Checking this option will make your default comment notification and moderation emails a lot cleaner.', 'comment-hacks' ); ?></p>
@@ -236,7 +236,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 				</table>
 			</div>
 
-			<div id="forward-emails" class="yoasttab">
+			<div id="forward-emails" class="emiliaprojectstab">
 				<h3><?php esc_html_e( 'Forward Emails', 'comment-hacks' ); ?></h3>
 
 				<p><?php esc_html_e( 'Allows you to set up a system whereby comments are forwarded to an email address (for instance for your support team) and then trashed.', 'comment-hacks' ); ?></p>
@@ -289,7 +289,7 @@ use JoostBlog\WP\Comment\Inc\Hacks;
 				</table>
 			</div>
 
-			<div id="email-all" class="yoasttab">
+			<div id="email-all" class="emiliaprojectstab">
 				<h3><?php esc_html_e( 'Email all commenters', 'comment-hacks' ); ?></h3>
 
 				<p><?php esc_html_e( 'This plugin comes with an "Email all commenters" admin bar button. You can disable it here.', 'comment-hacks' ); ?></p>

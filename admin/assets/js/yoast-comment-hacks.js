@@ -2,7 +2,7 @@
 jQuery( document ).ready( function() {
 	jQuery( "#yoast-tabs" ).find( "a" ).click( function() {
 		jQuery( "#yoast-tabs" ).find( "a" ).removeClass( "nav-tab-active" );
-		jQuery( ".yoasttab" ).removeClass( "active" );
+		jQuery( ".emiliaprojectstab" ).removeClass( "active" );
 
 		var id = jQuery( this ).attr( "id" ).replace( "-tab", "" );
 		jQuery( "#" + id ).addClass( "active" );
@@ -47,7 +47,7 @@ jQuery( document ).ready( function() {
 			 * Reminder: jQuery attr() gets the attribute value for only the first
 			 * element in the matched set so this will always be the first tab id.
 			 */
-			activeTabId = jQuery( ".yoasttab" ).attr( "id" );
+			activeTabId = jQuery( ".emiliaprojectstab" ).attr( "id" );
 		}
 
 		jQuery( "#" + activeTabId ).addClass( "active" );
