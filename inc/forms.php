@@ -1,6 +1,6 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Inc;
+namespace EmiliaProjects\WP\Comment\Inc;
 
 /**
  * Add comment note.

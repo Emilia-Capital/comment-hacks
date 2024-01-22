@@ -1,10 +1,10 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Admin;
+namespace EmiliaProjects\WP\Comment\Admin;
 
 use WP_Comment;
 use WP_Post;
-use JoostBlog\WP\Comment\Inc\Hacks;
+use EmiliaProjects\WP\Comment\Inc\Hacks;
 
 /**
  * Admin handling class.
@@ -187,7 +187,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		 *
 		 * @since 1.6.0
 		 */
-		$roles = \apply_filters( 'JoostBlog\WP\Comment\notification_roles', $roles );
+		$roles = \apply_filters( 'EmiliaProjects\WP\Comment\notification_roles', $roles );
 
 		\wp_dropdown_users(
 			[
@@ -230,16 +230,16 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 			\wp_enqueue_style(
 				'emiliaprojects-comment-hacks-admin-css',
-				\plugins_url( 'admin/assets/css/dist/comment-hacks.css', \JOOST_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/css/dist/comment-hacks.css', \EMILIA_COMMENT_HACKS_FILE ),
 				[],
-				\JOOST_COMMENT_HACKS_VERSION
+				\EMILIA_COMMENT_HACKS_VERSION
 			);
 
 			\wp_enqueue_script(
 				'emiliaprojects-comment-hacks-admin-js',
-				\plugins_url( 'admin/assets/js/comment-hacks' . $min . '.js', \JOOST_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/js/comment-hacks' . $min . '.js', \EMILIA_COMMENT_HACKS_FILE ),
 				[],
-				\JOOST_COMMENT_HACKS_VERSION,
+				\EMILIA_COMMENT_HACKS_VERSION,
 				true
 			);
 		}
@@ -281,7 +281,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 					$input[ $key ] = (int) $value;
 					break;
 				case 'version':
-					$input[ $key ] = JOOST_COMMENT_HACKS_VERSION;
+					$input[ $key ] = EMILIA_COMMENT_HACKS_VERSION;
 					break;
 				case 'comment_policy':
 				case 'clean_emails':
@@ -384,7 +384,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * Output the config page.
 	 */
 	public function config_page(): void {
-		require_once \JOOST_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
+		require_once \EMILIA_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
 
 		// Show the content of the options array when debug is enabled.
 		if ( \defined( 'WP_DEBUG' ) && \WP_DEBUG ) {

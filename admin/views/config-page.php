@@ -3,7 +3,7 @@
  * Config page admin view.
  */
 
-use JoostBlog\WP\Comment\Inc\Hacks;
+use EmiliaProjects\WP\Comment\Inc\Hacks;
 
 ?>
 	<div class="wrap">
@@ -316,4 +316,4 @@ use JoostBlog\WP\Comment\Inc\Hacks;
  *
  * @since 1.6.0
  */
-do_action( 'JoostBlog\WP\Comment\admin_footer' );
+do_action( 'EmiliaProjects\WP\Comment\admin_footer' );

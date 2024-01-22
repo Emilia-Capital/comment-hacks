@@ -43,12 +43,12 @@
 				 Ref: https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#custom-unit-test-classes
 			-->
 			<property name="custom_test_class_whitelist" type="array">
-				<element value="JoostBlog\WP\Comment\Tests\TestCase"/>
+				<element value="EmiliaProjects\WP\Comment\Tests\TestCase"/>
 			</property>
 
 			<!-- Provide the plugin specific prefix for use with namespace and hook names. -->
 			<property name="prefixes" type="array">
-				<element value="JoostBlog\WP\Comment"/>
+				<element value="EmiliaProjects\WP\Comment"/>
 				<element value="comment_hacks"/>
 			</property>
 		</properties>
@@ -110,7 +110,7 @@
 		<properties>
 			<property name="prefixes" type="array" extend="true">
 				<element value="yst_comment"/>
-				<element value="JOOST_COMMENT_HACKS"/>
+				<element value="EMILIA_COMMENT_HACKS"/>
 			</property>
 		</properties>
 	</rule>

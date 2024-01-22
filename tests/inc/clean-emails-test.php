@@ -1,10 +1,10 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Tests\Inc;
+namespace EmiliaProjects\WP\Comment\Tests\Inc;
 
 use stdClass;
-use JoostBlog\WP\Comment\Inc\Clean_Emails;
-use JoostBlog\WP\Comment\Tests\TestCase;
+use EmiliaProjects\WP\Comment\Inc\Clean_Emails;
+use EmiliaProjects\WP\Comment\Tests\TestCase;
 
 /**
  * Test class to test the Clean_Emails class.
@@ -14,7 +14,7 @@ class Clean_Emails_Test extends TestCase {
 	/**
 	 * Tests class constructor.
 	 *
-	 * @covers \JoostBlog\WP\Comment\Inc\Clean_Emails::__construct
+	 * @covers \EmiliaProjects\WP\Comment\Inc\Clean_Emails::__construct
 	 */
 	public function test__construct() {
 		$instance = new Clean_Emails();
@@ -45,7 +45,7 @@ class Clean_Emails_Test extends TestCase {
 	 * Test setting the content type header for comment emails to "text/html".
 	 *
 	 * @dataProvider data_comment_email_headers
-	 * @covers       \JoostBlog\WP\Comment\Inc\Clean_Emails::comment_email_headers
+	 * @covers       \EmiliaProjects\WP\Comment\Inc\Clean_Emails::comment_email_headers
 	 *
 	 * @param mixed  $headers  The initial message headers.
 	 * @param string $expected The expected function return value.

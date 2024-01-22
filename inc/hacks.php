@@ -1,8 +1,8 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Inc;
+namespace EmiliaProjects\WP\Comment\Inc;
 
-use JoostBlog\WP\Comment\Admin\Admin;
+use EmiliaProjects\WP\Comment\Admin\Admin;
 
 /**
  * Main comment hacks functionality.
@@ -24,7 +24,7 @@ class Hacks {
 	 */
 	public function __construct() {
 		$this->options = self::get_options();
-		if ( ! isset( $this->options['version'] ) || \JOOST_COMMENT_HACKS_VERSION > $this->options['version'] ) {
+		if ( ! isset( $this->options['version'] ) || \EMILIA_COMMENT_HACKS_VERSION > $this->options['version'] ) {
 			$this->set_defaults();
 			$this->upgrade();
 		}
@@ -110,7 +110,7 @@ class Hacks {
 				 *
 				 * @since 1.6.0
 				 */
-				$url = \apply_filters( 'JoostBlog\WP\Comment\redirect', $url, $comment );
+				$url = \apply_filters( 'EmiliaProjects\WP\Comment\redirect', $url, $comment );
 			}
 		}
 
@@ -154,7 +154,7 @@ class Hacks {
 
 		if ( ! isset( $this->options['version'] ) ) {
 			$this->options['clean_emails'] = true;
-			$this->options['version']      = \JOOST_COMMENT_HACKS_VERSION;
+			$this->options['version']      = \EMILIA_COMMENT_HACKS_VERSION;
 		}
 
 		if ( ! isset( $this->options['disable_email_all_commenters'] ) ) {
@@ -209,6 +209,6 @@ class Hacks {
 	 * Load plugin textdomain.
 	 */
 	public function load_text_domain(): void {
-		\load_plugin_textdomain( 'comment-hacks', false, \dirname( \plugin_basename( \JOOST_COMMENT_HACKS_FILE ) ) . '/languages' );
+		\load_plugin_textdomain( 'comment-hacks', false, \dirname( \plugin_basename( \EMILIA_COMMENT_HACKS_FILE ) ) . '/languages' );
 	}
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Inc;
+namespace EmiliaProjects\WP\Comment\Inc;
 
 /**
  * Checks the comments for allowed length.
