@@ -40,7 +40,7 @@ function manually_load_plugin() {
  */
 function plugins_url( $url, $path, $plugin ) {
 	$plugin_dir = \dirname( __DIR__ );
-	if ( $plugin === $plugin_dir . '/yoast-comment-hacks.php' ) {
+	if ( $plugin === $plugin_dir . '/comment-hacks.php' ) {
 		$url = \str_replace( \dirname( $plugin_dir ), '', $url );
 	}
 
