@@ -10,7 +10,7 @@
  * Requires PHP: 7.4
  * Author:       Joost de Valk
  * Author URI:   https://joost.blog/
- * Text Domain:  yoast-comment-hacks
+ * Text Domain:  comment-hacks
  *
  * Copyright 2009-2022 Joost de Valk (email: joost@joost.blog)
  *

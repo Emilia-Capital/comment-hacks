@@ -4,7 +4,7 @@
   "license": "GPL-2.0+",
   "plugin": {
     "glotpress": "https://translate.wordpress.org",
-    "textdomain": "yoast-comment-hacks"
+    "textdomain": "comment-hacks"
   },
   "pot": {
     "reportmsgidbugsto": "https://github.com/emilia-capital/comment-hacks/issues",

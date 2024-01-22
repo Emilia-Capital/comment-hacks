@@ -79,15 +79,15 @@ class Clean_Emails {
 		switch ( $this->comment->comment_type ) {
 			case 'pingback':
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New pingback on "%s"', 'yoast-comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'New pingback on "%s"', 'comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
 				break;
 			case 'trackback':
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New trackback on "%s"', 'yoast-comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'New trackback on "%s"', 'comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
 				break;
 			default:
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New comment on "%s"', 'yoast-comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'New comment on "%s"', 'comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
 				break;
 		}
 		$this->add_comment_basics();
@@ -111,21 +111,21 @@ class Clean_Emails {
 		switch ( $this->comment->comment_type ) {
 			case 'pingback':
 				/* translators: %1$s is replaced with the post title */
-				$this->message = \sprintf( \__( 'A new pingback on the post "%1$s" is waiting for your approval:', 'yoast-comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'A new pingback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
 				break;
 			case 'trackback':
 				/* translators: %1$s is replaced with the post title */
-				$this->message = \sprintf( \__( 'A new trackback on the post "%1$s" is waiting for your approval:', 'yoast-comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'A new trackback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
 				break;
 			default:
 				/* translators: %1$s is replaced with the post title */
-				$this->message = \sprintf( \__( 'A new comment on the post "%1$s" is waiting for your approval:', 'yoast-comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'A new comment on the post "%1$s" is waiting for your approval:', 'comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
 				break;
 		}
 		$this->add_comment_basics();
 
 		$this->comment_moderation_actions();
-		$this->message .= ' | ' . \sprintf( '<a href="http://ip-lookup.net/index.php?ip=%1$s">%2$s</a>', $this->comment->comment_author_IP, \__( 'Whois', 'yoast-comment-hacks' ) );
+		$this->message .= ' | ' . \sprintf( '<a href="http://ip-lookup.net/index.php?ip=%1$s">%2$s</a>', $this->comment->comment_author_IP, \__( 'Whois', 'comment-hacks' ) );
 		$this->message .= '<br/><br/>';
 
 		$this->get_moderation_msg();
@@ -149,11 +149,11 @@ class Clean_Emails {
 	private function add_author_line(): void {
 		if ( $this->comment->comment_type === 'comment' ) {
 			/* translators: %1$s is replaced with the comment author's name, %2$s is replaced with the comment author's email */
-			$this->message .= \sprintf( \__( 'Author: %1$s (%2$s)', 'yoast-comment-hacks' ), \esc_html( $this->comment->comment_author ), '<a href="' . \esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . \esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
+			$this->message .= \sprintf( \__( 'Author: %1$s (%2$s)', 'comment-hacks' ), \esc_html( $this->comment->comment_author ), '<a href="' . \esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . \esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
 		}
 		else {
 			/* translators: %1$s is replaced with the website doing the ping or trackback */
-			$this->message .= \sprintf( \__( 'Website: %1$s', 'yoast-comment-hacks' ), \esc_html( $this->comment->comment_author ) ) . '<br>';
+			$this->message .= \sprintf( \__( 'Website: %1$s', 'comment-hacks' ), \esc_html( $this->comment->comment_author ) ) . '<br>';
 		}
 	}
 
@@ -162,10 +162,10 @@ class Clean_Emails {
 	 */
 	private function add_content_line(): void {
 		if ( $this->comment->comment_type === 'comment' ) {
-			$this->message .= \__( 'Comment:', 'yoast-comment-hacks' );
+			$this->message .= \__( 'Comment:', 'comment-hacks' );
 		}
 		else {
-			$this->message .= \__( 'Excerpt:', 'yoast-comment-hacks' );
+			$this->message .= \__( 'Excerpt:', 'comment-hacks' );
 		}
 
 		$this->message .= '<br />' . \wpautop( $this->comment->comment_content ) . '<br />';
@@ -177,7 +177,7 @@ class Clean_Emails {
 	private function add_url_line(): void {
 		if ( isset( $this->comment->comment_author_url ) && $this->comment->comment_author_url !== '' ) {
 			/* translators: %s is replaced with the URL */
-			$this->message .= \sprintf( \__( 'URL: %s', 'yoast-comment-hacks' ), '<a href="' . \esc_url( $this->comment->comment_author_url ) . '">' . \esc_html( $this->comment->comment_author_url ) . '</a>' ) . '<br/>';
+			$this->message .= \sprintf( \__( 'URL: %s', 'comment-hacks' ), '<a href="' . \esc_url( $this->comment->comment_author_url ) . '">' . \esc_html( $this->comment->comment_author_url ) . '</a>' ) . '<br/>';
 		}
 	}
 
@@ -208,10 +208,10 @@ class Clean_Emails {
 		if ( $comments_waiting > 1 ) {
 			--$comments_waiting;
 			/* translators: %s is replaced with the number of comments waiting for approval */
-			$this->message .= \sprintf( \__( 'Currently this and %s other comments are waiting for approval.', 'yoast-comment-hacks' ), \number_format_i18n( $comments_waiting ) );
+			$this->message .= \sprintf( \__( 'Currently this and %s other comments are waiting for approval.', 'comment-hacks' ), \number_format_i18n( $comments_waiting ) );
 			$this->message .= ' ';
 			/* translators: %1$s and %2$s are replaced with the HTML for a link to the moderation panel */
-			$this->message .= \sprintf( \__( 'Please visit the %1$smoderation panel%2$s.', 'yoast-comment-hacks' ), '<a href="' . \admin_url( 'edit-comments.php?comment_status=moderated' ) . '">', '</a>' ) . '<br>';
+			$this->message .= \sprintf( \__( 'Please visit the %1$smoderation panel%2$s.', 'comment-hacks' ), '<a href="' . \admin_url( 'edit-comments.php?comment_status=moderated' ) . '">', '</a>' ) . '<br>';
 		}
 	}
 
@@ -220,10 +220,10 @@ class Clean_Emails {
 	 */
 	private function comment_moderation_actions(): void {
 		$actions = [
-			'approve'     => \__( 'Approve', 'yoast-comment-hacks' ),
-			'spam'        => \__( 'Spam', 'yoast-comment-hacks' ),
-			'trash'       => \__( 'Trash', 'yoast-comment-hacks' ),
-			'editcomment' => \__( 'Edit', 'yoast-comment-hacks' ),
+			'approve'     => \__( 'Approve', 'comment-hacks' ),
+			'spam'        => \__( 'Spam', 'comment-hacks' ),
+			'trash'       => \__( 'Trash', 'comment-hacks' ),
+			'editcomment' => \__( 'Edit', 'comment-hacks' ),
 		];
 
 		$this->comment_action_links( $actions );
@@ -234,9 +234,9 @@ class Clean_Emails {
 	 */
 	private function comment_notification_actions(): void {
 		$actions = [
-			'spam'        => \__( 'Spam', 'yoast-comment-hacks' ),
-			'trash'       => \__( 'Trash', 'yoast-comment-hacks' ),
-			'editcomment' => \__( 'Edit', 'yoast-comment-hacks' ),
+			'spam'        => \__( 'Spam', 'comment-hacks' ),
+			'trash'       => \__( 'Trash', 'comment-hacks' ),
+			'editcomment' => \__( 'Edit', 'comment-hacks' ),
 		];
 
 		$this->comment_action_links( $actions );

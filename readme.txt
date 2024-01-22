@@ -1,7 +1,7 @@
 === Comment Hacks ===
 Contributors: joostdevalk
 Tags: comments, spam, emails
-Text Domain: yoast-comment-hacks
+Text Domain: comment-hacks
 Requires at least: 5.9
 Tested up to: 6.4
 Stable tag: 1.9.4
