@@ -49,7 +49,7 @@
 			<!-- Provide the plugin specific prefix for use with namespace and hook names. -->
 			<property name="prefixes" type="array">
 				<element value="JoostBlog\WP\Comment"/>
-				<element value="emiliacapital_comment"/>
+				<element value="emiliaprojects_comment"/>
 			</property>
 		</properties>
 	</rule>
@@ -80,7 +80,7 @@
 
 			<!-- Remove the following prefixes from the names of object structures. -->
 			<property name="oo_prefixes" type="array">
-				<element value="emiliacapital_comment"/>
+				<element value="emiliaprojects_comment"/>
 			</property>
 		</properties>
 	</rule>
