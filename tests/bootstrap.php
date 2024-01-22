@@ -14,11 +14,8 @@ echo 'Version: 1.0' . \PHP_EOL . \PHP_EOL;
 
 require_once \dirname( __DIR__ ) . '/vendor/yoast/wp-test-utils/src/WPIntegration/bootstrap-functions.php';
 
-// Determine the WP_TEST_DIR.
-$yoast_comment_tests_dir = WPIntegration\get_path_to_wp_test_dir();
-
 // Give access to tests_add_filter() function.
-require_once \rtrim( $yoast_comment_tests_dir, '/' ) . '/includes/functions.php';
+require_once \rtrim( WPIntegration\get_path_to_wp_test_dir(), '/' ) . '/includes/functions.php';
 
 /**
  * Manually load the plugin being tested.
