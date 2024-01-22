@@ -12,7 +12,7 @@ class Hacks {
 	/**
 	 * Holds the plugins option name.
 	 */
-	public static string $option_name = 'yoast_comment_hacks';
+	public static string $option_name = 'emiliaprojects_comment_hacks';
 
 	/**
 	 * Holds the plugins options.
