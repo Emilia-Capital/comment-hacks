@@ -13,3 +13,14 @@ package.json
 phpmd.xml
 phpunit.xml.dist
 yarn.lock
+.eslintignore
+.eslintrc
+.gitattributes
+package.json
+phpmd.xml
+phpunit.xml.dist
+readme.md
+admin/assets/js/.jshintrc
+composer.json
+composer.lock
+Security.md

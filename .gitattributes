@@ -10,7 +10,6 @@
 .gitattributes export-ignore
 .gitignore export-ignore
 .phpcs.xml.dist export-ignore
-.removable-files export-ignore
 package.json export-ignore
 phpmd.xml export-ignore
 phpunit.xml.dist export-ignore
@@ -23,6 +22,7 @@ admin/assets/js/.jshintrc export-ignore
 .distignore export-ignore
 composer.json export-ignore
 composer.lock export-ignore
+Security.md export-ignore
 
 #
 # Auto detect text files and perform LF normalization
