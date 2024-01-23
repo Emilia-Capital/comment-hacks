@@ -82,15 +82,15 @@ class Clean_Emails {
 		switch ( $this->comment->comment_type ) {
 			case 'pingback':
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New pingback on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
+				$this->message = \sprintf( \esc_html__( 'New pingback on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
 				break;
 			case 'trackback':
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New trackback on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
+				$this->message = \sprintf( \esc_html__( 'New trackback on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
 				break;
 			default:
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New comment on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
+				$this->message = \sprintf( \esc_html__( 'New comment on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
 				break;
 		}
 		$this->add_comment_basics();
@@ -111,27 +111,27 @@ class Clean_Emails {
 	public function comment_moderation_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
 
-		$comment_link = '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>';
+		$comment_link = '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '">' . \esc_html( $this->post->post_title ) . '</a>';
 
 		switch ( $this->comment->comment_type ) {
 			case 'pingback':
 				$this->message = \sprintf(
 					/* translators: %1$s is replaced with the post title */
-					\__( 'A new pingback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
+					\esc_html__( 'A new pingback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
 					$comment_link
 				) . '<br /><br />';
 				break;
 			case 'trackback':
 				$this->message = \sprintf(
 					/* translators: %1$s is replaced with the post title */
-					\__( 'A new trackback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
+					\esc_html__( 'A new trackback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
 					$comment_link
 				) . '<br /><br />';
 				break;
 			default:
 				$this->message = \sprintf(
 					/* translators: %1$s is replaced with the post title */
-					\__( 'A new comment on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
+					\esc_html__( 'A new comment on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
 					$comment_link
 				) . '<br /><br />';
 				break;
@@ -142,7 +142,7 @@ class Clean_Emails {
 		$this->message .= ' | ' . \sprintf(
 			'<a href="http://ip-lookup.net/index.php?ip=%1$s">%2$s</a>',
 			$this->comment->comment_author_IP,
-			\__( 'Whois', 'comment-hacks' )
+			\esc_html__( 'Whois', 'comment-hacks' )
 		);
 		$this->message .= '<br/><br/>';
 
@@ -167,11 +167,11 @@ class Clean_Emails {
 	private function add_author_line(): void {
 		if ( $this->comment->comment_type === 'comment' ) {
 			/* translators: %1$s is replaced with the comment author's name, %2$s is replaced with the comment author's email */
-			$this->message .= \sprintf( \__( 'Author: %1$s (%2$s)', 'comment-hacks' ), \esc_html( $this->comment->comment_author ), '<a href="' . \esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . \esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
+			$this->message .= \sprintf( \esc_html__( 'Author: %1$s (%2$s)', 'comment-hacks' ), \esc_html( $this->comment->comment_author ), '<a href="' . \esc_url( 'mailto:' . $this->comment->comment_author_email ) . '">' . \esc_html( $this->comment->comment_author_email ) . '</a>' ) . '<br />';
 		}
 		else {
 			/* translators: %1$s is replaced with the website doing the ping or trackback */
-			$this->message .= \sprintf( \__( 'Website: %1$s', 'comment-hacks' ), \esc_html( $this->comment->comment_author ) ) . '<br>';
+			$this->message .= \sprintf( \esc_html__( 'Website: %1$s', 'comment-hacks' ), \esc_html( $this->comment->comment_author ) ) . '<br>';
 		}
 	}
 
@@ -180,10 +180,10 @@ class Clean_Emails {
 	 */
 	private function add_content_line(): void {
 		if ( $this->comment->comment_type === 'comment' ) {
-			$this->message .= \__( 'Comment:', 'comment-hacks' );
+			$this->message .= \esc_html__( 'Comment:', 'comment-hacks' );
 		}
 		else {
-			$this->message .= \__( 'Excerpt:', 'comment-hacks' );
+			$this->message .= \esc_html__( 'Excerpt:', 'comment-hacks' );
 		}
 
 		$this->message .= '<br />' . \wpautop( $this->comment->comment_content ) . '<br />';
@@ -195,7 +195,7 @@ class Clean_Emails {
 	private function add_url_line(): void {
 		if ( isset( $this->comment->comment_author_url ) && $this->comment->comment_author_url !== '' ) {
 			/* translators: %s is replaced with the URL */
-			$this->message .= \sprintf( \__( 'URL: %s', 'comment-hacks' ), '<a href="' . \esc_url( $this->comment->comment_author_url ) . '">' . \esc_html( $this->comment->comment_author_url ) . '</a>' ) . '<br/>';
+			$this->message .= \sprintf( \esc_html__( 'URL: %s', 'comment-hacks' ), '<a href="' . \esc_url( $this->comment->comment_author_url ) . '">' . \esc_html( $this->comment->comment_author_url ) . '</a>' ) . '<br/>';
 		}
 	}
 
@@ -227,14 +227,14 @@ class Clean_Emails {
 			--$comments_waiting;
 			$this->message .= \sprintf(
 				/* translators: %s is replaced with the number of comments waiting for approval */
-				\__( 'Currently this and %s other comments are waiting for approval.', 'comment-hacks' ),
+				\esc_html__( 'Currently this and %s other comments are waiting for approval.', 'comment-hacks' ),
 				\number_format_i18n( $comments_waiting )
 			);
 			$this->message .= ' ';
 			$this->message .= \sprintf(
 				/* translators: %s is replaced with the HTML for a link to the moderation panel, with text "moderation panel". */
-				\__( 'Please visit the %s.', 'comment-hacks' ),
-				'<a href="' . \admin_url( 'edit-comments.php?comment_status=moderated' ) . '">' . \__( 'moderation panel', 'comment-hacks' ) . '</a>'
+				\esc_html__( 'Please visit the %s.', 'comment-hacks' ),
+				'<a href="' . \admin_url( 'edit-comments.php?comment_status=moderated' ) . '">' . \esc_html__( 'moderation panel', 'comment-hacks' ) . '</a>'
 			) . '<br>';
 		}
 	}
@@ -244,10 +244,10 @@ class Clean_Emails {
 	 */
 	private function comment_moderation_actions(): void {
 		$actions = [
-			'approve'     => \__( 'Approve', 'comment-hacks' ),
-			'spam'        => \__( 'Spam', 'comment-hacks' ),
-			'trash'       => \__( 'Trash', 'comment-hacks' ),
-			'editcomment' => \__( 'Edit', 'comment-hacks' ),
+			'approve'     => \esc_html__( 'Approve', 'comment-hacks' ),
+			'spam'        => \esc_html__( 'Spam', 'comment-hacks' ),
+			'trash'       => \esc_html__( 'Trash', 'comment-hacks' ),
+			'editcomment' => \esc_html__( 'Edit', 'comment-hacks' ),
 		];
 
 		$this->comment_action_links( $actions );
@@ -258,9 +258,9 @@ class Clean_Emails {
 	 */
 	private function comment_notification_actions(): void {
 		$actions = [
-			'spam'        => \__( 'Spam', 'comment-hacks' ),
-			'trash'       => \__( 'Trash', 'comment-hacks' ),
-			'editcomment' => \__( 'Edit', 'comment-hacks' ),
+			'spam'        => \esc_html__( 'Spam', 'comment-hacks' ),
+			'trash'       => \esc_html__( 'Trash', 'comment-hacks' ),
+			'editcomment' => \esc_html__( 'Edit', 'comment-hacks' ),
 		];
 
 		$this->comment_action_links( $actions );
