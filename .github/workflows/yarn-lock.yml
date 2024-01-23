@@ -1,0 +1,17 @@
+name: Yarn Lock Changes
+on: 
+  pull_request:
+
+jobs:
+  yarn_lock_changes:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Yarn Lock Changes
+        # Please use `main` as version before the stable release will be published as `v1`.
+        uses: Simek/yarn-lock-changes@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
