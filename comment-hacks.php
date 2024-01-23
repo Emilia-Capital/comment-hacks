@@ -29,6 +29,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
+use EmiliaProjects\WP\Comment\Inc\Autoload;
 use EmiliaProjects\WP\Comment\Inc\Hacks;
 
 /**
@@ -45,9 +46,7 @@ if ( ! defined( 'EMILIA_COMMENT_HACKS_PATH' ) ) {
 	define( 'EMILIA_COMMENT_HACKS_PATH', plugin_dir_path( __FILE__ ) );
 }
 
-/* ***************************** CLASS AUTOLOADING *************************** */
-if ( file_exists( EMILIA_COMMENT_HACKS_PATH . 'vendor/autoload.php' ) ) {
-	require EMILIA_COMMENT_HACKS_PATH . 'vendor/autoload.php';
-}
+require_once EMILIA_COMMENT_HACKS_PATH . 'inc/autoload.php';
+new Autoload();
 
 new Hacks();
