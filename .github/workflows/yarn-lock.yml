@@ -1,6 +1,8 @@
 name: Yarn Lock Changes
 on: 
   pull_request:
+    paths:
+      - 'yarn.lock'
 
 jobs:
   yarn_lock_changes:
