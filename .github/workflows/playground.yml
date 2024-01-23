@@ -12,5 +12,5 @@ jobs:
       - uses: mshick/add-pr-comment@v2
         with:
           message: |
-            **Test on Playground**
-            [Test this pull request on the Playground](https://playground.wordpress.net/#{"landingPage":"/wp-admin/","features":{"networking":true},"steps":[{"step":"defineWpConfigConsts","consts":{"IS_PLAYGROUND_PREVIEW":true}},{"step":"login","username":"admin","password":"password"},{"step":"installPlugin","pluginZipFile":{"resource":"url","url":"https://bypass-cors.altha.workers.dev/${{ github.server_url }}/${{ github.repository }}/archive/${{ github.sha }}.zip"},"options":{"activate":true}}]})
+            ## WordPress Playground
+            You can easily [test this pull request on the WordPress Playground](https://playground.wordpress.net/#{"landingPage":"/wp-admin/","features":{"networking":true},"steps":[{"step":"defineWpConfigConsts","consts":{"IS_PLAYGROUND_PREVIEW":true}},{"step":"login","username":"admin","password":"password"},{"step":"installPlugin","pluginZipFile":{"resource":"url","url":"https://bypass-cors.altha.workers.dev/${{ github.server_url }}/${{ github.repository }}/archive/${{ github.sha }}.zip"},"options":{"activate":true}}]}).
