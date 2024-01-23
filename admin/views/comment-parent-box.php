@@ -7,7 +7,7 @@
 <div class="inside">
 	<table class="form-table editcomment">
 		<tr valign="top">
-			<td class="first" style="width: 120px;">
+			<td class="first">
 				<label for="epch_comment_parent"><?php esc_html_e( 'Comment parent:', 'comment-hacks' ); ?></label>
 			</td>
 			<td>
