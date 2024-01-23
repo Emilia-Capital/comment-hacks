@@ -15,11 +15,14 @@ package.json export-ignore
 phpmd.xml export-ignore
 phpunit.xml.dist export-ignore
 readme.md export-ignore
-yarn.lock export-ignore
 /.cache export-ignore
 /.github export-ignore
 /.wordpress-org export-ignore
 /tests export-ignore
+admin/assets/js/.jshintrc export-ignore
+.distignore export-ignore
+composer.json export-ignore
+composer.lock export-ignore
 
 #
 # Auto detect text files and perform LF normalization
