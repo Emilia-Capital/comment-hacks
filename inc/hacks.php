@@ -53,11 +53,7 @@ class Hacks {
 	 */
 	public static function get_options(): array {
 		$options = \get_option( self::$option_name );
-		if ( ! is_array( $options ) ) {
-			return [];
-		}
-
-		return $options;
+		return is_array( $options ) ? $options : [];
 	}
 
 	/**
@@ -127,11 +123,7 @@ class Hacks {
 	 */
 	private function get_option_from_cache( string $option ) {
 		$options = \wp_load_alloptions();
-		if ( isset( $options[ $option ] ) ) {
-			return $option;
-		}
-
-		return false;
+		return isset( $options[ $option ] ) ? $option : false;
 	}
 
 	/**

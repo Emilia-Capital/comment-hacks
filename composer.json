@@ -6,7 +6,7 @@
 		"spam",
 		"emails"
 	],
-	"homepage": "https://joost.blog/plugins/comment-hacks/",
+	"homepage": "https://emilia.capital/",
 	"license": "GPL-3.0-or-later",
 	"authors": [
 		{
@@ -41,12 +41,6 @@
 	},
 	"minimum-stability": "dev",
 	"prefer-stable": true,
-	"autoload": {
-		"classmap": [
-			"admin/",
-			"inc/"
-		]
-	},
 	"autoload-dev": {
 		"classmap": [
 			"tests/"

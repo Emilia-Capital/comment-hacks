@@ -32,7 +32,7 @@ class Comment_Parent {
 		if ( \function_exists( 'add_meta_box' ) ) {
 			\add_meta_box(
 				'comment_parent',
-				'Comment Parent',
+				esc_html__( 'Comment Parent', 'comment-hacks' ),
 				[
 					$this,
 					'comment_parent_box',
@@ -47,7 +47,7 @@ class Comment_Parent {
 	 * Updates the comment parent field.
 	 */
 	public function update_comment_parent() {
-		$comment_parent = \filter_input( \INPUT_POST, 'yst_comment_parent', \FILTER_VALIDATE_INT );
+		$comment_parent = \filter_input( \INPUT_POST, 'epch_comment_parent', \FILTER_VALIDATE_INT );
 		$comment_id     = \filter_input( \INPUT_POST, 'comment_ID', \FILTER_VALIDATE_INT );
 		$action         = \filter_input( \INPUT_POST, 'action' );
 

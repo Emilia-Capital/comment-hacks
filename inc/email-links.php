@@ -75,23 +75,23 @@ class Email_Links {
 		// We can't set the 'href' attribute to the $url as then esc_url would garble the mailto link.
 		// So we do a nasty bit of JS workaround. The reason we grab the href from the alternate link is
 		// so browser extensions like the Google Mail one that change mailto: links still work.
-		echo '<a href="' . \esc_attr( $url ) . '" id="yst_email_commenters_alternate"></a><script>
-			function yst_email_commenters(e){
-				var ystEmailCommentersLink = document.getElementById( "yst_email_commenters_alternate" );
+		echo '<a href="' . \esc_attr( $url ) . '" id="epch_email_commenters_alternate"></a><script>
+			function epch_email_commenters(e){
+				var epchEmailCommentersLink = document.getElementById( "epch_email_commenters_alternate" );
 				e.preventDefault();
-				if ( ystEmailCommentersLink === null ) {
+				if ( epchEmailCommentersLink === null ) {
 					return;
 				}
-				window.location = ystEmailCommentersLink.getAttribute( "href" );
+				window.location = epchEmailCommentersLink.getAttribute( "href" );
 			}
 		</script>';
 
 		$wp_admin_bar->add_menu(
 			[
-				'id'    => 'yst-email-commenters',
+				'id'    => 'epch-email-commenters',
 				'title' => '<span class="ab-icon" title="' . \__( 'Email commenters', 'comment-hacks' ) . '"></span>',
 				'href'  => '#',
-				'meta'  => [ 'onclick' => 'yst_email_commenters(event)' ],
+				'meta'  => [ 'onclick' => 'epch_email_commenters(event)' ],
 			]
 		);
 	}
@@ -106,13 +106,13 @@ class Email_Links {
 
 		echo '
 		<style>
-		#wpadminbar #wp-admin-bar-yst-email-commenters .ab-icon {
+		#wpadminbar #wp-admin-bar-epch-email-commenters .ab-icon {
 			width: 20px !important;
 			height: 28px !important;
 			padding: 6px 0 !important;
 			margin-right: 0 !important;
 		}
-		#wpadminbar #wp-admin-bar-yst-email-commenters .ab-icon:before {
+		#wpadminbar #wp-admin-bar-epch-email-commenters .ab-icon:before {
 			content: "\f466";
 		}
 		</style>';

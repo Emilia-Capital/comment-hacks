@@ -21,8 +21,6 @@ This plugin adds some small hacks around core WordPress comments to make them mo
 * Links in the admin comments section to email individual commenters.
 * A button in the WP toolbar to email all the commenters on a post.
 
-This repository uses [the Yoast grunt tasks plugin](https://github.com/Yoast/plugin-grunt-tasks).
-
 ## Screenshots
 
 Screenshot of a clean comment notification email:<br>

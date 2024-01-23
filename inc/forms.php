@@ -31,12 +31,14 @@ class Forms {
 	 * @return void
 	 */
 	public function comment_form_fields() {
-		echo '<label class="agree-comment-policy">';
-		echo '<input type="checkbox" name="comment_policy">';
-		echo ' <a href="' . \esc_url( \get_permalink( $this->options['comment_policy_page'] ) ) . '" target="_blank">';
-		echo esc_html( $this->options['comment_policy_text'] );
-		echo '</a>';
-		echo '</label>';
+		?>
+		<label class="agree-comment-policy">
+			<input type="checkbox" name="comment_policy">
+			<a href="<?php echo \esc_url( \get_permalink( $this->options['comment_policy_page'] ) ); ?>" target="_blank">
+				<?php echo esc_html( $this->options['comment_policy_text'] ); ?>
+			</a>
+		</label>
+		<?php
 	}
 
 	/**
