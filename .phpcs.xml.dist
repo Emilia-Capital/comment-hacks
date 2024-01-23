@@ -42,8 +42,8 @@
 	-->
 
 	<rule ref="Yoast">
-	    <exclude name="Yoast.Commenting.FileComment"/>
-	    <exclude name="Squiz.Commenting.VariableComment.MissingVar"/>
+		<exclude name="Yoast.Commenting.FileComment"/>
+		<exclude name="Squiz.Commenting.VariableComment.MissingVar"/>
 		<properties>
 			<!-- Set the custom test class whitelist for all sniffs which use it in one go.
 				 Ref: https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#custom-unit-test-classes
@@ -104,7 +104,7 @@
 	</rule>
 
 	<rule ref="PHPCompatibility">
-	    <exclude name="PHPCompatibility.Classes.NewTypedProperties.Found"/>
+		<exclude name="PHPCompatibility.Classes.NewTypedProperties.Found"/>
 		<exclude name="PHPCompatibility.FunctionDeclarations.NewReturnTypeDeclarations"/>
 		<exclude name="PHPCompatibility.FunctionDeclarations.NewParamTypeDeclarations"/>
 	</rule>
