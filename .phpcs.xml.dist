@@ -103,6 +103,7 @@
 		<exclude-pattern>/tests/bootstrap\.php</exclude-pattern>
 	</rule>
 
+	<!-- These only apply to PHP versions lower than 7.4, so we can exclude them.  -->
 	<rule ref="PHPCompatibility">
 		<exclude name="PHPCompatibility.Classes.NewTypedProperties.Found"/>
 		<exclude name="PHPCompatibility.FunctionDeclarations.NewReturnTypeDeclarations"/>
