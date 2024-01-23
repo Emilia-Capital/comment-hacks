@@ -384,7 +384,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		/* Static so we don't call plugin_basename on every plugin row. */
 		static $this_plugin;
 		if ( ! $this_plugin ) {
-			$this_plugin = \plugin_basename( __FILE__ );
+			$this_plugin = \plugin_basename( EMILIA_COMMENT_HACKS_FILE );
 		}
 
 		if ( $file === $this_plugin ) {
