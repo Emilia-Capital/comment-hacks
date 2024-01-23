@@ -111,8 +111,8 @@ class Admin {
 			$intro = \sprintf(
 				/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the post. */
 				\esc_html__( 'This comment was forwarded from %1$s where it was left on: %2$s.', 'comment-hacks' ),
-				'<a href=" ' . \get_site_url() . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>',
-				'<a href="' . \get_permalink( $comment->comment_post_ID ) . '">' . \get_the_title( $comment->comment_post_ID ) . '</a>'
+				'<a href=" ' . \esc_url( \get_site_url() ) . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>',
+				'<a href="' . \esc_url( \get_permalink( $comment->comment_post_ID ) ) . '">' . esc_html( \get_the_title( $comment->comment_post_ID ) ) . '</a>'
 			) . "\n\n";
 
 			if ( ! empty( $this->options['forward_extra'] ) ) {
@@ -153,14 +153,16 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 			return $actions;
 		}
 
-		$label = \esc_html__( 'Forward to support', 'comment-hacks' );
+		// Escaped before returning the actions array.
+		$label = \__( 'Forward to support', 'comment-hacks' );
 
 		// '1' === approved, 'trash' === trashed.
 		if ( $comment->comment_approved !== '1' && $comment->comment_approved !== 'trash' ) {
-			$label = \esc_html__( 'Forward to support & trash', 'comment-hacks' );
+			// Escaped before returning the actions array.
+			$label = \__( 'Forward to support & trash', 'comment-hacks' );
 		}
 
-		$actions['ch_forward'] = '<a href="' . \admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . \wp_create_nonce( 'comment-hacks-forward' ) . '">' . $label . '</a>';
+		$actions['ch_forward'] = '<a href="' . \esc_url( \admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . \wp_create_nonce( 'comment-hacks-forward' ) ) . '">' . esc_html( $label ) . '</a>';
 
 		return $actions;
 	}
