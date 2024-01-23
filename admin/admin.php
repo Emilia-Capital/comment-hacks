@@ -99,10 +99,21 @@ class Admin {
 			$comment_id = (int) $_GET['comment_id'];
 			$comment    = \get_comment( $comment_id );
 
-			/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the blogpost. */
-			echo '<div class="msg updated"><p>' . \sprintf( \esc_html__( 'Forwarding comment from %1$s to %2$s.', 'comment-hacks' ), '<strong>' . \esc_html( $comment->comment_author ) . '</strong>', \esc_html( $this->options['forward_name'] ) ) . '</div></div>';
+			echo '<div class="msg updated"><p>';
+			\printf(
+				/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the blogpost. */
+				\esc_html__( 'Forwarding comment from %1$s to %2$s.', 'comment-hacks' ),
+				'<strong>' . \esc_html( $comment->comment_author ) . '</strong>',
+				\esc_html( $this->options['forward_name'] )
+			);
+			echo '</div></div>';
 
-			$intro = \sprintf( 'This comment was forwarded from %s where it was left on: %s.', '<a href=" ' . \get_site_url() . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>', '<a href="' . \get_permalink( $comment->comment_post_ID ) . '">' . \get_the_title( $comment->comment_post_ID ) . '</a>' ) . "\n\n";
+			$intro = \sprintf(
+				/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the post. */
+				\esc_html__( 'This comment was forwarded from %1$s where it was left on: %2$s.', 'comment-hacks' ),
+				'<a href=" ' . \get_site_url() . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>',
+				'<a href="' . \get_permalink( $comment->comment_post_ID ) . '">' . \get_the_title( $comment->comment_post_ID ) . '</a>'
+			) . "\n\n";
 
 			if ( ! empty( $this->options['forward_extra'] ) ) {
 				$intro .= $this->options['forward_extra'] . "\n\n";
@@ -176,8 +187,17 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * @param WP_Post $post Current post object.
 	 */
 	public function meta_box_callback( $post ): void {
-		echo '<input type="hidden" name="comment_notification_recipient_nonce" value="' . \esc_attr( \wp_create_nonce( 'comment_notification_recipient_nonce' ) ) . '" />';
-		echo '<label for="comment_notification_recipient">' . \esc_html__( 'Comment notification recipients:', 'comment-hacks' ) . '</label><br/>';
+		?>
+		<input
+			type="hidden"
+			name="comment_notification_recipient_nonce"
+			value="<?php echo \esc_attr( \wp_create_nonce( 'comment_notification_recipient_nonce' ) ); ?>"
+		/>
+		<label for="comment_notification_recipient">
+			<?php \esc_html_e( 'Comment notification recipients:', 'comment-hacks' ); ?>
+		</label>
+		<br/>
+		<?php
 
 		/**
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
@@ -187,7 +207,10 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		 *
 		 * @since 1.6.0
 		 */
-		$roles = \apply_filters( 'EmiliaProjects\WP\Comment\notification_roles', $roles );
+		$roles = \apply_filters(
+			'EmiliaProjects\WP\Comment\notification_roles',
+			[ 'contributor', 'author', 'editor', 'administrator', 'super-admin' ]
+		);
 
 		\wp_dropdown_users(
 			[
@@ -302,8 +325,15 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		}
 
 		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
-			/* translators: %d is replaced with the minimum number of characters */
-			\add_settings_error( $this->hook, 'min_length_invalid', \sprintf( \__( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'comment-hacks' ), $this->absolute_min ) );
+			\add_settings_error(
+				$this->hook,
+				'min_length_invalid',
+				\sprintf(
+					/* translators: %d is replaced with the minimum number of characters */
+					\__( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'comment-hacks' ),
+					$this->absolute_min
+				)
+			);
 			$input['mincomlength'] = 15;
 		}
 
@@ -316,14 +346,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * @param mixed $value The input value to cast to boolean.
 	 */
 	private function sanitize_bool( $value ): bool {
-		if ( $value ) {
-			$value = true;
-		}
-		if ( empty( $value ) ) {
-			$value = false;
-		}
-
-		return $value;
+		return ( $value || ! empty( $value ) );
 	}
 
 	/**
@@ -335,11 +358,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * @return array $input The array with sanitized input values.
 	 */
 	private function sanitize_string( $value, $default ) {
-		if ( $value === '' ) {
-			$value = $default;
-		}
-
-		return $value;
+		return ( $value === '' ) ? $default : $value;
 	}
 
 	/**
@@ -388,17 +407,21 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 		// Show the content of the options array when debug is enabled.
 		if ( \defined( 'WP_DEBUG' ) && \WP_DEBUG ) {
-			echo '<h4>', \esc_html__( 'Options debug', 'comment-hacks' ), '</h4>';
-			echo '<div style="border: 1px solid #aaa; padding: 20px;">';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Debug output.
-			echo \str_replace(
-				'<code>',
-				'<code style="background-color: #eee; margin: 0; padding: 0;">',
-				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export -- This is only shown in debug mode.
-				\highlight_string( "<?php\n\$this->options = " . \var_export( $this->options, true ) . ';', true ),
-				$num
-			);
-			echo '</div>';
+			?>
+			<h4><?php \esc_html_e( 'Options debug', 'comment-hacks' ); ?></h4>
+			<div style="border: 1px solid #aaa; padding: 20px;">
+				<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Debug output.
+				echo \str_replace(
+					'<code>',
+					'<code style="background-color: #eee; margin: 0; padding: 0;">',
+					// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export -- This is only shown in debug mode.
+					\highlight_string( "<?php\n\$this->options = " . \var_export( $this->options, true ) . ';', true ),
+					$num
+				);
+				?>
+			</div>
+			<?php
 		}
 	}
 }

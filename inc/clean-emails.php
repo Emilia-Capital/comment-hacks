@@ -76,18 +76,21 @@ class Clean_Emails {
 	public function comment_notification_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
 
+		$comment_url  = \get_permalink( $this->comment->comment_post_ID ) . '#comment-' . $comment_id;
+		$comment_link = '<a href="' . \esc_url( $comment_url ) . '">' . \esc_html( $this->post->post_title ) . '</a>';
+
 		switch ( $this->comment->comment_type ) {
 			case 'pingback':
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New pingback on "%s"', 'comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'New pingback on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
 				break;
 			case 'trackback':
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New trackback on "%s"', 'comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'New trackback on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
 				break;
 			default:
 				/* translators: %s is replaced with the post title */
-				$this->message = \sprintf( \__( 'New comment on "%s"', 'comment-hacks' ), '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '#comment-' . $comment_id . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf( \__( 'New comment on "%s"', 'comment-hacks' ), $comment_link ) . '<br /><br />';
 				break;
 		}
 		$this->add_comment_basics();
@@ -108,24 +111,39 @@ class Clean_Emails {
 	public function comment_moderation_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
 
+		$comment_link = '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>';
+
 		switch ( $this->comment->comment_type ) {
 			case 'pingback':
-				/* translators: %1$s is replaced with the post title */
-				$this->message = \sprintf( \__( 'A new pingback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf(
+					/* translators: %1$s is replaced with the post title */
+					\__( 'A new pingback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
+					$comment_link
+				) . '<br /><br />';
 				break;
 			case 'trackback':
-				/* translators: %1$s is replaced with the post title */
-				$this->message = \sprintf( \__( 'A new trackback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf(
+					/* translators: %1$s is replaced with the post title */
+					\__( 'A new trackback on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
+					$comment_link
+				) . '<br /><br />';
 				break;
 			default:
-				/* translators: %1$s is replaced with the post title */
-				$this->message = \sprintf( \__( 'A new comment on the post "%1$s" is waiting for your approval:', 'comment-hacks' ), '<a href="' . \get_permalink( $this->comment->comment_post_ID ) . '">' . \esc_html( $this->post->post_title ) . '</a>' ) . '<br /><br />';
+				$this->message = \sprintf(
+					/* translators: %1$s is replaced with the post title */
+					\__( 'A new comment on the post "%1$s" is waiting for your approval:', 'comment-hacks' ),
+					$comment_link
+				) . '<br /><br />';
 				break;
 		}
 		$this->add_comment_basics();
 
 		$this->comment_moderation_actions();
-		$this->message .= ' | ' . \sprintf( '<a href="http://ip-lookup.net/index.php?ip=%1$s">%2$s</a>', $this->comment->comment_author_IP, \__( 'Whois', 'comment-hacks' ) );
+		$this->message .= ' | ' . \sprintf(
+			'<a href="http://ip-lookup.net/index.php?ip=%1$s">%2$s</a>',
+			$this->comment->comment_author_IP,
+			\__( 'Whois', 'comment-hacks' )
+		);
 		$this->message .= '<br/><br/>';
 
 		$this->get_moderation_msg();
@@ -207,11 +225,17 @@ class Clean_Emails {
 
 		if ( $comments_waiting > 1 ) {
 			--$comments_waiting;
-			/* translators: %s is replaced with the number of comments waiting for approval */
-			$this->message .= \sprintf( \__( 'Currently this and %s other comments are waiting for approval.', 'comment-hacks' ), \number_format_i18n( $comments_waiting ) );
+			$this->message .= \sprintf(
+				/* translators: %s is replaced with the number of comments waiting for approval */
+				\__( 'Currently this and %s other comments are waiting for approval.', 'comment-hacks' ),
+				\number_format_i18n( $comments_waiting )
+			);
 			$this->message .= ' ';
-			/* translators: %1$s and %2$s are replaced with the HTML for a link to the moderation panel */
-			$this->message .= \sprintf( \__( 'Please visit the %1$smoderation panel%2$s.', 'comment-hacks' ), '<a href="' . \admin_url( 'edit-comments.php?comment_status=moderated' ) . '">', '</a>' ) . '<br>';
+			$this->message .= \sprintf(
+				/* translators: %s is replaced with the HTML for a link to the moderation panel, with text "moderation panel". */
+				\__( 'Please visit the %s.', 'comment-hacks' ),
+				'<a href="' . \admin_url( 'edit-comments.php?comment_status=moderated' ) . '">' . \__( 'moderation panel', 'comment-hacks' ) . '</a>'
+			) . '<br>';
 		}
 	}
 
@@ -267,6 +291,6 @@ class Clean_Emails {
 	private function comment_action_link( string $label, string $action ): string {
 		$url = \admin_url( \sprintf( 'comment.php?action=%s&c=%d', $action, $this->comment_id ) );
 
-		return \sprintf( '<a href="%1$s">%2$s</a>', \esc_url( $url ), \esc_html( $label ) );
+		return '<a href="' . \esc_url( $url ) . '">' . \esc_html( $label ) . '</a>';
 	}
 }
