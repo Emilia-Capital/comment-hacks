@@ -120,7 +120,7 @@
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array" extend="true">
-				<element value="yst_comment"/>
+				<element value="epch_comment"/>
 				<element value="EMILIA_COMMENT_HACKS"/>
 			</property>
 		</properties>
