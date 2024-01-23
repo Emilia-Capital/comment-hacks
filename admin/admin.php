@@ -253,14 +253,14 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 			\wp_enqueue_style(
 				'emiliaprojects-comment-hacks-admin-css',
-				\plugins_url( 'admin/assets/css/dist/comment-hacks.css', \EMILIA_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/css/comment-hacks.css', \EMILIA_COMMENT_HACKS_FILE ),
 				[],
 				\EMILIA_COMMENT_HACKS_VERSION
 			);
 
 			\wp_enqueue_script(
 				'emiliaprojects-comment-hacks-admin-js',
-				\plugins_url( 'admin/assets/js/comment-hacks' . $min . '.js', \EMILIA_COMMENT_HACKS_FILE ),
+				\plugins_url( 'admin/assets/js/comment-hacks.js', \EMILIA_COMMENT_HACKS_FILE ),
 				[],
 				\EMILIA_COMMENT_HACKS_VERSION,
 				true

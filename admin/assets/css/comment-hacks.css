@@ -1,0 +1,16 @@
+.emiliaprojectstab {
+  display: none;
+  margin-top :15px
+}
+
+.emiliaprojectstab.active {
+  display: block
+}
+
+.emiliaprojectstab strong {
+  font-size: 115%
+}
+
+.emiliaprojectstab .dashicons-email-alt {
+  color:#00f
+}
