@@ -71,9 +71,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 								cols="80"
 								name="<?php echo esc_attr( Hacks::$option_name . '[mincomlengtherror]' ); ?>"
 								id="mincomlengtherror"
-							>
-								<?php echo esc_html( $this->options['mincomlengtherror'] ); ?>
-							</textarea>
+							><?php echo esc_html( $this->options['mincomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -111,9 +109,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 								cols="80"
 								name="<?php echo esc_attr( Hacks::$option_name . '[maxcomlengtherror]' ); ?>"
 								id="maxcomlengtherror"
-							>
-								<?php echo esc_html( $this->options['maxcomlengtherror'] ); ?>
-							</textarea>
+							><?php echo esc_html( $this->options['maxcomlengtherror'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -194,9 +190,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 								cols="80"
 								name="<?php echo esc_attr( Hacks::$option_name . '[comment_policy_error]' ); ?>"
 								id="comment_policy"
-							>
-								<?php echo esc_html( $this->options['comment_policy_error'] ); ?>
-							</textarea>
+							><?php echo esc_html( $this->options['comment_policy_error'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -242,9 +236,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 								cols="100"
 								name="<?php echo esc_attr( Hacks::$option_name . '[email_body]' ); ?>"
 								id="email_body"
-							>
-								<?php echo esc_html( $this->options['email_body'] ); ?>
-							</textarea>
+							><?php echo esc_html( $this->options['email_body'] ); ?></textarea>
 						</td>
 					</tr>
 					<tr>
@@ -259,9 +251,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 								cols="100"
 								name="<?php echo esc_attr( Hacks::$option_name . '[mass_email_body]' ); ?>"
 								id="mass_email_body"
-							>
-								<?php echo esc_html( $this->options['mass_email_body'] ); ?>
-							</textarea>
+							><?php echo esc_html( $this->options['mass_email_body'] ); ?></textarea>
 						</td>
 					</tr>
 				</table>
@@ -409,9 +399,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 								cols="80"
 								id="forward-emails-extra"
 								name="<?php echo esc_attr( Hacks::$option_name . '[forward_extra]' ); ?>"
-							>
-								<?php echo isset( $this->options['forward_extra'] ) ? esc_html( $this->options['forward_extra'] ) : ''; ?>
-							</textarea>
+							><?php echo isset( $this->options['forward_extra'] ) ? esc_html( $this->options['forward_extra'] ) : ''; ?></textarea>
 						</td>
 					</tr>
 				</table>
