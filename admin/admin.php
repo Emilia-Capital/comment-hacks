@@ -246,11 +246,6 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		$page = \filter_input( \INPUT_GET, 'page' );
 
 		if ( $page === 'comment-hacks' ) {
-			$min = '.min';
-			if ( \defined( 'SCRIPT_DEBUG' ) && \SCRIPT_DEBUG ) {
-				$min = '';
-			}
-
 			\wp_enqueue_style(
 				'emiliaprojects-comment-hacks-admin-css',
 				\plugins_url( 'admin/assets/css/comment-hacks.css', \EMILIA_COMMENT_HACKS_FILE ),
