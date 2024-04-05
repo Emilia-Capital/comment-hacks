@@ -1,10 +1,6 @@
 <?php
 /**
  * Config page admin view.
- */
-
-/*
- * The Admin object.
  *
  * @var \EmiliaProjects\WP\Comment\Admin\Admin $this
  */
