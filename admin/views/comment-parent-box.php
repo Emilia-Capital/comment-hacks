@@ -4,6 +4,8 @@
  */
 
 /**
+ * The comment object.
+ *
  * @var WP_Comment $comment
  */
 ?>
