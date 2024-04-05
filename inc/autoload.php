@@ -3,14 +3,14 @@
 namespace EmiliaProjects\WP\Comment\Inc;
 
 /**
- * Clean the emails.
+ * Autoload the classes.
  */
 class Autoload {
 
 	/**
 	 * Classmap. Key is the class name, value is the file path.
 	 *
-	 * @var array
+	 * @var mixed[]
 	 */
 	private static array $classmap = [
 		'EmiliaProjects\WP\Comment\Admin\Admin'          => 'admin/admin.php',
@@ -38,9 +38,9 @@ class Autoload {
 	 * @param string $class_name The class name.
 	 */
 	public static function autoload( string $class_name ): void {
-		if ( ! isset( static::$classmap[ $class_name ] ) ) {
+		if ( ! isset( self::$classmap[ $class_name ] ) ) {
 			return;
 		}
-		require_once EMILIA_COMMENT_HACKS_PATH . static::$classmap[ $class_name ];
+		require_once EMILIA_COMMENT_HACKS_PATH . self::$classmap[ $class_name ];
 	}
 }

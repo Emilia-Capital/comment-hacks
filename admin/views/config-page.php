@@ -1,6 +1,8 @@
 <?php
 /**
  * Config page admin view.
+ * 
+ * @var \EmiliaProjects\WP\Comment\Admin\Admin $this
  */
 
 use EmiliaProjects\WP\Comment\Inc\Hacks;
@@ -150,12 +152,12 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 							wp_dropdown_pages(
 								[
 									'depth'             => 0,
-									'id'                => 'comment_policy_page',
-									'name'              => esc_attr( Hacks::$option_name . '[comment_policy_page]' ),
-									'option_none_value' => 0,
 									// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $selected is not put out, only compared against.
 									'selected'          => ( isset( $this->options['comment_policy_page'] ) ? (int) $this->options['comment_policy_page'] : 0 ),
+									'name'              => esc_attr( Hacks::$option_name . '[comment_policy_page]' ),
+									'id'                => 'comment_policy_page',
 									'show_option_none'  => esc_html__( 'Select comment policy page', 'comment-hacks' ),
+									'option_none_value' => '',
 								]
 							);
 							?>
@@ -277,7 +279,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 									'id'                => 'redirect_page',
 									// phpcs:ignore WordPress.Security.EscapeOutput -- This is a hard-coded string, just passed around as a variable.
 									'name'              => Hacks::$option_name . '[redirect_page]',
-									'option_none_value' => 0,
+									'option_none_value' => '',
 									'selected'          => ( isset( $this->options['redirect_page'] ) ? (int) $this->options['redirect_page'] : 0 ),
 									'show_option_none'  => esc_html__( 'Don\'t redirect first time commenters', 'comment-hacks' ),
 								]

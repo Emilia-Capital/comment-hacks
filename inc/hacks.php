@@ -16,6 +16,8 @@ class Hacks {
 
 	/**
 	 * Holds the plugins options.
+	 *
+	 * @var mixed[]
 	 */
 	private array $options = [];
 

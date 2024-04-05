@@ -1,26 +1,26 @@
 {
-	"name": "jdevalk/comment-hacks",
+	"name": "emilia-capital/comment-hacks",
 	"description": "Make comments management easier by applying some of the simple hacks Joost gathered over decades of using WordPress.",
 	"keywords": [
 		"comments",
 		"spam",
 		"emails"
 	],
-	"homepage": "https://emilia.capital/",
+	"homepage": "https://wordpress.org/plugins/yoast-comment-hacks/",
 	"license": "GPL-3.0-or-later",
 	"authors": [
 		{
-			"name": "Joost de Valk",
-			"email": "joost@joost.blog",
-			"homepage": "https://joost.blog"
+			"name": "Team Emilia Projects",
+			"email": "info@emilia.capital",
+			"homepage": "https://emilia.capital"
 		}
 	],
 	"type": "wordpress-plugin",
 	"support": {
-		"issues": "https://github.com/jdevalk/comment-hacks/issues",
-		"forum": "https://wordpress.org/support/plugin/comment-hacks",
-		"wiki": "https://github.com/jdevalk/comment-hacks/wiki",
-		"source": "https://github.com/jdevalk/comment-hacks"
+		"issues": "https://github.com/emilia-capital/comment-hacks/issues",
+		"forum": "https://wordpress.org/support/plugin/yoast-comment-hacks",
+		"wiki": "https://github.com/emilia-capital/comment-hacks/wiki",
+		"source": "https://github.com/emilia-capital/comment-hacks"
 	},
 	"require": {
 		"php": ">=7.4",
@@ -28,7 +28,10 @@
 	},
 	"require-dev": {
 		"yoast/yoastcs": "^2.2.1",
-		"yoast/wp-test-utils": "^1.1.1"
+		"yoast/wp-test-utils": "^1.1.1",
+		"phpstan/phpstan": "^1.10",
+		"szepeviktor/phpstan-wordpress": "^1.3",
+		"phpstan/extension-installer": "^1.3"
 	},
 	"config": {
 		"platform": {
@@ -36,7 +39,8 @@
 		},
 		"allow-plugins": {
 			"composer/installers": true,
-			"dealerdirect/phpcodesniffer-composer-installer": true
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"phpstan/extension-installer": true
 		}
 	},
 	"minimum-stability": "dev",
@@ -62,6 +66,9 @@
 		],
 		"test": [
 			"@php ./vendor/phpunit/phpunit/phpunit"
+		],
+		"phpstan": [
+			"@php ./vendor/bin/phpstan analyse --memory-limit=2048M ."
 		]
 	}
 }

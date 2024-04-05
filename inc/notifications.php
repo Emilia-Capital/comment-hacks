@@ -26,7 +26,7 @@ class Notifications {
 	public function filter_notification_recipients( $recipients, $comment_id ): array {
 		$comment = \get_comment( $comment_id );
 
-		$new_recipient = \get_post_meta( $comment->comment_post_ID, '_comment_notification_recipient', true );
+		$new_recipient = \get_post_meta( (int) $comment->comment_post_ID, '_comment_notification_recipient', true );
 
 		if ( ! empty( $new_recipient ) ) {
 			$user = \get_userdata( $new_recipient );

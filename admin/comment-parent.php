@@ -20,6 +20,8 @@ class Comment_Parent {
 	 * Shows the comment parent box where you can change the comment parent.
 	 *
 	 * @param object $comment The comment object.
+	 *
+	 * @return void
 	 */
 	public function comment_parent_box( $comment ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Param used in included file.
 		require_once \EMILIA_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
@@ -27,6 +29,8 @@ class Comment_Parent {
 
 	/**
 	 * Adds the comment parent box to the meta box.
+	 *
+	 * @return void
 	 */
 	public function load_comment_parent_box() {
 		if ( \function_exists( 'add_meta_box' ) ) {
@@ -45,6 +49,8 @@ class Comment_Parent {
 
 	/**
 	 * Updates the comment parent field.
+	 *
+	 * @return void
 	 */
 	public function update_comment_parent() {
 		$comment_parent = \filter_input( \INPUT_POST, 'epch_comment_parent', \FILTER_VALIDATE_INT );

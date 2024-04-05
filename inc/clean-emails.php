@@ -76,7 +76,7 @@ class Clean_Emails {
 	public function comment_notification_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
 
-		$comment_url  = \get_permalink( $this->comment->comment_post_ID ) . '#comment-' . $comment_id;
+		$comment_url  = \get_permalink( (int) $this->comment->comment_post_ID ) . '#comment-' . $comment_id;
 		$comment_link = '<a href="' . \esc_url( $comment_url ) . '">' . \esc_html( $this->post->post_title ) . '</a>';
 
 		switch ( $this->comment->comment_type ) {
@@ -95,7 +95,7 @@ class Clean_Emails {
 		}
 		$this->add_comment_basics();
 
-		if ( \user_can( $this->post->post_author, 'edit_comment', $comment_id ) ) {
+		if ( \user_can( (int) $this->post->post_author, 'edit_comment', $comment_id ) ) {
 			$this->comment_notification_actions();
 		}
 
@@ -111,7 +111,7 @@ class Clean_Emails {
 	public function comment_moderation_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
 
-		$comment_link = '<a href="' . \esc_url( \get_permalink( $this->comment->comment_post_ID ) ) . '">' . \esc_html( $this->post->post_title ) . '</a>';
+		$comment_link = '<a href="' . \esc_url( \get_permalink( (int) $this->comment->comment_post_ID ) ) . '">' . \esc_html( $this->post->post_title ) . '</a>';
 
 		switch ( $this->comment->comment_type ) {
 			case 'pingback':
@@ -148,7 +148,7 @@ class Clean_Emails {
 
 		$this->get_moderation_msg();
 
-		return $this->wrap_message( $this->message );
+		return $this->wrap_message();
 	}
 
 	/**
@@ -214,7 +214,7 @@ class Clean_Emails {
 	private function setup_data( int $comment_id ): void {
 		$this->comment_id = $comment_id;
 		$this->comment    = \get_comment( $this->comment_id );
-		$this->post       = \get_post( $this->comment->comment_post_ID );
+		$this->post       = \get_post( (int) $this->comment->comment_post_ID );
 	}
 
 	/**
