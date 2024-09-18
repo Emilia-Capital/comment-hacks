@@ -25,8 +25,10 @@ class Admin {
 
 	/**
 	 * Holds the plugins options.
+	 *
+	 * @var mixed[]
 	 */
-	private array $options = [];
+	public array $options = [];
 
 	/**
 	 * The absolute minimum comment length when this plugin is enabled.
@@ -71,7 +73,7 @@ class Admin {
 			return $comment_text;
 		}
 
-		$ch_forwarded = \get_comment_meta( $comment->comment_ID, 'ch_forwarded' );
+		$ch_forwarded = \get_comment_meta( (int) $comment->comment_ID, 'ch_forwarded' );
 		if ( $ch_forwarded ) {
 			/* translators: %s is replaced by the name you're forwarding to. */
 			$pre          = '<div style="background: #fff;border: 1px solid #46b450;border-left-width: 4px;box-shadow: 0 1px 1px rgba(0,0,0,.04);margin: 5px 15px 2px 0;padding: 1px 12px 1px;"><p><strong>' . \sprintf( \esc_html__( 'This comment was forwarded to %s.', 'comment-hacks' ), \esc_html( $this->options['forward_name'] ) ) . '</strong></p></div>';
@@ -112,7 +114,7 @@ class Admin {
 				/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the post. */
 				\esc_html__( 'This comment was forwarded from %1$s where it was left on: %2$s.', 'comment-hacks' ),
 				'<a href=" ' . \esc_url( \get_site_url() ) . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>',
-				'<a href="' . \esc_url( \get_permalink( $comment->comment_post_ID ) ) . '">' . esc_html( \get_the_title( $comment->comment_post_ID ) ) . '</a>'
+				'<a href="' . \esc_url( \get_permalink( (int) $comment->comment_post_ID ) ) . '">' . esc_html( \get_the_title( (int) $comment->comment_post_ID ) ) . '</a>'
 			) . "\n\n";
 
 			if ( ! empty( $this->options['forward_extra'] ) ) {
@@ -360,6 +362,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 	/**
 	 * Register the config page for all users that have the manage_options capability.
+	 *
+	 * @return void
 	 */
 	public function add_config_page() {
 		\add_options_page(

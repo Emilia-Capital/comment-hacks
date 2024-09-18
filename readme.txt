@@ -3,7 +3,7 @@ Contributors: joostdevalk
 Tags: comments, spam, emails
 Text Domain: comment-hacks
 Requires at least: 5.9
-Tested up to: 6.4
+Tested up to: 6.5
 Stable tag: 1.9.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html

@@ -3,6 +3,11 @@
  * Parent Box view.
  */
 
+/**
+ * The comment object.
+ *
+ * @var WP_Comment $comment
+ */
 ?>
 <div class="inside">
 	<table class="form-table editcomment">

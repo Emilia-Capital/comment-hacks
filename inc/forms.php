@@ -9,6 +9,8 @@ class Forms {
 
 	/**
 	 * Holds our options.
+	 *
+	 * @var mixed[]
 	 */
 	private array $options;
 
