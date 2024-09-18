@@ -18,10 +18,10 @@ jQuery( document ).ready( function( $ ) {
 			 * Handle the AJAX response.
 			 *
 			 * @param {Object} response The response object.
-			 * @param {boolean} response.success Indicates if the request was successful.
+		 	 * @param {boolean} response.success Indicates if the request was successful.
 			 * @param {string} response.data The response data.
-       *
-       * @returns {void}
+		 	 *
+			 * @returns {void}
 			 */
 			success: function( response ) {
 				if ( response.success ) {
