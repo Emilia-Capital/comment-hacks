@@ -151,7 +151,7 @@ class Hacks {
 		if ( isset( $comment ) && $comment instanceof WP_Comment && ! empty( $comment->comment_author_url ) ) {
 			return \sprintf(
 				'<a href="#" class="comment-remove-url" data-comment-id="%d" aria-label="%s">%s</a>',
-				\esc_attr( $comment_id ),
+				\esc_attr( (string) $comment_id ),
 				\esc_attr__( 'Remove URL from this comment', 'comment-hacks' ),
 				\esc_html__( 'Remove URL', 'comment-hacks' )
 			);
@@ -223,7 +223,7 @@ class Hacks {
 		if ( empty( $has_approved_comment ) ) {
 			// Only change $url when the page option is actually set and not zero.
 			if ( isset( $this->options['redirect_page'] ) && $this->options['redirect_page'] !== 0 ) {
-				$url = \get_permalink( $this->options['redirect_page'] );
+				$url = \get_permalink( (int) $this->options['redirect_page'] );
 
 				/**
 				 * Allow other plugins to hook in when the user is being redirected,
@@ -246,7 +246,8 @@ class Hacks {
 	 *
 	 * @param string $option The option to check for.
 	 *
-	 * @return bool|string|int
+	 * @return bool|string
+	 *
 	 * @since 1.3
 	 */
 	private function get_option_from_cache( string $option ) {

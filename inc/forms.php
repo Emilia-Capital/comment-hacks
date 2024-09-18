@@ -36,7 +36,7 @@ class Forms {
 		?>
 		<label class="agree-comment-policy">
 			<input type="checkbox" name="comment_policy">
-			<a href="<?php echo \esc_url( \get_permalink( $this->options['comment_policy_page'] ) ); ?>" target="_blank">
+			<a href="<?php echo \esc_url( \get_permalink( (int) $this->options['comment_policy_page'] ) ); ?>" target="_blank">
 				<?php echo \esc_html( $this->options['comment_policy_text'] ); ?>
 			</a>
 		</label>
