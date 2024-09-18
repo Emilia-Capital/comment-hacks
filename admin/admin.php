@@ -2,9 +2,9 @@
 
 namespace EmiliaProjects\WP\Comment\Admin;
 
+use EmiliaProjects\WP\Comment\Inc\Hacks;
 use WP_Comment;
 use WP_Post;
-use EmiliaProjects\WP\Comment\Inc\Hacks;
 
 /**
  * Admin handling class.
@@ -16,7 +16,7 @@ class Admin {
 	 *
 	 * @var string
 	 */
-	const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
+	private const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
 
 	/**
 	 * The plugin page hook.
@@ -26,7 +26,7 @@ class Admin {
 	/**
 	 * Holds the plugins options.
 	 *
-	 * @var mixed[]
+	 * @var string[]
 	 */
 	public array $options = [];
 
@@ -67,6 +67,8 @@ class Admin {
 	 *
 	 * @param string     $comment_text Text of the current comment.
 	 * @param WP_Comment $comment      The comment object. Null if not found.
+	 *
+	 * @return string
 	 */
 	public function show_forward_status( $comment_text, $comment ): string {
 		if ( ! \is_admin() ) {
@@ -85,6 +87,8 @@ class Admin {
 
 	/**
 	 * Forwards a comment to an email address chosen in the settings.
+	 *
+	 * @return void
 	 */
 	public function forward_comment(): void {
 		if ( empty( $this->options['forward_email'] ) ) {
@@ -114,7 +118,7 @@ class Admin {
 				/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the post. */
 				\esc_html__( 'This comment was forwarded from %1$s where it was left on: %2$s.', 'comment-hacks' ),
 				'<a href=" ' . \esc_url( \get_site_url() ) . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>',
-				'<a href="' . \esc_url( \get_permalink( (int) $comment->comment_post_ID ) ) . '">' . esc_html( \get_the_title( (int) $comment->comment_post_ID ) ) . '</a>'
+				'<a href="' . \esc_url( \get_permalink( (int) $comment->comment_post_ID ) ) . '">' . \esc_html( \get_the_title( (int) $comment->comment_post_ID ) ) . '</a>'
 			) . "\n\n";
 
 			if ( ! empty( $this->options['forward_extra'] ) ) {
@@ -149,6 +153,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 *
 	 * @param string[]   $actions The actions shown underneath comments.
 	 * @param WP_Comment $comment The individual comment object.
+	 *
+	 * @return string[]
 	 */
 	public function forward_to_support_action_link( $actions, $comment ): array {
 		if ( empty( $this->options['forward_email'] ) ) {
@@ -164,13 +170,15 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 			$label = \__( 'Forward to support & trash', 'comment-hacks' );
 		}
 
-		$actions['ch_forward'] = '<a href="' . \esc_url( \admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . \wp_create_nonce( 'comment-hacks-forward' ) ) . '">' . esc_html( $label ) . '</a>';
+		$actions['ch_forward'] = '<a href="' . \esc_url( \admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . \wp_create_nonce( 'comment-hacks-forward' ) ) . '">' . \esc_html( $label ) . '</a>';
 
 		return $actions;
 	}
 
 	/**
 	 * Register meta box(es).
+	 *
+	 * @return void
 	 */
 	public function register_meta_boxes(): void {
 		\add_meta_box(
@@ -189,6 +197,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * Meta box display callback.
 	 *
 	 * @param WP_Post $post Current post object.
+	 *
+	 * @return void
 	 */
 	public function meta_box_callback( $post ): void {
 		?>
@@ -230,6 +240,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 	/**
 	 * Register the options array along with the validation function.
+	 *
+	 * @return void
 	 */
 	public function init(): void {
 		// Register our option array.
@@ -245,6 +257,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 	/**
 	 * Enqueue our admin script.
+	 *
+	 * @return void
 	 */
 	public function enqueue(): void {
 		$page = \filter_input( \INPUT_GET, 'page' );
@@ -271,6 +285,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * Saves the comment email recipients post meta.
 	 *
 	 * @param int $post_id The post ID.
+	 *
+	 * @return void
 	 */
 	public function save_reroute_comment_emails( $post_id ): void {
 
@@ -289,7 +305,9 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $input Input with unvalidated options.
+	 * @param string[] $input Input with unvalidated options.
+	 *
+	 * @return string[]
 	 */
 	public function options_validate( array $input ): array {
 		$defaults = Hacks::get_defaults();
@@ -303,7 +321,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 					$input[ $key ] = (int) $value;
 					break;
 				case 'version':
-					$input[ $key ] = EMILIA_COMMENT_HACKS_VERSION;
+					$input[ $key ] = \EMILIA_COMMENT_HACKS_VERSION;
 					break;
 				case 'comment_policy':
 				case 'clean_emails':
@@ -342,7 +360,9 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	/**
 	 * Turns checkbox values into booleans.
 	 *
-	 * @param mixed $value The input value to cast to boolean.
+	 * @param string|bool $value The input value to cast to boolean.
+	 *
+	 * @return bool
 	 */
 	private function sanitize_bool( $value ): bool {
 		return ( $value || ! empty( $value ) );
@@ -351,13 +371,13 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	/**
 	 * Turns empty string into defaults.
 	 *
-	 * @param mixed  $value   The input value.
-	 * @param string $default The default value of the string.
+	 * @param string $value         The input value.
+	 * @param string $default_value The default value of the string.
 	 *
-	 * @return array $input The array with sanitized input values.
+	 * @return string
 	 */
-	private function sanitize_string( $value, $default ) {
-		return ( $value === '' ) ? $default : $value;
+	private function sanitize_string( $value, $default_value ) {
+		return ( $value === '' ) ? $default_value : $value;
 	}
 
 	/**
@@ -381,14 +401,16 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	/**
 	 * Register the settings link for the plugins page.
 	 *
-	 * @param array  $links The plugin action links.
-	 * @param string $file  The plugin file.
+	 * @param string[] $links The plugin action links.
+	 * @param string   $file  The plugin file.
+	 *
+	 * @return string[]
 	 */
 	public function filter_plugin_actions( $links, $file ): array {
 		/* Static so we don't call plugin_basename on every plugin row. */
 		static $this_plugin;
 		if ( ! $this_plugin ) {
-			$this_plugin = \plugin_basename( EMILIA_COMMENT_HACKS_FILE );
+			$this_plugin = \plugin_basename( \EMILIA_COMMENT_HACKS_FILE );
 		}
 
 		if ( $file === $this_plugin ) {
@@ -402,6 +424,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 	/**
 	 * Output the config page.
+	 *
+	 * @return void
 	 */
 	public function config_page(): void {
 		require_once \EMILIA_COMMENT_HACKS_PATH . 'admin/views/config-page.php';

@@ -2,19 +2,21 @@
 
 namespace EmiliaProjects\WP\Comment\Tests\Inc;
 
-use stdClass;
 use EmiliaProjects\WP\Comment\Inc\Clean_Emails;
 use EmiliaProjects\WP\Comment\Tests\TestCase;
+use stdClass;
 
 /**
  * Test class to test the Clean_Emails class.
  */
-class Clean_Emails_Test extends TestCase {
+final class Clean_Emails_Test extends TestCase {
 
 	/**
 	 * Tests class constructor.
 	 *
 	 * @covers \EmiliaProjects\WP\Comment\Inc\Clean_Emails::__construct
+	 *
+	 * @return void
 	 */
 	public function test__construct() {
 		$instance = new Clean_Emails();
@@ -60,7 +62,7 @@ class Clean_Emails_Test extends TestCase {
 	/**
 	 * Data provider.
 	 *
-	 * @return array
+	 * @return string[][]
 	 */
 	public function data_comment_email_headers() {
 		$object = new stdClass();

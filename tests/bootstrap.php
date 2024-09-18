@@ -19,6 +19,8 @@ require_once \rtrim( WPIntegration\get_path_to_wp_test_dir(), '/' ) . '/includes
 
 /**
  * Manually load the plugin being tested.
+ *
+ * @return void
  */
 function manually_load_plugin() {
 	require \dirname( __DIR__ ) . '/comment-hacks.php';

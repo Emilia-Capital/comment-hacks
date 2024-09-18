@@ -2,9 +2,10 @@
 /**
  * Config page admin view.
  *
- * @var \EmiliaProjects\WP\Comment\Admin\Admin $this
+ * @var Admin $this
  */
 
+use EmiliaProjects\WP\Comment\Admin\Admin;
 use EmiliaProjects\WP\Comment\Inc\Hacks;
 
 ?>

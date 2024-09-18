@@ -2,6 +2,9 @@
 
 namespace EmiliaProjects\WP\Comment\Inc;
 
+use WP_Comment;
+use WP_Post;
+
 /**
  * Clean the emails.
  */
@@ -15,12 +18,12 @@ class Clean_Emails {
 	/**
 	 * Holds the current comment.
 	 */
-	private \WP_Comment $comment;
+	private WP_Comment $comment;
 
 	/**
 	 * Holds the comment's post.
 	 */
-	private \WP_Post $post;
+	private WP_Post $post;
 
 	/**
 	 * Holds the email message.
@@ -72,6 +75,8 @@ class Clean_Emails {
 	 *
 	 * @param string $message    The comment notification message.
 	 * @param int    $comment_id The ID of the comment the notification is for.
+	 *
+	 * @return string
 	 */
 	public function comment_notification_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
@@ -107,6 +112,8 @@ class Clean_Emails {
 	 *
 	 * @param string $message    The comment moderation message.
 	 * @param int    $comment_id The ID of the comment the moderation notification is for.
+	 *
+	 * @return string
 	 */
 	public function comment_moderation_text( $message, $comment_id ): string {
 		$this->setup_data( $comment_id );
@@ -153,6 +160,8 @@ class Clean_Emails {
 
 	/**
 	 * Adds the basics of the email.
+	 *
+	 * @return void
 	 */
 	private function add_comment_basics(): void {
 		$this->add_author_line();
@@ -163,6 +172,8 @@ class Clean_Emails {
 
 	/**
 	 * Adds the author line to the message.
+	 *
+	 * @return void
 	 */
 	private function add_author_line(): void {
 		if ( $this->comment->comment_type === 'comment' ) {
@@ -177,6 +188,8 @@ class Clean_Emails {
 
 	/**
 	 * Adds the content line to the message.
+	 *
+	 * @return void
 	 */
 	private function add_content_line(): void {
 		if ( $this->comment->comment_type === 'comment' ) {
@@ -191,6 +204,8 @@ class Clean_Emails {
 
 	/**
 	 * Adds the URL line to the message.
+	 *
+	 * @return void
 	 */
 	private function add_url_line(): void {
 		if ( isset( $this->comment->comment_author_url ) && $this->comment->comment_author_url !== '' ) {
@@ -201,6 +216,8 @@ class Clean_Emails {
 
 	/**
 	 * Wraps the message in some styling.
+	 *
+	 * @return string
 	 */
 	private function wrap_message(): string {
 		return '<div style="font-family:Helvetica,Arial,sans-serif; font-size:14px;">' . $this->message . '</div>';
@@ -210,6 +227,8 @@ class Clean_Emails {
 	 * Sets up class variables used with all emails.
 	 *
 	 * @param int $comment_id The comment we're setting up variables for.
+	 *
+	 * @return void
 	 */
 	private function setup_data( int $comment_id ): void {
 		$this->comment_id = $comment_id;
@@ -219,6 +238,8 @@ class Clean_Emails {
 
 	/**
 	 * Adds a sentence about the number of comments awaiting moderation.
+	 *
+	 * @return void
 	 */
 	private function get_moderation_msg(): void {
 		$comments_waiting = \get_comment_count()['awaiting_moderation'];
@@ -241,6 +262,8 @@ class Clean_Emails {
 
 	/**
 	 * Returns a string containing comment moderation links.
+	 *
+	 * @return void
 	 */
 	private function comment_moderation_actions(): void {
 		$actions = [
@@ -255,6 +278,8 @@ class Clean_Emails {
 
 	/**
 	 * Returns a string containing comment action links.
+	 *
+	 * @return void
 	 */
 	private function comment_notification_actions(): void {
 		$actions = [
@@ -269,7 +294,9 @@ class Clean_Emails {
 	/**
 	 * Add action links to the message
 	 *
-	 * @param array $actions The array of actions we're adding our action for.
+	 * @param string[] $actions The array of actions we're adding our action for.
+	 *
+	 * @return void
 	 */
 	private function comment_action_links( array $actions ): void {
 		$links = '';
@@ -287,6 +314,8 @@ class Clean_Emails {
 	 *
 	 * @param string $label  The label for the comment action link.
 	 * @param string $action The action we're going to add.
+	 *
+	 * @return string
 	 */
 	private function comment_action_link( string $label, string $action ): string {
 		$url = \admin_url( \sprintf( 'comment.php?action=%s&c=%d', $action, $this->comment_id ) );

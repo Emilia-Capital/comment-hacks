@@ -10,7 +10,7 @@ class Email_Links {
 	/**
 	 * Holds the plugins options.
 	 *
-	 * @var mixed[]
+	 * @var string[]
 	 */
 	private array $options = [];
 
@@ -25,6 +25,8 @@ class Email_Links {
 
 	/**
 	 * Init our hooks.
+	 *
+	 * @return void
 	 */
 	public function init(): void {
 		if ( \is_admin() ) {
@@ -39,13 +41,15 @@ class Email_Links {
 
 	/**
 	 * Adds an email link to the admin bar to email all commenters.
+	 *
+	 * @return void
 	 */
 	public function admin_bar_comment_link(): void {
 		if ( ! \is_singular() || $this->options['disable_email_all_commenters'] ) {
 			return;
 		}
 
-		global $wp_admin_bar, $wpdb, $post;
+		global $wp_admin_bar, $post;
 
 		$current_user = \wp_get_current_user();
 
@@ -56,7 +60,7 @@ class Email_Links {
 				'status'  => 'approve',
 			]
 		);
-		if ( count( $comments ) === 0 ) {
+		if ( \count( $comments ) === 0 ) {
 			return;
 		}
 		$emails = [];
@@ -77,7 +81,7 @@ class Email_Links {
 		// We can't set the 'href' attribute to the $url as then esc_url would garble the mailto link.
 		// So we do a nasty bit of JS workaround. The reason we grab the href from the alternate link is
 		// so browser extensions like the Google Mail one that change mailto: links still work.
-		echo '<a href="' . \esc_attr( $url ) . '" id="epch_email_commenters_alternate"></a><script>
+		echo '<a href="' . \esc_url( $url ) . '" id="epch_email_commenters_alternate"></a><script>
 			function epch_email_commenters(e){
 				var epchEmailCommentersLink = document.getElementById( "epch_email_commenters_alternate" );
 				e.preventDefault();
@@ -100,6 +104,8 @@ class Email_Links {
 
 	/**
 	 * Adds styling to our email button.
+	 *
+	 * @return void
 	 */
 	public function wp_head_css(): void {
 		if ( ! \is_admin_bar_showing() ) {
@@ -123,9 +129,9 @@ class Email_Links {
 	/**
 	 * Adds an "E-Mail" action to the comment action list on the comments overview page.
 	 *
-	 * @param array $actions Array of actions we'll be adding our action to.
+	 * @param string[] $actions Array of actions we'll be adding our action to.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	public function add_mailto_action_row( $actions ): array {
 		/**
@@ -148,7 +154,7 @@ class Email_Links {
 
 		$new_action = [
 			/* translators: %s is replaced with the comment authors name */
-			'mailto' => '<a href="' . \esc_attr( $link ) . '"><span class="dashicons dashicons-email-alt"></span> ' . \esc_html( \sprintf( \__( 'E-mail %s', 'comment-hacks' ), $comment->comment_author ) ) . '</a>',
+			'mailto' => '<a href="' . \esc_url( $link ) . '"><span class="dashicons dashicons-email-alt"></span> ' . \esc_html( \sprintf( \__( 'E-mail %s', 'comment-hacks' ), $comment->comment_author ) ) . '</a>',
 		];
 
 		return \array_merge( $left_actions, $new_action, $right_actions );
@@ -160,6 +166,8 @@ class Email_Links {
 	 * @param string      $msg     The message in which we're replacing variables.
 	 * @param bool|object $comment The comment object.
 	 * @param int|bool    $post    The post the comment belongs to.
+	 *
+	 * @return string
 	 */
 	private function replace_variables( $msg, $comment = false, $post = false ): string {
 		$replacements = $this->get_replacements( $comment );
@@ -194,6 +202,8 @@ class Email_Links {
 	 * Getting the replacements with comment data if there is a comment.
 	 *
 	 * @param bool|object $comment The comment object.
+	 *
+	 * @return string[]
 	 */
 	private function get_replacements( $comment ): array {
 		$replacements = [
