@@ -36,7 +36,7 @@ class Comment_Parent {
 		if ( \function_exists( 'add_meta_box' ) ) {
 			\add_meta_box(
 				'comment_parent',
-				esc_html__( 'Comment Parent', 'comment-hacks' ),
+				\esc_html__( 'Comment Parent', 'comment-hacks' ),
 				[
 					$this,
 					'comment_parent_box',

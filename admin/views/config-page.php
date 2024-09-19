@@ -2,9 +2,10 @@
 /**
  * Config page admin view.
  *
- * @var \EmiliaProjects\WP\Comment\Admin\Admin $this
+ * @var Admin $this
  */
 
+use EmiliaProjects\WP\Comment\Admin\Admin;
 use EmiliaProjects\WP\Comment\Inc\Hacks;
 
 ?>
@@ -289,7 +290,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 							<?php if ( isset( $this->options['redirect_page'] ) && $this->options['redirect_page'] !== 0 ) : ?>
 								<br>
 								<br>
-								<a target="_blank" href="<?php echo esc_url( get_permalink( $this->options['redirect_page'] ) ); ?>">
+								<a target="_blank" href="<?php echo esc_url( get_permalink( (int) $this->options['redirect_page'] ) ); ?>">
 									<?php esc_html_e( 'Current redirect page', 'comment-hacks' ); ?>
 								</a>
 							<?php endif; ?>

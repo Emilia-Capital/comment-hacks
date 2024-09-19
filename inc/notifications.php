@@ -20,8 +20,10 @@ class Notifications {
 	/**
 	 * Filter the recipients of the comment notification.
 	 *
-	 * @param array $recipients Recipients of the notification email.
-	 * @param int   $comment_id Comment the notification is sent for.
+	 * @param string[] $recipients Recipients of the notification email.
+	 * @param int      $comment_id Comment the notification is sent for.
+	 *
+	 * @return string[]
 	 */
 	public function filter_notification_recipients( $recipients, $comment_id ): array {
 		$comment = \get_comment( $comment_id );

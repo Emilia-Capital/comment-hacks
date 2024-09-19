@@ -10,7 +10,7 @@ class Length {
 	/**
 	 * Holds the plugins options.
 	 *
-	 * @var mixed[]
+	 * @var string[]
 	 */
 	private array $options = [];
 
@@ -29,9 +29,9 @@ class Length {
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $comment_data All the data for the comment.
+	 * @param string[] $comment_data All the data for the comment.
 	 *
-	 * @return array All the data for the comment (only returned when the comment is long enough).
+	 * @return string[] All the data for the comment (only returned when the comment is long enough).
 	 */
 	public function check_comment_length( $comment_data ): array {
 		// Bail early for editors and admins, they can leave short or long comments if they want.

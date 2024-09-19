@@ -10,7 +10,7 @@ class Forms {
 	/**
 	 * Holds our options.
 	 *
-	 * @var mixed[]
+	 * @var string[]
 	 */
 	private array $options;
 
@@ -36,8 +36,8 @@ class Forms {
 		?>
 		<label class="agree-comment-policy">
 			<input type="checkbox" name="comment_policy">
-			<a href="<?php echo \esc_url( \get_permalink( $this->options['comment_policy_page'] ) ); ?>" target="_blank">
-				<?php echo esc_html( $this->options['comment_policy_text'] ); ?>
+			<a href="<?php echo \esc_url( \get_permalink( (int) $this->options['comment_policy_page'] ) ); ?>" target="_blank">
+				<?php echo \esc_html( $this->options['comment_policy_text'] ); ?>
 			</a>
 		</label>
 		<?php
@@ -46,9 +46,9 @@ class Forms {
 	/**
 	 * Checks whether the comment policy box was checked or not.
 	 *
-	 * @param array $comment_data Array with comment data. Unused.
+	 * @param string[] $comment_data Array with comment data. Unused.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	public function check_comment_policy( $comment_data ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Comment forms (unfortunately) are always without nonces.
