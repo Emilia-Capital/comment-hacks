@@ -3,8 +3,8 @@ Contributors: joostdevalk
 Tags: comments, spam, emails
 Text Domain: comment-hacks
 Requires at least: 5.9
-Tested up to: 6.5
-Stable tag: 1.9.4
+Tested up to: 6.7
+Stable tag: 1.9.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -59,8 +59,14 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 
 == Changelog ==
 
+= 1.9.5 =
+
+* Added a link to remove the author's URL from the comment from the frontend.
+* Fix comment policy function for admins and editors.
+
 = 1.0 =
 
 * Initial version.
 
 Note: The initial version is based on the plugin formerly known as "Yoast Comment Hacks" to remove the branding since Yoast no longer owns the plugin.
+

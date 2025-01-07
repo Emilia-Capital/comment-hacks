@@ -4,7 +4,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:  Comment Hacks
- * Version:      2.0
+ * Version:      1.9.5
  * Plugin URI:   https://joost.blog/plugins/comment-hacks/
  * Description:  Make comments management easier by applying the simple hacks Joost has gathered over the years.
  * Requires PHP: 7.4
@@ -12,7 +12,7 @@
  * Author URI:   https://joost.blog/
  * Text Domain:  comment-hacks
  *
- * Copyright 2009-2022 Joost de Valk (email: joost@joost.blog)
+ * Copyright 2009-2024 Joost de Valk (email: joost@joost.blog)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,7 +35,7 @@ use EmiliaProjects\WP\Comment\Inc\Hacks;
 /**
  * Used for version checks.
  */
-define( 'EMILIA_COMMENT_HACKS_VERSION', '1.9.4' );
+define( 'EMILIA_COMMENT_HACKS_VERSION', '1.9.5' );
 
 /**
  * Used for asset embedding.
