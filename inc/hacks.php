@@ -153,7 +153,7 @@ class Hacks {
 				'<a href="#" class="comment-remove-url" data-comment-id="%d" aria-label="%s">%s</a>',
 				\esc_attr( (string) $comment_id ),
 				\esc_attr__( 'Remove URL from this comment', 'comment-hacks' ),
-				'<small style="font-size:70% !important;">'  . \esc_html__( 'Remove URL', 'comment-hacks' ) . ' ' . htmlentities( $comment->comment_author_url ) . '</small>'
+				'<small style="font-size:70% !important;">' . \esc_html__( 'Remove URL', 'comment-hacks' ) . ' ' . \htmlentities( $comment->comment_author_url ) . '</small>'
 			);
 		}
 
