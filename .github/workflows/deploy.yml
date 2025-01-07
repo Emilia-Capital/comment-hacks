@@ -20,6 +20,7 @@ jobs:
         with:
           generate-zip: true
         env:
+          SLUG: yoast-comment-hacks
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
       # After the deploy, we also want to create a zip and upload it to the release on Github. We don't want
