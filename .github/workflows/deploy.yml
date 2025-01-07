@@ -25,7 +25,7 @@ jobs:
         env:
           SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
           SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
-          SLUG: comment-hacks # optional, remove if GitHub repo name matches SVN slug, including capitalization
+          SLUG: yoast-comment-hacks # optional, remove if GitHub repo name matches SVN slug, including capitalization
   build:
     name: Create Release
     runs-on: ubuntu-latest
