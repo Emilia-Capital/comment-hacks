@@ -1,0 +1,11 @@
+parameters:
+  level: 6
+  paths:
+    - .
+  excludePaths:
+    - vendor
+    - tests
+    - node_modules
+  treatPhpDocTypesAsCertain: false
+  ignoreErrors:
+    - '#Constant EMILIA_COMMENT_HACKS_PATH not found.#'

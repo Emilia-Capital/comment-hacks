@@ -1,10 +1,10 @@
 === Comment Hacks ===
 Contributors: joostdevalk
 Tags: comments, spam, emails
-Text Domain: yoast-comment-hacks
+Text Domain: comment-hacks
 Requires at least: 5.9
-Tested up to: 6.4
-Stable tag: 1.9.4
+Tested up to: 6.7
+Stable tag: 1.9.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -32,7 +32,7 @@ See the screenshots to get an even better idea of the plugins' functionality.
 
 === Have you found an issue? ===
 
-If you have bugs to report, please go to [the plugin's GitHub repository](https://github.com/jdevalk/comment-hacks). For security issues, please use our [vulnerability disclosure program](https://patchstack.com/database/vdp/yoast-comment-hacks), which is managed by PatchStack. They will assist you with verification, CVE assignment, and, of course, notify us.
+If you have bugs to report, please go to [the plugin's GitHub repository](https://github.com/emilia-capital/comment-hacks). For security issues, please use our [vulnerability disclosure program](https://patchstack.com/database/vdp/comment-hacks), which is managed by PatchStack. They will assist you with verification, CVE assignment, and, of course, notify us.
 
 
 == Installation ==
@@ -45,7 +45,7 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 **Install manually**
 
 1. Download and unzip the plugin.
-1. Upload the `yoast-comment-hacks` directory to the `/wp-content/plugins/` directory.
+1. Upload the `comment-hacks` directory to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Configure your settings on the Settings &rarr; Comment Hacks screen.
 
@@ -59,6 +59,11 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 
 == Changelog ==
 
+= 1.9.5 =
+
+* Added a link to remove the author's URL from the comment from the frontend.
+* Fix comment policy function for admins and editors.
+
 = 1.9.4 =
 
 * Fix fatal due to wrong class import, props [@andizer](https://profiles.wordpress.org/andizer/).
@@ -70,7 +75,7 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 
 = 1.9.2 =
 
-* Fix missing autoloader
+* Fix missing autoloader.
 
 = 1.9 =
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Admin;
+namespace EmiliaProjects\WP\Comment\Admin;
 
+use EmiliaProjects\WP\Comment\Inc\Hacks;
 use WP_Comment;
 use WP_Post;
-use JoostBlog\WP\Comment\Inc\Hacks;
 
 /**
  * Admin handling class.
@@ -16,17 +16,19 @@ class Admin {
 	 *
 	 * @var string
 	 */
-	const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
+	private const NOTIFICATION_RECIPIENT_KEY = '_comment_notification_recipient';
 
 	/**
 	 * The plugin page hook.
 	 */
-	private string $hook = 'yoast-comment-hacks';
+	private string $hook = 'comment-hacks';
 
 	/**
 	 * Holds the plugins options.
+	 *
+	 * @var string[]
 	 */
-	private array $options = [];
+	public array $options = [];
 
 	/**
 	 * The absolute minimum comment length when this plugin is enabled.
@@ -65,16 +67,18 @@ class Admin {
 	 *
 	 * @param string     $comment_text Text of the current comment.
 	 * @param WP_Comment $comment      The comment object. Null if not found.
+	 *
+	 * @return string
 	 */
 	public function show_forward_status( $comment_text, $comment ): string {
 		if ( ! \is_admin() ) {
 			return $comment_text;
 		}
 
-		$ch_forwarded = \get_comment_meta( $comment->comment_ID, 'ch_forwarded' );
+		$ch_forwarded = \get_comment_meta( (int) $comment->comment_ID, 'ch_forwarded' );
 		if ( $ch_forwarded ) {
 			/* translators: %s is replaced by the name you're forwarding to. */
-			$pre          = '<div style="background: #fff;border: 1px solid #46b450;border-left-width: 4px;box-shadow: 0 1px 1px rgba(0,0,0,.04);margin: 5px 15px 2px 0;padding: 1px 12px 1px;"><p><strong>' . \sprintf( \esc_html__( 'This comment was forwarded to %s.', 'yoast-comment-hacks' ), \esc_html( $this->options['forward_name'] ) ) . '</strong></p></div>';
+			$pre          = '<div style="background: #fff;border: 1px solid #46b450;border-left-width: 4px;box-shadow: 0 1px 1px rgba(0,0,0,.04);margin: 5px 15px 2px 0;padding: 1px 12px 1px;"><p><strong>' . \sprintf( \esc_html__( 'This comment was forwarded to %s.', 'comment-hacks' ), \esc_html( $this->options['forward_name'] ) ) . '</strong></p></div>';
 			$comment_text = $pre . $comment_text;
 		}
 
@@ -83,6 +87,8 @@ class Admin {
 
 	/**
 	 * Forwards a comment to an email address chosen in the settings.
+	 *
+	 * @return void
 	 */
 	public function forward_comment(): void {
 		if ( empty( $this->options['forward_email'] ) ) {
@@ -99,10 +105,21 @@ class Admin {
 			$comment_id = (int) $_GET['comment_id'];
 			$comment    = \get_comment( $comment_id );
 
-			/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the blogpost. */
-			echo '<div class="msg updated"><p>' . \sprintf( \esc_html__( 'Forwarding comment from %1$s to %2$s.', 'yoast-comment-hacks' ), '<strong>' . \esc_html( $comment->comment_author ) . '</strong>', \esc_html( $this->options['forward_name'] ) ) . '</div></div>';
+			echo '<div class="msg updated"><p>';
+			\printf(
+				/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the blogpost. */
+				\esc_html__( 'Forwarding comment from %1$s to %2$s.', 'comment-hacks' ),
+				'<strong>' . \esc_html( $comment->comment_author ) . '</strong>',
+				\esc_html( $this->options['forward_name'] )
+			);
+			echo '</div></div>';
 
-			$intro = \sprintf( 'This comment was forwarded from %s where it was left on: %s.', '<a href=" ' . \get_site_url() . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>', '<a href="' . \get_permalink( $comment->comment_post_ID ) . '">' . \get_the_title( $comment->comment_post_ID ) . '</a>' ) . "\n\n";
+			$intro = \sprintf(
+				/* translators: %1$s is replaced by (a link to) the blog's name, %2$s by (a link to) the title of the post. */
+				\esc_html__( 'This comment was forwarded from %1$s where it was left on: %2$s.', 'comment-hacks' ),
+				'<a href=" ' . \esc_url( \get_site_url() ) . ' ">' . \esc_html( \get_bloginfo( 'name' ) ) . '</a>',
+				'<a href="' . \esc_url( \get_permalink( (int) $comment->comment_post_ID ) ) . '">' . \esc_html( \get_the_title( (int) $comment->comment_post_ID ) ) . '</a>'
+			) . "\n\n";
 
 			if ( ! empty( $this->options['forward_extra'] ) ) {
 				$intro .= $this->options['forward_extra'] . "\n\n";
@@ -111,7 +128,7 @@ class Admin {
 			$intro .= '---------- Forwarded message ---------
 From: ' . \esc_html( $comment->comment_author ) . ' &lt;' . \esc_html( $comment->comment_author_email ) . '&gt;
 Date: ' . \gmdate( 'D, M j, Y \a\t h:i A', \strtotime( $comment->comment_date ) ) . '
-Subject: ' . \esc_html__( 'Comment on', 'yoast-comment-hacks' ) . ' ' . \esc_html( \get_bloginfo( 'name' ) ) . '
+Subject: ' . \esc_html__( 'Comment on', 'comment-hacks' ) . ' ' . \esc_html( \get_bloginfo( 'name' ) ) . '
 To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->options['forward_from_email'] ) . '&gt;';
 			$intro .= "\n\n";
 
@@ -136,31 +153,37 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 *
 	 * @param string[]   $actions The actions shown underneath comments.
 	 * @param WP_Comment $comment The individual comment object.
+	 *
+	 * @return string[]
 	 */
 	public function forward_to_support_action_link( $actions, $comment ): array {
 		if ( empty( $this->options['forward_email'] ) ) {
 			return $actions;
 		}
 
-		$label = \esc_html__( 'Forward to support', 'yoast-comment-hacks' );
+		// Escaped before returning the actions array.
+		$label = \__( 'Forward to support', 'comment-hacks' );
 
 		// '1' === approved, 'trash' === trashed.
 		if ( $comment->comment_approved !== '1' && $comment->comment_approved !== 'trash' ) {
-			$label = \esc_html__( 'Forward to support & trash', 'yoast-comment-hacks' );
+			// Escaped before returning the actions array.
+			$label = \__( 'Forward to support & trash', 'comment-hacks' );
 		}
 
-		$actions['ch_forward'] = '<a href="' . \admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . \wp_create_nonce( 'comment-hacks-forward' ) . '">' . $label . '</a>';
+		$actions['ch_forward'] = '<a href="' . \esc_url( \admin_url( 'edit-comments.php' ) . '?comment_id=' . $comment->comment_ID . '&ch_action=forward_comment&nonce=' . \wp_create_nonce( 'comment-hacks-forward' ) ) . '">' . \esc_html( $label ) . '</a>';
 
 		return $actions;
 	}
 
 	/**
 	 * Register meta box(es).
+	 *
+	 * @return void
 	 */
 	public function register_meta_boxes(): void {
 		\add_meta_box(
 			'comment-hacks-reroute',
-			\__( 'Comment Hacks', 'yoast-comment-hacks' ),
+			\__( 'Comment Hacks', 'comment-hacks' ),
 			[
 				$this,
 				'meta_box_callback',
@@ -174,32 +197,21 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * Meta box display callback.
 	 *
 	 * @param WP_Post $post Current post object.
+	 *
+	 * @return void
 	 */
 	public function meta_box_callback( $post ): void {
-		echo '<input type="hidden" name="comment_notification_recipient_nonce" value="' . \esc_attr( \wp_create_nonce( 'comment_notification_recipient_nonce' ) ) . '" />';
-		echo '<label for="comment_notification_recipient">' . \esc_html__( 'Comment notification recipients:', 'yoast-comment-hacks' ) . '</label><br/>';
-
-		/**
-		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
-		 * Defaults to contributor and up.
-		 *
-		 * @param array $roles Array with user roles.
-		 *
-		 * @deprecated 1.6.0. Use the {@see 'JoostBlog\WP\Comment\notification_roles'} filter instead.
-		 */
-		$roles = \apply_filters_deprecated(
-			'yoast_comment_hacks_notification_roles',
-			[
-				[
-					'author',
-					'contributor',
-					'editor',
-					'administrator',
-				],
-			],
-			'Comment Hacks 1.6.0',
-			'JoostBlog\WP\Comment\notification_roles'
-		);
+		?>
+		<input
+			type="hidden"
+			name="comment_notification_recipient_nonce"
+			value="<?php echo \esc_attr( \wp_create_nonce( 'comment_notification_recipient_nonce' ) ); ?>"
+		/>
+		<label for="comment_notification_recipient">
+			<?php \esc_html_e( 'Comment notification recipients:', 'comment-hacks' ); ?>
+		</label>
+		<br/>
+		<?php
 
 		/**
 		 * This filter allows filtering which roles should be shown in the dropdown for notifications.
@@ -209,7 +221,10 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		 *
 		 * @since 1.6.0
 		 */
-		$roles = \apply_filters( 'JoostBlog\WP\Comment\notification_roles', $roles );
+		$roles = \apply_filters(
+			'EmiliaProjects\WP\Comment\notification_roles',
+			[ 'contributor', 'author', 'editor', 'administrator', 'super-admin' ]
+		);
 
 		\wp_dropdown_users(
 			[
@@ -225,6 +240,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 	/**
 	 * Register the options array along with the validation function.
+	 *
+	 * @return void
 	 */
 	public function init(): void {
 		// Register our option array.
@@ -240,28 +257,25 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 	/**
 	 * Enqueue our admin script.
+	 *
+	 * @return void
 	 */
 	public function enqueue(): void {
 		$page = \filter_input( \INPUT_GET, 'page' );
 
-		if ( $page === 'yoast-comment-hacks' ) {
-			$min = '.min';
-			if ( \defined( 'SCRIPT_DEBUG' ) && \SCRIPT_DEBUG ) {
-				$min = '';
-			}
-
+		if ( $page === 'comment-hacks' ) {
 			\wp_enqueue_style(
-				'yoast-comment-hacks-admin-css',
-				\plugins_url( 'admin/assets/css/dist/comment-hacks.css', \JOOST_COMMENT_HACKS_FILE ),
+				'emiliaprojects-comment-hacks-admin-css',
+				\plugins_url( 'admin/assets/css/comment-hacks.css', \EMILIA_COMMENT_HACKS_FILE ),
 				[],
-				\JOOST_COMMENT_HACKS_VERSION
+				\EMILIA_COMMENT_HACKS_VERSION
 			);
 
 			\wp_enqueue_script(
-				'yoast-comment-hacks-admin-js',
-				\plugins_url( 'admin/assets/js/yoast-comment-hacks' . $min . '.js', \JOOST_COMMENT_HACKS_FILE ),
+				'emiliaprojects-comment-hacks-admin-js',
+				\plugins_url( 'admin/assets/js/comment-hacks.js', \EMILIA_COMMENT_HACKS_FILE ),
 				[],
-				\JOOST_COMMENT_HACKS_VERSION,
+				\EMILIA_COMMENT_HACKS_VERSION,
 				true
 			);
 		}
@@ -271,6 +285,8 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 * Saves the comment email recipients post meta.
 	 *
 	 * @param int $post_id The post ID.
+	 *
+	 * @return void
 	 */
 	public function save_reroute_comment_emails( $post_id ): void {
 
@@ -289,7 +305,9 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $input Input with unvalidated options.
+	 * @param string[] $input Input with unvalidated options.
+	 *
+	 * @return string[]
 	 */
 	public function options_validate( array $input ): array {
 		$defaults = Hacks::get_defaults();
@@ -303,7 +321,7 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 					$input[ $key ] = (int) $value;
 					break;
 				case 'version':
-					$input[ $key ] = JOOST_COMMENT_HACKS_VERSION;
+					$input[ $key ] = \EMILIA_COMMENT_HACKS_VERSION;
 					break;
 				case 'comment_policy':
 				case 'clean_emails':
@@ -324,8 +342,15 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 		}
 
 		if ( ( $this->absolute_min + 1 ) > $input['mincomlength'] || empty( $input['mincomlength'] ) ) {
-			/* translators: %d is replaced with the minimum number of characters */
-			\add_settings_error( $this->hook, 'min_length_invalid', \sprintf( \__( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'yoast-comment-hacks' ), $this->absolute_min ) );
+			\add_settings_error(
+				$this->hook,
+				'min_length_invalid',
+				\sprintf(
+					/* translators: %d is replaced with the minimum number of characters */
+					\__( 'The minimum length you entered is invalid, please enter a minimum length above %d.', 'comment-hacks' ),
+					$this->absolute_min
+				)
+			);
 			$input['mincomlength'] = 15;
 		}
 
@@ -335,42 +360,35 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	/**
 	 * Turns checkbox values into booleans.
 	 *
-	 * @param mixed $value The input value to cast to boolean.
+	 * @param string|bool $value The input value to cast to boolean.
+	 *
+	 * @return bool
 	 */
 	private function sanitize_bool( $value ): bool {
-		if ( $value ) {
-			$value = true;
-		}
-		if ( empty( $value ) ) {
-			$value = false;
-		}
-
-		return $value;
+		return ( $value || ! empty( $value ) );
 	}
 
 	/**
 	 * Turns empty string into defaults.
 	 *
-	 * @param mixed  $value   The input value.
-	 * @param string $default The default value of the string.
+	 * @param string $value         The input value.
+	 * @param string $default_value The default value of the string.
 	 *
-	 * @return array $input The array with sanitized input values.
+	 * @return string
 	 */
-	private function sanitize_string( $value, $default ) {
-		if ( $value === '' ) {
-			$value = $default;
-		}
-
-		return $value;
+	private function sanitize_string( $value, $default_value ) {
+		return ( $value === '' ) ? $default_value : $value;
 	}
 
 	/**
 	 * Register the config page for all users that have the manage_options capability.
+	 *
+	 * @return void
 	 */
 	public function add_config_page() {
 		\add_options_page(
-			\__( 'Comment Hacks', 'yoast-comment-hacks' ),
-			\__( 'Comment Hacks', 'yoast-comment-hacks' ),
+			\__( 'Comment Hacks', 'comment-hacks' ),
+			\__( 'Comment Hacks', 'comment-hacks' ),
 			'manage_options',
 			$this->hook,
 			[
@@ -383,18 +401,20 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 	/**
 	 * Register the settings link for the plugins page.
 	 *
-	 * @param array  $links The plugin action links.
-	 * @param string $file  The plugin file.
+	 * @param string[] $links The plugin action links.
+	 * @param string   $file  The plugin file.
+	 *
+	 * @return string[]
 	 */
 	public function filter_plugin_actions( $links, $file ): array {
 		/* Static so we don't call plugin_basename on every plugin row. */
 		static $this_plugin;
 		if ( ! $this_plugin ) {
-			$this_plugin = \plugin_basename( __FILE__ );
+			$this_plugin = \plugin_basename( \EMILIA_COMMENT_HACKS_FILE );
 		}
 
 		if ( $file === $this_plugin ) {
-			$settings_link = '<a href="' . \admin_url( 'options-general.php?page=' . $this->hook ) . '">' . \__( 'Settings', 'yoast-comment-hacks' ) . '</a>';
+			$settings_link = '<a href="' . \admin_url( 'options-general.php?page=' . $this->hook ) . '">' . \__( 'Settings', 'comment-hacks' ) . '</a>';
 			// Put our link before other links.
 			\array_unshift( $links, $settings_link );
 		}
@@ -404,23 +424,29 @@ To: ' . \esc_html( \get_bloginfo( 'name' ) ) . ' &lt;' . \esc_html( $this->optio
 
 	/**
 	 * Output the config page.
+	 *
+	 * @return void
 	 */
 	public function config_page(): void {
-		require_once \JOOST_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
+		require_once \EMILIA_COMMENT_HACKS_PATH . 'admin/views/config-page.php';
 
 		// Show the content of the options array when debug is enabled.
 		if ( \defined( 'WP_DEBUG' ) && \WP_DEBUG ) {
-			echo '<h4>', \esc_html__( 'Options debug', 'yoast-comment-hacks' ), '</h4>';
-			echo '<div style="border: 1px solid #aaa; padding: 20px;">';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Debug output.
-			echo \str_replace(
-				'<code>',
-				'<code style="background-color: #eee; margin: 0; padding: 0;">',
-				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export -- This is only shown in debug mode.
-				\highlight_string( "<?php\n\$this->options = " . \var_export( $this->options, true ) . ';', true ),
-				$num
-			);
-			echo '</div>';
+			?>
+			<h4><?php \esc_html_e( 'Options debug', 'comment-hacks' ); ?></h4>
+			<div style="border: 1px solid #aaa; padding: 20px;">
+				<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Debug output.
+				echo \str_replace(
+					'<code>',
+					'<code style="background-color: #eee; margin: 0; padding: 0;">',
+					// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export -- This is only shown in debug mode.
+					\highlight_string( "<?php\n\$this->options = " . \var_export( $this->options, true ) . ';', true ),
+					$num
+				);
+				?>
+			</div>
+			<?php
 		}
 	}
 }

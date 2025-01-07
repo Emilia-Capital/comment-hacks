@@ -26,7 +26,7 @@
 
 	<filter>
 		<whitelist addUncoveredFilesFromWhitelist="true" processUncoveredFilesFromWhitelist="false">
-			<file>./yoast-comment-hacks.php</file>
+			<file>./comment-hacks.php</file>
 			<directory>./admin</directory>
 			<directory>./inc</directory>
 		</whitelist>

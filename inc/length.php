@@ -1,6 +1,6 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Inc;
+namespace EmiliaProjects\WP\Comment\Inc;
 
 /**
  * Checks the comments for allowed length.
@@ -9,6 +9,8 @@ class Length {
 
 	/**
 	 * Holds the plugins options.
+	 *
+	 * @var string[]
 	 */
 	private array $options = [];
 
@@ -27,9 +29,9 @@ class Length {
 	 *
 	 * @since 1.0
 	 *
-	 * @param array $comment_data All the data for the comment.
+	 * @param string[] $comment_data All the data for the comment.
 	 *
-	 * @return array All the data for the comment (only returned when the comment is long enough).
+	 * @return string[] All the data for the comment (only returned when the comment is long enough).
 	 */
 	public function check_comment_length( $comment_data ): array {
 		// Bail early for editors and admins, they can leave short or long comments if they want.
@@ -49,7 +51,7 @@ class Length {
 		}
 
 		if ( $error ) {
-			\wp_die( \esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . \esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+			\wp_die( \esc_html( $error ) . '<br /><a href="javascript:history.go(-1);">' . \esc_html__( 'Go back and try again.', 'comment-hacks' ) . '</a>' );
 		}
 		return $comment_data;
 	}

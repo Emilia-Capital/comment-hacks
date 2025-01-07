@@ -1,6 +1,6 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Admin;
+namespace EmiliaProjects\WP\Comment\Admin;
 
 /**
  * Comment parent handling class.
@@ -20,19 +20,23 @@ class Comment_Parent {
 	 * Shows the comment parent box where you can change the comment parent.
 	 *
 	 * @param object $comment The comment object.
+	 *
+	 * @return void
 	 */
 	public function comment_parent_box( $comment ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.Found -- Param used in included file.
-		require_once \JOOST_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
+		require_once \EMILIA_COMMENT_HACKS_PATH . 'admin/views/comment-parent-box.php';
 	}
 
 	/**
 	 * Adds the comment parent box to the meta box.
+	 *
+	 * @return void
 	 */
 	public function load_comment_parent_box() {
 		if ( \function_exists( 'add_meta_box' ) ) {
 			\add_meta_box(
 				'comment_parent',
-				'Comment Parent',
+				\esc_html__( 'Comment Parent', 'comment-hacks' ),
 				[
 					$this,
 					'comment_parent_box',
@@ -45,9 +49,11 @@ class Comment_Parent {
 
 	/**
 	 * Updates the comment parent field.
+	 *
+	 * @return void
 	 */
 	public function update_comment_parent() {
-		$comment_parent = \filter_input( \INPUT_POST, 'yst_comment_parent', \FILTER_VALIDATE_INT );
+		$comment_parent = \filter_input( \INPUT_POST, 'epch_comment_parent', \FILTER_VALIDATE_INT );
 		$comment_id     = \filter_input( \INPUT_POST, 'comment_ID', \FILTER_VALIDATE_INT );
 		$action         = \filter_input( \INPUT_POST, 'action' );
 

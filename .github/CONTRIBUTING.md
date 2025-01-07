@@ -8,7 +8,7 @@ We use GitHub exclusively for well-documented bugs, feature requests and code co
 To receive free support for this plugin, go to [the support formus](https://wordpress.org/support/plugin/yoast-comment-hacks/). Thanks for your understanding.
 
 ## Security issues
-Please do not report security issues here. Instead, report them per our [security policy](https://github.com/jdevalk/comment-hacks/security/policy).
+Please do not report security issues here. Instead, report them per our [security policy](https://github.com/emilia-capital/comment-hacks/security/policy).
 
 ## I have found a bug
 Before opening a new issue, please:
@@ -28,7 +28,7 @@ Community made patches, localizations, bug reports and contributions are very we
 When contributing please ensure you follow the guidelines below so that we can keep on top of things.
 
 #### Submitting an issue you found
-Make sure your problem does not exist as a ticket already by searching through [the existing issues](https://github.com/jdevalk/comment-hacks/issues/). If you cannot find anything which resembles your problem, please [create a new issue](https://github.com/jdevalk/comment-hacks/issues/new).
+Make sure your problem does not exist as a ticket already by searching through [the existing issues](https://github.com/emilia-capital/comment-hacks/issues/). If you cannot find anything which resembles your problem, please [create a new issue](https://github.com/emilia-capital/comment-hacks/issues/new).
 
 #### Fixing an issue
 

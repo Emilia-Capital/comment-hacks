@@ -1,6 +1,6 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Inc;
+namespace EmiliaProjects\WP\Comment\Inc;
 
 /**
  * Notifications about comments.
@@ -20,13 +20,15 @@ class Notifications {
 	/**
 	 * Filter the recipients of the comment notification.
 	 *
-	 * @param array $recipients Recipients of the notification email.
-	 * @param int   $comment_id Comment the notification is sent for.
+	 * @param string[] $recipients Recipients of the notification email.
+	 * @param int      $comment_id Comment the notification is sent for.
+	 *
+	 * @return string[]
 	 */
 	public function filter_notification_recipients( $recipients, $comment_id ): array {
 		$comment = \get_comment( $comment_id );
 
-		$new_recipient = \get_post_meta( $comment->comment_post_ID, '_comment_notification_recipient', true );
+		$new_recipient = \get_post_meta( (int) $comment->comment_post_ID, '_comment_notification_recipient', true );
 
 		if ( ! empty( $new_recipient ) ) {
 			$user = \get_userdata( $new_recipient );

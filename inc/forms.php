@@ -1,6 +1,6 @@
 <?php
 
-namespace JoostBlog\WP\Comment\Inc;
+namespace EmiliaProjects\WP\Comment\Inc;
 
 /**
  * Add comment note.
@@ -9,6 +9,8 @@ class Forms {
 
 	/**
 	 * Holds our options.
+	 *
+	 * @var string[]
 	 */
 	private array $options;
 
@@ -31,25 +33,29 @@ class Forms {
 	 * @return void
 	 */
 	public function comment_form_fields() {
-		echo '<label class="agree-comment-policy">';
-		echo '<input type="checkbox" name="comment_policy">';
-		echo ' <a href="' . \esc_url( \get_permalink( $this->options['comment_policy_page'] ) ) . '" target="_blank">';
-		echo esc_html( $this->options['comment_policy_text'] );
-		echo '</a>';
-		echo '</label>';
+		?>
+		<label class="agree-comment-policy">
+			<input type="checkbox" name="comment_policy">
+			<a href="<?php echo \esc_url( \get_permalink( (int) $this->options['comment_policy_page'] ) ); ?>" target="_blank">
+				<?php echo \esc_html( $this->options['comment_policy_text'] ); ?>
+			</a>
+		</label>
+		<?php
 	}
 
 	/**
 	 * Checks whether the comment policy box was checked or not.
 	 *
-	 * @param array $comment_data Array with comment data. Unused.
+	 * @param string[] $comment_data Array with comment data. Unused.
 	 *
-	 * @return array
+	 * @return string[]
 	 */
 	public function check_comment_policy( $comment_data ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Comment forms (unfortunately) are always without nonces.
 		if ( ! isset( $_POST['comment_policy'] ) || ! ( $_POST['comment_policy'] === 'on' || $_POST['comment_policy'] === true ) ) {
-			\wp_die( \esc_html( $this->options['comment_policy_error'] ) . '<br /><br /><a href="javascript:history.go(-1);">' . \esc_html__( 'Go back and try again.', 'yoast-comment-hacks' ) . '</a>' );
+			if ( ! \current_user_can( 'moderate_comments' ) ) {
+				\wp_die( \esc_html( $this->options['comment_policy_error'] ) . '<br /><br /><a href="javascript:history.go(-1);">' . \esc_html__( 'Go back and try again.', 'comment-hacks' ) . '</a>' );
+			}
 		}
 
 		return $comment_data;

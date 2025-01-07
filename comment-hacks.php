@@ -4,15 +4,15 @@
  *
  * @wordpress-plugin
  * Plugin Name:  Comment Hacks
- * Version:      1.9.4
+ * Version:      1.9.5
  * Plugin URI:   https://joost.blog/plugins/comment-hacks/
  * Description:  Make comments management easier by applying the simple hacks Joost has gathered over the years.
  * Requires PHP: 7.4
  * Author:       Joost de Valk
  * Author URI:   https://joost.blog/
- * Text Domain:  yoast-comment-hacks
+ * Text Domain:  comment-hacks
  *
- * Copyright 2009-2022 Joost de Valk (email: joost@joost.blog)
+ * Copyright 2009-2024 Joost de Valk (email: joost@joost.blog)
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,25 +29,24 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  */
 
-use JoostBlog\WP\Comment\Inc\Hacks;
+use EmiliaProjects\WP\Comment\Inc\Autoload;
+use EmiliaProjects\WP\Comment\Inc\Hacks;
 
 /**
  * Used for version checks.
  */
-define( 'JOOST_COMMENT_HACKS_VERSION', '1.9.4' );
+define( 'EMILIA_COMMENT_HACKS_VERSION', '1.9.5' );
 
 /**
  * Used for asset embedding.
  */
-define( 'JOOST_COMMENT_HACKS_FILE', __FILE__ );
+define( 'EMILIA_COMMENT_HACKS_FILE', __FILE__ );
 
-if ( ! defined( 'JOOST_COMMENT_HACKS_PATH' ) ) {
-	define( 'JOOST_COMMENT_HACKS_PATH', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'EMILIA_COMMENT_HACKS_PATH' ) ) {
+	define( 'EMILIA_COMMENT_HACKS_PATH', plugin_dir_path( __FILE__ ) );
 }
 
-/* ***************************** CLASS AUTOLOADING *************************** */
-if ( file_exists( JOOST_COMMENT_HACKS_PATH . 'vendor/autoload.php' ) ) {
-	require JOOST_COMMENT_HACKS_PATH . 'vendor/autoload.php';
-}
+require_once EMILIA_COMMENT_HACKS_PATH . 'inc/autoload.php';
+new Autoload();
 
 new Hacks();
