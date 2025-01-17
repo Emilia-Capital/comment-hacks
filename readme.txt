@@ -4,7 +4,7 @@ Tags: comments, spam, emails
 Text Domain: comment-hacks
 Requires at least: 5.9
 Tested up to: 6.7
-Stable tag: 2.1
+Stable tag: 2.1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Requires PHP: 7.4
@@ -58,6 +58,10 @@ If you have bugs to report, please go to [the plugin's GitHub repository](https:
 5. The link in the backend to email an individual commenters on a post.
 
 == Changelog ==
+
+= 2.1.1 =
+
+* Don't enqueue the remove URL script on the frontend for logged out users or users without the `edit_posts` capability.
 
 = 2.1 =
 
