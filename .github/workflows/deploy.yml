@@ -16,7 +16,7 @@ jobs:
       # Deploy the plugin to WordPress.org
       - name: WordPress plugin deploy
         id: deploy
-        uses: 10up/action-wordpress-plugin-deploy@stable
+        uses: 10up/action-wordpress-plugin-deploy@develop
         with:
           generate-zip: true
         env:
