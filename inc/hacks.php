@@ -105,15 +105,17 @@ class Hacks {
 	 * @return void
 	 */
 	public function enqueue_comment_block_scripts() {
-		\wp_enqueue_script( 'ch-comment-block-edit', \plugin_dir_url( \EMILIA_COMMENT_HACKS_FILE ) . 'admin/assets/js/remove-url.js', [ 'jquery' ], '1.0.0', true );
-		\wp_localize_script(
-			'ch-comment-block-edit',
-			'chCommentBlockEdit',
-			[
-				'ajax_url' => \admin_url( 'admin-ajax.php' ),
-				'nonce'    => \wp_create_nonce( 'ch_remove_comment_url_nonce' ),
-			]
-		);
+		if ( \current_user_can( 'edit_posts' ) ) {
+			\wp_enqueue_script( 'ch-comment-block-edit', \plugin_dir_url( \EMILIA_COMMENT_HACKS_FILE ) . 'admin/assets/js/remove-url.js', [ 'jquery' ], '1.0.0', true );
+			\wp_localize_script(
+				'ch-comment-block-edit',
+				'chCommentBlockEdit',
+				[
+					'ajax_url' => \admin_url( 'admin-ajax.php' ),
+					'nonce'    => \wp_create_nonce( 'ch_remove_comment_url_nonce' ),
+				]
+			);
+		}
 	}
 
 	/**
